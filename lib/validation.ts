@@ -13,6 +13,15 @@ export const loginSchema = z.object({
   password: z.string().min(8)
 });
 
+export const adminSetupSchema = z.object({
+  setupToken: z.string().min(16),
+  name: z.string().min(2),
+  email: z.string().email(),
+  password: z.string().min(8),
+  phone: z.string().min(7),
+  address: z.string().min(8)
+});
+
 export const bookingSchema = z.object({
   type: z.enum(["MEAL_PREP", "CATERING", "CHEF_EVENT"]),
   userId: z.string().min(1),
