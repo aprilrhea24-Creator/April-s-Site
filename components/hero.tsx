@@ -1,5 +1,4 @@
 import Link from "next/link";
-import Image from "next/image";
 
 export function Hero() {
   return (
@@ -34,16 +33,6 @@ export function Hero() {
           </div>
         </div>
         <div className="relative">
-          <div className="absolute -left-8 -top-10 hidden w-40 rotate-[-5deg] rounded-2xl bg-white p-3 shadow-[0_0_60px_rgba(240,6,18,0.35)] lg:block">
-            <Image
-              src="/chef-thai-logo.png"
-              alt="Chef Thai logo"
-              width={160}
-              height={230}
-              className="w-full object-contain"
-              priority
-            />
-          </div>
           <div className="relative overflow-hidden rounded-[2.75rem] border border-white/15 bg-black shadow-[0_40px_120px_rgba(0,0,0,0.55)]">
             <div
               className="min-h-[28rem] bg-cover bg-center lg:min-h-[34rem]"

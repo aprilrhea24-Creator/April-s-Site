@@ -83,8 +83,8 @@ export default async function HomePage() {
         </div>
       </section>
       <Testimonials />
-      <section className="bg-[radial-gradient(circle_at_center,rgba(240,6,18,0.2),transparent_34%),#050505] py-24 text-white">
-        <div className="mx-auto max-w-4xl px-4 text-center sm:px-6 lg:px-8">
+      <section className="bg-[radial-gradient(circle_at_center,rgba(240,6,18,0.32),transparent_34%),linear-gradient(180deg,#050505,#000)] py-24 text-white">
+        <div className="mx-auto max-w-4xl rounded-[2.5rem] border border-white/10 bg-black/70 px-6 py-12 text-center shadow-[0_30px_120px_rgba(0,0,0,0.42)] sm:px-8 lg:px-10">
           <SectionTitle
             eyebrow="Ready to Order"
             title="Bring Chef Thai to your next meal, meeting, or celebration."
