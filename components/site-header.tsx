@@ -16,17 +16,17 @@ export async function SiteHeader() {
   return (
     <header className="sticky top-0 z-30 border-b border-white/10 bg-black/95 shadow-[0_16px_60px_rgba(0,0,0,0.45)] backdrop-blur-xl">
       <div className="mx-auto max-w-[1560px] px-4 py-4 sm:px-6 lg:px-10">
-        <div className="flex items-center justify-between gap-5">
-          <Link href="/" className="flex min-w-0 shrink-0 items-center gap-4 sm:gap-5">
+        <div className="flex items-center justify-between gap-3 sm:gap-5">
+          <Link href="/" className="flex min-w-0 shrink items-center gap-2 sm:gap-5">
             <Image
               src="/chef-thai-logo.png"
               alt="Chef Thai logo"
               width={96}
               height={118}
-              className="h-24 w-[4.75rem] rounded-sm bg-white object-contain p-1.5 shadow-[0_0_32px_rgba(240,6,18,0.28)] sm:h-28 sm:w-[5.5rem]"
+              className="h-16 w-12 rounded-sm bg-white object-contain p-1 shadow-[0_0_32px_rgba(240,6,18,0.28)] sm:h-28 sm:w-[5.5rem] sm:p-1.5"
               priority
             />
-            <span className="hidden text-3xl font-black uppercase italic tracking-tight text-white sm:inline lg:text-5xl">
+            <span className="min-w-0 text-2xl font-black uppercase italic leading-none tracking-tight text-white sm:text-3xl lg:text-5xl">
               Chef <span className="text-[#f00612]">Thai</span>
             </span>
           </Link>
@@ -41,7 +41,7 @@ export async function SiteHeader() {
               </Link>
             ))}
           </nav>
-          <div className="flex items-center gap-3 sm:gap-5">
+          <div className="flex shrink-0 items-center gap-2 sm:gap-5">
             {session ? (
               <>
                 <Link
@@ -59,12 +59,12 @@ export async function SiteHeader() {
               </>
             ) : (
               <>
-                <Link href="/login" className="text-sm font-black uppercase tracking-[0.12em] text-white/70 transition hover:text-white">
+                <Link href="/login" className="text-xs font-black uppercase tracking-[0.1em] text-white/70 transition hover:text-white sm:text-sm sm:tracking-[0.12em]">
                   Login
                 </Link>
                 <Link
                   href="/register"
-                  className="rounded-full bg-[#f00612] px-5 py-3 text-sm font-black uppercase tracking-[0.12em] text-white shadow-[0_18px_50px_rgba(240,6,18,0.35)] transition hover:bg-[#ff2631]"
+                  className="rounded-full bg-[#f00612] px-4 py-3 text-xs font-black uppercase tracking-[0.1em] text-white shadow-[0_18px_50px_rgba(240,6,18,0.35)] transition hover:bg-[#ff2631] sm:px-5 sm:text-sm sm:tracking-[0.12em]"
                 >
                   Book Now
                 </Link>
