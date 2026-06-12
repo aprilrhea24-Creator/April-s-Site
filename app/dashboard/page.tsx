@@ -6,6 +6,8 @@ import { requireUser } from "@/lib/auth";
 import { getDashboardData } from "@/lib/data";
 import { formatCurrency } from "@/lib/utils";
 
+export const dynamic = "force-dynamic";
+
 export default async function DashboardPage() {
   const session = await requireUser();
   const user = await getDashboardData(session.userId);

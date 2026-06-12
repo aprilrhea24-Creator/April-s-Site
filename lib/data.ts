@@ -1,15 +1,54 @@
+import {
+  demoAvailability,
+  demoCateringMenus,
+  demoChefServices,
+  demoMealPlans
+} from "@/lib/demo-data";
+import { isDatabaseConfigured } from "@/lib/env";
 import { prisma } from "@/lib/prisma";
+
+export async function getActiveMealPlans() {
+  if (!isDatabaseConfigured()) {
+    return demoMealPlans;
+  }
+
+  return prisma.mealPlan.findMany({ where: { active: true }, orderBy: { price: "asc" } });
+}
+
+export async function getActiveCateringMenus() {
+  if (!isDatabaseConfigured()) {
+    return demoCateringMenus;
+  }
+
+  return prisma.cateringMenu.findMany({ where: { active: true }, orderBy: { pricePerPerson: "asc" } });
+}
+
+export async function getActiveChefServices() {
+  if (!isDatabaseConfigured()) {
+    return demoChefServices;
+  }
+
+  return prisma.chefService.findMany({ where: { active: true }, orderBy: { basePrice: "asc" } });
+}
+
+export async function getUpcomingAvailability() {
+  if (!isDatabaseConfigured()) {
+    return demoAvailability;
+  }
+
+  return prisma.availability.findMany({
+    where: { isAvailable: true },
+    orderBy: [{ date: "asc" }, { startHour: "asc" }],
+    take: 7
+  });
+}
 
 export async function getLandingData() {
   const [mealPlans, cateringMenus, chefServices, availability] = await Promise.all([
-    prisma.mealPlan.findMany({ where: { active: true }, orderBy: { price: "asc" } }),
-    prisma.cateringMenu.findMany({ where: { active: true }, orderBy: { pricePerPerson: "asc" } }),
-    prisma.chefService.findMany({ where: { active: true }, orderBy: { basePrice: "asc" } }),
-    prisma.availability.findMany({
-      where: { isAvailable: true },
-      orderBy: [{ date: "asc" }, { startHour: "asc" }],
-      take: 7
-    })
+    getActiveMealPlans(),
+    getActiveCateringMenus(),
+    getActiveChefServices(),
+    getUpcomingAvailability()
   ]);
 
   return {

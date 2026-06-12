@@ -1,8 +1,11 @@
 import Link from "next/link";
 
 import { AuthForm } from "@/components/forms/auth-form";
+import { getDatabaseSetupMessage, isDatabaseConfigured } from "@/lib/env";
 
 export default function RegisterPage() {
+  const databaseReady = isDatabaseConfigured();
+
   return (
     <section className="mx-auto max-w-5xl px-4 py-20 sm:px-6 lg:px-8">
       <div className="grid gap-10 lg:grid-cols-2">
@@ -14,7 +17,11 @@ export default function RegisterPage() {
           </p>
         </div>
         <div>
-          <AuthForm mode="register" />
+          <AuthForm
+            mode="register"
+            disabled={!databaseReady}
+            disabledMessage={!databaseReady ? getDatabaseSetupMessage() : undefined}
+          />
           <p className="mt-4 text-sm text-ink/70">
             Already have an account?{" "}
             <Link href="/login" className="text-ember">

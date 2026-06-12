@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 
@@ -59,6 +60,9 @@ export function BookingForm({
     return (
       <div className="rounded-[2rem] border border-ink/10 bg-white p-6 shadow-soft">
         <p className="text-sm text-ink/75">Create an account before reserving your service.</p>
+        <Link href="/register" className="mt-4 inline-flex rounded-full bg-ink px-5 py-3 text-sm font-medium text-cream transition hover:bg-olive">
+          Create Account
+        </Link>
       </div>
     );
   }

@@ -7,25 +7,29 @@ import { Testimonials } from "@/components/testimonials";
 import { getLandingData } from "@/lib/data";
 import { formatCurrency } from "@/lib/utils";
 
+export const dynamic = "force-dynamic";
+
 export default async function HomePage() {
   const { mealPlans, cateringMenus, chefServices, availability } = await getLandingData();
 
   return (
     <>
       <Hero />
-      <section className="bg-cream py-20">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <section className="bg-[#08090b] py-24 text-white">
+        <div className="mx-auto max-w-[1560px] px-4 sm:px-6 lg:px-10">
           <SectionTitle
             eyebrow="Signature Services"
-            title="Built for weekly routines, milestone gatherings, and intimate chef experiences."
-            description="Each service line has tailored pricing, availability logic, and booking flows so your clients can move from discovery to checkout without friction."
+            title="Built for your routine."
+            description="Each service line has clear pricing and booking flows to ensure your experience is seamless from discovery to the first bite."
+            tone="dark"
           />
-          <div className="mt-12 grid gap-6 lg:grid-cols-3">
+          <div className="mt-16 grid gap-8 lg:grid-cols-3">
             <ServiceCard
               title="Meal Prep Plans"
               subtitle="Recurring or one-time"
               price={`From ${formatCurrency(mealPlans[0]?.price ?? 0)}`}
               href="/meal-prep"
+              imageUrl="https://images.unsplash.com/photo-1547592180-85f173990554?auto=format&fit=crop&w=900&q=80"
             >
               <p>Weekly and monthly chef-designed plans with dietary filters, delivery scheduling, and subscription-ready checkout.</p>
             </ServiceCard>
@@ -34,6 +38,7 @@ export default async function HomePage() {
               subtitle="Corporate to weddings"
               price={`${formatCurrency(cateringMenus[0]?.pricePerPerson ?? 0)} / guest`}
               href="/catering"
+              imageUrl="https://images.unsplash.com/photo-1511795409834-ef04bbd61622?auto=format&fit=crop&w=900&q=80"
             >
               <p>Per-person pricing, minimum guest counts, event notes, scheduling, and custom event address capture.</p>
             </ServiceCard>
@@ -42,32 +47,34 @@ export default async function HomePage() {
               subtitle="Private luxury dining"
               price={`From ${formatCurrency(chefServices[0]?.basePrice ?? 0)}`}
               href="/personal-chef"
+              imageUrl="https://images.unsplash.com/photo-1556911220-bff31c812dba?auto=format&fit=crop&w=900&q=80"
             >
               <p>Private chef dinner parties, cooking classes, and special occasions with agreement acknowledgement and availability checks.</p>
             </ServiceCard>
           </div>
         </div>
       </section>
-      <section className="bg-white py-20">
-        <div className="mx-auto grid max-w-7xl gap-12 px-4 sm:px-6 lg:grid-cols-[1fr_1.1fr] lg:px-8">
+      <section className="bg-black py-24 text-white">
+        <div className="mx-auto grid max-w-[1560px] gap-12 px-4 sm:px-6 lg:grid-cols-[1fr_1.1fr] lg:px-10">
           <div>
             <SectionTitle
               eyebrow="Next Availability"
-              title="A unified booking calendar keeps the schedule polished."
-              description="Admin-managed windows, buffer times, and booking conflict prevention keep events realistic and easy to manage."
+              title="Reserve the next open date."
+              description="Availability windows keep events realistic and easy to manage. Sign in to lock in your preferred chef service."
+              tone="dark"
             />
           </div>
           <div className="grid gap-4">
             {availability.map((slot) => (
-              <div key={slot.id} className="rounded-[1.75rem] border border-ink/10 bg-oat p-5">
-                <p className="font-medium text-ink">
+              <div key={slot.id} className="rounded-[1.75rem] border border-white/10 bg-white/[0.04] p-5">
+                <p className="font-black uppercase tracking-[0.12em] text-white">
                   {new Date(slot.date).toLocaleDateString("en-US", {
                     weekday: "long",
                     month: "long",
                     day: "numeric"
                   })}
                 </p>
-                <p className="mt-1 text-sm text-ink/70">
+                <p className="mt-2 text-sm font-semibold text-white/55">
                   {slot.startHour}:00 - {slot.endHour}:00 ({slot.timezone})
                 </p>
               </div>
@@ -76,19 +83,20 @@ export default async function HomePage() {
         </div>
       </section>
       <Testimonials />
-      <section className="bg-ink py-20 text-cream">
+      <section className="bg-[radial-gradient(circle_at_center,rgba(240,6,18,0.2),transparent_34%),#050505] py-24 text-white">
         <div className="mx-auto max-w-4xl px-4 text-center sm:px-6 lg:px-8">
           <SectionTitle
-            eyebrow="Ready to Launch"
-            title="Give clients a booking experience that feels as polished as your menu."
+            eyebrow="Ready to Order"
+            title="Bring Chef Thai to your next meal, meeting, or celebration."
             description="Create an account to book services, manage orders, and move seamlessly into secure checkout."
             align="center"
+            tone="dark"
           />
           <div className="mt-8 flex flex-wrap justify-center gap-4">
-            <Link href="/register" className="rounded-full bg-gold px-6 py-3 font-medium text-ink transition hover:bg-gold/90">
+            <Link href="/register" className="rounded-full bg-[#f00612] px-8 py-4 font-black uppercase tracking-[0.14em] text-white shadow-[0_18px_50px_rgba(240,6,18,0.32)] transition hover:bg-[#ff2631]">
               Create Account
             </Link>
-            <Link href="/login" className="rounded-full border border-white/10 px-6 py-3 font-medium transition hover:bg-white/5">
+            <Link href="/login" className="rounded-full border border-white/15 px-8 py-4 font-black uppercase tracking-[0.14em] text-white transition hover:border-[#f00612] hover:bg-[#f00612]">
               Sign In
             </Link>
           </div>

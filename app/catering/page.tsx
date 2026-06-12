@@ -1,12 +1,14 @@
 import { BookingForm } from "@/components/forms/booking-form";
 import { SectionTitle } from "@/components/section-title";
 import { getCurrentUser } from "@/lib/auth";
-import { prisma } from "@/lib/prisma";
+import { getActiveCateringMenus } from "@/lib/data";
 import { formatCurrency } from "@/lib/utils";
+
+export const dynamic = "force-dynamic";
 
 export default async function CateringPage() {
   const [menus, user] = await Promise.all([
-    prisma.cateringMenu.findMany({ where: { active: true }, orderBy: { pricePerPerson: "asc" } }),
+    getActiveCateringMenus(),
     getCurrentUser()
   ]);
 

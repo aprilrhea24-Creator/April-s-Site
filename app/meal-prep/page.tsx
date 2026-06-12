@@ -1,12 +1,14 @@
 import { BookingForm } from "@/components/forms/booking-form";
 import { SectionTitle } from "@/components/section-title";
 import { getCurrentUser } from "@/lib/auth";
-import { prisma } from "@/lib/prisma";
+import { getActiveMealPlans } from "@/lib/data";
 import { formatCurrency } from "@/lib/utils";
+
+export const dynamic = "force-dynamic";
 
 export default async function MealPrepPage() {
   const [plans, user] = await Promise.all([
-    prisma.mealPlan.findMany({ where: { active: true }, orderBy: { price: "asc" } }),
+    getActiveMealPlans(),
     getCurrentUser()
   ]);
 

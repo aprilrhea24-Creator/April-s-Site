@@ -1,11 +1,16 @@
 import { NextResponse } from "next/server";
 
 import { createSession, hashPassword } from "@/lib/auth";
+import { getDatabaseSetupMessage, isDatabaseConfigured } from "@/lib/env";
 import { prisma } from "@/lib/prisma";
 import { registerSchema } from "@/lib/validation";
 
 export async function POST(request: Request) {
   try {
+    if (!isDatabaseConfigured()) {
+      return NextResponse.json({ error: getDatabaseSetupMessage() }, { status: 503 });
+    }
+
     const body = registerSchema.parse(await request.json());
     const existingUser = await prisma.user.findUnique({ where: { email: body.email } });
 

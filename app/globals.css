@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 :root {
-  color-scheme: light;
+  color-scheme: dark;
 }
 
 body {
@@ -16,5 +16,5 @@ button {
 }
 
 ::selection {
-  @apply bg-gold/60 text-ink;
+  @apply bg-red-600 text-white;
 }

@@ -1,12 +1,14 @@
 import { BookingForm } from "@/components/forms/booking-form";
 import { SectionTitle } from "@/components/section-title";
 import { getCurrentUser } from "@/lib/auth";
-import { prisma } from "@/lib/prisma";
+import { getActiveChefServices } from "@/lib/data";
 import { formatCurrency } from "@/lib/utils";
+
+export const dynamic = "force-dynamic";
 
 export default async function PersonalChefPage() {
   const [services, user] = await Promise.all([
-    prisma.chefService.findMany({ where: { active: true }, orderBy: { basePrice: "asc" } }),
+    getActiveChefServices(),
     getCurrentUser()
   ]);
 

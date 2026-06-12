@@ -4,6 +4,8 @@ import { getAdminData } from "@/lib/data";
 import { requireAdmin } from "@/lib/auth";
 import { formatCurrency } from "@/lib/utils";
 
+export const dynamic = "force-dynamic";
+
 export default async function AdminPage() {
   await requireAdmin();
   const data = await getAdminData();
