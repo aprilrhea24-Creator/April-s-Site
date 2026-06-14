@@ -10,11 +10,11 @@ export function SiteFooter() {
         <div>
           <div className="flex items-center gap-4">
             <Image
-              src="/chef-thai-logo.png"
+              src="/chef-thai-hero-logo.png"
               alt="Chef Thai logo"
-              width={48}
-              height={64}
-              className="h-16 w-12 rounded-sm bg-white object-contain p-1"
+              width={832}
+              height={1258}
+              className="h-16 w-12 rounded-sm object-contain"
             />
             <p className="text-2xl font-black uppercase italic text-white">
               Chef <span className="text-[#f00612]">Thai</span>

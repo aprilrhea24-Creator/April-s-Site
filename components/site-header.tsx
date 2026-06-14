@@ -22,11 +22,11 @@ export async function SiteHeader() {
         <div className="flex items-center justify-between gap-3 sm:gap-5">
           <Link href="/" className="flex min-w-0 shrink items-center gap-2 sm:gap-5">
             <Image
-              src="/chef-thai-logo.png"
+              src="/chef-thai-hero-logo.png"
               alt="Chef Thai logo"
-              width={96}
-              height={118}
-              className="h-16 w-12 rounded-sm bg-white object-contain p-1 shadow-[0_0_32px_rgba(240,6,18,0.28)] sm:h-28 sm:w-[5.5rem] sm:p-1.5"
+              width={832}
+              height={1258}
+              className="h-16 w-12 rounded-sm object-contain shadow-[0_0_32px_rgba(240,6,18,0.28)] sm:h-24 sm:w-16 lg:h-28 lg:w-[4.75rem]"
               priority
             />
             <span className="min-w-0 text-2xl font-black uppercase italic leading-none tracking-tight text-white sm:text-3xl lg:text-5xl">
