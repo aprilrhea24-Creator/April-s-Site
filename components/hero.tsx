@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 
 export function Hero() {
   return (
@@ -11,41 +12,44 @@ export function Hero() {
             Chef-led hospitality
           </p>
           <h1 className="mt-12 max-w-3xl text-6xl font-black uppercase italic leading-[0.9] tracking-tight sm:text-7xl lg:text-8xl xl:text-9xl">
-            Elevate your <span className="block text-[#f00612]">flavors.</span>
+            Chef <span className="text-[#f00612]">Thai</span>
           </h1>
           <p className="mt-10 max-w-2xl text-2xl font-semibold leading-relaxed text-white/62">
-            From signature oxtail stew to custom meal plans, we bring the premium chef experience directly to your table
-            with a polished, modern touch.
+            Experience the best in Cajun & Thai cuisines. Chef Thai brings Cajun heat, soul food comfort, and
+            Thai-inspired flavor into catering, private events, recipes, and seasoning.
           </p>
           <div className="mt-12 grid max-w-xl gap-5 sm:grid-cols-2">
             <Link
-              href="/meal-prep"
+              href="/catering"
               className="inline-flex min-h-20 items-center justify-center rounded-3xl bg-[#f00612] px-8 text-center text-lg font-black uppercase tracking-[0.18em] text-white shadow-[0_24px_70px_rgba(240,6,18,0.32)] transition hover:bg-[#ff2631]"
             >
-              View Meal Plans
+              View Catering
             </Link>
             <Link
-              href="/catering"
+              href="/personal-chef"
               className="inline-flex min-h-20 items-center justify-center rounded-3xl border border-white/15 bg-white/[0.03] px-8 text-center text-lg font-black uppercase tracking-[0.18em] text-white transition hover:border-[#f00612] hover:bg-[#f00612]"
             >
-              Book Catering
+              Book Private Chef
             </Link>
           </div>
         </div>
         <div className="relative">
           <div className="relative overflow-hidden rounded-[2.75rem] border border-white/15 bg-black shadow-[0_40px_120px_rgba(0,0,0,0.55)]">
-            <div
-              className="min-h-[28rem] bg-cover bg-center lg:min-h-[34rem]"
-              style={{
-                backgroundImage:
-                  "url('https://images.unsplash.com/photo-1555244162-803834f70033?auto=format&fit=crop&w=1400&q=80')"
-              }}
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/10 to-transparent" />
-            <div className="absolute bottom-8 left-8 right-8 rounded-[2rem] border border-white/10 bg-black/70 p-8 shadow-[0_24px_70px_rgba(0,0,0,0.45)] backdrop-blur-md">
-              <p className="text-sm font-black uppercase tracking-[0.22em] text-[#ff2631]">Weekly Special</p>
-              <p className="mt-4 text-4xl font-black uppercase italic leading-tight text-white sm:text-5xl">
-                Signature Smoked Ribs
+            <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(240,6,18,0.18),transparent_48%)]" />
+            <div className="relative flex min-h-[34rem] items-center justify-center p-4 sm:p-8 lg:min-h-[44rem]">
+              <Image
+                src="/chef-thai-hero-logo.png"
+                alt="Chef Thai brand logo"
+                width={832}
+                height={1258}
+                className="max-h-[32rem] w-auto object-contain drop-shadow-[0_0_45px_rgba(240,6,18,0.22)] sm:max-h-[38rem] lg:max-h-[42rem]"
+                priority
+              />
+            </div>
+            <div className="relative border-t border-white/10 bg-black/80 px-6 py-5 text-center sm:px-8">
+              <p className="text-xs font-black uppercase tracking-[0.22em] text-[#ff2631]">Chef Thai Signature</p>
+              <p className="mt-2 text-lg font-black uppercase italic leading-tight text-white sm:text-2xl">
+                Cajun soul food, private dining, catering, recipes, and seasoning
               </p>
             </div>
           </div>

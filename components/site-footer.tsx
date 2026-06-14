@@ -1,4 +1,7 @@
 import Image from "next/image";
+import Link from "next/link";
+
+import { contactInfo } from "@/lib/chef-thai-content";
 
 export function SiteFooter() {
   return (
@@ -17,16 +20,25 @@ export function SiteFooter() {
               Chef <span className="text-[#f00612]">Thai</span>
             </p>
           </div>
-          <p className="mt-4 max-w-sm">Premium meal prep, refined catering, and unforgettable chef-led events.</p>
+          <p className="mt-4 max-w-sm">Experience the best in Cajun & Thai cuisines through catering, private events, recipes, and seasoning.</p>
         </div>
         <div>
           <p className="font-black uppercase tracking-[0.2em] text-white">Contact</p>
-          <p className="mt-2">hello@emberandthyme.com</p>
-          <p>(555) 555-0186</p>
+          <p className="mt-2">{contactInfo.email}</p>
+          <p>{contactInfo.phone}</p>
+          <a href={contactInfo.tiktok} className="mt-3 inline-block text-white transition hover:text-[#ff2631]">
+            TikTok
+          </a>
         </div>
         <div>
-          <p className="font-black uppercase tracking-[0.2em] text-white">Service Region</p>
-          <p className="mt-2">Greater Los Angeles, Orange County, and destination private events by request.</p>
+          <p className="font-black uppercase tracking-[0.2em] text-white">Explore</p>
+          <div className="mt-2 grid gap-2">
+            <Link href="/catering" className="transition hover:text-white">Catering</Link>
+            <Link href="/recipes" className="transition hover:text-white">Recipes</Link>
+            <Link href="/store" className="transition hover:text-white">Store</Link>
+            <Link href="/about" className="transition hover:text-white">About Chef Thai</Link>
+            <Link href="/policy" className="transition hover:text-white">Policy</Link>
+          </div>
         </div>
       </div>
     </footer>

@@ -7,7 +7,7 @@ import "./globals.css";
 
 export const metadata: Metadata = {
   title: "Chef Thai | Catering & Personal Chef Booking",
-  description: "Premium meal prep, catering, and private chef booking platform."
+  description: "Experience the best in Cajun & Thai cuisines with Chef Thai catering, private events, recipes, and seasoning."
 };
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {

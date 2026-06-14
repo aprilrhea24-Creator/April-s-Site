@@ -5,9 +5,12 @@ import { LayoutDashboard } from "lucide-react";
 import { getSession } from "@/lib/auth";
 
 const navItems = [
-  { href: "/meal-prep", label: "Meal Prep" },
   { href: "/catering", label: "Catering" },
-  { href: "/personal-chef", label: "Personal Chef" }
+  { href: "/personal-chef", label: "Private Events" },
+  { href: "/recipes", label: "Recipes" },
+  { href: "/store", label: "Store" },
+  { href: "/about", label: "About" },
+  { href: "/policy", label: "Policy" }
 ];
 
 export async function SiteHeader() {
@@ -30,12 +33,12 @@ export async function SiteHeader() {
               Chef <span className="text-[#f00612]">Thai</span>
             </span>
           </Link>
-          <nav className="hidden items-center gap-10 lg:flex">
+          <nav className="hidden items-center gap-6 xl:flex">
             {navItems.map((item) => (
               <Link
                 key={item.href}
                 href={item.href}
-                className="text-lg font-black uppercase tracking-[0.22em] text-white/65 transition hover:text-white"
+                className="text-sm font-black uppercase tracking-[0.18em] text-white/65 transition hover:text-white 2xl:text-base"
               >
                 {item.label}
               </Link>
@@ -72,7 +75,7 @@ export async function SiteHeader() {
             )}
           </div>
         </div>
-        <nav className="mt-4 flex gap-3 overflow-x-auto pb-1 lg:hidden">
+        <nav className="mt-4 flex gap-3 overflow-x-auto pb-1 xl:hidden">
           {navItems.map((item) => (
             <Link
               key={item.href}

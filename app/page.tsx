@@ -4,6 +4,7 @@ import { Hero } from "@/components/hero";
 import { SectionTitle } from "@/components/section-title";
 import { ServiceCard } from "@/components/service-card";
 import { Testimonials } from "@/components/testimonials";
+import { brandHighlights, homepageServices } from "@/lib/chef-thai-content";
 import { getLandingData } from "@/lib/data";
 import { formatCurrency } from "@/lib/utils";
 
@@ -15,14 +16,38 @@ export default async function HomePage() {
   return (
     <>
       <Hero />
+      <section className="border-y border-white/10 bg-black py-6 text-white">
+        <div className="mx-auto flex max-w-[1560px] flex-wrap items-center justify-center gap-3 px-4 sm:px-6 lg:px-10">
+          {brandHighlights.map((highlight) => (
+            <span
+              key={highlight}
+              className="rounded-full border border-[#f00612]/30 bg-[#f00612]/10 px-5 py-2 text-xs font-black uppercase tracking-[0.2em] text-white/80"
+            >
+              {highlight}
+            </span>
+          ))}
+        </div>
+      </section>
       <section className="bg-[#08090b] py-24 text-white">
         <div className="mx-auto max-w-[1560px] px-4 sm:px-6 lg:px-10">
           <SectionTitle
-            eyebrow="Signature Services"
-            title="Built for your routine."
-            description="Each service line has clear pricing and booking flows to ensure your experience is seamless from discovery to the first bite."
+            eyebrow="Our Services"
+            title="Built around the flavor."
+            description="The client site centers Chef Thai around recipes, catering, private events, and all-purpose seasoning. The app keeps that same story organized around booking and ordering."
             tone="dark"
           />
+          <div className="mt-12 grid gap-4 md:grid-cols-2 xl:grid-cols-4">
+            {homepageServices.map((service) => (
+              <Link
+                key={service.title}
+                href={service.href}
+                className="rounded-[2rem] border border-white/10 bg-white/[0.04] p-6 transition hover:-translate-y-1 hover:border-[#f00612]/45 hover:bg-[#f00612]/10"
+              >
+                <h3 className="text-2xl font-black uppercase italic leading-tight text-white">{service.title}</h3>
+                <p className="mt-4 text-sm font-semibold leading-7 text-white/55">{service.description}</p>
+              </Link>
+            ))}
+          </div>
           <div className="mt-16 grid gap-8 lg:grid-cols-3">
             <ServiceCard
               title="Meal Prep Plans"
