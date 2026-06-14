@@ -1,7 +1,7 @@
 import Link from "next/link";
 
 import { SectionTitle } from "@/components/section-title";
-import { storeProducts } from "@/lib/chef-thai-content";
+import { existingFlowLinks, storeProducts } from "@/lib/chef-thai-content";
 
 export default function StorePage() {
   return (
@@ -34,6 +34,12 @@ export default function StorePage() {
               </Link>
             ))}
           </div>
+          <a
+            href={existingFlowLinks.store}
+            className="mt-8 inline-flex rounded-full bg-[#f00612] px-7 py-4 text-sm font-black uppercase tracking-[0.14em] text-white transition hover:bg-[#ff2631]"
+          >
+            Order Through Chef Thai Store
+          </a>
         </article>
       </div>
     </section>

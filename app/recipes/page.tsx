@@ -1,7 +1,7 @@
 import Link from "next/link";
 
 import { SectionTitle } from "@/components/section-title";
-import { recipeProducts } from "@/lib/chef-thai-content";
+import { existingFlowLinks, recipeProducts } from "@/lib/chef-thai-content";
 
 export default function RecipesPage() {
   return (
@@ -34,14 +34,22 @@ export default function RecipesPage() {
           <p className="text-sm font-black uppercase tracking-[0.3em] text-[#ff2631]">Connected Offer</p>
           <h2 className="mt-5 text-4xl font-black uppercase italic leading-tight text-white">Recipes belong in the store flow.</h2>
           <p className="mt-5 text-lg font-semibold leading-8 text-white/60">
-            This page gives the recipes their own in-app home while still connecting customers to the Chef Thai store and seasoning offer.
+            Customers can review the recipe offer here, then place the actual order through Chef Thai&apos;s existing recipe flow.
           </p>
-          <Link
-            href="/store"
-            className="mt-8 inline-flex rounded-full bg-[#f00612] px-7 py-4 text-sm font-black uppercase tracking-[0.14em] text-white transition hover:bg-[#ff2631]"
-          >
-            View Store
-          </Link>
+          <div className="mt-8 flex flex-wrap gap-4">
+            <a
+              href={existingFlowLinks.recipes}
+              className="rounded-full bg-[#f00612] px-7 py-4 text-sm font-black uppercase tracking-[0.14em] text-white transition hover:bg-[#ff2631]"
+            >
+              Order Recipes
+            </a>
+            <Link
+              href="/store"
+              className="rounded-full border border-white/15 px-7 py-4 text-sm font-black uppercase tracking-[0.14em] text-white transition hover:border-[#f00612] hover:bg-[#f00612]"
+            >
+              View Store
+            </Link>
+          </div>
         </div>
       </div>
     </section>

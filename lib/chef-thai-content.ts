@@ -54,6 +54,7 @@ export const storeProducts = [
     description:
       "Chef Thai's all-purpose seasoning is the store's main product moment: bold Cajun-inspired flavor made to support everyday cooking, catering favorites, and recipe content.",
     href: "/all-purpose-seasoning",
+    externalHref: "https://chefthaicooks.com/all-purpose-seasoning",
     features: ["Cajun-inspired", "All-purpose flavor", "Chef Thai branded", "Recipe-friendly"]
   },
   {
@@ -62,9 +63,18 @@ export const storeProducts = [
     description:
       "Recipe access gives customers another way to experience Chef Thai's kitchen beyond booking an event.",
     href: "/recipes",
+    externalHref: "https://chefthaicooks.com/recipes",
     features: ["Exclusive recipes", "Soul food favorites", "Kitchen-ready", "Store connected"]
   }
 ];
+
+export const existingFlowLinks = {
+  bookNow: "https://chefthaicooks.com/booknow",
+  catering: "https://chefthaicooks.com/catering",
+  recipes: "https://chefthaicooks.com/recipes",
+  store: "https://chefthaicooks.com/store",
+  seasoning: "https://chefthaicooks.com/all-purpose-seasoning"
+};
 
 export const cateringMenuSections = [
   {

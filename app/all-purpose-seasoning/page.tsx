@@ -1,7 +1,7 @@
 import Link from "next/link";
 
 import { SectionTitle } from "@/components/section-title";
-import { storeProducts } from "@/lib/chef-thai-content";
+import { existingFlowLinks, storeProducts } from "@/lib/chef-thai-content";
 
 const seasoning = storeProducts[0];
 
@@ -27,11 +27,11 @@ export default function AllPurposeSeasoningPage() {
             ))}
           </div>
           <div className="mt-8 flex flex-wrap gap-4">
-            <Link href="/store" className="rounded-full bg-[#f00612] px-7 py-4 text-sm font-black uppercase tracking-[0.14em] text-white transition hover:bg-[#ff2631]">
+            <a href={existingFlowLinks.seasoning} className="rounded-full bg-[#f00612] px-7 py-4 text-sm font-black uppercase tracking-[0.14em] text-white transition hover:bg-[#ff2631]">
+              Order Seasoning
+            </a>
+            <Link href="/store" className="rounded-full border border-white/15 px-7 py-4 text-sm font-black uppercase tracking-[0.14em] text-white transition hover:border-[#f00612] hover:bg-[#f00612]">
               Back To Store
-            </Link>
-            <Link href="/recipes" className="rounded-full border border-white/15 px-7 py-4 text-sm font-black uppercase tracking-[0.14em] text-white transition hover:border-[#f00612] hover:bg-[#f00612]">
-              View Recipes
             </Link>
           </div>
         </article>

@@ -1,16 +1,12 @@
-import { BookingForm } from "@/components/forms/booking-form";
 import { SectionTitle } from "@/components/section-title";
-import { getCurrentUser } from "@/lib/auth";
+import { existingFlowLinks } from "@/lib/chef-thai-content";
 import { getActiveChefServices } from "@/lib/data";
 import { formatCurrency } from "@/lib/utils";
 
 export const dynamic = "force-dynamic";
 
 export default async function PersonalChefPage() {
-  const [services, user] = await Promise.all([
-    getActiveChefServices(),
-    getCurrentUser()
-  ]);
+  const services = await getActiveChefServices();
 
   return (
     <section className="bg-[#07080a] px-4 py-20 text-white sm:px-6 lg:px-10">
@@ -33,15 +29,12 @@ export default async function PersonalChefPage() {
                 <li>{service.minimumGuests} guest minimum</li>
                 <li>{service.durationHours} hour experience</li>
               </ul>
-              <div className="mt-6 rounded-[1.5rem] bg-white p-4 text-ink">
-                <BookingForm
-                  type="CHEF_EVENT"
-                  itemId={service.id}
-                  userId={user?.id}
-                  minimumGuests={service.minimumGuests}
-                  requireAgreement
-                />
-              </div>
+              <a
+                href={existingFlowLinks.bookNow}
+                className="mt-6 inline-flex rounded-full bg-[#f00612] px-6 py-3 text-xs font-black uppercase tracking-[0.14em] text-white transition hover:bg-[#ff2631]"
+              >
+                Book Through Chef Thai
+              </a>
             </div>
           ))}
         </div>
