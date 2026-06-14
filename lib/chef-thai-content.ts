@@ -69,6 +69,7 @@ export const storeProducts = [
 ];
 
 export const existingFlowLinks = {
+  about: "https://chefthaicooks.com/chefthai",
   bookNow: "https://chefthaicooks.com/booknow",
   catering: "https://chefthaicooks.com/catering",
   recipes: "https://chefthaicooks.com/recipes",

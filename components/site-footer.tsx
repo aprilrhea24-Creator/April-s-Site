@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 
-import { contactInfo } from "@/lib/chef-thai-content";
+import { contactInfo, existingFlowLinks } from "@/lib/chef-thai-content";
 
 export function SiteFooter() {
   return (
@@ -36,7 +36,7 @@ export function SiteFooter() {
             <Link href="/catering" className="transition hover:text-white">Catering</Link>
             <Link href="/recipes" className="transition hover:text-white">Recipes</Link>
             <Link href="/store" className="transition hover:text-white">Store</Link>
-            <Link href="/about" className="transition hover:text-white">About Chef Thai</Link>
+            <a href={existingFlowLinks.about} className="transition hover:text-white">About Chef Thai</a>
             <Link href="/policy" className="transition hover:text-white">Policy</Link>
           </div>
         </div>
