@@ -4,14 +4,13 @@ import { Hero } from "@/components/hero";
 import { SectionTitle } from "@/components/section-title";
 import { ServiceCard } from "@/components/service-card";
 import { Testimonials } from "@/components/testimonials";
-import { brandHighlights, homepageServices } from "@/lib/chef-thai-content";
+import { brandHighlights } from "@/lib/chef-thai-content";
 import { getLandingData } from "@/lib/data";
-import { formatCurrency } from "@/lib/utils";
 
 export const dynamic = "force-dynamic";
 
 export default async function HomePage() {
-  const { mealPlans, cateringMenus, chefServices, availability } = await getLandingData();
+  const { availability } = await getLandingData();
 
   return (
     <>
@@ -32,50 +31,49 @@ export default async function HomePage() {
         <div className="mx-auto max-w-[1560px] px-4 sm:px-6 lg:px-10">
           <SectionTitle
             eyebrow="Our Services"
-            title="Built around the flavor."
-            description="The client site centers Chef Thai around recipes, catering, private events, and all-purpose seasoning. The app keeps that same story organized around booking and ordering."
+            title="Chef Thai services."
+            description="Experience the best in Cajun & Thai cuisines through recipes, event catering, and private chef experiences tailored around the occasion."
             tone="dark"
           />
-          <div className="mt-12 grid gap-4 md:grid-cols-2 xl:grid-cols-4">
-            {homepageServices.map((service) => (
-              <Link
-                key={service.title}
-                href={service.href}
-                className="rounded-[2rem] border border-white/10 bg-white/[0.04] p-6 transition hover:-translate-y-1 hover:border-[#f00612]/45 hover:bg-[#f00612]/10"
-              >
-                <h3 className="text-2xl font-black uppercase italic leading-tight text-white">{service.title}</h3>
-                <p className="mt-4 text-sm font-semibold leading-7 text-white/55">{service.description}</p>
-              </Link>
-            ))}
-          </div>
           <div className="mt-16 grid gap-8 lg:grid-cols-3">
             <ServiceCard
-              title="Meal Prep Plans"
-              subtitle="Recurring or one-time"
-              price={`From ${formatCurrency(mealPlans[0]?.price ?? 0)}`}
-              href="/meal-prep"
-              imageUrl="https://images.unsplash.com/photo-1547592180-85f173990554?auto=format&fit=crop&w=900&q=80"
+              title="Top Notch Recipes"
+              subtitle="Exclusive flavor"
+              price="Recipe Access"
+              href="/recipes"
+              imageUrl="https://images.unsplash.com/photo-1506368249639-73a05d6f6488?auto=format&fit=crop&w=900&q=80"
             >
-              <p>Weekly and monthly chef-designed plans with dietary filters, delivery scheduling, and subscription-ready checkout.</p>
+              <p>Exclusive Chef Thai recipes and kitchen favorites built for clients who want the flavor beyond the event.</p>
             </ServiceCard>
             <ServiceCard
-              title="Catering Services"
-              subtitle="Corporate to weddings"
-              price={`${formatCurrency(cateringMenus[0]?.pricePerPerson ?? 0)} / guest`}
+              title="Event Catering"
+              subtitle="Intimate to large gatherings"
+              price="Catering Menus"
               href="/catering"
-              imageUrl="https://images.unsplash.com/photo-1511795409834-ef04bbd61622?auto=format&fit=crop&w=900&q=80"
+              imageUrl="https://images.unsplash.com/photo-1464366400600-7168b8af9bc3?auto=format&fit=crop&w=900&q=80"
             >
-              <p>Per-person pricing, minimum guest counts, event notes, scheduling, and custom event address capture.</p>
+              <p>Private catering for intimate dinners, meetings, celebrations, and larger gatherings with setup-focused service.</p>
             </ServiceCard>
             <ServiceCard
-              title="Personal Chef Events"
-              subtitle="Private luxury dining"
-              price={`From ${formatCurrency(chefServices[0]?.basePrice ?? 0)}`}
+              title="Private Events"
+              subtitle="Custom chef experience"
+              price="Private Dining"
               href="/personal-chef"
               imageUrl="https://images.unsplash.com/photo-1556911220-bff31c812dba?auto=format&fit=crop&w=900&q=80"
             >
-              <p>Private chef dinner parties, cooking classes, and special occasions with agreement acknowledgement and availability checks.</p>
+              <p>Custom Cajun, soul food, and Thai-inspired chef experiences tailored around the occasion and guest list.</p>
             </ServiceCard>
+          </div>
+          <div className="mt-8 rounded-[2rem] border border-white/10 bg-black/60 p-6 text-center">
+            <p className="text-sm font-semibold leading-7 text-white/60">
+              Looking for the Chef Thai all-purpose seasoning? Visit the store for the brand&apos;s bold seasoning line.
+            </p>
+            <Link
+              href="/store"
+              className="mt-4 inline-flex rounded-full border border-white/15 px-6 py-3 text-xs font-black uppercase tracking-[0.16em] text-white transition hover:border-[#f00612] hover:bg-[#f00612]"
+            >
+              Visit Store
+            </Link>
           </div>
         </div>
       </section>
