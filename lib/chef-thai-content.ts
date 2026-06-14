@@ -32,6 +32,40 @@ export const homepageServices = [
   }
 ];
 
+export const recipeProducts = [
+  {
+    title: "Exclusive Chef Thai Recipes",
+    description:
+      "Kitchen-ready recipes and Chef Thai favorites for clients who want the flavor beyond a catered event.",
+    details: ["Cajun technique", "Soul food favorites", "Thai-inspired flavor", "Built for home cooking"]
+  },
+  {
+    title: "Top Notch Kitchen Favorites",
+    description:
+      "Recipe content positioned as a premium Chef Thai offer, connected to the store experience inside the app.",
+    details: ["Exclusive access", "Signature flavor", "Clear recipe categories", "Future checkout-ready"]
+  }
+];
+
+export const storeProducts = [
+  {
+    title: "All-Purpose Seasoning",
+    tagline: "I put dat on errrthang",
+    description:
+      "Chef Thai's all-purpose seasoning is the store's main product moment: bold Cajun-inspired flavor made to support everyday cooking, catering favorites, and recipe content.",
+    href: "/all-purpose-seasoning",
+    features: ["Cajun-inspired", "All-purpose flavor", "Chef Thai branded", "Recipe-friendly"]
+  },
+  {
+    title: "Recipes",
+    tagline: "Top notch recipes",
+    description:
+      "Recipe access gives customers another way to experience Chef Thai's kitchen beyond booking an event.",
+    href: "/recipes",
+    features: ["Exclusive recipes", "Soul food favorites", "Kitchen-ready", "Store connected"]
+  }
+];
+
 export const cateringMenuSections = [
   {
     title: "Seafood",
