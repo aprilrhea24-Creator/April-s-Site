@@ -7,7 +7,7 @@ export default function PolicyPage() {
       <div className="mx-auto max-w-[1560px]">
         <SectionTitle
           eyebrow="Policy"
-          title="Clear expectations before the event."
+          title="EXPECTATIONS BEFORE YOUR EVENT."
           description="The client policy has been condensed into booking-friendly sections so customers understand timing, deposits, guest counts, allergies, and service rules before they reserve."
           tone="dark"
         />
