@@ -6,21 +6,22 @@ export default function PolicyPage() {
     <div className="bg-[#0a0a0a] text-white font-sans min-h-screen">
       <section className="mx-auto max-w-[1560px] px-4 py-20 sm:px-6 lg:px-10">
         <SectionTitle
-          eyebrow="Policy"
-          title="EXPECTATIONS BEFORE YOUR EVENT."
-          description="The client policy has been condensed into booking-friendly sections so customers understand timing, deposits, guest counts, allergies, and service rules before they reserve."
+          eyebrow="CHEF THAI CATERING POLICY"
+          title="CLEAR EXPECTATIONS BEFORE YOUR EVENT."
+          description="Please review these policies before placing a catering, brunch, private chef, recipe, or event order."
           tone="dark"
         />
         <div className="mt-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {policyPoints.map((point) => (
             <div
               key={point.title}
-              className="relative p-8 rounded-[2rem] bg-[#121212] border border-zinc-800/80 transition-all duration-300 hover:border-red-600 hover:-translate-y-1 shadow-[0_24px_80px_rgba(0,0,0,0.2)]"
+              className="rounded-[2rem] border border-white/10 bg-white/[0.04] p-8 transition hover:-translate-y-1 hover:border-[#f00612]/45 hover:bg-[#f00612]/10"
             >
-              <h2 className="text-xl font-black tracking-wider uppercase border-l-4 border-red-600 pl-4 text-white mb-4">
+              <div className="mb-6 h-1 w-12 rounded-full bg-[#f00612]" />
+              <h2 className="mb-4 text-2xl font-black uppercase italic leading-tight text-white">
                 {point.title}
               </h2>
-              <p className="text-zinc-400 text-sm font-light leading-relaxed">
+              <p className="text-sm font-semibold leading-7 text-white/55">
                 {point.description}
               </p>
             </div>
