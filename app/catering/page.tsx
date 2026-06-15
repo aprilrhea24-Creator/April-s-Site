@@ -1,4 +1,5 @@
 import { SectionTitle } from "@/components/section-title";
+import { CateringMenuTabs } from "@/components/catering-menu-tabs";
 import { cateringMenuSections, cateringPhotoHighlights, cateringSetupVideos, existingFlowLinks } from "@/lib/chef-thai-content";
 
 export const dynamic = "force-dynamic";
@@ -31,12 +32,14 @@ export default function CateringPage() {
             </div>
           </div>
           <div className="grid gap-4 sm:grid-cols-3 lg:grid-cols-1 xl:grid-cols-3">
-            {cateringPhotoHighlights.map((photo) => (
+            {cateringPhotoHighlights.map((photo, index) => (
               <figure key={photo.title} className="overflow-hidden rounded-[2rem] border border-white/10 bg-black">
                 <img src={photo.image} alt={photo.title} className="h-64 w-full object-cover sm:h-56 lg:h-72 xl:h-64" />
-                <figcaption className="border-t border-white/10 px-5 py-4 text-xs font-black uppercase tracking-[0.18em] text-white/70">
-                  {photo.title}
-                </figcaption>
+                {index === 0 ? (
+                  <figcaption className="border-t border-white/10 px-5 py-4 text-xs font-black uppercase tracking-[0.18em] text-white/70">
+                    {photo.title}
+                  </figcaption>
+                ) : null}
               </figure>
             ))}
           </div>
@@ -68,27 +71,7 @@ export default function CateringPage() {
           />
         </div>
 
-        <div className="mt-12 grid gap-5 md:grid-cols-2 xl:grid-cols-3">
-          {cateringMenuSections.map((section) => (
-            <article key={section.title} className="rounded-[2rem] border border-white/10 bg-black p-6 shadow-[0_25px_80px_rgba(0,0,0,0.28)]">
-              <div className="flex flex-wrap items-start justify-between gap-4">
-                <h2 className="text-3xl font-black uppercase italic leading-none text-white">{section.title}</h2>
-                {"note" in section ? (
-                  <span className="rounded-full border border-[#f00612]/35 bg-[#f00612]/10 px-4 py-2 text-xs font-black uppercase tracking-[0.12em] text-white/75">
-                    {section.note}
-                  </span>
-                ) : null}
-              </div>
-              <ul className="mt-6 grid gap-3">
-                {section.items.map((item) => (
-                  <li key={item} className="rounded-2xl border border-white/10 bg-white/[0.04] px-4 py-3 text-sm font-bold leading-6 text-white/72">
-                    {item}
-                  </li>
-                ))}
-              </ul>
-            </article>
-          ))}
-        </div>
+        <CateringMenuTabs sections={cateringMenuSections} />
       </section>
 
       <section className="border-t border-white/10 bg-black py-20">

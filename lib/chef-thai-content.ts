@@ -178,19 +178,19 @@ export const storeCatalogProducts = [
 
 export const seasoningGallery = [
   {
-    title: "All-purpose seasoning jar",
+    title: "All-purpose seasoning jars",
     image:
       "https://cdn.zyrosite.com/cdn-ecommerce/store_01HYCWGR7J15H2Y0Y4986X4B7R%2Fassets%2F1716272068497-6B37842B-AEFA-4887-B3F5-686AF99643CA.jpeg"
   },
   {
-    title: "Chef Thai caps",
+    title: "Seasoning in the kitchen",
     image:
-      "https://cdn.zyrosite.com/cdn-ecommerce/store_01HYCWGR7J15H2Y0Y4986X4B7R%2Fassets%2F1739674606405-IMG_8400.JPG"
+      "https://cdn.zyrosite.com/cdn-ecommerce/store_01HYCWGR7J15H2Y0Y4986X4B7R%2Fassets%2F1716282806633-Untitled-1%20copy.jpg"
   },
   {
-    title: "Chef Thai recipe feature",
+    title: "All-purpose seasoning closeup",
     image:
-      "https://cdn.zyrosite.com/cdn-ecommerce/store_01HYCWGR7J15H2Y0Y4986X4B7R%2Fassets%2F1733831637635-HoneyChiliGarlicBlackened.jpg"
+      "https://cdn.zyrosite.com/cdn-cgi/image/format=auto,w=1200,h=630,fit=crop,f=jpeg/cdn-ecommerce/store_01HYCWGR7J15H2Y0Y4986X4B7R%2Fassets%2F1716272068497-6B37842B-AEFA-4887-B3F5-686AF99643CA.jpeg"
   }
 ];
 
@@ -275,7 +275,7 @@ export const cateringMenuSections = [
     ]
   },
   {
-    title: "Pasta",
+    title: "Pasta & More",
     items: [
       "Chicken or shrimp alfredo",
       "Rasta pasta",
@@ -283,12 +283,7 @@ export const cateringMenuSections = [
       "Stroganoff pasta",
       "Lasagna rolls",
       "Pesto pasta",
-      "Gumbo"
-    ]
-  },
-  {
-    title: "Salads",
-    items: [
+      "Gumbo",
       "Mixed berry salad",
       "Caesar salad",
       "Heirloom tomato and basil with burrata cheese",
@@ -326,42 +321,72 @@ export const policyPoints = [
   {
     title: "Advance Notice",
     description:
-      "Clients are encouraged to book early. Orders or changes within four business days of an event may require a rush fee."
+      "We highly recommend placing your catering order as early as possible to ensure proper planning for your event. Orders placed or changed within four (4) business days of the event will incur a $300.00 rush fee."
   },
   {
-    title: "Deposits and Cancellations",
+    title: "Cancellation Policy",
     description:
-      "Client deposits are non-refundable and non-transferable. If Chef Thai must cancel, the deposit is refunded."
+      "For clients, if an event is canceled, the deposit paid is non-refundable and non-transferable under any circumstances. In the unlikely event that Chef Thai must cancel, a full refund of the deposit will be provided."
   },
   {
-    title: "Guest Count",
+    title: "Order Minimums",
     description:
-      "Final guaranteed attendance is due seven business days before the event. Late increases may add service fees."
+      "A minimum number of guests is required for any catered brunch or private chef event, and a different minimum applies for intimate dinners."
   },
   {
-    title: "Allergies",
+    title: "Guarantee of Attendance",
     description:
-      "Guests should disclose gluten, peanuts, dairy, tree nuts, eggs, fish, crustaceans, mollusks, wheat, soybeans, sesame, and other dietary concerns."
+      "A final guaranteed guest count must be submitted seven (7) business days prior to your event and cannot be reduced thereafter. Increases within seven (7) business days incur a 15% fee per additional guest, and changes within two (2) business days incur a 25% fee per additional guest."
+  },
+  {
+    title: "Outside Food",
+    description:
+      "Guests are permitted to bring outside food to events. Chef Thai and his staff will not be responsible for any duties related to outside caterers."
+  },
+  {
+    title: "Food Allergies",
+    description:
+      "Chef Thai and his staff will ask about food allergies and dietary restrictions. Please disclose allergies to gluten, peanuts, dairy, tree nuts, eggs, fish, crustaceans, mollusks, wheat, soybeans, sesame seeds, or any other concern before service."
   },
   {
     title: "Service Time",
     description:
-      "Standard menu pricing includes a four-hour setup, cooking, service, and cleanup window. Additional time can be billed hourly."
+      "Standard menu pricing includes a four (4) hour service window covering setup, cooking, and cleanup. Additional time is $75.00 per hour and should be discussed with Chef Thai in advance."
   },
   {
-    title: "Outside Food and Alcohol",
+    title: "Leftovers",
     description:
-      "Guests may bring outside food, but Chef Thai is not responsible for outside caterers. Clients provide alcohol when bar setup or service is requested."
+      "Chef Thai and his staff will not provide to-go containers for events."
   },
   {
-    title: "Holidays and Payment",
+    title: "Alcoholic Beverage Service",
     description:
-      "Holiday events may include a surcharge. A non-refundable deposit reserves the date, and payment issues may release the hold."
+      "Chef Thai cannot purchase or sell alcoholic beverages but offers bar setup and service for events. Clients must provide all alcohol unless it is used as an ingredient in a recipe."
   },
   {
-    title: "Health Protocols",
+    title: "Holidays",
     description:
-      "Customers and vendors should stay clear of the cooking area. Staff follow food-safe handling practices during service."
+      "Events scheduled on traditional holidays or holiday weekends will incur a 20% surcharge."
+  },
+  {
+    title: "Billing and Payment",
+    description:
+      "A non-refundable, non-transferable deposit is required to reserve your spot. This deposit does not cover facility rental, setup, or catering fees. Chef Thai reserves the right to cancel the event and release all holds if payment transactions are declined."
+  },
+  {
+    title: "Order Confirmation",
+    description:
+      "Once an order is placed, all sales are final. If you do not receive an order confirmation email, check spam, junk, archive folders, and the email tied to your payment method. Chef Thai accepts Zelle; please add a $5 service fee for Venmo, Apple Pay, Cash App, and similar services."
+  },
+  {
+    title: "Recipe Orders",
+    description:
+      "Orders are reviewed and automatically approved unless additional review is required. An order confirmation email is sent, followed by a separate email with recipe links."
+  },
+  {
+    title: "COVID-19 Protocols",
+    description:
+      "All customers and vendors must remain outside the cooking area and maintain a six-foot distance while waiting to be served or seated. Staff will wear masks and gloves when handling food. Anyone who is sick or has symptoms will not be allowed on-site or near the food."
   }
 ];
 
