@@ -1,47 +1,75 @@
-import Link from "next/link";
-
 import { SectionTitle } from "@/components/section-title";
-import { existingFlowLinks, storeProducts } from "@/lib/chef-thai-content";
+import { existingFlowLinks, seasoningGallery, storeCatalogProducts } from "@/lib/chef-thai-content";
 
 export default function StorePage() {
   return (
-    <section className="bg-[radial-gradient(circle_at_75%_20%,rgba(240,6,18,0.28),transparent_28%),linear-gradient(135deg,#07080a,#000)] px-4 py-20 text-white sm:px-6 lg:px-10">
-      <div className="mx-auto grid max-w-[1560px] items-center gap-12 lg:grid-cols-[0.9fr_1.1fr]">
-        <SectionTitle
-          eyebrow="Store"
-          title="Chef Thai store."
-          description="The store content is now represented directly in the app: all-purpose seasoning, recipes, and Chef Thai branded flavor offers."
-          tone="dark"
-        />
-        <article className="rounded-[2.5rem] border border-white/10 bg-black/75 p-8 shadow-[0_35px_120px_rgba(0,0,0,0.45)]">
-          <div className="grid gap-5">
-            {storeProducts.map((product) => (
-              <Link
-                key={product.title}
-                href={product.href}
-                className="rounded-[2rem] border border-white/10 bg-white/[0.04] p-6 transition hover:-translate-y-1 hover:border-[#f00612]/45 hover:bg-[#f00612]/10"
-              >
-                <p className="text-xs font-black uppercase tracking-[0.28em] text-[#ff2631]">{product.tagline}</p>
-                <h2 className="mt-4 text-3xl font-black uppercase italic leading-tight text-white">{product.title}</h2>
-                <p className="mt-4 text-sm font-semibold leading-7 text-white/60">{product.description}</p>
-                <div className="mt-5 flex flex-wrap gap-2">
-                  {product.features.map((feature) => (
-                    <span key={feature} className="rounded-full border border-white/10 bg-black px-3 py-2 text-xs font-black uppercase tracking-[0.12em] text-white/70">
-                      {feature}
-                    </span>
-                  ))}
+    <div className="bg-[#07080a] text-white">
+      <section className="relative overflow-hidden border-b border-white/10 bg-[linear-gradient(135deg,#0b0505,#000)] px-4 py-20 sm:px-6 lg:px-10">
+        <img src={storeCatalogProducts[0].image} alt="" className="absolute inset-0 h-full w-full object-cover opacity-20" />
+        <div className="absolute inset-0 bg-gradient-to-b from-black via-black/80 to-[#08090b]" />
+        <div className="relative z-10 mx-auto max-w-[1560px] text-center">
+          <div className="inline-flex rounded-full border border-[#f00612]/35 bg-[#f00612]/10 px-6 py-3 text-xs font-black uppercase tracking-[0.28em] text-[#ff343d]">
+            Back in stock
+          </div>
+          <p className="mt-14 text-4xl font-black uppercase italic leading-none text-[#f00612] sm:text-6xl">
+            &quot;I put dat on errrthang&quot;
+          </p>
+          <h1 className="mx-auto mt-8 max-w-6xl text-6xl font-black uppercase leading-[0.9] tracking-normal text-white sm:text-7xl lg:text-8xl">
+            All-purpose seasoning
+          </h1>
+          <p className="mx-auto mt-10 max-w-5xl text-xl font-semibold leading-9 text-white/62">
+            The secret ingredient that transforms every dish into a signature masterpiece. From the grill to the kitchen, it is the only seasoning you will need.
+          </p>
+          <div className="mt-10 flex flex-wrap justify-center gap-4">
+            <a
+              href={existingFlowLinks.store}
+              className="rounded-full bg-white px-8 py-4 text-sm font-black uppercase tracking-[0.18em] text-black transition hover:bg-[#f00612] hover:text-white"
+            >
+              Order Yours Now
+            </a>
+            <a
+              href={existingFlowLinks.recipes}
+              className="rounded-full border border-white/15 bg-white/[0.04] px-8 py-4 text-sm font-black uppercase tracking-[0.18em] text-white transition hover:border-[#f00612] hover:bg-[#f00612]"
+            >
+              View Recipes
+            </a>
+          </div>
+          <div className="mx-auto mt-14 grid max-w-6xl gap-4 sm:grid-cols-3">
+            {seasoningGallery.map((photo) => (
+              <img key={photo.title} src={photo.image} alt={photo.title} className="h-52 w-full rounded-[1.75rem] border border-white/10 object-cover shadow-[0_25px_80px_rgba(0,0,0,0.35)]" />
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="px-4 py-20 sm:px-6 lg:px-10">
+        <div className="mx-auto max-w-[1560px]">
+          <SectionTitle
+            eyebrow="Products"
+            title="Store items and recipe access."
+            description="Prices are displayed in the app for quick browsing. Checkout stays on Chef Thai's official store so inventory, digital delivery, and payment tracking remain intact."
+            tone="dark"
+          />
+          <div className="mt-12 grid gap-5 sm:grid-cols-2 xl:grid-cols-4">
+            {storeCatalogProducts.map((product) => (
+              <article key={product.title} className="overflow-hidden rounded-[2rem] border border-white/10 bg-black shadow-[0_25px_80px_rgba(0,0,0,0.28)]">
+                <img src={product.image} alt={product.title} className="h-56 w-full object-cover" />
+                <div className="p-6">
+                  <p className="text-xs font-black uppercase tracking-[0.18em] text-[#ff2631]">{product.price}</p>
+                  <h2 className="mt-3 text-2xl font-black uppercase italic leading-tight text-white">{product.title}</h2>
+                  <p className="mt-4 text-sm font-semibold leading-6 text-white/60">{product.description}</p>
                 </div>
-              </Link>
+              </article>
             ))}
           </div>
           <a
             href={existingFlowLinks.store}
-            className="mt-8 inline-flex rounded-full bg-[#f00612] px-7 py-4 text-sm font-black uppercase tracking-[0.14em] text-white transition hover:bg-[#ff2631]"
+            className="mt-10 inline-flex rounded-full bg-[#f00612] px-7 py-4 text-sm font-black uppercase tracking-[0.14em] text-white transition hover:bg-[#ff2631]"
           >
-            Order Through Chef Thai Store
+            Continue To Official Store
           </a>
-        </article>
-      </div>
-    </section>
+        </div>
+      </section>
+    </div>
   );
 }

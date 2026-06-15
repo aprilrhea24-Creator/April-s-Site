@@ -18,3 +18,11 @@ button {
 ::selection {
   @apply bg-red-600 text-white;
 }
+
+* {
+  scrollbar-width: none;
+}
+
+*::-webkit-scrollbar {
+  display: none;
+}

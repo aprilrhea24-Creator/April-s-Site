@@ -77,59 +77,188 @@ export const existingFlowLinks = {
   seasoning: "https://chefthaicooks.com/all-purpose-seasoning"
 };
 
+export const cateringSetupVideos = [
+  {
+    title: "Buffet Setup",
+    description: "A quick look at Chef Thai's event setup and presentation style.",
+    embedUrl: "https://www.youtube.com/embed/FQHkRIenvG8?playsinline=1&controls=1"
+  },
+  {
+    title: "Catering Presentation",
+    description: "Service visuals from Chef Thai's catering process.",
+    embedUrl: "https://www.youtube.com/embed/Qs2V1RCkVxk?playsinline=1&controls=1"
+  },
+  {
+    title: "Event Flow",
+    description: "A front-row view of the food presentation guests can expect.",
+    embedUrl: "https://www.youtube.com/embed/4QwaI-H3hFM?playsinline=1&controls=1"
+  }
+];
+
+export const cateringPhotoHighlights = [
+  {
+    title: "Signature Catering",
+    image:
+      "https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=984,h=656,fit=crop/AzGrX6yZWwhXBO21/img_7212-dWxlLDN8bgh996qQ.jpeg"
+  },
+  {
+    title: "Chef Thai Setup",
+    image:
+      "https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=984,h=656,fit=crop/AzGrX6yZWwhXBO21/bdef073c-d29a-4d18-b756-fc60f654d5c6-AR0J1oRp4xcJXg2P.jpeg"
+  },
+  {
+    title: "Event Presentation",
+    image:
+      "https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=984,h=656,fit=crop/AzGrX6yZWwhXBO21/img_6684-A85pMxB317I0b51b.png"
+  }
+];
+
+export const recipeCatalogProducts = [
+  {
+    title: "Honey Chili Blackened Salmon",
+    price: "$2.00",
+    image:
+      "https://cdn.zyrosite.com/cdn-ecommerce/store_01HYCWGR7J15H2Y0Y4986X4B7R%2Fassets%2F1733831637635-HoneyChiliGarlicBlackened.jpg",
+    description: "Sweet heat, blackened seafood flavor, and Chef Thai comfort."
+  },
+  {
+    title: "Chef Thai Seafood Pasta",
+    price: "$2.00",
+    image:
+      "https://cdn.zyrosite.com/cdn-ecommerce/store_01HYCWGR7J15H2Y0Y4986X4B7R%2Fassets%2F1733832026193-SeafoodPasta.jpg",
+    description: "A creamy seafood pasta recipe from the Chef Thai kitchen."
+  },
+  {
+    title: "Chef Thai Fried Chicken",
+    price: "$2.00",
+    image:
+      "https://cdn.zyrosite.com/cdn-ecommerce/store_01HYCWGR7J15H2Y0Y4986X4B7R%2Fassets%2F1733832146048-FriedChicken.jpg",
+    description: "A crispy fried chicken recipe with signature comfort-food flavor."
+  },
+  {
+    title: "Banana Pudding Cheesecake Recipe",
+    price: "$2.00",
+    image:
+      "https://cdn.zyrosite.com/cdn-ecommerce/store_01HYCWGR7J15H2Y0Y4986X4B7R%2Fassets%2F1733831324334-7220ADB1-78A6-4DB4-8A5A-13FC3F118CC2.JPG",
+    description: "Dessert recipe access for Chef Thai's banana pudding cheesecake."
+  },
+  {
+    title: "Peach Cobbler Cheesecake",
+    price: "$2.00",
+    image:
+      "https://cdn.zyrosite.com/cdn-ecommerce/store_01HYCWGR7J15H2Y0Y4986X4B7R%2Fassets%2F1733831762990-PeachCobblerCheesecake.jpg",
+    description: "A sweet cheesecake recipe inspired by peach cobbler flavor."
+  }
+];
+
+export const storeCatalogProducts = [
+  {
+    title: "All Purpose Seasoning",
+    price: "$8.99",
+    image:
+      "https://cdn.zyrosite.com/cdn-ecommerce/store_01HYCWGR7J15H2Y0Y4986X4B7R%2Fassets%2F1716272068497-6B37842B-AEFA-4887-B3F5-686AF99643CA.jpeg",
+    description: "This all purpose seasoning will become the essential go-to item in your kitchen."
+  },
+  ...recipeCatalogProducts,
+  {
+    title: "Chef Thai Caps",
+    price: "$24.99",
+    image:
+      "https://cdn.zyrosite.com/cdn-ecommerce/store_01HYCWGR7J15H2Y0Y4986X4B7R%2Fassets%2F1716278761713-Untitled.jpg",
+    description: "Chef Thai branded caps for customers who want to support the brand."
+  },
+  {
+    title: "Chef Thai Tapestry",
+    price: "$59.99",
+    image:
+      "https://cdn.zyrosite.com/cdn-ecommerce/store_01HYCWGR7J15H2Y0Y4986X4B7R%2Fassets%2F1716340630743-2283.jpeg",
+    description: "Chef Thai branded wall art for the full fan experience."
+  }
+];
+
+export const seasoningGallery = [
+  {
+    title: "All-purpose seasoning jar",
+    image:
+      "https://cdn.zyrosite.com/cdn-ecommerce/store_01HYCWGR7J15H2Y0Y4986X4B7R%2Fassets%2F1716272068497-6B37842B-AEFA-4887-B3F5-686AF99643CA.jpeg"
+  },
+  {
+    title: "Chef Thai caps",
+    image:
+      "https://cdn.zyrosite.com/cdn-ecommerce/store_01HYCWGR7J15H2Y0Y4986X4B7R%2Fassets%2F1739674606405-IMG_8400.JPG"
+  },
+  {
+    title: "Chef Thai recipe feature",
+    image:
+      "https://cdn.zyrosite.com/cdn-ecommerce/store_01HYCWGR7J15H2Y0Y4986X4B7R%2Fassets%2F1733831637635-HoneyChiliGarlicBlackened.jpg"
+  }
+];
+
 export const cateringMenuSections = [
   {
-    title: "Seafood",
+    title: "Seafood Boil",
+    note: "$80 per person | Minimum 10 people",
     items: [
-      "Seafood alfredo tray",
-      "Lobster tail tray",
-      "Honey chili salmon tray",
-      "Cajun butter lemon salmon tray",
-      "Blackened salmon tray",
-      "Shrimp Cajun alfredo",
-      "Buttery herb shrimp",
-      "Fried shrimp",
-      "Fried lobster tail tray",
-      "Steam Cajun king crab tray",
-      "Fried king crab legs",
-      "Seafood fried rice",
-      "Seafood mac and cheese"
+      "Shrimp",
+      "Snow crab",
+      "Mussels",
+      "Crawfish (Luxury)",
+      "King crab (Luxury)",
+      "Lobster tail (Luxury)",
+      "Sausage",
+      "Potatoes",
+      "Corn on the cob",
+      "Boiled eggs"
     ]
   },
   {
     title: "Sides",
     items: [
-      "Red beans and rice tray",
+      "Fried rice: veggie, chicken, or shrimp",
+      "Dirty rice",
+      "Red beans and rice",
       "Baked mac and cheese",
-      "Candy yams trays",
-      "Creamy alfredo",
-      "Smoked turkey collard greens",
-      "Yellow rice trays",
-      "Cornbread dressing",
-      "Crawfish and sausage dirty rice",
-      "Garlic herb mashed potatoes",
-      "Asparagus",
-      "Cream corn",
-      "Fried rice",
-      "Cream spinach",
+      "Smoked turkey black eyed peas",
+      "Stuffed loaded baked potatoes",
+      "Mashed potatoes and gravy",
+      "Broccolini",
+      "Garlic herb asparagus",
+      "Brussel sprouts with bacon",
       "Smoked turkey green beans",
-      "Loaded mashed potatoes"
+      "Cream of corn",
+      "Fried plantains",
+      "Fried cabbage",
+      "Smoked turkey collard greens",
+      "Yellow rice",
+      "Cornbread",
+      "Rolls",
+      "Mediterranean rice",
+      "Candied yams",
+      "Cajun crawfish rice (Luxury)",
+      "Seafood mac and cheese (Luxury)"
     ]
   },
   {
-    title: "Catering Menu",
+    title: "Protein",
     items: [
-      "Lamb rack",
-      "Ribeye steak",
-      "Chicken wings",
-      "Fried pork chop tray",
-      "Baked or BBQ chicken tray",
-      "Garlic butter and rosemary lamb chops",
-      "Jerk lamb chops",
-      "Blackened Cajun chicken",
-      "Roasted glazed quarter chicken",
-      "Prime ribs",
-      "Filet mignon"
+      "Fried party wings with hot honey sauces",
+      "Baked chicken",
+      "Oxtail (Luxury)",
+      "Lamb chops (Luxury)",
+      "Pot roast",
+      "Red wine short ribs (Luxury)",
+      "Barbecue ribs or chicken",
+      "Pork chops: smothered or fried",
+      "Shrimp: sauteed, fried, or garlic butter sauces",
+      "Halibut Cajun garlic butter or miso glazed (Luxury)",
+      "Salmon: blackened or honey chili sauce",
+      "Catfish: blackened or fried",
+      "Sirloin burgers or chicken",
+      "Steak: ribeye, filet, or t-bone with chimichurri",
+      "Crab legs (Luxury)",
+      "Lobster tail (Luxury)",
+      "Kabobs: shrimp or chicken",
+      "Smothered turkey wings"
     ]
   },
   {
@@ -146,22 +275,37 @@ export const cateringMenuSections = [
     ]
   },
   {
-    title: "Soups",
+    title: "Pasta",
     items: [
-      "Lobster bisque",
-      "Italian sausage soup with tortellini",
-      "Broccoli and cheddar soup",
-      "Cream of crab soup",
-      "Homemade tomato soup"
+      "Chicken or shrimp alfredo",
+      "Rasta pasta",
+      "Shrimp scampi",
+      "Stroganoff pasta",
+      "Lasagna rolls",
+      "Pesto pasta",
+      "Gumbo"
     ]
   },
   {
     title: "Salads",
     items: [
+      "Mixed berry salad",
       "Caesar salad",
-      "House salad",
-      "Healthy taco salad",
-      "Cobb salad"
+      "Heirloom tomato and basil with burrata cheese",
+      "Spring veggie salad",
+      "Horseradish cream",
+      "Mushroom sauce"
+    ]
+  },
+  {
+    title: "Dessert",
+    items: [
+      "Cheesecake: peach cobbler or banana pudding",
+      "Red velvet cake",
+      "Yellow cake with chocolate frosting",
+      "Lemon blueberry pound cake",
+      "Brownies",
+      "Peach cobbler"
     ]
   }
 ];
