@@ -5,6 +5,7 @@ import {
   demoMealPlans
 } from "@/lib/demo-data";
 import { isDatabaseConfigured } from "@/lib/env";
+import { cateringMenuDefaults, type CateringMenuSection } from "@/lib/catering-menu-defaults";
 import { prisma } from "@/lib/prisma";
 
 export async function getActiveMealPlans() {
@@ -21,6 +22,59 @@ export async function getActiveCateringMenus() {
   }
 
   return prisma.cateringMenu.findMany({ where: { active: true }, orderBy: { pricePerPerson: "asc" } });
+}
+
+const cateringCategoryOrder = new Map(
+  cateringMenuDefaults.map((section, index) => [section.title.toLowerCase(), index])
+);
+const editableCateringCategories = cateringMenuDefaults.map((section) => section.title);
+
+export async function getPublicCateringMenuSections(): Promise<CateringMenuSection[]> {
+  if (!isDatabaseConfigured()) {
+    return cateringMenuDefaults;
+  }
+
+  const menus = await prisma.cateringMenu.findMany({
+    where: { active: true, category: { in: editableCateringCategories } },
+    orderBy: [{ category: "asc" }, { createdAt: "asc" }]
+  });
+
+  if (menus.length === 0) {
+    return cateringMenuDefaults;
+  }
+
+  const grouped = new Map<string, CateringMenuSection>();
+
+  for (const menu of menus) {
+    const existing = grouped.get(menu.category);
+
+    if (existing) {
+      existing.items.push({
+        title: menu.title,
+        description: menu.description,
+        luxury: menu.pricePerPerson ? Number(menu.pricePerPerson) >= 80 : false
+      });
+      continue;
+    }
+
+    grouped.set(menu.category, {
+      title: menu.category,
+      note: Number(menu.pricePerPerson) > 0 ? `$${Number(menu.pricePerPerson).toFixed(2)} per person | Minimum ${menu.minimumGuestCount} people` : undefined,
+      items: [
+        {
+          title: menu.title,
+          description: menu.description,
+          luxury: menu.pricePerPerson ? Number(menu.pricePerPerson) >= 80 : false
+        }
+      ]
+    });
+  }
+
+  return Array.from(grouped.values()).sort((a, b) => {
+    const aOrder = cateringCategoryOrder.get(a.title.toLowerCase()) ?? 999;
+    const bOrder = cateringCategoryOrder.get(b.title.toLowerCase()) ?? 999;
+    return aOrder - bOrder || a.title.localeCompare(b.title);
+  });
 }
 
 export async function getActiveChefServices() {

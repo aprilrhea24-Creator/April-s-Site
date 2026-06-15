@@ -5,7 +5,11 @@ import { useState } from "react";
 type CateringMenuSection = {
   title: string;
   note?: string;
-  items: string[];
+  items: Array<{
+    title: string;
+    description: string;
+    luxury?: boolean;
+  }>;
 };
 
 type CateringMenuTabsProps = {
@@ -68,11 +72,26 @@ export function CateringMenuTabs({ sections }: CateringMenuTabsProps) {
         </div>
         <div className="mt-8 grid gap-4 sm:grid-cols-2">
           {activeSection.items.map((item, index) => (
-            <div key={item} className="rounded-[1.5rem] border border-white/10 bg-black/55 p-5">
+            <div
+              key={item.title}
+              className={`rounded-[1.5rem] border p-5 ${
+                item.luxury
+                  ? "border-[#f00612]/25 bg-[#1b0808]/80"
+                  : "border-white/10 bg-black/55"
+              }`}
+            >
               <p className="text-xs font-black uppercase tracking-[0.18em] text-white/35">
                 {String(index + 1).padStart(2, "0")}
               </p>
-              <p className="mt-5 text-2xl font-black uppercase italic leading-tight text-white">{item}</p>
+              <div className="mt-5 flex flex-wrap items-center gap-3">
+                <p className="text-2xl font-black uppercase italic leading-tight text-white">{item.title}</p>
+                {item.luxury ? (
+                  <span className="rounded-full border border-[#f00612]/40 px-3 py-1 text-[10px] font-black uppercase tracking-[0.16em] text-[#ff343d]">
+                    Luxury
+                  </span>
+                ) : null}
+              </div>
+              <p className="mt-3 text-sm font-semibold leading-6 text-white/52">{item.description}</p>
             </div>
           ))}
         </div>

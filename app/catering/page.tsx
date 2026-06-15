@@ -1,10 +1,13 @@
 import { SectionTitle } from "@/components/section-title";
 import { CateringMenuTabs } from "@/components/catering-menu-tabs";
-import { cateringMenuSections, cateringPhotoHighlights, cateringSetupVideos, existingFlowLinks } from "@/lib/chef-thai-content";
+import { cateringPhotoHighlights, cateringSetupVideos, existingFlowLinks } from "@/lib/chef-thai-content";
+import { getPublicCateringMenuSections } from "@/lib/data";
 
 export const dynamic = "force-dynamic";
 
-export default function CateringPage() {
+export default async function CateringPage() {
+  const menuSections = await getPublicCateringMenuSections();
+
   return (
     <div className="bg-[#07080a] text-white">
       <section className="border-b border-white/10 bg-[radial-gradient(circle_at_85%_20%,rgba(240,6,18,0.26),transparent_30%),linear-gradient(135deg,#08090b,#000)]">
@@ -71,7 +74,7 @@ export default function CateringPage() {
           />
         </div>
 
-        <CateringMenuTabs sections={cateringMenuSections} />
+        <CateringMenuTabs sections={menuSections} />
       </section>
 
       <section className="border-t border-white/10 bg-black py-20">

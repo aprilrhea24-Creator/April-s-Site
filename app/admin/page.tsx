@@ -1,4 +1,5 @@
 import { AdminContentForm } from "@/components/forms/admin-content-form";
+import { AdminCateringMenuManager } from "@/components/forms/admin-catering-menu-manager";
 import { SectionTitle } from "@/components/section-title";
 import { getAdminData } from "@/lib/data";
 import { requireAdmin } from "@/lib/auth";
@@ -9,6 +10,16 @@ export const dynamic = "force-dynamic";
 export default async function AdminPage() {
   await requireAdmin();
   const data = await getAdminData();
+  const cateringMenuItems = data.cateringMenus.map((menu) => ({
+    id: menu.id,
+    category: menu.category,
+    title: menu.title,
+    description: menu.description,
+    pricePerPerson: Number(menu.pricePerPerson).toFixed(2),
+    minimumGuestCount: menu.minimumGuestCount,
+    serviceHours: menu.serviceHours,
+    active: menu.active
+  }));
 
   return (
     <section className="mx-auto max-w-7xl px-4 py-20 sm:px-6 lg:px-8">
@@ -17,6 +28,10 @@ export default async function AdminPage() {
         title="Manage menus, services, bookings, availability, and customer details."
         description="This dashboard is structured to grow with your operations: content management, pricing updates, event logistics, and scheduling all live together."
       />
+      <div className="mt-10">
+        <AdminCateringMenuManager items={cateringMenuItems} />
+      </div>
+
       <div className="mt-10 grid gap-6 lg:grid-cols-3">
         <div className="rounded-[2rem] bg-ink p-6 text-cream shadow-soft">
           <p className="text-sm uppercase tracking-[0.2em] text-gold">Customers</p>
@@ -51,9 +66,9 @@ export default async function AdminPage() {
           endpoint="/api/admin/catering-menus"
           title="Add Catering Menu"
           fields={[
-            { name: "category", label: "Category" },
-            { name: "title", label: "Menu title" },
-            { name: "description", label: "Description", type: "textarea" },
+            { name: "category", label: "Category: Appetizers, Seafood Boil, Pasta & More, Protein, Sides, or Dessert" },
+            { name: "title", label: "Dish or menu title" },
+            { name: "description", label: "Ingredients / customer notes", type: "textarea" },
             { name: "pricePerPerson", label: "Price per person", type: "number" },
             { name: "minimumGuestCount", label: "Minimum guest count", type: "number" }
           ]}
