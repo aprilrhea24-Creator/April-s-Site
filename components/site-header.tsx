@@ -66,7 +66,7 @@ export async function SiteHeader() {
                   Login
                 </Link>
                 <Link
-                  href="/register"
+                  href="/catering"
                   className="rounded-full bg-[#f00612] px-4 py-3 text-xs font-black uppercase tracking-[0.1em] text-white shadow-[0_18px_50px_rgba(240,6,18,0.35)] transition hover:bg-[#ff2631] sm:px-5 sm:text-sm sm:tracking-[0.12em]"
                 >
                   Book Now

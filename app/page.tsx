@@ -90,20 +90,31 @@ export default async function HomePage() {
             />
           </div>
           <div className="grid gap-4">
-            {availability.map((slot) => (
-              <div key={slot.id} className="rounded-[1.75rem] border border-white/10 bg-white/[0.04] p-5">
-                <p className="font-black uppercase tracking-[0.12em] text-white">
-                  {new Date(slot.date).toLocaleDateString("en-US", {
-                    weekday: "long",
-                    month: "long",
-                    day: "numeric"
-                  })}
+            {availability.length > 0 ? (
+              availability.map((slot) => (
+                <div key={slot.id} className="rounded-[1.75rem] border border-white/10 bg-white/[0.04] p-5">
+                  <p className="font-black uppercase tracking-[0.12em] text-white">
+                    {new Date(slot.date).toLocaleDateString("en-US", {
+                      weekday: "long",
+                      month: "long",
+                      day: "numeric"
+                    })}
+                  </p>
+                  <p className="mt-2 text-sm font-semibold text-white/55">
+                    {slot.startHour}:00 - {slot.endHour}:00 ({slot.timezone})
+                  </p>
+                </div>
+              ))
+            ) : (
+              <div className="rounded-[1.75rem] border border-white/10 bg-white/[0.04] p-8 text-center">
+                <p className="text-lg font-black uppercase italic text-white sm:text-xl">
+                  Future availability dates are currently being scheduled.
                 </p>
-                <p className="mt-2 text-sm font-semibold text-white/55">
-                  {slot.startHour}:00 - {slot.endHour}:00 ({slot.timezone})
+                <p className="mt-3 text-sm font-semibold text-white/60">
+                  Please check back soon for our next open dates.
                 </p>
               </div>
-            ))}
+            )}
           </div>
         </div>
       </section>
