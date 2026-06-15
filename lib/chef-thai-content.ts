@@ -196,6 +196,19 @@ export const seasoningGallery = [
 
 export const cateringMenuSections = [
   {
+    title: "Appetizers",
+    items: [
+      "Seafood egg rolls",
+      "Philly cheesesteak egg rolls",
+      "Mini crab cakes",
+      "Fried lobster bites with honey sriracha sauce",
+      "Fried chicken sliders",
+      "Mini shrimp po'boys",
+      "Honey chili salmon sliders",
+      "Mini cheeseburgers"
+    ]
+  },
+  {
     title: "Seafood Boil",
     note: "$80 per person | Minimum 10 people",
     items: [
@@ -209,6 +222,47 @@ export const cateringMenuSections = [
       "Potatoes",
       "Corn on the cob",
       "Boiled eggs"
+    ]
+  },
+  {
+    title: "Pasta & More",
+    items: [
+      "Chicken or shrimp alfredo",
+      "Rasta pasta",
+      "Shrimp scampi",
+      "Stroganoff pasta",
+      "Lasagna rolls",
+      "Pesto pasta",
+      "Gumbo",
+      "Mixed berry salad",
+      "Caesar salad",
+      "Heirloom tomato and basil with burrata cheese",
+      "Spring veggie salad",
+      "Horseradish cream",
+      "Mushroom sauce"
+    ]
+  },
+  {
+    title: "Protein",
+    items: [
+      "Fried party wings with hot honey sauces",
+      "Baked chicken",
+      "Oxtail (Luxury)",
+      "Lamb chops (Luxury)",
+      "Pot roast",
+      "Red wine short ribs (Luxury)",
+      "Barbecue ribs or chicken",
+      "Pork chops: smothered or fried",
+      "Shrimp: sauteed, fried, or garlic butter sauces",
+      "Halibut Cajun garlic butter or miso glazed (Luxury)",
+      "Salmon: blackened or honey chili sauce",
+      "Catfish: blackened or fried",
+      "Sirloin burgers or chicken",
+      "Steak: ribeye, filet, or t-bone with chimichurri",
+      "Crab legs (Luxury)",
+      "Lobster tail (Luxury)",
+      "Kabobs: shrimp or chicken",
+      "Smothered turkey wings"
     ]
   },
   {
@@ -236,60 +290,6 @@ export const cateringMenuSections = [
       "Candied yams",
       "Cajun crawfish rice (Luxury)",
       "Seafood mac and cheese (Luxury)"
-    ]
-  },
-  {
-    title: "Protein",
-    items: [
-      "Fried party wings with hot honey sauces",
-      "Baked chicken",
-      "Oxtail (Luxury)",
-      "Lamb chops (Luxury)",
-      "Pot roast",
-      "Red wine short ribs (Luxury)",
-      "Barbecue ribs or chicken",
-      "Pork chops: smothered or fried",
-      "Shrimp: sauteed, fried, or garlic butter sauces",
-      "Halibut Cajun garlic butter or miso glazed (Luxury)",
-      "Salmon: blackened or honey chili sauce",
-      "Catfish: blackened or fried",
-      "Sirloin burgers or chicken",
-      "Steak: ribeye, filet, or t-bone with chimichurri",
-      "Crab legs (Luxury)",
-      "Lobster tail (Luxury)",
-      "Kabobs: shrimp or chicken",
-      "Smothered turkey wings"
-    ]
-  },
-  {
-    title: "Appetizers",
-    items: [
-      "Seafood egg rolls",
-      "Philly cheesesteak egg rolls",
-      "Mini crab cakes",
-      "Fried lobster bites with honey sriracha sauce",
-      "Fried chicken sliders",
-      "Mini shrimp po'boys",
-      "Honey chili salmon sliders",
-      "Mini cheeseburgers"
-    ]
-  },
-  {
-    title: "Pasta & More",
-    items: [
-      "Chicken or shrimp alfredo",
-      "Rasta pasta",
-      "Shrimp scampi",
-      "Stroganoff pasta",
-      "Lasagna rolls",
-      "Pesto pasta",
-      "Gumbo",
-      "Mixed berry salad",
-      "Caesar salad",
-      "Heirloom tomato and basil with burrata cheese",
-      "Spring veggie salad",
-      "Horseradish cream",
-      "Mushroom sauce"
     ]
   },
   {
