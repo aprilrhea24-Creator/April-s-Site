@@ -1,7 +1,7 @@
 import { BookingForm } from "@/components/forms/booking-form";
 import { SectionTitle } from "@/components/section-title";
 import { getCurrentUser } from "@/lib/auth";
-import { cateringMenuSections } from "@/lib/chef-thai-content";
+import { cateringMenuSectionsRich } from "@/lib/catering-menu-content";
 import { getActiveCateringMenus } from "@/lib/data";
 import { formatCurrency } from "@/lib/utils";
 
@@ -14,7 +14,7 @@ export default async function CateringPage() {
   ]);
 
   return (
-    <div className="bg-[#07080a] text-white">
+    <div className="bg-[#0a0a0a] text-white font-sans">
       <section className="mx-auto max-w-[1560px] px-4 py-20 sm:px-6 lg:px-10">
         <SectionTitle
           eyebrow="Catering"
@@ -22,25 +22,62 @@ export default async function CateringPage() {
           description="The client site menu is organized here into clean categories so guests can browse without the page feeling crowded. Setup is included for catered events."
           tone="dark"
         />
-        <div className="mt-12 grid gap-5 md:grid-cols-2 xl:grid-cols-3">
-          {cateringMenuSections.map((section) => (
-            <article key={section.title} className="rounded-[2rem] border border-white/10 bg-black p-6">
-              <h2 className="text-2xl font-black uppercase italic text-white">{section.title}</h2>
-              <div className="mt-5 flex flex-wrap gap-2">
+
+        <div className="mt-16 flex flex-col space-y-16">
+          {cateringMenuSectionsRich.map((section) => (
+            <div key={section.title} className="w-full">
+              {/* Category Header */}
+              <div className="mb-8">
+                <h2 className="text-3xl font-black tracking-wider uppercase border-l-4 border-red-600 pl-4 text-white">
+                  {section.title}
+                </h2>
+                {section.pricingNote && (
+                  <p className="mt-2 text-sm font-semibold text-zinc-400 pl-5">
+                    {section.pricingNote}
+                  </p>
+                )}
+              </div>
+
+              {/* Menu Cards Grid */}
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 {section.items.map((item) => (
-                  <span
-                    key={item}
-                    className="rounded-full border border-white/10 bg-white/[0.04] px-3 py-2 text-xs font-bold text-white/70"
+                  <div
+                    key={item.id}
+                    className={`relative p-6 rounded-xl bg-[#121212] border transition-all duration-300 hover:border-red-600 group ${
+                      item.luxury
+                        ? 'border-red-950/40 bg-gradient-to-br from-[#121212] to-[#1a0d0d]'
+                        : 'border-zinc-800/80'
+                    }`}
                   >
-                    {item}
-                  </span>
+                    {/* Top Right Label / Number */}
+                    {item.luxury ? (
+                      <span className="absolute top-4 right-4 bg-red-600/10 text-red-500 text-[10px] font-bold uppercase tracking-widest px-2.5 py-0.5 rounded border border-red-500/20">
+                        Luxury
+                      </span>
+                    ) : (
+                      <span className="absolute top-4 right-4 text-xs font-mono text-zinc-600 group-hover:text-red-500">
+                        {item.id}
+                      </span>
+                    )}
+
+                    {/* Dish Title */}
+                    <h3 className="text-lg font-extrabold uppercase tracking-wide text-zinc-100 pr-16 mb-2">
+                      {item.title}
+                    </h3>
+
+                    {/* Text Description */}
+                    <p className="text-zinc-400 text-sm font-light leading-relaxed max-w-xl">
+                      {item.desc}
+                    </p>
+                  </div>
                 ))}
               </div>
-            </article>
+            </div>
           ))}
         </div>
       </section>
-      <section className="border-t border-white/10 bg-black py-20">
+
+      <section className="border-t border-white/10 bg-[#0a0a0a] py-20">
         <div className="mx-auto max-w-[1560px] px-4 sm:px-6 lg:px-10">
           <SectionTitle
             eyebrow="Book Catering"
