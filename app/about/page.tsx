@@ -1,5 +1,5 @@
 import { SectionTitle } from "@/components/section-title";
-import { aboutStory, missionCopy, visionCopy } from "@/lib/chef-thai-content";
+import { aboutStory, existingFlowLinks, missionCopy, visionCopy } from "@/lib/chef-thai-content";
 
 export default function AboutPage() {
   return (
@@ -15,6 +15,12 @@ export default function AboutPage() {
           {aboutStory.map((paragraph) => (
             <p key={paragraph}>{paragraph}</p>
           ))}
+          <a
+            href={existingFlowLinks.about}
+            className="inline-flex rounded-full bg-[#f00612] px-8 py-4 text-sm font-black uppercase tracking-[0.2em] text-white shadow-[0_18px_45px_rgba(240,6,18,0.22)] transition hover:bg-white hover:text-black"
+          >
+            View Official About Me
+          </a>
         </div>
       </section>
       <section className="border-t border-white/10 bg-black py-20">

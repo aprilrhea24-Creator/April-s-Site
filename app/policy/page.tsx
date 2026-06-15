@@ -7,7 +7,7 @@ export default function PolicyPage() {
       <section className="mx-auto max-w-[1560px] px-4 py-20 sm:px-6 lg:px-10">
         <SectionTitle
           eyebrow="CHEF THAI CATERING POLICY"
-          title="CLEAR EXPECTATIONS BEFORE YOUR EVENT."
+          title="EXPECTATIONS BEFORE YOUR EVENT."
           description="Please review these policies before placing a catering, brunch, private chef, recipe, or event order."
           tone="dark"
         />

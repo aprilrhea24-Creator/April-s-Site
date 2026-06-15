@@ -1,6 +1,5 @@
 import Image from "next/image";
 import Link from "next/link";
-
 import { SectionTitle } from "@/components/section-title";
 
 export default function StorePage() {
