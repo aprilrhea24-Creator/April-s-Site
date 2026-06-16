@@ -88,31 +88,20 @@ export default async function HomePage() {
             />
           </div>
           <div className="grid gap-4">
-            {availability.length > 0 ? (
-              availability.map((slot) => (
-                <div key={slot.id} className="rounded-[1.75rem] border border-white/10 bg-white/[0.04] p-5">
-                  <p className="font-black uppercase tracking-[0.12em] text-white">
-                    {new Date(slot.date).toLocaleDateString("en-US", {
-                      weekday: "long",
-                      month: "long",
-                      day: "numeric"
-                    })}
-                  </p>
-                  <p className="mt-2 text-sm font-semibold text-white/55">
-                    {slot.startHour}:00 - {slot.endHour}:00 ({slot.timezone})
-                  </p>
-                </div>
-              ))
-            ) : (
-              <div className="rounded-[1.75rem] border border-white/10 bg-white/[0.04] p-8 text-center">
-                <p className="text-lg font-black uppercase italic text-white sm:text-xl">
-                  New availability dates are still being added.
+            {availability.map((slot) => (
+              <div key={slot.id} className="rounded-[1.75rem] border border-white/10 bg-white/[0.04] p-5">
+                <p className="font-black uppercase tracking-[0.12em] text-white">
+                  {new Date(slot.date).toLocaleDateString("en-US", {
+                    weekday: "long",
+                    month: "long",
+                    day: "numeric"
+                  })}
                 </p>
-                <p className="mt-3 text-sm font-semibold text-white/60">
-                  Please check back soon to lock in your preferred chef service.
+                <p className="mt-2 text-sm font-semibold text-white/55">
+                  {slot.startHour}:00 - {slot.endHour}:00 ({slot.timezone})
                 </p>
               </div>
-            )}
+            ))}
           </div>
         </div>
       </section>
@@ -127,8 +116,8 @@ export default async function HomePage() {
             tone="dark"
           />
           <div className="mt-8 flex flex-wrap justify-center gap-4">
-            <Link href="/catering" className="rounded-full bg-[#f00612] px-8 py-4 font-black uppercase tracking-[0.14em] text-white shadow-[0_18px_50px_rgba(240,6,18,0.32)] transition hover:bg-[#ff2631]">
-              Book Now
+            <Link href="/register" className="rounded-full bg-[#f00612] px-8 py-4 font-black uppercase tracking-[0.14em] text-white shadow-[0_18px_50px_rgba(240,6,18,0.32)] transition hover:bg-[#ff2631]">
+              Create Account
             </Link>
             <Link href="/login" className="rounded-full border border-white/15 px-8 py-4 font-black uppercase tracking-[0.14em] text-white transition hover:border-[#f00612] hover:bg-[#f00612]">
               Sign In
