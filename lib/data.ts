@@ -28,6 +28,14 @@ const cateringCategoryOrder = new Map(
   cateringMenuDefaults.map((section, index) => [section.title.toLowerCase(), index])
 );
 const editableCateringCategories = cateringMenuDefaults.map((section) => section.title);
+const sectionNotes = new Map(
+  cateringMenuDefaults.map((section) => [section.title, section.note])
+);
+const luxuryItemTitles = new Set(
+  cateringMenuDefaults.flatMap((section) =>
+    section.items.filter((item) => item.luxury).map((item) => item.title.toLowerCase())
+  )
+);
 
 export async function getPublicCateringMenuSections(): Promise<CateringMenuSection[]> {
   if (!isDatabaseConfigured()) {
@@ -47,24 +55,25 @@ export async function getPublicCateringMenuSections(): Promise<CateringMenuSecti
 
   for (const menu of menus) {
     const existing = grouped.get(menu.category);
+    const isLuxury = luxuryItemTitles.has(menu.title.toLowerCase()) || menu.title.toLowerCase().includes("luxury");
 
     if (existing) {
       existing.items.push({
         title: menu.title,
         description: menu.description,
-        luxury: menu.pricePerPerson ? Number(menu.pricePerPerson) >= 80 : false
+        luxury: isLuxury
       });
       continue;
     }
 
     grouped.set(menu.category, {
       title: menu.category,
-      note: Number(menu.pricePerPerson) > 0 ? `$${Number(menu.pricePerPerson).toFixed(2)} per person | Minimum ${menu.minimumGuestCount} people` : undefined,
+      note: sectionNotes.get(menu.category),
       items: [
         {
           title: menu.title,
           description: menu.description,
-          luxury: menu.pricePerPerson ? Number(menu.pricePerPerson) >= 80 : false
+          luxury: isLuxury
         }
       ]
     });
