@@ -5,11 +5,11 @@ import { prisma } from "@/lib/prisma";
 
 export async function PATCH(
   request: NextRequest,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
   try {
     await requireAdmin();
-    const { id } = params;
+    const { id } = await params;
     const body = await request.json();
 
     const mealPlan = await prisma.mealPlan.update({
@@ -47,11 +47,11 @@ export async function PATCH(
 
 export async function DELETE(
   _request: NextRequest,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
   try {
     await requireAdmin();
-    const { id } = params;
+    const { id } = await params;
     await prisma.mealPlan.delete({ where: { id } });
     return NextResponse.json({ ok: true });
   } catch (error) {
