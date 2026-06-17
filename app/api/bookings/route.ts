@@ -13,7 +13,6 @@ export async function GET() {
       include: {
         mealPlan: true,
         cateringMenu: true,
-        chefService: true,
         payments: true
       },
       orderBy: { startAt: "desc" }
@@ -73,8 +72,7 @@ export async function POST(request: NextRequest) {
         totalPrice: pricing.totalPrice,
         depositAmount: pricing.depositAmount,
         ...(body.type === "MEAL_PREP" ? { mealPlanId: body.itemId } : {}),
-        ...(body.type === "CATERING" ? { cateringMenuId: body.itemId } : {}),
-        ...(body.type === "CHEF_EVENT" ? { chefServiceId: body.itemId } : {})
+        ...(body.type === "CATERING" ? { cateringMenuId: body.itemId } : {})
       }
     });
 

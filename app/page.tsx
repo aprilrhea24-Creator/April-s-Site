@@ -35,16 +35,7 @@ export default async function HomePage() {
             description="Experience the best in Cajun & Thai cuisines through recipes, event catering, and private chef experiences tailored around the occasion."
             tone="dark"
           />
-          <div className="mt-16 grid gap-8 lg:grid-cols-3">
-            <ServiceCard
-              title="Top Notch Recipes"
-              subtitle="Exclusive flavor"
-              price="Recipe Access"
-              href="/recipes"
-              imageUrl="https://images.unsplash.com/photo-1506368249639-73a05d6f6488?auto=format&fit=crop&w=900&q=80"
-            >
-              <p>Exclusive Chef Thai recipes and kitchen favorites built for clients who want the flavor beyond the event.</p>
-            </ServiceCard>
+          <div className="mt-16 grid gap-8 lg:grid-cols-1">
             <ServiceCard
               title="Event Catering"
               subtitle="Intimate to large gatherings"
@@ -53,15 +44,6 @@ export default async function HomePage() {
               imageUrl="https://images.unsplash.com/photo-1464366400600-7168b8af9bc3?auto=format&fit=crop&w=900&q=80"
             >
               <p>Private catering for intimate dinners, meetings, celebrations, and larger gatherings with setup-focused service.</p>
-            </ServiceCard>
-            <ServiceCard
-              title="Private Events"
-              subtitle="Custom chef experience"
-              price="Private Dining"
-              href="/personal-chef"
-              imageUrl="https://images.unsplash.com/photo-1556911220-bff31c812dba?auto=format&fit=crop&w=900&q=80"
-            >
-              <p>Custom Cajun, soul food, and Thai-inspired chef experiences tailored around the occasion and guest list.</p>
             </ServiceCard>
           </div>
           <div className="mt-8 rounded-[2rem] border border-white/10 bg-black/60 p-6 text-center">

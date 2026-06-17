@@ -6,8 +6,6 @@ import { getSession } from "@/lib/auth";
 
 const navItems = [
   { href: "/catering", label: "Catering" },
-  { href: "/personal-chef", label: "Private Events" },
-  { href: "/recipes", label: "Recipes" },
   { href: "/store", label: "Store" },
   { href: "/about", label: "About" },
   { href: "/policy", label: "Policy" }

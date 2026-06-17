@@ -49,7 +49,7 @@ export default async function DashboardPage() {
       <div className="mt-10 grid gap-6 lg:grid-cols-2">
         {user.bookings.map((booking) => {
           const title =
-            booking.mealPlan?.name ?? booking.cateringMenu?.title ?? booking.chefService?.title ?? "Service booking";
+            booking.mealPlan?.name ?? booking.cateringMenu?.title ?? "Service booking";
 
           return (
             <BookingSummaryCard

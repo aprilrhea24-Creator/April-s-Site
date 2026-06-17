@@ -50,22 +50,7 @@ export default async function CateringPage() {
       </section>
 
       <section className="mx-auto max-w-[1560px] px-4 py-20 sm:px-6 lg:px-10">
-        <div className="grid gap-5 md:grid-cols-3">
-          <div className="rounded-[2rem] border border-white/10 bg-black p-6">
-            <p className="text-xs font-black uppercase tracking-[0.26em] text-[#ff2631]">Starting Point</p>
-            <p className="mt-4 text-3xl font-black uppercase italic">$80 per person</p>
-          </div>
-          <div className="rounded-[2rem] border border-white/10 bg-black p-6">
-            <p className="text-xs font-black uppercase tracking-[0.26em] text-[#ff2631]">Minimum</p>
-            <p className="mt-4 text-3xl font-black uppercase italic">10 people</p>
-          </div>
-          <div className="rounded-[2rem] border border-white/10 bg-black p-6">
-            <p className="text-xs font-black uppercase tracking-[0.26em] text-[#ff2631]">Service Style</p>
-            <p className="mt-4 text-3xl font-black uppercase italic">Setup ready</p>
-          </div>
-        </div>
-
-        <div className="mt-14">
+        <div>
           <SectionTitle
             eyebrow="Dinner Menu"
             title="Full catering menu."

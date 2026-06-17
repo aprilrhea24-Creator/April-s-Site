@@ -85,42 +85,6 @@ async function main() {
     skipDuplicates: true
   });
 
-  await prisma.chefService.createMany({
-    data: [
-      {
-        eventType: "Dinner Party",
-        title: "Private Tasting Dinner",
-        description: "Multi-course fine dining in your home with tableside presentation.",
-        pricingModel: "flat",
-        basePrice: 650,
-        hourlyRate: null,
-        minimumGuests: 2,
-        durationHours: 4
-      },
-      {
-        eventType: "Romantic Dinner",
-        title: "Chef's Table for Two",
-        description: "An intimate personal chef experience with curated menu planning.",
-        pricingModel: "flat",
-        basePrice: 420,
-        hourlyRate: null,
-        minimumGuests: 2,
-        durationHours: 3
-      },
-      {
-        eventType: "Cooking Class",
-        title: "Interactive Cooking Experience",
-        description: "Hands-on chef-led cooking lesson for small groups.",
-        pricingModel: "hourly",
-        basePrice: 250,
-        hourlyRate: 110,
-        minimumGuests: 4,
-        durationHours: 3
-      }
-    ],
-    skipDuplicates: true
-  });
-
   await prisma.availability.createMany({
     data: [
       {
