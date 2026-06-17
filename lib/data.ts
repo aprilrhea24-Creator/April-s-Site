@@ -1,7 +1,6 @@
 import {
   demoAvailability,
   demoCateringMenus,
-  demoChefServices,
   demoMealPlans
 } from "@/lib/demo-data";
 import { isDatabaseConfigured } from "@/lib/env";
@@ -86,14 +85,6 @@ export async function getPublicCateringMenuSections(): Promise<CateringMenuSecti
   });
 }
 
-export async function getActiveChefServices() {
-  if (!isDatabaseConfigured()) {
-    return demoChefServices;
-  }
-
-  return prisma.chefService.findMany({ where: { active: true }, orderBy: { basePrice: "asc" } });
-}
-
 export async function getUpcomingAvailability() {
   if (!isDatabaseConfigured()) {
     return demoAvailability;
@@ -107,17 +98,15 @@ export async function getUpcomingAvailability() {
 }
 
 export async function getLandingData() {
-  const [mealPlans, cateringMenus, chefServices, availability] = await Promise.all([
+  const [mealPlans, cateringMenus, availability] = await Promise.all([
     getActiveMealPlans(),
     getActiveCateringMenus(),
-    getActiveChefServices(),
     getUpcomingAvailability()
   ]);
 
   return {
     mealPlans,
     cateringMenus,
-    chefServices,
     availability
   };
 }
@@ -130,7 +119,6 @@ export async function getDashboardData(userId: string) {
         include: {
           mealPlan: true,
           cateringMenu: true,
-          chefService: true,
           payments: true
         },
         orderBy: { startAt: "desc" }
@@ -140,17 +128,15 @@ export async function getDashboardData(userId: string) {
 }
 
 export async function getAdminData() {
-  const [mealPlans, cateringMenus, chefServices, bookings, availability, users] =
+  const [mealPlans, cateringMenus, bookings, availability, users] =
     await Promise.all([
       prisma.mealPlan.findMany({ orderBy: { createdAt: "desc" } }),
       prisma.cateringMenu.findMany({ orderBy: { createdAt: "desc" } }),
-      prisma.chefService.findMany({ orderBy: { createdAt: "desc" } }),
       prisma.booking.findMany({
         include: {
           user: true,
           mealPlan: true,
           cateringMenu: true,
-          chefService: true,
           payments: true
         },
         orderBy: { startAt: "asc" }
@@ -159,5 +145,5 @@ export async function getAdminData() {
       prisma.user.findMany({ orderBy: { createdAt: "desc" } })
     ]);
 
-  return { mealPlans, cateringMenus, chefServices, bookings, availability, users };
+  return { mealPlans, cateringMenus, bookings, availability, users };
 }

@@ -34,7 +34,6 @@ export function SiteFooter() {
           <p className="font-black uppercase tracking-[0.2em] text-white">Explore</p>
           <div className="mt-2 grid gap-2">
             <Link href="/catering" className="transition hover:text-white">Catering</Link>
-            <Link href="/recipes" className="transition hover:text-white">Recipes</Link>
             <Link href="/store" className="transition hover:text-white">Store</Link>
             <a href={existingFlowLinks.about} className="transition hover:text-white">About Chef Thai</a>
             <Link href="/policy" className="transition hover:text-white">Policy</Link>

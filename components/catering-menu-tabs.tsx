@@ -9,6 +9,7 @@ type CateringMenuSection = {
     title: string;
     description: string;
     luxury?: boolean;
+    imageUrl?: string;
   }>;
 };
 
@@ -56,6 +57,23 @@ export function CateringMenuTabs({ sections }: CateringMenuTabsProps) {
         })}
       </div>
 
+      {activeSection.title === "Seafood Boil" ? (
+        <div className="mt-14 mb-8 grid gap-5 md:grid-cols-3">
+          <div className="rounded-[2rem] border border-white/10 bg-black p-6">
+            <p className="text-xs font-black uppercase tracking-[0.26em] text-[#ff2631]">Starting Point</p>
+            <p className="mt-4 text-3xl font-black uppercase italic">$80 per person</p>
+          </div>
+          <div className="rounded-[2rem] border border-white/10 bg-black p-6">
+            <p className="text-xs font-black uppercase tracking-[0.26em] text-[#ff2631]">Minimum</p>
+            <p className="mt-4 text-3xl font-black uppercase italic">10 people</p>
+          </div>
+          <div className="rounded-[2rem] border border-white/10 bg-black p-6">
+            <p className="text-xs font-black uppercase tracking-[0.26em] text-[#ff2631]">Service Style</p>
+            <p className="mt-4 text-3xl font-black uppercase italic">Setup ready</p>
+          </div>
+        </div>
+      ) : null}
+
       <article className="mt-8 rounded-[2.25rem] border border-white/10 bg-[radial-gradient(circle_at_90%_20%,rgba(240,6,18,0.18),transparent_28%),#08090b] p-6 shadow-[0_25px_80px_rgba(0,0,0,0.28)] sm:p-8">
         <div className="flex flex-wrap items-start justify-between gap-4">
           <div>
@@ -70,29 +88,38 @@ export function CateringMenuTabs({ sections }: CateringMenuTabsProps) {
             </span>
           ) : null}
         </div>
-        <div className="mt-8 grid gap-4 sm:grid-cols-2">
+        <div className="mt-8 grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
           {activeSection.items.map((item, index) => (
-            <div
+            <article
               key={item.title}
-              className={`rounded-[1.5rem] border p-5 ${
+              className={`overflow-hidden rounded-[2rem] border shadow-[0_25px_80px_rgba(0,0,0,0.28)] ${
                 item.luxury
-                  ? "border-[#f00612]/25 bg-[#1b0808]/80"
-                  : "border-white/10 bg-black/55"
+                  ? "border-[#f00612]/25 bg-[#1b0808]"
+                  : "border-white/10 bg-black"
               }`}
             >
-              <p className="text-xs font-black uppercase tracking-[0.18em] text-white/35">
-                {String(index + 1).padStart(2, "0")}
-              </p>
-              <div className="mt-5 flex flex-wrap items-center gap-3">
-                <p className="text-2xl font-black uppercase italic leading-tight text-white">{item.title}</p>
-                {item.luxury ? (
-                  <span className="rounded-full border border-[#f00612]/40 px-3 py-1 text-[10px] font-black uppercase tracking-[0.16em] text-[#ff343d]">
-                    Luxury
-                  </span>
-                ) : null}
+              {item.imageUrl ? (
+                <img src={item.imageUrl} alt={item.title} className="h-48 w-full object-cover" />
+              ) : (
+                <div className="h-48 w-full bg-white/5 flex items-center justify-center">
+                   <p className="text-xs font-black uppercase tracking-[0.18em] text-white/35">Image Preview Coming Soon</p>
+                </div>
+              )}
+              <div className="p-6">
+                <p className="text-xs font-black uppercase tracking-[0.18em] text-white/35">
+                  {String(index + 1).padStart(2, "0")}
+                </p>
+                <div className="mt-3 flex flex-wrap items-center gap-2">
+                  <h2 className="text-xl font-black uppercase italic leading-tight text-white">{item.title}</h2>
+                  {item.luxury ? (
+                    <span className="rounded-full border border-[#f00612]/40 px-2 py-0.5 text-[9px] font-black uppercase tracking-[0.16em] text-[#ff343d]">
+                      Luxury
+                    </span>
+                  ) : null}
+                </div>
+                <p className="mt-3 text-sm font-semibold leading-6 text-white/52">{item.description}</p>
               </div>
-              <p className="mt-3 text-sm font-semibold leading-6 text-white/52">{item.description}</p>
-            </div>
+            </article>
           ))}
         </div>
       </article>

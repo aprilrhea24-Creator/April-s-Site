@@ -23,7 +23,7 @@ export const adminSetupSchema = z.object({
 });
 
 export const bookingSchema = z.object({
-  type: z.enum(["MEAL_PREP", "CATERING", "CHEF_EVENT"]),
+  type: z.enum(["MEAL_PREP", "CATERING"]),
   userId: z.string().min(1),
   itemId: z.string().min(1),
   guestCount: z.coerce.number().int().positive().optional(),

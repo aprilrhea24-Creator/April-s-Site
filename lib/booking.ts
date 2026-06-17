@@ -10,8 +10,6 @@ function getBookingDurationHours(type: BookingType) {
       return 1;
     case "CATERING":
       return 4;
-    case "CHEF_EVENT":
-      return 4;
     default:
       return 2;
   }
@@ -34,15 +32,6 @@ export async function calculateBookingPrice(input: {
     const menu = await prisma.cateringMenu.findUniqueOrThrow({ where: { id: input.itemId } });
     const guests = Math.max(input.guestCount ?? menu.minimumGuestCount, menu.minimumGuestCount);
     total = Number(menu.pricePerPerson) * guests;
-  }
-
-  if (input.type === "CHEF_EVENT") {
-    const service = await prisma.chefService.findUniqueOrThrow({ where: { id: input.itemId } });
-    const guests = Math.max(input.guestCount ?? service.minimumGuests, service.minimumGuests);
-    total =
-      service.pricingModel === "hourly" && service.hourlyRate
-        ? Number(service.basePrice) + Number(service.hourlyRate) * service.durationHours + guests * 12
-        : Number(service.basePrice) + guests * 18;
   }
 
   return {

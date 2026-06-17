@@ -16,8 +16,7 @@ export async function POST(request: NextRequest) {
       include: {
         user: true,
         mealPlan: true,
-        cateringMenu: true,
-        chefService: true
+      cateringMenu: true
       }
     });
 
@@ -31,7 +30,7 @@ export async function POST(request: NextRequest) {
 
     const amount = Number(booking.depositAmount);
     const title =
-      booking.mealPlan?.name ?? booking.cateringMenu?.title ?? booking.chefService?.title ?? "Chef service booking";
+    booking.mealPlan?.name ?? booking.cateringMenu?.title ?? "Chef service booking";
 
     if (!stripe) {
       await prisma.payment.create({

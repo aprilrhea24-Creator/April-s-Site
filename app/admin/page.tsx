@@ -73,19 +73,6 @@ export default async function AdminPage() {
             { name: "minimumGuestCount", label: "Minimum guest count", type: "number" }
           ]}
         />
-        <AdminContentForm
-          endpoint="/api/admin/chef-services"
-          title="Add Chef Service"
-          fields={[
-            { name: "eventType", label: "Event type" },
-            { name: "title", label: "Service title" },
-            { name: "description", label: "Description", type: "textarea" },
-            { name: "pricingModel", label: "Pricing model" },
-            { name: "basePrice", label: "Base price", type: "number" },
-            { name: "minimumGuests", label: "Minimum guests", type: "number" },
-            { name: "durationHours", label: "Duration hours", type: "number" }
-          ]}
-        />
       </div>
 
       <div className="mt-10 grid gap-6 lg:grid-cols-2">
@@ -95,7 +82,7 @@ export default async function AdminPage() {
             {data.bookings.map((booking) => (
               <div key={booking.id} className="rounded-[1.5rem] bg-oat p-4">
                 <p className="font-medium text-ink">
-                  {booking.user.name} · {booking.mealPlan?.name ?? booking.cateringMenu?.title ?? booking.chefService?.title}
+                  {booking.user.name} · {booking.mealPlan?.name ?? booking.cateringMenu?.title}
                 </p>
                 <p className="mt-1 text-sm text-ink/70">
                   {new Date(booking.startAt).toLocaleString()} · {booking.status} · {formatCurrency(booking.totalPrice)}

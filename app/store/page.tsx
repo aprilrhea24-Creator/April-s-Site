@@ -27,12 +27,6 @@ export default function StorePage() {
             >
               Order Yours Now
             </a>
-            <a
-              href={existingFlowLinks.recipes}
-              className="rounded-full border border-white/15 bg-white/[0.04] px-8 py-4 text-sm font-black uppercase tracking-[0.18em] text-white transition hover:border-[#f00612] hover:bg-[#f00612]"
-            >
-              View Recipes
-            </a>
           </div>
           <div className="mx-auto mt-14 grid max-w-6xl gap-4 sm:grid-cols-3">
             {seasoningGallery.map((photo) => (

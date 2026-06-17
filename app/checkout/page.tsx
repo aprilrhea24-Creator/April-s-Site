@@ -20,14 +20,13 @@ export default async function CheckoutPage({
         include: {
           mealPlan: true,
           cateringMenu: true,
-          chefService: true,
           payments: true
         }
       })
     : null;
 
   const title =
-    booking?.mealPlan?.name ?? booking?.cateringMenu?.title ?? booking?.chefService?.title ?? "Booking";
+    booking?.mealPlan?.name ?? booking?.cateringMenu?.title ?? "Booking";
 
   return (
     <section className="mx-auto max-w-4xl px-4 py-20 sm:px-6 lg:px-8">
