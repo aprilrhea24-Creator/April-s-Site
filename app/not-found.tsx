@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 export const dynamic = "force-static";
 
 export default function NotFound() {
@@ -17,13 +19,12 @@ export default function NotFound() {
           The page may have moved into the new April&apos;s Site architecture, or the private module may not be exposed publicly.
         </p>
         <div className="mt-8 flex justify-center">
-          <a
+          <Link
             href="/"
             className="inline-flex items-center gap-2 rounded-full bg-[linear-gradient(90deg,#67e8f9,#a78bfa,#f0abfc)] px-6 py-3 font-semibold text-slate-950 shadow-glow hover:brightness-110"
           >
-            <span aria-hidden="true">←</span>
             Return Home
-          </a>
+          </Link>
         </div>
       </div>
     </section>

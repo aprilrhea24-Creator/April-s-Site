@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { ArrowRight, BarChart3, Bot, ShieldCheck, Sparkles, Workflow, Zap } from "lucide-react";
+import { ArrowRight, BarChart3, Bot, ShieldCheck, Sparkles, Workflow } from "lucide-react";
 
 const outcomes = [
   { icon: Workflow, title: "Operational apps", text: "Replace spreadsheets and scattered tools with one branded workflow hub." },
