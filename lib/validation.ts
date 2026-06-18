@@ -34,7 +34,8 @@ export const bookingSchema = z.object({
   serviceAgreement: z.coerce.boolean().optional(),
   deliveryFrequency: z.string().optional(),
   isRecurring: z.coerce.boolean().optional(),
-  paymentOption: z.enum(["deposit", "full"]).default("deposit")
+  paymentOption: z.enum(["deposit", "full"]).default("deposit"),
+  basePrice: z.coerce.number().optional()
 });
 
 export const availabilitySchema = z.object({

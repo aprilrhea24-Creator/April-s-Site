@@ -20,6 +20,7 @@ export async function calculateBookingPrice(input: {
   itemId: string;
   guestCount?: number;
   paymentOption: "deposit" | "full";
+  basePrice?: number;
 }) {
   let total = 0;
 
@@ -29,9 +30,14 @@ export async function calculateBookingPrice(input: {
   }
 
   if (input.type === "CATERING") {
-    const menu = await prisma.cateringMenu.findUniqueOrThrow({ where: { id: input.itemId } });
-    const guests = Math.max(input.guestCount ?? menu.minimumGuestCount, menu.minimumGuestCount);
-    total = Number(menu.pricePerPerson) * guests;
+    if (input.itemId === "CATERING_DRAFT" && input.basePrice) {
+      const guests = Math.max(input.guestCount ?? 10, 10);
+      total = input.basePrice * guests;
+    } else {
+      const menu = await prisma.cateringMenu.findUniqueOrThrow({ where: { id: input.itemId } });
+      const guests = Math.max(input.guestCount ?? menu.minimumGuestCount, menu.minimumGuestCount);
+      total = Number(menu.pricePerPerson) * guests;
+    }
   }
 
   return {
