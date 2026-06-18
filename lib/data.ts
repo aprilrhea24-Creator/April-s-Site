@@ -59,6 +59,7 @@ export async function getPublicCateringMenuSections(): Promise<CateringMenuSecti
     if (existing) {
       existing.items.push({
         title: menu.title,
+        image: menu.image,
         description: menu.description,
         luxury: isLuxury
       });
@@ -71,6 +72,7 @@ export async function getPublicCateringMenuSections(): Promise<CateringMenuSecti
       items: [
         {
           title: menu.title,
+        image: menu.image,
           description: menu.description,
           luxury: isLuxury
         }

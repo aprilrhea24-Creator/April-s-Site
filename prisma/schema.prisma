@@ -65,6 +65,7 @@ model CateringMenu {
   category           String
   title              String
   description        String
+  image              String?
   pricePerPerson     Decimal   @db.Decimal(10, 2)
   minimumGuestCount  Int
   serviceHours       Int       @default(3)

@@ -9,7 +9,7 @@ type CateringMenuSection = {
     title: string;
     description: string;
     luxury?: boolean;
-    imageUrl?: string;
+    image?: string | null;
   }>;
 };
 
@@ -98,8 +98,8 @@ export function CateringMenuTabs({ sections }: CateringMenuTabsProps) {
                   : "border-white/10 bg-black"
               }`}
             >
-              {item.imageUrl ? (
-                <img src={item.imageUrl} alt={item.title} className="h-48 w-full object-cover" />
+              {item.image ? (
+                <img src={item.image} alt={item.title} className="h-48 w-full object-cover" />
               ) : (
                 <div className="h-48 w-full bg-white/5 flex items-center justify-center">
                    <p className="text-xs font-black uppercase tracking-[0.18em] text-white/35">Image Preview Coming Soon</p>

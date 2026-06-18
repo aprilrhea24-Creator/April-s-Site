@@ -18,6 +18,7 @@ export async function PATCH(
         category: body.category,
         title: body.title,
         description: body.description,
+        image: body.image !== undefined ? body.image : undefined,
         pricePerPerson: body.pricePerPerson ? Number(body.pricePerPerson) : undefined,
         minimumGuestCount: body.minimumGuestCount ? Number(body.minimumGuestCount) : undefined,
         serviceHours: body.serviceHours ? Number(body.serviceHours) : undefined,
