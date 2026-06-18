@@ -26,6 +26,7 @@ export async function POST() {
           category: section.title,
           title: item.title,
           description: item.description,
+          image: item.image,
           pricePerPerson: section.title === "Seafood Boil" ? 80 : 0,
           minimumGuestCount: section.title === "Seafood Boil" ? 10 : 1,
           serviceHours: 4,

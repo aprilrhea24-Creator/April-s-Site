@@ -13,6 +13,7 @@ export async function POST(request: NextRequest) {
         category: String(body.category),
         title: String(body.title),
         description: String(body.description),
+        image: body.image ? String(body.image) : null,
         pricePerPerson: Number(body.pricePerPerson),
         minimumGuestCount: Number(body.minimumGuestCount),
         serviceHours: body.serviceHours ? Number(body.serviceHours) : 3

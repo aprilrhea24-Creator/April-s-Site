@@ -12,6 +12,7 @@ export default async function AdminPage() {
     category: menu.category,
     title: menu.title,
     description: menu.description,
+    image: menu.image,
     pricePerPerson: Number(menu.pricePerPerson).toFixed(2),
     minimumGuestCount: menu.minimumGuestCount,
     serviceHours: menu.serviceHours,

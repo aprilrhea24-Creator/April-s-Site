@@ -53,7 +53,8 @@ export async function POST(request: NextRequest) {
       type: body.type,
       itemId: body.itemId,
       guestCount: body.guestCount,
-      paymentOption: body.paymentOption
+      paymentOption: body.paymentOption,
+      basePrice: body.basePrice
     });
 
     const booking = await prisma.booking.create({
@@ -72,7 +73,7 @@ export async function POST(request: NextRequest) {
         totalPrice: pricing.totalPrice,
         depositAmount: pricing.depositAmount,
         ...(body.type === "MEAL_PREP" ? { mealPlanId: body.itemId } : {}),
-        ...(body.type === "CATERING" ? { cateringMenuId: body.itemId } : {})
+        ...(body.type === "CATERING" && body.itemId !== "CATERING_DRAFT" ? { cateringMenuId: body.itemId } : {})
       }
     });
 
