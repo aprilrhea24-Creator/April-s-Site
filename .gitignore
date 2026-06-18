@@ -5,6 +5,7 @@ node_modules
 coverage
 dist
 *.log
+*.tsbuildinfo
 generated
 desktop-overlay/
 studio-pipeline/
