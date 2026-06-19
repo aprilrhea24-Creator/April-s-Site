@@ -25,6 +25,24 @@ const sections = [
   }
 ];
 
+const completionPolicies = [
+  {
+    step: "01",
+    title: "Final routing steps",
+    text: "Upon final contract execution and balance clearance, the system automatically triggers a comprehensive Production Welcome Package email containing full system links and account management keys."
+  },
+  {
+    step: "02",
+    title: "Domain configuration policy",
+    text: "Clients are responsible for securing their own domain name registration to guarantee complete brand ownership. Aura App Studio provides full DNS configuration and deployment connection assistance into Vercel at no extra cost during the launch window."
+  },
+  {
+    step: "03",
+    title: "Ongoing subscriptions",
+    text: "Ongoing third-party domain renewal fees and hosting platform tier costs are the sole financial responsibility of the client following live deployment."
+  }
+];
+
 export default function PoliciesPage() {
   return (
     <section className="mx-auto max-w-5xl px-4 py-20 sm:px-6 lg:px-8">
@@ -43,6 +61,27 @@ export default function PoliciesPage() {
             </article>
           ))}
         </div>
+
+        <section className="mt-10 rounded-[2rem] border border-cyan-200/15 bg-[linear-gradient(145deg,rgba(34,211,238,0.08),rgba(139,92,246,0.08),rgba(3,7,18,0.26))] p-6 shadow-[0_24px_80px_rgba(2,8,23,0.3)] backdrop-blur-xl sm:p-8">
+          <p className="text-sm uppercase tracking-[0.25em] text-cyan-200">Completion and ownership</p>
+          <h2 className="mt-3 font-display text-3xl font-semibold text-white">Launch routing, domains, and ongoing costs.</h2>
+          <div className="mt-7 grid gap-4">
+            {completionPolicies.map((policy) => (
+              <article
+                key={policy.title}
+                className="grid gap-4 rounded-2xl border border-white/10 bg-black/20 p-5 sm:grid-cols-[3rem_1fr]"
+              >
+                <div className="flex h-10 w-10 items-center justify-center rounded-full border border-violet-200/25 bg-violet-300/10 text-xs font-semibold text-violet-100">
+                  {policy.step}
+                </div>
+                <div>
+                  <h3 className="font-semibold text-white">{policy.title}</h3>
+                  <p className="mt-2 text-sm leading-7 text-slate-300">{policy.text}</p>
+                </div>
+              </article>
+            ))}
+          </div>
+        </section>
       </div>
     </section>
   );
