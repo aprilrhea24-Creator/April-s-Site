@@ -4,7 +4,7 @@ import { CheckCircle2, FileSignature, X } from "lucide-react";
 import { useEffect, useState } from "react";
 
 import { signOffProject } from "@/app/portal/[project_id]/actions";
-import { ownershipReleaseClause } from "@/lib/contracts";
+import { projectSignOffAgreementTitle, projectSignOffTerms } from "@/lib/contracts";
 
 export function SignOffModal({
   projectId,
@@ -106,8 +106,20 @@ export function SignOffModal({
               </label>
 
               <div className="rounded-2xl border border-violet-200/20 bg-violet-300/[0.08] p-5">
-                <p className="text-xs uppercase tracking-[0.2em] text-violet-100">Ownership release clause</p>
-                <p className="mt-3 text-sm leading-7 text-slate-300">{ownershipReleaseClause}</p>
+                <p className="text-xs uppercase tracking-[0.2em] text-violet-100">{projectSignOffAgreementTitle}</p>
+                <p className="mt-3 text-sm leading-7 text-slate-300">
+                  By executing this digital signature, the Client explicitly affirms the following binding terms:
+                </p>
+                <ol className="mt-4 space-y-3">
+                  {projectSignOffTerms.map((term, index) => (
+                    <li key={term.title} className="text-sm leading-7 text-slate-300">
+                      <span className="font-semibold text-white">
+                        {index + 1}. {term.title}:
+                      </span>{" "}
+                      {term.text}
+                    </li>
+                  ))}
+                </ol>
               </div>
 
               <label className="block space-y-2">
