@@ -21,7 +21,24 @@ const outcomes = [
   }
 ];
 
-const process = ["Share your blueprint", "Preview the experience", "Approve your staging site", "Launch with confidence"];
+const process = [
+  {
+    title: "Share your blueprint",
+    description: "Upload your operational requirements and brand assets."
+  },
+  {
+    title: "Preview the experience",
+    description: "Review your custom interactive layout prototype live."
+  },
+  {
+    title: "Approve your staging site",
+    description: "Test your workflows inside a private, high-security sandbox."
+  },
+  {
+    title: "Launch with confidence",
+    description: "Direct production deployment to your official live web domain."
+  }
+];
 
 export default function HomePage() {
   return (
@@ -67,23 +84,25 @@ export default function HomePage() {
           <div className="rounded-[1.5rem] border border-white/10 bg-black/25 p-5">
             <div className="flex items-center justify-between border-b border-white/10 pb-4">
               <div>
-                <p className="font-mono text-sm uppercase tracking-widest text-slate-300">Pipeline Health</p>
-                <p className="font-mono text-3xl font-bold uppercase tracking-widest text-white">94%</p>
+                <span className="mb-1 block font-mono text-[10px] uppercase tracking-[0.2em] text-zinc-500">
+                  Our Live Execution Roadmap
+                </span>
+                <p className="text-xl font-bold tracking-tight text-white">The Stratum Framework</p>
               </div>
               <div className="rounded-full border border-cyan-200/30 bg-cyan-200/10 px-3 py-1 text-sm text-cyan-100">Live preview</div>
             </div>
             <div className="mt-5 grid gap-3">
               {process.map((step, index) => (
                 <div
-                  key={step}
+                  key={step.title}
                   className="flex items-center gap-4 rounded-2xl border border-white/10 bg-slate-950/40 p-4 backdrop-blur-md"
                 >
                   <div className="flex h-10 w-10 items-center justify-center rounded-full bg-white/10 font-mono font-bold text-cyan-100">
                     {index + 1}
                   </div>
                   <div>
-                    <p className="font-medium text-white">{step}</p>
-                    <p className="text-sm text-slate-400">Clear project milestone</p>
+                    <p className="font-medium text-white">{step.title}</p>
+                    <p className="text-sm text-slate-400">{step.description}</p>
                   </div>
                 </div>
               ))}
