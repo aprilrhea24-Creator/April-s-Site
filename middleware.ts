@@ -2,7 +2,7 @@ import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
 import { jwtVerify } from "jose";
 
-const protectedPaths = ["/dashboard", "/admin", "/workspace", "/client-dashboard"];
+const protectedPaths = ["/dashboard", "/admin", "/workspace", "/client-dashboard", "/portal"];
 
 async function verifyToken(token: string) {
   const secret = process.env.JWT_SECRET;
@@ -47,5 +47,5 @@ export async function middleware(request: NextRequest) {
 }
 
 export const config = {
-  matcher: ["/dashboard/:path*", "/admin/:path*", "/workspace/:path*", "/client-dashboard/:path*"]
+  matcher: ["/dashboard/:path*", "/admin/:path*", "/workspace/:path*", "/client-dashboard/:path*", "/portal/:path*"]
 };
