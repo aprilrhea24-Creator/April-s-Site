@@ -2,7 +2,7 @@ import bcrypt from "bcryptjs";
 import { SignJWT, jwtVerify } from "jose";
 import { cookies } from "next/headers";
 
-import { prisma } from "@/lib/prisma";
+import { getPrisma } from "@/lib/prisma";
 
 const SESSION_COOKIE = "aura-session";
 
@@ -91,7 +91,7 @@ export async function getCurrentUser() {
     return null;
   }
 
-  return prisma.user.findUnique({
+  return getPrisma().user.findUnique({
     where: { id: session.userId }
   });
 }

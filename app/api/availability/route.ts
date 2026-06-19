@@ -1,11 +1,14 @@
 import { NextRequest, NextResponse } from "next/server";
 
 import { getRequestBody } from "@/lib/http";
-import { prisma } from "@/lib/prisma";
+import { getPrisma } from "@/lib/prisma";
 import { requireAdmin } from "@/lib/auth";
 import { availabilitySchema } from "@/lib/validation";
 
+export const dynamic = "force-dynamic";
+
 export async function GET() {
+  const prisma = getPrisma();
   const availability = await prisma.availability.findMany({
     orderBy: [{ date: "asc" }, { startHour: "asc" }]
   });
@@ -17,6 +20,7 @@ export async function POST(request: NextRequest) {
   try {
     await requireAdmin();
     const body = availabilitySchema.parse(await getRequestBody(request));
+    const prisma = getPrisma();
 
     const availability = await prisma.availability.create({
       data: {

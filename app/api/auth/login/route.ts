@@ -1,12 +1,15 @@
 import { NextResponse } from "next/server";
 
 import { createSession, verifyPassword } from "@/lib/auth";
-import { prisma } from "@/lib/prisma";
+import { getPrisma } from "@/lib/prisma";
 import { loginSchema } from "@/lib/validation";
+
+export const dynamic = "force-dynamic";
 
 export async function POST(request: Request) {
   try {
     const body = loginSchema.parse(await request.json());
+    const prisma = getPrisma();
     const user = await prisma.user.findUnique({ where: { email: body.email } });
 
     if (!user || !(await verifyPassword(body.password, user.passwordHash))) {
