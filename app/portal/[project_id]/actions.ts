@@ -80,6 +80,10 @@ export async function signOffProject(formData: FormData) {
     redirect(`/portal/${project.id}?signoff=complete`);
   }
 
+  if (!["CLIENT_REVIEW", "SIGNED_OFF", "COMPLETED"].includes(project.status)) {
+    redirect(`/portal/${project.id}?signoff=locked`);
+  }
+
   const signedAt = new Date();
   const signatureReceipt = createHash("sha256")
     .update([project.id, session.userId, result.data.legalName, signedAt.toISOString(), ownershipReleaseClause].join("|"))

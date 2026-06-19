@@ -1,15 +1,27 @@
 import Link from "next/link";
-import { ArrowRight, BarChart3, Bot, ShieldCheck, Sparkles, Workflow } from "lucide-react";
+import { ArrowRight, CreditCard, ShieldCheck, Smartphone, Sparkles, TrendingUp } from "lucide-react";
 
 import { PackageGrid } from "@/components/package-grid";
 
 const outcomes = [
-  { icon: Workflow, title: "Operational apps", text: "Replace spreadsheets and scattered tools with one branded workflow hub." },
-  { icon: Bot, title: "Automation layers", text: "Route requests, notify teams, calculate pricing, and reduce repetitive admin." },
-  { icon: BarChart3, title: "Margin dashboards", text: "Track capacity, pipeline, fulfillment, and revenue signals before they drift." }
+  {
+    icon: TrendingUp,
+    title: "Built for Business Growth",
+    text: "Turn more inquiries into organized projects with a clear customer journey that keeps your team moving."
+  },
+  {
+    icon: Smartphone,
+    title: "Perfect on Every Screen",
+    text: "Give customers a polished, easy experience on phones, tablets, and desktops without extra effort."
+  },
+  {
+    icon: CreditCard,
+    title: "Stripe Onboarding, Automated",
+    text: "Guide customers from package selection to secure payment with a smooth, professional booking flow."
+  }
 ];
 
-const process = ["Map the friction", "Design the client workflow", "Build the portal", "Automate the handoffs"];
+const process = ["Share your blueprint", "Preview the experience", "Approve your staging site", "Launch with confidence"];
 
 export default function HomePage() {
   return (
@@ -58,27 +70,38 @@ export default function HomePage() {
                   <div className="flex h-10 w-10 items-center justify-center rounded-full bg-white/10 text-cyan-100">{index + 1}</div>
                   <div>
                     <p className="font-medium text-white">{step}</p>
-                    <p className="text-sm text-slate-400">Automated handoff stage</p>
+                    <p className="text-sm text-slate-400">Clear project milestone</p>
                   </div>
                 </div>
               ))}
             </div>
             <div className="mt-5 rounded-2xl border border-fuchsia-200/20 bg-fuchsia-300/10 p-4">
-              <p className="text-sm uppercase tracking-[0.2em] text-fuchsia-100">Margin guard</p>
-              <p className="mt-2 text-sm leading-6 text-slate-200">Deposits, change requests, scope boundaries, and client approvals stay visible from day one.</p>
+              <p className="text-sm uppercase tracking-[0.2em] text-fuchsia-100">Protected every step</p>
+              <p className="mt-2 text-sm leading-6 text-slate-200">
+                Payments, approvals, and final ownership stay clear from your first preview through launch day.
+              </p>
             </div>
           </div>
         </div>
       </section>
 
-      <section className="relative mx-auto grid max-w-7xl gap-5 px-4 pb-20 sm:px-6 md:grid-cols-3 lg:px-8">
-        {outcomes.map((item) => (
-          <article key={item.title} className="glass-panel rounded-2xl p-6">
-            <item.icon className="h-7 w-7 text-cyan-200" />
-            <h2 className="mt-5 text-xl font-semibold text-white">{item.title}</h2>
-            <p className="mt-3 text-sm leading-7 text-slate-300">{item.text}</p>
-          </article>
-        ))}
+      <section className="relative mx-auto max-w-7xl px-4 pb-20 sm:px-6 lg:px-8">
+        <div className="mb-10 max-w-3xl">
+          <p className="text-sm uppercase tracking-[0.25em] text-cyan-200">A clear path forward</p>
+          <h2 className="mt-4 text-4xl font-semibold text-white">From Blueprint to Big Launch.</h2>
+          <p className="mt-4 text-base leading-8 text-slate-300">
+            We turn your idea into a polished customer experience that is easy to use, easy to manage, and ready to grow.
+          </p>
+        </div>
+        <div className="grid gap-5 md:grid-cols-3">
+          {outcomes.map((item) => (
+            <article key={item.title} className="glass-panel rounded-2xl p-6">
+              <item.icon className="h-7 w-7 text-cyan-200" />
+              <h3 className="mt-5 text-xl font-semibold text-white">{item.title}</h3>
+              <p className="mt-3 text-sm leading-7 text-slate-300">{item.text}</p>
+            </article>
+          ))}
+        </div>
       </section>
 
       <section className="relative mx-auto max-w-7xl px-4 pb-24 sm:px-6 lg:px-8">

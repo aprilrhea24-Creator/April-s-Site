@@ -1,6 +1,6 @@
 "use client";
 
-import { CheckCircle2, FileSignature, X } from "lucide-react";
+import { CheckCircle2, FileSignature, LockKeyhole, X } from "lucide-react";
 import { useEffect, useState } from "react";
 
 import { signOffProject } from "@/app/portal/[project_id]/actions";
@@ -9,11 +9,13 @@ import { projectSignOffAgreementTitle, projectSignOffTerms } from "@/lib/contrac
 export function SignOffModal({
   projectId,
   projectName,
-  signed
+  signed,
+  canSignOff
 }: {
   projectId: string;
   projectName: string;
   signed: boolean;
+  canSignOff: boolean;
 }) {
   const [open, setOpen] = useState(false);
   const [confirmed, setConfirmed] = useState(false);
@@ -48,6 +50,19 @@ export function SignOffModal({
         <CheckCircle2 className="h-4 w-4" />
         Project Signed Off
       </div>
+    );
+  }
+
+  if (!canSignOff) {
+    return (
+      <button
+        type="button"
+        disabled
+        className="inline-flex cursor-not-allowed items-center gap-2 rounded-full border border-white/10 bg-white/[0.06] px-6 py-3 font-semibold text-slate-500"
+      >
+        <LockKeyhole className="h-5 w-5" />
+        Review &amp; Sign Off Project
+      </button>
     );
   }
 
