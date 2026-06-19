@@ -9,10 +9,10 @@ export function PackageGrid() {
       {packages.map((item) => {
         const card = (
           <article
-            className={`package-card relative h-full overflow-hidden rounded-[2rem] border p-6 backdrop-blur-md ${
+            className={`package-card relative h-full overflow-hidden rounded-2xl border border-white/10 bg-zinc-950/60 p-8 shadow-[0_4px_30px_rgba(0,0,0,0.8)] backdrop-blur-2xl transition-all duration-500 hover:-translate-y-1 hover:border-cyan-500/40 ${
               item.popular
-                ? "package-card-popular border-white/15"
-                : "border-white/5 bg-zinc-950/40"
+                ? "package-card-popular ring-1 ring-cyan-400/30 shadow-[0_0_40px_rgba(6,182,212,0.15)]"
+                : ""
             }`}
           >
             {!item.popular ? (
@@ -58,7 +58,7 @@ export function PackageGrid() {
                 {item.features.map((feature) => (
                   <div
                     key={feature}
-                    className="flex items-start gap-3 rounded-xl border border-white/10 bg-black/25 px-4 py-3 text-sm font-medium text-white/90 backdrop-blur-sm"
+                    className="flex items-center gap-3 rounded-xl border border-white/5 bg-black/80 px-4 py-3 text-sm font-medium tracking-wide text-zinc-200 transition-colors hover:bg-zinc-900/50"
                   >
                     <span className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-md border border-cyan-300/30 bg-cyan-300/10 text-cyan-100">
                       <Check className="h-3.5 w-3.5" aria-hidden="true" />
@@ -88,7 +88,7 @@ export function PackageGrid() {
         );
 
         return item.popular ? (
-          <div key={item.slug} className="package-popular-shell rounded-[2rem]">
+          <div key={item.slug} className="package-popular-shell rounded-2xl">
             <div className="package-popular-glow animate-gradient-breath" aria-hidden="true" />
             {card}
           </div>

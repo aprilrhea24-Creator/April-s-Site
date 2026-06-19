@@ -192,8 +192,8 @@ textarea {
 
 .package-card {
   box-shadow:
-    inset 0 1px 0 rgba(255, 255, 255, 0.08),
-    0 24px 70px rgba(1, 6, 20, 0.34);
+    inset 0 1px 0 rgba(255, 255, 255, 0.06),
+    0 4px 30px rgba(0, 0, 0, 0.8);
 }
 
 .package-popular-shell {
@@ -225,12 +225,14 @@ textarea {
 
 .package-card-popular {
   background:
-    radial-gradient(circle at 8% 12%, rgba(0, 242, 254, 0.38), transparent 34%),
-    radial-gradient(circle at 88% 20%, rgba(0, 79, 172, 0.48), transparent 40%),
-    radial-gradient(circle at 72% 88%, rgba(168, 0, 255, 0.46), transparent 42%),
-    linear-gradient(145deg, rgba(3, 7, 18, 0.97), rgba(4, 5, 12, 0.94));
-  background-size: 180% 180%;
-  animation: package-mesh-flow 11s ease-in-out infinite;
+    radial-gradient(circle at 8% 12%, rgba(0, 242, 254, 0.12), transparent 34%),
+    radial-gradient(circle at 88% 20%, rgba(0, 79, 172, 0.16), transparent 40%),
+    radial-gradient(circle at 72% 88%, rgba(168, 0, 255, 0.14), transparent 42%),
+    rgba(9, 9, 11, 0.78);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.06),
+    0 0 0 1px rgba(34, 211, 238, 0.3),
+    0 0 40px rgba(6, 182, 212, 0.15);
 }
 
 .package-popular-copy {
