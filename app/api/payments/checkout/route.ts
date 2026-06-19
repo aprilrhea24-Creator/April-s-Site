@@ -7,7 +7,7 @@ import { stripe } from "@/lib/stripe";
 export const dynamic = "force-dynamic";
 
 const checkoutSchema = z.object({
-  tier: z.enum(["foundation", "advanced", "privateSaas"])
+  tier: z.enum(["bookingCore", "flowAutomation", "enterpriseMatrix", "platformSuite"])
 });
 
 export async function POST(request: Request) {

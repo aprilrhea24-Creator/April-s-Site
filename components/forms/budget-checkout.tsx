@@ -5,7 +5,7 @@ import { useEffect, useId, useRef, useState } from "react";
 
 import { buildTiers, type BuildTierKey } from "@/lib/build-tiers";
 
-export function BudgetCheckout({ initialTier = "foundation" }: { initialTier?: BuildTierKey }) {
+export function BudgetCheckout({ initialTier = "bookingCore" }: { initialTier?: BuildTierKey }) {
   const [tier, setTier] = useState<BuildTierKey>(initialTier);
   const [open, setOpen] = useState(false);
   const [loading, setLoading] = useState(false);
@@ -87,7 +87,7 @@ export function BudgetCheckout({ initialTier = "foundation" }: { initialTier?: B
                 setOpen(true);
               }
             }}
-            className="glass-field flex items-center justify-between gap-4 text-left"
+            className="flex min-h-12 w-full items-center justify-between gap-4 rounded-xl border border-white/10 bg-black px-4 py-3 text-left text-white outline-none transition-all hover:border-white/20 focus:border-cyan-400 focus:ring-1 focus:ring-cyan-400"
           >
             <span>{selectedTier.label}</span>
             <ChevronDown
@@ -127,7 +127,7 @@ export function BudgetCheckout({ initialTier = "foundation" }: { initialTier?: B
         </div>
       </div>
 
-      <div className="rounded-2xl border border-cyan-200/20 bg-cyan-200/[0.08] p-4">
+      <div className="rounded-xl border border-white/10 bg-black p-4 transition-all hover:border-cyan-400/40">
         <div className="flex items-center justify-between gap-4">
           <div>
             <p className="text-xs uppercase tracking-[0.2em] text-cyan-100">Launch reservation</p>
