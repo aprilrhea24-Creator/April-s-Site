@@ -38,7 +38,7 @@ body {
   margin: 0;
   background: transparent;
   color: var(--text);
-  font-family: var(--font-inter), ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-family: var(--font-space-grotesk), "Space Grotesk", ui-sans-serif, system-ui, sans-serif;
   font-weight: 400;
   letter-spacing: 0;
   -webkit-font-smoothing: antialiased;
@@ -48,7 +48,7 @@ body {
 h1,
 h2,
 h3 {
-  font-family: var(--font-plus-jakarta), ui-sans-serif, system-ui, sans-serif !important;
+  font-family: var(--font-syne), "Syne", sans-serif !important;
   font-weight: 800 !important;
   letter-spacing: 0;
 }
@@ -64,7 +64,7 @@ input,
 select,
 textarea,
 option {
-  font-family: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  font-family: var(--font-space-grotesk), "Space Grotesk", ui-sans-serif, system-ui, sans-serif;
   letter-spacing: 0;
 }
 
@@ -193,20 +193,76 @@ textarea {
   filter: drop-shadow(0 0 8px rgba(103, 232, 249, 0.24));
 }
 
-.flagship-border {
-  background: linear-gradient(120deg, rgba(167, 139, 250, 0.9), rgba(103, 232, 249, 0.9), rgba(217, 70, 239, 0.72));
-  background-size: 240% 240%;
-  animation: flagship-border-shift 7s ease-in-out infinite;
+.package-card {
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.08),
+    0 24px 70px rgba(1, 6, 20, 0.34);
 }
 
-@keyframes flagship-border-shift {
+.package-popular-shell {
+  position: relative;
+  isolation: isolate;
+  box-shadow:
+    0 0 24px rgba(0, 242, 254, 0.42),
+    0 0 54px rgba(0, 79, 172, 0.48),
+    0 0 92px rgba(168, 0, 255, 0.38);
+}
+
+.package-popular-glow {
+  position: absolute;
+  z-index: -1;
+  inset: -20px;
+  border-radius: 2.25rem;
+  background:
+    radial-gradient(circle at 10% 14%, rgba(0, 242, 254, 1), transparent 32%),
+    radial-gradient(circle at 82% 16%, rgba(0, 79, 172, 1), transparent 38%),
+    radial-gradient(circle at 72% 88%, rgba(168, 0, 255, 1), transparent 40%);
+  background-size: 180% 180%;
+  transform-origin: center;
+  will-change: filter, opacity, transform;
+}
+
+.animate-gradient-breath {
+  animation: gradient-breath 4s ease-in-out infinite;
+}
+
+.package-card-popular {
+  background:
+    radial-gradient(circle at 8% 12%, rgba(0, 242, 254, 0.38), transparent 34%),
+    radial-gradient(circle at 88% 20%, rgba(0, 79, 172, 0.48), transparent 40%),
+    radial-gradient(circle at 72% 88%, rgba(168, 0, 255, 0.46), transparent 42%),
+    linear-gradient(145deg, rgba(3, 7, 18, 0.97), rgba(4, 5, 12, 0.94));
+  background-size: 180% 180%;
+  animation: package-mesh-flow 11s ease-in-out infinite;
+}
+
+.package-popular-copy {
+  text-shadow: 0 2px 14px rgba(0, 0, 0, 0.92);
+}
+
+@keyframes gradient-breath {
   0%,
   100% {
-    background-position: 0% 50%;
+    filter: blur(16px) saturate(1);
+    opacity: 0.75;
+    transform: scale(1);
   }
 
   50% {
-    background-position: 100% 50%;
+    filter: blur(24px) saturate(1.12);
+    opacity: 1;
+    transform: scale(1.01);
+  }
+}
+
+@keyframes package-mesh-flow {
+  0%,
+  100% {
+    background-position: 0% 15%;
+  }
+
+  50% {
+    background-position: 100% 85%;
   }
 }
 
@@ -226,7 +282,8 @@ textarea {
 @media (prefers-reduced-motion: reduce) {
   .glass-field,
   .feature-option,
-  .flagship-border {
+  .animate-gradient-breath,
+  .package-card-popular {
     transition: none;
     animation: none;
   }

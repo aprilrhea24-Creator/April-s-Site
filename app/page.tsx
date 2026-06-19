@@ -34,22 +34,30 @@ export default function HomePage() {
             April&apos;s private app studio
           </div>
           <div className="space-y-5">
-            <h1 className="font-display text-5xl font-semibold leading-[0.96] text-white sm:text-6xl lg:text-7xl">
-              Custom business apps that remove friction and protect margins.
+            <h1 className="font-display text-[3.5rem] font-extrabold leading-[1.1] tracking-tight">
+              <span className="block text-white">Engineered Workflows.</span>
+              <span className="block bg-gradient-to-r from-[#00F2FE] via-[#4FACFE] to-[#8B5CF6] bg-clip-text text-transparent">
+                Hyper-Personalized Brands.
+              </span>
             </h1>
             <p className="max-w-2xl text-lg leading-8 text-slate-300">
-              Stratum Studio builds premium portals, dashboards, booking systems, and internal automation for businesses that
-              need their operations to feel as polished as their brand.
+              Stratum Studio builds high-performance web applications, premium portals, and automated booking systems tailored
+              to your unique operations. We eliminate friction from your day-to-day workflow while designing an elite digital
+              presence that makes your brand unforgettable.
             </p>
           </div>
           <div className="flex flex-wrap gap-4">
             <Link
               href="/consultation"
-              className="inline-flex items-center gap-2 rounded-full bg-[linear-gradient(90deg,#67e8f9,#a78bfa,#f0abfc)] px-6 py-3 font-semibold text-slate-950 shadow-glow hover:brightness-110"
+              className="group inline-flex items-center justify-center gap-2 rounded-full bg-gradient-to-r from-[#00D4E8] via-[#168BFF] to-[#7C3AED] px-6 py-3 font-bold text-white shadow-glow transition-all hover:brightness-110"
             >
-              Build My System <ArrowRight className="h-4 w-4" />
+              Explore Packages
+              <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
             </Link>
-            <Link href="/solutions" className="rounded-full border border-white/15 bg-white/5 px-6 py-3 text-slate-100 backdrop-blur-md hover:bg-white/10">
+            <Link
+              href="/solutions"
+              className="rounded-full border border-white/10 bg-white/5 px-6 py-3 font-bold text-white backdrop-blur-md transition-all hover:bg-white/10"
+            >
               View Solution Templates
             </Link>
           </div>
@@ -59,15 +67,20 @@ export default function HomePage() {
           <div className="rounded-[1.5rem] border border-white/10 bg-black/25 p-5">
             <div className="flex items-center justify-between border-b border-white/10 pb-4">
               <div>
-                <p className="text-sm text-slate-400">Pipeline Health</p>
-                <p className="text-3xl font-semibold text-white">94%</p>
+                <p className="font-mono text-sm uppercase tracking-widest text-slate-300">Pipeline Health</p>
+                <p className="font-mono text-3xl font-bold uppercase tracking-widest text-white">94%</p>
               </div>
               <div className="rounded-full border border-cyan-200/30 bg-cyan-200/10 px-3 py-1 text-sm text-cyan-100">Live preview</div>
             </div>
             <div className="mt-5 grid gap-3">
               {process.map((step, index) => (
-                <div key={step} className="flex items-center gap-4 rounded-2xl border border-white/10 bg-white/[0.06] p-4">
-                  <div className="flex h-10 w-10 items-center justify-center rounded-full bg-white/10 text-cyan-100">{index + 1}</div>
+                <div
+                  key={step}
+                  className="flex items-center gap-4 rounded-2xl border border-white/10 bg-slate-950/40 p-4 backdrop-blur-md"
+                >
+                  <div className="flex h-10 w-10 items-center justify-center rounded-full bg-white/10 font-mono font-bold text-cyan-100">
+                    {index + 1}
+                  </div>
                   <div>
                     <p className="font-medium text-white">{step}</p>
                     <p className="text-sm text-slate-400">Clear project milestone</p>
@@ -105,21 +118,51 @@ export default function HomePage() {
       </section>
 
       <section className="relative mx-auto max-w-7xl px-4 pb-24 sm:px-6 lg:px-8">
-        <div className="mb-10 max-w-3xl">
-          <p className="text-sm uppercase tracking-[0.25em] text-cyan-200">Signature packages</p>
-          <h2 className="mt-4 text-4xl font-semibold text-white">Proven system foundations, tailored to the way you operate.</h2>
-          <p className="mt-4 text-base leading-8 text-slate-300">
-            Explore transparent package scopes before configuring the final workflow around your business.
-          </p>
+        <div className="glass-panel overflow-hidden rounded-[2rem]">
+          <div className="grid gap-10 p-6 md:grid-cols-[0.9fr_1.1fr] md:p-10 lg:p-12">
+            <div>
+              <p className="text-sm uppercase tracking-[0.25em] text-fuchsia-200">Our philosophy</p>
+              <h2 className="mt-4 max-w-xl text-4xl font-semibold leading-tight text-white">
+                High-Performance Infrastructure. Tailored to Your Vision.
+              </h2>
+            </div>
+            <div className="space-y-5 text-base leading-8 text-slate-300">
+              <p>
+                Your business deserves more than a one-size-fits-all website. Stratum Studio pairs dependable behind-the-scenes
+                tools with a distinctive customer experience designed around your brand.
+              </p>
+              <p>
+                Payment milestones, scheduling, and intake forms work together automatically, while every screen is shaped to
+                feel personal, polished, and unmistakably yours in a crowded digital era.
+              </p>
+              <p className="font-medium text-cyan-100">
+                The result is a beautiful digital home that saves time, supports growth, and gives customers a clear next step.
+              </p>
+            </div>
+          </div>
         </div>
-        <PackageGrid />
+      </section>
+
+      <section className="relative bg-black py-24">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div className="mb-10 max-w-3xl">
+            <p className="text-sm uppercase tracking-[0.25em] text-cyan-200">Signature packages</p>
+            <h2 className="mt-4 text-4xl font-extrabold leading-tight tracking-tight text-white">
+              Choose a strong starting point, then make it unmistakably yours.
+            </h2>
+            <p className="mt-4 text-base leading-8 text-slate-300">
+              Compare clear package options, see what is included, and choose the best fit for your goals.
+            </p>
+          </div>
+          <PackageGrid />
+        </div>
       </section>
 
       <section className="relative mx-auto max-w-7xl px-4 pb-24 sm:px-6 lg:px-8">
         <div className="glass-panel grid gap-8 rounded-[2rem] p-6 md:grid-cols-[0.8fr_1.2fr] lg:p-8">
           <div>
             <p className="text-sm uppercase tracking-[0.25em] text-cyan-200">Built to monetize</p>
-            <h2 className="mt-4 text-3xl font-semibold text-white">From first inquiry to retained system support.</h2>
+            <h2 className="mt-4 text-3xl font-semibold text-white">A clear path from first inquiry to ongoing support.</h2>
           </div>
           <div className="grid gap-4 sm:grid-cols-2">
             {[

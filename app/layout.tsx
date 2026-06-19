@@ -1,20 +1,20 @@
 import type { Metadata } from "next";
-import { Inter, Plus_Jakarta_Sans } from "next/font/google";
+import { Space_Grotesk, Syne } from "next/font/google";
 
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
 
 import "./globals.css";
 
-const inter = Inter({
+const syne = Syne({
   subsets: ["latin"],
-  variable: "--font-inter",
+  variable: "--font-syne",
   display: "swap"
 });
 
-const plusJakartaSans = Plus_Jakarta_Sans({
+const spaceGrotesk = Space_Grotesk({
   subsets: ["latin"],
-  variable: "--font-plus-jakarta",
+  variable: "--font-space-grotesk",
   display: "swap"
 });
 
@@ -26,7 +26,7 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en" className={`${inter.variable} ${plusJakartaSans.variable}`}>
+    <html lang="en" className={`${syne.variable} ${spaceGrotesk.variable}`}>
       <body className="min-h-screen bg-aura-mesh font-body text-pearl">
         <SiteHeader />
         <main>{children}</main>
