@@ -19,12 +19,21 @@ export function PackageGrid() {
               )}
               <Blocks className="h-7 w-7 text-white/70" />
             </div>
-            <p className="mt-5 text-sm uppercase tracking-[0.22em] text-cyan-100">{item.industry}</p>
-            <h3 className="mt-3 text-2xl font-semibold text-white">{item.title}</h3>
-            <p className="mt-3 text-sm leading-7 text-slate-300">{item.summary}</p>
+            <p className={`mt-5 text-sm uppercase tracking-[0.22em] ${item.popular ? "font-semibold text-slate-950" : "text-cyan-100"}`}>
+              {item.industry}
+            </p>
+            <h3 className={`mt-3 text-2xl font-semibold ${item.popular ? "text-slate-950" : "text-white"}`}>{item.title}</h3>
+            <p className={`mt-3 text-sm leading-7 ${item.popular ? "text-slate-900" : "text-slate-300"}`}>{item.summary}</p>
             <div className="mt-6 grid gap-3 sm:grid-cols-2">
               {item.features.map((feature) => (
-                <div key={feature} className="rounded-2xl border border-white/10 bg-black/20 p-4 text-sm text-slate-200 backdrop-blur-md">
+                <div
+                  key={feature}
+                  className={`rounded-2xl border p-4 text-sm backdrop-blur-md ${
+                    item.popular
+                      ? "border-slate-950/15 bg-[rgba(15,18,36,0.12)] font-medium text-slate-950"
+                      : "border-white/10 bg-black/20 text-slate-200"
+                  }`}
+                >
                   {feature}
                 </div>
               ))}
