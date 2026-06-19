@@ -2,16 +2,39 @@ import { ChevronDown, SendHorizonal } from "lucide-react";
 
 import { submitBuildRequest } from "@/app/consultation/actions";
 import { BudgetCheckout } from "@/components/forms/budget-checkout";
+import type { BuildTierKey } from "@/lib/build-tiers";
 
 const industries = ["Hospitality", "Professional services", "Healthcare operations", "Field service", "B2B SaaS", "Custom"];
 const features = ["User profiles", "Custom business logic", "Dashboard analytics", "Payments and deposits", "Automated notifications", "Admin console"];
+const packagePresets: Record<string, { industry: string; features: string[] }> = {
+  hospitality: {
+    industry: "Hospitality",
+    features: ["Payments and deposits", "Admin console"]
+  },
+  "professional-services": {
+    industry: "Professional services",
+    features: ["Dashboard analytics", "Admin console"]
+  },
+  operations: {
+    industry: "Field service",
+    features: ["Automated notifications", "Admin console"]
+  },
+  "b2b-saas": {
+    industry: "B2B SaaS",
+    features: ["User profiles", "Payments and deposits", "Admin console"]
+  }
+};
+const validTiers = new Set<BuildTierKey>(["foundation", "advanced", "privateSaas"]);
 
 export default async function ConsultationPage({
   searchParams
 }: {
-  searchParams: Promise<{ status?: string; checkout?: string }>;
+  searchParams: Promise<{ status?: string; checkout?: string; package?: string; tier?: string }>;
 }) {
-  const { status, checkout } = await searchParams;
+  const { status, checkout, package: packageKey, tier } = await searchParams;
+  const preset = packageKey ? packagePresets[packageKey] : undefined;
+  const initialTier = validTiers.has(tier as BuildTierKey) ? (tier as BuildTierKey) : "foundation";
+  const selectedFeatures = new Set(preset?.features ?? []);
 
   return (
     <section className="mx-auto max-w-6xl px-4 py-20 sm:px-6 lg:px-8">
@@ -58,7 +81,7 @@ export default async function ConsultationPage({
         <label className="space-y-2">
           <span className="text-sm text-slate-300">Industry</span>
           <span className="relative block">
-            <select name="industry" className="glass-field glass-select">
+            <select name="industry" defaultValue={preset?.industry ?? industries[0]} className="glass-field glass-select">
               {industries.map((industry) => (
                 <option key={industry}>{industry}</option>
               ))}
@@ -66,13 +89,19 @@ export default async function ConsultationPage({
             <ChevronDown className="pointer-events-none absolute right-4 top-1/2 h-4 w-4 -translate-y-1/2 text-cyan-100/70" />
           </span>
         </label>
-        <BudgetCheckout />
+        <BudgetCheckout initialTier={initialTier} />
         <fieldset className="lg:col-span-2">
           <legend className="text-sm text-slate-300">Desired features</legend>
           <div className="mt-3 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
             {features.map((feature) => (
               <label key={feature} className="feature-option flex cursor-pointer items-center gap-3 rounded-2xl p-4 text-sm text-slate-200">
-                <input type="checkbox" name="features" value={feature} className="glass-checkbox" />
+                <input
+                  type="checkbox"
+                  name="features"
+                  value={feature}
+                  defaultChecked={selectedFeatures.has(feature)}
+                  className="glass-checkbox"
+                />
                 {feature}
               </label>
             ))}

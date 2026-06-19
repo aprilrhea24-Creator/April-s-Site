@@ -131,6 +131,23 @@ body {
   filter: drop-shadow(0 0 8px rgba(103, 232, 249, 0.24));
 }
 
+.flagship-border {
+  background: linear-gradient(120deg, rgba(167, 139, 250, 0.9), rgba(103, 232, 249, 0.9), rgba(217, 70, 239, 0.72));
+  background-size: 240% 240%;
+  animation: flagship-border-shift 7s ease-in-out infinite;
+}
+
+@keyframes flagship-border-shift {
+  0%,
+  100% {
+    background-position: 0% 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
 a,
 button,
 input,
@@ -146,8 +163,10 @@ textarea {
 
 @media (prefers-reduced-motion: reduce) {
   .glass-field,
-  .feature-option {
+  .feature-option,
+  .flagship-border {
     transition: none;
+    animation: none;
   }
 }
 

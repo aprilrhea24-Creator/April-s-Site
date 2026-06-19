@@ -40,7 +40,7 @@ export function PackageGrid() {
         );
 
         return item.popular ? (
-          <div key={item.slug} className="rounded-[2rem] bg-gradient-to-br from-cyan-300/80 via-violet-400/70 to-fuchsia-300/60 p-px shadow-[0_24px_90px_rgba(71,85,255,0.18)]">
+          <div key={item.slug} className="flagship-border rounded-[2rem] p-px shadow-[0_24px_90px_rgba(71,85,255,0.18)]">
             {card}
           </div>
         ) : (

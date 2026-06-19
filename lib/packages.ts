@@ -1,5 +1,7 @@
 export type PackageDetail = {
   slug: string;
+  consultationPackage: string;
+  consultationTier: "foundation" | "advanced" | "privateSaas";
   title: string;
   industry: string;
   summary: string;
@@ -25,6 +27,8 @@ export type PackageDetail = {
 export const packages: PackageDetail[] = [
   {
     slug: "premium-restaurant",
+    consultationPackage: "hospitality",
+    consultationTier: "foundation",
     title: "Premium Restaurant Package",
     industry: "Hospitality",
     summary:
@@ -94,6 +98,8 @@ export const packages: PackageDetail[] = [
   },
   {
     slug: "enterprise-booking",
+    consultationPackage: "professional-services",
+    consultationTier: "advanced",
     title: "Enterprise Booking Matrix",
     industry: "Professional Services",
     summary: "Capacity-aware intake, approvals, scheduling, and forecasting for multi-service teams.",
@@ -117,6 +123,8 @@ export const packages: PackageDetail[] = [
   },
   {
     slug: "field-team-command",
+    consultationPackage: "operations",
+    consultationTier: "advanced",
     title: "Field Team Command Center",
     industry: "Operations",
     summary: "A dispatch and client-update system for teams coordinating work beyond the office.",
@@ -140,6 +148,8 @@ export const packages: PackageDetail[] = [
   },
   {
     slug: "founder-saas",
+    consultationPackage: "b2b-saas",
+    consultationTier: "privateSaas",
     title: "Founder SaaS Starter",
     industry: "B2B SaaS",
     summary: "A launch-ready product foundation for founders validating a focused subscription workflow.",

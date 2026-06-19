@@ -39,6 +39,8 @@ export default async function PackagePage({
     notFound();
   }
 
+  const consultationHref = `/consultation?package=${item.consultationPackage}&tier=${item.consultationTier}`;
+
   return (
     <div className="relative overflow-hidden">
       <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_16%_10%,rgba(34,211,238,0.18),transparent_19%),radial-gradient(circle_at_84%_12%,rgba(168,85,247,0.18),transparent_18%)]" />
@@ -61,10 +63,10 @@ export default async function PackagePage({
           <p className="mt-6 max-w-3xl text-lg leading-8 text-slate-300">{item.summary}</p>
           <div className="mt-8 flex flex-wrap gap-4">
             <Link
-              href="/consultation"
+              href={consultationHref}
               className="inline-flex items-center gap-2 rounded-full bg-[linear-gradient(90deg,#67e8f9,#a78bfa,#f0abfc)] px-6 py-3 font-semibold text-slate-950 shadow-glow hover:brightness-110"
             >
-              Start This Build
+              Book This Package
               <ArrowRight className="h-4 w-4" />
             </Link>
             <div className="rounded-full border border-white/15 bg-white/[0.06] px-5 py-3 text-sm text-slate-200 backdrop-blur-lg">
@@ -97,10 +99,10 @@ export default async function PackagePage({
             <p className="mt-2 text-2xl font-semibold text-cyan-100">{item.price.reservation}</p>
             <p className="mt-5 text-sm leading-7 text-slate-300">{item.price.note}</p>
             <Link
-              href="/consultation"
+              href={consultationHref}
               className="mt-7 inline-flex w-full items-center justify-center rounded-full border border-cyan-200/30 bg-cyan-100 px-5 py-3 font-semibold text-slate-950 hover:bg-white"
             >
-              Configure This Package
+              Book This Package
             </Link>
           </aside>
         </div>

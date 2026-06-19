@@ -5,8 +5,8 @@ import { useState } from "react";
 
 import { buildTiers, type BuildTierKey } from "@/lib/build-tiers";
 
-export function BudgetCheckout() {
-  const [tier, setTier] = useState<BuildTierKey>("foundation");
+export function BudgetCheckout({ initialTier = "foundation" }: { initialTier?: BuildTierKey }) {
+  const [tier, setTier] = useState<BuildTierKey>(initialTier);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const selectedTier = buildTiers[tier];
