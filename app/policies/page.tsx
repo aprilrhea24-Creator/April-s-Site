@@ -9,7 +9,7 @@ const sections = [
   },
   {
     title: "Intellectual property boundaries",
-    text: "Clients own final paid deliverables created specifically for their project after outstanding invoices are paid. Pre-existing frameworks, reusable components, know-how, templates, and studio tooling remain the studio's property unless expressly transferred in writing."
+    text: "Clients own final paid deliverables created specifically for their project after outstanding invoices are paid. Pre-existing frameworks, reusable components, know-how, system foundations, and studio tooling remain the studio's property unless expressly transferred in writing."
   },
   {
     title: "Deposits and project launch",
@@ -50,7 +50,7 @@ export default function PoliciesPage() {
         <p className="text-sm uppercase tracking-[0.28em] text-cyan-200">Policies</p>
         <h1 className="mt-4 font-display text-5xl font-semibold text-white">Modern SaaS and freelance application terms.</h1>
         <p className="mt-5 text-sm leading-7 text-slate-400">
-          This policy page is starter business language for April&apos;s Site and should be reviewed by a qualified attorney before
+          This policy page contains Stratum Studio&apos;s operational terms and should be reviewed by a qualified attorney before
           being used as binding legal terms.
         </p>
         <div className="mt-8 grid gap-4">

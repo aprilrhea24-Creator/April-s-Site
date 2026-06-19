@@ -16,7 +16,7 @@ export function Hero() {
           </p>
           <div className="mt-10 flex flex-wrap gap-4">
             <Link href="/solutions" className="rounded-full bg-white px-6 py-3 font-medium text-slate-950 transition hover:bg-cyan-100">
-              Solution Templates
+              Solution Systems
             </Link>
             <Link href="/consultation" className="rounded-full border border-white/20 px-6 py-3 font-medium transition hover:bg-white/5">
               Build Request

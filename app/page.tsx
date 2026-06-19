@@ -1,23 +1,23 @@
 import Link from "next/link";
-import { ArrowRight, CreditCard, ShieldCheck, Smartphone, Sparkles, TrendingUp } from "lucide-react";
+import { ArrowRight, ChartNoAxesCombined, MonitorSmartphone, ShieldCheck, Sparkles } from "lucide-react";
 
 import { PackageGrid } from "@/components/package-grid";
 
 const outcomes = [
   {
-    icon: TrendingUp,
-    title: "Built for Business Growth",
-    text: "Turn more inquiries into organized projects with a clear customer journey that keeps your team moving."
+    icon: ChartNoAxesCombined,
+    title: "Engineered for Conversion",
+    text: "Convert target inbound traffic into highly structured operational assets with an optimized onboarding pipeline built directly into your platform core."
   },
   {
-    icon: Smartphone,
-    title: "Perfect on Every Screen",
-    text: "Give customers a polished, easy experience on phones, tablets, and desktops without extra effort."
+    icon: MonitorSmartphone,
+    title: "Universal Responsive Architecture",
+    text: "Maintain pristine asset aspect ratios and fluid typography scaling natively across ultra-wide desktop monitors, mobile arrays, and high-fidelity displays."
   },
   {
-    icon: CreditCard,
-    title: "Stripe Onboarding, Automated",
-    text: "Guide customers from package selection to secure payment with a smooth, professional booking flow."
+    icon: ShieldCheck,
+    title: "Secure Financial Pipelines",
+    text: "Integrate transactional logic, multi-tier checkout layers, and encrypted automated balance settlements cleanly alongside your current administrative workflows."
   }
 ];
 
@@ -48,7 +48,7 @@ export default function HomePage() {
         <div className="space-y-8">
           <div className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/10 px-4 py-2 text-xs uppercase tracking-[0.28em] text-cyan-100 backdrop-blur-md">
             <Sparkles className="h-4 w-4" />
-            April&apos;s private app studio
+            Private operational systems studio
           </div>
           <div className="space-y-5">
             <h1 className="font-sans text-[2.5rem] font-bold normal-case leading-snug text-white sm:text-[3.5rem]">
@@ -75,12 +75,12 @@ export default function HomePage() {
               href="/solutions"
               className="rounded-full border border-white/10 bg-white/5 px-6 py-3 font-bold text-white backdrop-blur-md transition-all hover:bg-white/10"
             >
-              View Solution Templates
+              View Solution Systems
             </Link>
           </div>
         </div>
 
-        <div className="glass-panel rounded-[2rem] p-5">
+        <div className="rounded-2xl border border-white/5 bg-zinc-950/40 p-8 backdrop-blur-xl transition-all duration-300 hover:border-white/10">
           <div className="rounded-[1.5rem] border border-white/10 bg-black/25 p-5">
             <div className="flex items-center justify-between border-b border-white/10 pb-4">
               <div>
@@ -120,14 +120,17 @@ export default function HomePage() {
       <section className="relative mx-auto max-w-7xl px-4 pb-20 sm:px-6 lg:px-8">
         <div className="mb-10 max-w-3xl">
           <p className="text-sm uppercase tracking-[0.25em] text-cyan-200">A clear path forward</p>
-          <h2 className="mt-4 font-sans text-4xl font-bold normal-case leading-snug text-white">From Blueprint to Big Launch.</h2>
+          <h2 className="mt-4 font-sans text-4xl font-bold normal-case leading-snug text-white">From Blueprint to Launch.</h2>
           <p className="mt-4 text-base leading-8 text-slate-300">
             We turn your idea into a polished customer experience that is easy to use, easy to manage, and ready to grow.
           </p>
         </div>
         <div className="grid gap-5 md:grid-cols-3">
           {outcomes.map((item) => (
-            <article key={item.title} className="glass-panel rounded-2xl p-6">
+            <article
+              key={item.title}
+              className="rounded-2xl border border-white/5 bg-zinc-950/40 p-8 backdrop-blur-xl transition-all duration-300 hover:border-white/10"
+            >
               <item.icon className="h-7 w-7 text-cyan-200" />
               <h3 className="mt-5 font-sans text-xl font-bold normal-case leading-snug text-white">{item.title}</h3>
               <p className="mt-3 text-sm leading-7 text-slate-300">{item.text}</p>
@@ -137,8 +140,8 @@ export default function HomePage() {
       </section>
 
       <section className="relative mx-auto max-w-7xl px-4 pb-24 sm:px-6 lg:px-8">
-        <div className="glass-panel overflow-hidden rounded-[2rem]">
-          <div className="grid gap-10 p-6 md:grid-cols-[0.9fr_1.1fr] md:p-10 lg:p-12">
+        <div className="overflow-hidden rounded-2xl border border-white/5 bg-zinc-950/40 p-8 backdrop-blur-xl transition-all duration-300 hover:border-white/10">
+          <div className="grid gap-10 md:grid-cols-[0.9fr_1.1fr]">
             <div>
               <p className="text-sm uppercase tracking-[0.25em] text-fuchsia-200">Our philosophy</p>
               <h2 className="mt-4 max-w-xl font-sans text-4xl font-bold normal-case leading-snug text-white">
@@ -178,7 +181,7 @@ export default function HomePage() {
       </section>
 
       <section className="relative mx-auto max-w-7xl px-4 pb-24 sm:px-6 lg:px-8">
-        <div className="glass-panel grid gap-8 rounded-[2rem] p-6 md:grid-cols-[0.8fr_1.2fr] lg:p-8">
+        <div className="grid gap-8 rounded-2xl border border-white/5 bg-zinc-950/40 p-8 backdrop-blur-xl transition-all duration-300 hover:border-white/10 md:grid-cols-[0.8fr_1.2fr]">
           <div>
             <p className="text-sm uppercase tracking-[0.25em] text-cyan-200">Built to monetize</p>
             <h2 className="mt-4 font-sans text-3xl font-bold normal-case leading-snug text-white">

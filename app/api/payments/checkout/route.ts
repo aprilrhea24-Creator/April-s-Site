@@ -12,7 +12,7 @@ const checkoutSchema = z.object({
 
 export async function POST(request: Request) {
   if (!stripe) {
-    return NextResponse.json({ error: "Stripe checkout is not configured yet." }, { status: 503 });
+    return NextResponse.json({ error: "Secure checkout is not configured yet." }, { status: 503 });
   }
 
   try {
@@ -45,7 +45,7 @@ export async function POST(request: Request) {
     });
 
     if (!session.url) {
-      return NextResponse.json({ error: "Stripe did not return a checkout URL." }, { status: 502 });
+      return NextResponse.json({ error: "The secure checkout service did not return a destination URL." }, { status: 502 });
     }
 
     return NextResponse.json({ url: session.url });

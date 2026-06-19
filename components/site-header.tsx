@@ -31,7 +31,7 @@ export function SiteHeader() {
           </Link>
           <Link
             href="/consultation"
-            className="rounded-full bg-[linear-gradient(90deg,#67e8f9,#a78bfa,#f0abfc)] px-4 py-2 text-sm font-semibold text-slate-950 shadow-glow transition hover:brightness-110"
+            className="rounded-full bg-[linear-gradient(90deg,#22d3ee,#6366f1,#d946ef)] px-5 py-2.5 font-sans text-xs font-bold uppercase tracking-wider text-white transition-all duration-300 hover:shadow-[0_0_20px_rgba(34,211,238,0.4)]"
           >
             Start Build
           </Link>

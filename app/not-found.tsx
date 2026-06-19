@@ -16,7 +16,7 @@ export default function NotFound() {
           This workspace route is not available.
         </h1>
         <p className="mx-auto mt-5 max-w-xl text-base leading-7 text-slate-300">
-          The page may have moved into the new April&apos;s Site architecture, or the private module may not be exposed publicly.
+          The page may have moved into the Stratum Studio architecture, or the private module may not be exposed publicly.
         </p>
         <div className="mt-8 flex justify-center">
           <Link

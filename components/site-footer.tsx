@@ -4,7 +4,9 @@ export function SiteFooter() {
       <div className="mx-auto grid max-w-7xl gap-6 px-4 py-10 text-sm text-slate-300 sm:px-6 lg:grid-cols-3 lg:px-8">
         <div>
           <p className="font-sans text-xl font-bold normal-case leading-snug text-white">Stratum Studio</p>
-          <p className="mt-2">Private automation systems, client portals, and B2B storefronts built by April.</p>
+          <p className="mt-2">
+            Private automation systems, client portals, and B2B storefronts engineered for operational authority.
+          </p>
         </div>
         <div>
           <p className="font-medium text-white">Contact</p>
@@ -17,9 +19,7 @@ export function SiteFooter() {
         </div>
       </div>
       <div className="border-t border-white/[0.06] px-4 py-5 text-center sm:px-6 lg:px-8">
-        <p className="text-xs font-medium text-violet-100/40">
-          Engineered by April Rhea — Built with Stratum Studio
-        </p>
+        <p className="text-xs font-medium text-violet-100/40">Engineered for authority - Built with Stratum Studio</p>
       </div>
     </footer>
   );
