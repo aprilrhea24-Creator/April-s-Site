@@ -1,6 +1,6 @@
 "use client";
 
-import { CreditCard } from "lucide-react";
+import { ChevronDown, CreditCard } from "lucide-react";
 import { useState } from "react";
 
 import { buildTiers, type BuildTierKey } from "@/lib/build-tiers";
@@ -38,24 +38,27 @@ export function BudgetCheckout() {
     <div className="space-y-3">
       <label className="block space-y-2">
         <span className="text-sm text-slate-300">Estimated budget</span>
-        <select
-          name="budget"
-          value={selectedTier.label}
-          onChange={(event) => {
-            const nextTier = Object.entries(buildTiers).find(([, option]) => option.label === event.target.value)?.[0];
-            if (nextTier) {
-              setTier(nextTier as BuildTierKey);
-              setError(null);
-            }
-          }}
-          className="w-full rounded-2xl border border-white/10 bg-black/25 px-4 py-3 text-white outline-none focus:border-cyan-200"
-        >
-          {Object.entries(buildTiers).map(([key, option]) => (
-            <option key={key} value={option.label}>
-              {option.label}
-            </option>
-          ))}
-        </select>
+        <span className="relative block">
+          <select
+            name="budget"
+            value={selectedTier.label}
+            onChange={(event) => {
+              const nextTier = Object.entries(buildTiers).find(([, option]) => option.label === event.target.value)?.[0];
+              if (nextTier) {
+                setTier(nextTier as BuildTierKey);
+                setError(null);
+              }
+            }}
+            className="glass-field glass-select"
+          >
+            {Object.entries(buildTiers).map(([key, option]) => (
+              <option key={key} value={option.label}>
+                {option.label}
+              </option>
+            ))}
+          </select>
+          <ChevronDown className="pointer-events-none absolute right-4 top-1/2 h-4 w-4 -translate-y-1/2 text-cyan-100/70" />
+        </span>
       </label>
 
       <div className="rounded-2xl border border-cyan-200/20 bg-cyan-200/[0.08] p-4">

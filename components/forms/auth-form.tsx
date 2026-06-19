@@ -37,29 +37,29 @@ export function AuthForm({ mode }: { mode: "login" | "register" }) {
   return (
     <form onSubmit={handleSubmit} className="glass-panel space-y-4 rounded-[2rem] p-8">
       {mode === "register" ? (
-        <input name="name" placeholder="Full name" className="w-full rounded-2xl border border-white/10 bg-black/25 px-4 py-3 text-white outline-none" required />
+        <input name="name" placeholder="Full name" className="glass-field" required />
       ) : null}
       <input
         name="email"
         type="email"
         placeholder="Email address"
-        className="w-full rounded-2xl border border-white/10 bg-black/25 px-4 py-3 text-white outline-none"
+        className="glass-field"
         required
       />
       <input
         name="password"
         type="password"
         placeholder="Password"
-        className="w-full rounded-2xl border border-white/10 bg-black/25 px-4 py-3 text-white outline-none"
+        className="glass-field"
         required
       />
       {mode === "register" ? (
         <>
-          <input name="phone" placeholder="Phone number" className="w-full rounded-2xl border border-white/10 bg-black/25 px-4 py-3 text-white outline-none" required />
+          <input name="phone" placeholder="Phone number" className="glass-field" required />
           <textarea
             name="address"
             placeholder="Company or project context"
-            className="min-h-24 w-full rounded-2xl border border-white/10 bg-black/25 px-4 py-3 text-white outline-none"
+            className="glass-field min-h-24"
             required
           />
         </>

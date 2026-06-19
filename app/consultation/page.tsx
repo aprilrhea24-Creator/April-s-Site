@@ -1,4 +1,4 @@
-import { SendHorizonal } from "lucide-react";
+import { ChevronDown, SendHorizonal } from "lucide-react";
 
 import { submitBuildRequest } from "@/app/consultation/actions";
 import { BudgetCheckout } from "@/components/forms/budget-checkout";
@@ -49,27 +49,30 @@ export default async function ConsultationPage({
       <form className="mt-8 grid gap-6 glass-panel rounded-[2rem] p-6 lg:grid-cols-2" action={submitBuildRequest}>
         <label className="space-y-2">
           <span className="text-sm text-slate-300">Name</span>
-          <input name="name" required className="w-full rounded-2xl border border-white/10 bg-black/25 px-4 py-3 text-white outline-none focus:border-cyan-200" />
+          <input name="name" required className="glass-field" />
         </label>
         <label className="space-y-2">
           <span className="text-sm text-slate-300">Business email</span>
-          <input name="email" type="email" required className="w-full rounded-2xl border border-white/10 bg-black/25 px-4 py-3 text-white outline-none focus:border-cyan-200" />
+          <input name="email" type="email" required className="glass-field" />
         </label>
         <label className="space-y-2">
           <span className="text-sm text-slate-300">Industry</span>
-          <select name="industry" className="w-full rounded-2xl border border-white/10 bg-black/25 px-4 py-3 text-white outline-none focus:border-cyan-200">
-            {industries.map((industry) => (
-              <option key={industry}>{industry}</option>
-            ))}
-          </select>
+          <span className="relative block">
+            <select name="industry" className="glass-field glass-select">
+              {industries.map((industry) => (
+                <option key={industry}>{industry}</option>
+              ))}
+            </select>
+            <ChevronDown className="pointer-events-none absolute right-4 top-1/2 h-4 w-4 -translate-y-1/2 text-cyan-100/70" />
+          </span>
         </label>
         <BudgetCheckout />
         <fieldset className="lg:col-span-2">
           <legend className="text-sm text-slate-300">Desired features</legend>
           <div className="mt-3 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
             {features.map((feature) => (
-              <label key={feature} className="flex items-center gap-3 rounded-2xl border border-white/10 bg-white/[0.06] p-4 text-sm text-slate-200">
-                <input type="checkbox" name="features" value={feature} className="h-4 w-4 accent-cyan-300" />
+              <label key={feature} className="feature-option flex cursor-pointer items-center gap-3 rounded-2xl p-4 text-sm text-slate-200">
+                <input type="checkbox" name="features" value={feature} className="glass-checkbox" />
                 {feature}
               </label>
             ))}
@@ -77,7 +80,7 @@ export default async function ConsultationPage({
         </fieldset>
         <label className="space-y-2 lg:col-span-2">
           <span className="text-sm text-slate-300">Workflow notes</span>
-          <textarea name="notes" rows={6} className="w-full rounded-2xl border border-white/10 bg-black/25 px-4 py-3 text-white outline-none focus:border-cyan-200" />
+          <textarea name="notes" rows={6} className="glass-field" />
         </label>
         <button className="inline-flex items-center justify-center gap-2 rounded-full bg-[linear-gradient(90deg,#67e8f9,#a78bfa,#f0abfc)] px-6 py-3 font-semibold text-slate-950 shadow-glow hover:brightness-110 lg:col-span-2">
           Submit Specification <SendHorizonal className="h-4 w-4" />

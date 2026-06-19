@@ -56,16 +56,99 @@ body {
   color: transparent;
 }
 
+.glass-field {
+  width: 100%;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 1rem;
+  background: rgba(2, 6, 23, 0.34);
+  padding: 0.75rem 1rem;
+  color: white;
+  outline: none;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.04);
+  transition:
+    border-color 180ms ease,
+    background-color 180ms ease,
+    box-shadow 180ms ease;
+}
+
+.glass-field::placeholder {
+  color: rgba(148, 163, 184, 0.78);
+}
+
+.glass-field:hover {
+  border-color: rgba(165, 243, 252, 0.28);
+  background: rgba(15, 23, 42, 0.48);
+}
+
+.glass-field:focus {
+  border-color: rgba(103, 232, 249, 0.72);
+  background: rgba(8, 15, 32, 0.72);
+  box-shadow:
+    0 0 0 3px rgba(34, 211, 238, 0.12),
+    0 14px 40px rgba(2, 8, 23, 0.22);
+}
+
+.glass-select {
+  appearance: none;
+  padding-right: 2.75rem;
+}
+
+.glass-select option {
+  background: #0b1020;
+  color: #eef7ff;
+}
+
+.feature-option {
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.055);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.035);
+  transition:
+    border-color 180ms ease,
+    background-color 180ms ease,
+    box-shadow 180ms ease,
+    transform 180ms ease;
+}
+
+.feature-option:hover {
+  border-color: rgba(165, 243, 252, 0.28);
+  background: rgba(255, 255, 255, 0.085);
+  transform: translateY(-1px);
+}
+
+.feature-option:has(input:checked) {
+  border-color: rgba(103, 232, 249, 0.62);
+  background: linear-gradient(135deg, rgba(34, 211, 238, 0.16), rgba(168, 85, 247, 0.12));
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.08),
+    0 12px 36px rgba(34, 211, 238, 0.12);
+}
+
+.glass-checkbox {
+  width: 1.1rem;
+  height: 1.1rem;
+  flex: 0 0 auto;
+  accent-color: #67e8f9;
+  filter: drop-shadow(0 0 8px rgba(103, 232, 249, 0.24));
+}
+
 a,
 button,
 input,
-select {
+select,
+textarea {
   transition:
     background-color 180ms ease,
     border-color 180ms ease,
     color 180ms ease,
     transform 180ms ease,
     opacity 180ms ease;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .glass-field,
+  .feature-option {
+    transition: none;
+  }
 }
 
 button {
