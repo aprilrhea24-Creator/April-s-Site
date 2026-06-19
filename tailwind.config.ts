@@ -19,6 +19,7 @@ const config: Config = {
         mist: "#aab7d4"
       },
       fontFamily: {
+        sans: ["var(--font-space-grotesk)", "Space Grotesk", "ui-sans-serif", "system-ui", "sans-serif"],
         display: ["var(--font-syne)", "Syne", "sans-serif"],
         mono: ["var(--font-space-grotesk)", "Space Grotesk", "monospace"],
         body: ["var(--font-space-grotesk)", "Space Grotesk", "ui-sans-serif", "system-ui", "sans-serif"]

@@ -25,8 +25,8 @@ const process = ["Share your blueprint", "Preview the experience", "Approve your
 
 export default function HomePage() {
   return (
-    <div className="relative overflow-hidden">
-      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_18%_12%,rgba(34,211,238,0.2),transparent_18%),radial-gradient(circle_at_82%_8%,rgba(236,72,153,0.18),transparent_16%)]" />
+    <div className="relative overflow-hidden bg-[linear-gradient(180deg,#000000_0%,#070a10_56%,#000000_100%)]">
+      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_18%_12%,rgba(34,211,238,0.1),transparent_20%),radial-gradient(circle_at_82%_8%,rgba(139,92,246,0.1),transparent_18%)]" />
       <section className="relative mx-auto grid min-h-[calc(100vh-5rem)] max-w-7xl items-center gap-10 px-4 py-16 sm:px-6 lg:grid-cols-[1.08fr_0.92fr] lg:px-8">
         <div className="space-y-8">
           <div className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/10 px-4 py-2 text-xs uppercase tracking-[0.28em] text-cyan-100 backdrop-blur-md">
@@ -34,7 +34,7 @@ export default function HomePage() {
             April&apos;s private app studio
           </div>
           <div className="space-y-5">
-            <h1 className="font-display text-[3.5rem] font-extrabold leading-[1.1] tracking-tight">
+            <h1 className="font-sans text-[2.5rem] font-bold normal-case leading-snug text-white sm:text-[3.5rem]">
               <span className="block text-white">Engineered Workflows.</span>
               <span className="block bg-gradient-to-r from-[#00F2FE] via-[#4FACFE] to-[#8B5CF6] bg-clip-text text-transparent">
                 Hyper-Personalized Brands.
@@ -101,7 +101,7 @@ export default function HomePage() {
       <section className="relative mx-auto max-w-7xl px-4 pb-20 sm:px-6 lg:px-8">
         <div className="mb-10 max-w-3xl">
           <p className="text-sm uppercase tracking-[0.25em] text-cyan-200">A clear path forward</p>
-          <h2 className="mt-4 text-4xl font-semibold text-white">From Blueprint to Big Launch.</h2>
+          <h2 className="mt-4 font-sans text-4xl font-bold normal-case leading-snug text-white">From Blueprint to Big Launch.</h2>
           <p className="mt-4 text-base leading-8 text-slate-300">
             We turn your idea into a polished customer experience that is easy to use, easy to manage, and ready to grow.
           </p>
@@ -110,7 +110,7 @@ export default function HomePage() {
           {outcomes.map((item) => (
             <article key={item.title} className="glass-panel rounded-2xl p-6">
               <item.icon className="h-7 w-7 text-cyan-200" />
-              <h3 className="mt-5 text-xl font-semibold text-white">{item.title}</h3>
+              <h3 className="mt-5 font-sans text-xl font-bold normal-case leading-snug text-white">{item.title}</h3>
               <p className="mt-3 text-sm leading-7 text-slate-300">{item.text}</p>
             </article>
           ))}
@@ -122,7 +122,7 @@ export default function HomePage() {
           <div className="grid gap-10 p-6 md:grid-cols-[0.9fr_1.1fr] md:p-10 lg:p-12">
             <div>
               <p className="text-sm uppercase tracking-[0.25em] text-fuchsia-200">Our philosophy</p>
-              <h2 className="mt-4 max-w-xl text-4xl font-semibold leading-tight text-white">
+              <h2 className="mt-4 max-w-xl font-sans text-4xl font-bold normal-case leading-snug text-white">
                 High-Performance Infrastructure. Tailored to Your Vision.
               </h2>
             </div>
@@ -147,7 +147,7 @@ export default function HomePage() {
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="mb-10 max-w-3xl">
             <p className="text-sm uppercase tracking-[0.25em] text-cyan-200">Signature packages</p>
-            <h2 className="mt-4 text-4xl font-extrabold leading-tight tracking-tight text-white">
+            <h2 className="mt-4 font-sans text-4xl font-bold normal-case leading-snug text-white">
               Choose a strong starting point, then make it unmistakably yours.
             </h2>
             <p className="mt-4 text-base leading-8 text-slate-300">
@@ -162,7 +162,9 @@ export default function HomePage() {
         <div className="glass-panel grid gap-8 rounded-[2rem] p-6 md:grid-cols-[0.8fr_1.2fr] lg:p-8">
           <div>
             <p className="text-sm uppercase tracking-[0.25em] text-cyan-200">Built to monetize</p>
-            <h2 className="mt-4 text-3xl font-semibold text-white">A clear path from first inquiry to ongoing support.</h2>
+            <h2 className="mt-4 font-sans text-3xl font-bold normal-case leading-snug text-white">
+              A clear path from first inquiry to ongoing support.
+            </h2>
           </div>
           <div className="grid gap-4 sm:grid-cols-2">
             {[

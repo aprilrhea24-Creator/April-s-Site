@@ -49,7 +49,7 @@ export function PackageGrid() {
                 }`}
               >
                 <p className="font-mono text-xs uppercase tracking-[0.2em] text-white/60">{item.industry}</p>
-                <h3 className="mt-3 font-display text-2xl font-extrabold leading-tight tracking-tight text-white">
+                <h3 className="mt-3 font-sans text-2xl font-bold normal-case leading-snug text-white">
                   {item.title}
                 </h3>
                 <p className="mt-3 text-sm leading-7 text-white/80">{item.summary}</p>

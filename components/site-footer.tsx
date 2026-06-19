@@ -3,7 +3,7 @@ export function SiteFooter() {
     <footer className="border-t border-white/10 bg-black/20 backdrop-blur-xl">
       <div className="mx-auto grid max-w-7xl gap-6 px-4 py-10 text-sm text-slate-300 sm:px-6 lg:grid-cols-3 lg:px-8">
         <div>
-          <p className="font-display text-xl font-semibold text-white">Stratum Studio</p>
+          <p className="font-sans text-xl font-bold normal-case leading-snug text-white">Stratum Studio</p>
           <p className="mt-2">Private automation systems, client portals, and B2B storefronts built by April.</p>
         </div>
         <div>

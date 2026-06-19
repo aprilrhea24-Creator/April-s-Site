@@ -27,7 +27,7 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="en" className={`${syne.variable} ${spaceGrotesk.variable}`}>
-      <body className="min-h-screen bg-aura-mesh font-body text-pearl">
+      <body className="min-h-screen bg-black font-body text-pearl">
         <SiteHeader />
         <main>{children}</main>
         <SiteFooter />
