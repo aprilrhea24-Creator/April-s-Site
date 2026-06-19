@@ -1,6 +1,8 @@
 import Link from "next/link";
 import { ArrowRight, BarChart3, Bot, ShieldCheck, Sparkles, Workflow } from "lucide-react";
 
+import { PackageGrid } from "@/components/package-grid";
+
 const outcomes = [
   { icon: Workflow, title: "Operational apps", text: "Replace spreadsheets and scattered tools with one branded workflow hub." },
   { icon: Bot, title: "Automation layers", text: "Route requests, notify teams, calculate pricing, and reduce repetitive admin." },
@@ -77,6 +79,17 @@ export default function HomePage() {
             <p className="mt-3 text-sm leading-7 text-slate-300">{item.text}</p>
           </article>
         ))}
+      </section>
+
+      <section className="relative mx-auto max-w-7xl px-4 pb-24 sm:px-6 lg:px-8">
+        <div className="mb-10 max-w-3xl">
+          <p className="text-sm uppercase tracking-[0.25em] text-cyan-200">Signature packages</p>
+          <h2 className="mt-4 text-4xl font-semibold text-white">Proven system foundations, tailored to the way you operate.</h2>
+          <p className="mt-4 text-base leading-8 text-slate-300">
+            Explore transparent package scopes before configuring the final workflow around your business.
+          </p>
+        </div>
+        <PackageGrid />
       </section>
 
       <section className="relative mx-auto max-w-7xl px-4 pb-24 sm:px-6 lg:px-8">
