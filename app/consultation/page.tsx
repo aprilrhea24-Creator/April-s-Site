@@ -1,6 +1,7 @@
 import { SendHorizonal } from "lucide-react";
 
 import { submitBuildRequest } from "@/app/consultation/actions";
+import { BudgetCheckout } from "@/components/forms/budget-checkout";
 
 const industries = ["Hospitality", "Professional services", "Healthcare operations", "Field service", "B2B SaaS", "Custom"];
 const features = ["User profiles", "Custom business logic", "Dashboard analytics", "Payments and deposits", "Automated notifications", "Admin console"];
@@ -8,9 +9,9 @@ const features = ["User profiles", "Custom business logic", "Dashboard analytics
 export default async function ConsultationPage({
   searchParams
 }: {
-  searchParams: Promise<{ status?: string }>;
+  searchParams: Promise<{ status?: string; checkout?: string }>;
 }) {
-  const { status } = await searchParams;
+  const { status, checkout } = await searchParams;
 
   return (
     <section className="mx-auto max-w-6xl px-4 py-20 sm:px-6 lg:px-8">
@@ -34,6 +35,16 @@ export default async function ConsultationPage({
             : "The request could not be saved. Please try again shortly."}
         </div>
       ) : null}
+      {checkout === "success" ? (
+        <div className="mt-8 rounded-2xl border border-cyan-200/30 bg-cyan-300/10 px-5 py-4 text-sm text-cyan-100 backdrop-blur-md">
+          Your build-tier reservation payment was completed successfully.
+        </div>
+      ) : null}
+      {checkout === "cancelled" ? (
+        <div className="mt-8 rounded-2xl border border-white/15 bg-white/[0.06] px-5 py-4 text-sm text-slate-300 backdrop-blur-md">
+          Checkout was canceled. Your specification form is still available below.
+        </div>
+      ) : null}
 
       <form className="mt-8 grid gap-6 glass-panel rounded-[2rem] p-6 lg:grid-cols-2" action={submitBuildRequest}>
         <label className="space-y-2">
@@ -52,14 +63,7 @@ export default async function ConsultationPage({
             ))}
           </select>
         </label>
-        <label className="space-y-2">
-          <span className="text-sm text-slate-300">Estimated budget</span>
-          <select name="budget" className="w-full rounded-2xl border border-white/10 bg-black/25 px-4 py-3 text-white outline-none focus:border-cyan-200">
-            <option>$3K-$7.5K foundation</option>
-            <option>$7.5K-$15K advanced system</option>
-            <option>$15K+ private SaaS build</option>
-          </select>
-        </label>
+        <BudgetCheckout />
         <fieldset className="lg:col-span-2">
           <legend className="text-sm text-slate-300">Desired features</legend>
           <div className="mt-3 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
