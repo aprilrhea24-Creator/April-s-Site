@@ -1,9 +1,17 @@
 import { SendHorizonal } from "lucide-react";
 
+import { submitBuildRequest } from "@/app/consultation/actions";
+
 const industries = ["Hospitality", "Professional services", "Healthcare operations", "Field service", "B2B SaaS", "Custom"];
 const features = ["User profiles", "Custom business logic", "Dashboard analytics", "Payments and deposits", "Automated notifications", "Admin console"];
 
-export default function ConsultationPage() {
+export default async function ConsultationPage({
+  searchParams
+}: {
+  searchParams: Promise<{ status?: string }>;
+}) {
+  const { status } = await searchParams;
+
   return (
     <section className="mx-auto max-w-6xl px-4 py-20 sm:px-6 lg:px-8">
       <div className="max-w-3xl">
@@ -14,7 +22,20 @@ export default function ConsultationPage() {
         </p>
       </div>
 
-      <form className="mt-12 grid gap-6 glass-panel rounded-[2rem] p-6 lg:grid-cols-2" action="/api/build-requests" method="POST">
+      {status === "success" ? (
+        <div className="mt-8 rounded-2xl border border-emerald-200/30 bg-emerald-300/10 px-5 py-4 text-sm text-emerald-100 backdrop-blur-md">
+          Your specification was saved. April will review the request and follow up through your business email.
+        </div>
+      ) : null}
+      {status === "invalid" || status === "error" ? (
+        <div className="mt-8 rounded-2xl border border-rose-200/30 bg-rose-300/10 px-5 py-4 text-sm text-rose-100 backdrop-blur-md">
+          {status === "invalid"
+            ? "Please check the required fields and submit the request again."
+            : "The request could not be saved. Please try again shortly."}
+        </div>
+      ) : null}
+
+      <form className="mt-8 grid gap-6 glass-panel rounded-[2rem] p-6 lg:grid-cols-2" action={submitBuildRequest}>
         <label className="space-y-2">
           <span className="text-sm text-slate-300">Name</span>
           <input name="name" required className="w-full rounded-2xl border border-white/10 bg-black/25 px-4 py-3 text-white outline-none focus:border-cyan-200" />

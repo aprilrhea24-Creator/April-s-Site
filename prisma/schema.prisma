@@ -146,3 +146,19 @@ model Availability {
 
   @@unique([date, startHour, endHour])
 }
+
+model BuildRequest {
+  id          String   @id @default(cuid())
+  name        String
+  email       String
+  industry    String
+  budget      String
+  features    String[]
+  notes       String?
+  status      String   @default("NEW")
+  submittedAt DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  @@index([email])
+  @@index([status, submittedAt])
+}
