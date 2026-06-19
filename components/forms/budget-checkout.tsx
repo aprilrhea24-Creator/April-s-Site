@@ -1,15 +1,47 @@
 "use client";
 
-import { ChevronDown, CreditCard } from "lucide-react";
-import { useState } from "react";
+import { Check, ChevronDown, CreditCard } from "lucide-react";
+import { useEffect, useId, useRef, useState } from "react";
 
 import { buildTiers, type BuildTierKey } from "@/lib/build-tiers";
 
 export function BudgetCheckout({ initialTier = "foundation" }: { initialTier?: BuildTierKey }) {
   const [tier, setTier] = useState<BuildTierKey>(initialTier);
+  const [open, setOpen] = useState(false);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const dropdownRef = useRef<HTMLDivElement>(null);
+  const labelId = useId();
+  const listboxId = useId();
   const selectedTier = buildTiers[tier];
+
+  useEffect(() => {
+    function closeOnOutsideClick(event: MouseEvent) {
+      if (!dropdownRef.current?.contains(event.target as Node)) {
+        setOpen(false);
+      }
+    }
+
+    function closeOnEscape(event: KeyboardEvent) {
+      if (event.key === "Escape") {
+        setOpen(false);
+      }
+    }
+
+    document.addEventListener("mousedown", closeOnOutsideClick);
+    document.addEventListener("keydown", closeOnEscape);
+
+    return () => {
+      document.removeEventListener("mousedown", closeOnOutsideClick);
+      document.removeEventListener("keydown", closeOnEscape);
+    };
+  }, []);
+
+  function selectTier(nextTier: BuildTierKey) {
+    setTier(nextTier);
+    setError(null);
+    setOpen(false);
+  }
 
   async function startCheckout() {
     setLoading(true);
@@ -36,30 +68,64 @@ export function BudgetCheckout({ initialTier = "foundation" }: { initialTier?: B
 
   return (
     <div className="space-y-3">
-      <label className="block space-y-2">
-        <span className="text-sm text-slate-300">Estimated budget</span>
-        <span className="relative block">
-          <select
-            name="budget"
-            value={selectedTier.label}
-            onChange={(event) => {
-              const nextTier = Object.entries(buildTiers).find(([, option]) => option.label === event.target.value)?.[0];
-              if (nextTier) {
-                setTier(nextTier as BuildTierKey);
-                setError(null);
+      <div className="space-y-2">
+        <span id={labelId} className="block text-sm text-slate-300">
+          Estimated budget
+        </span>
+        <input type="hidden" name="budget" value={selectedTier.label} />
+        <div ref={dropdownRef} className="relative">
+          <button
+            type="button"
+            aria-labelledby={labelId}
+            aria-haspopup="listbox"
+            aria-expanded={open}
+            aria-controls={listboxId}
+            onClick={() => setOpen((current) => !current)}
+            onKeyDown={(event) => {
+              if (event.key === "ArrowDown" || event.key === "Enter" || event.key === " ") {
+                event.preventDefault();
+                setOpen(true);
               }
             }}
-            className="glass-field glass-select"
+            className="glass-field flex items-center justify-between gap-4 text-left"
           >
-            {Object.entries(buildTiers).map(([key, option]) => (
-              <option key={key} value={option.label}>
-                {option.label}
-              </option>
-            ))}
-          </select>
-          <ChevronDown className="pointer-events-none absolute right-4 top-1/2 h-4 w-4 -translate-y-1/2 text-cyan-100/70" />
-        </span>
-      </label>
+            <span>{selectedTier.label}</span>
+            <ChevronDown
+              className={`h-4 w-4 shrink-0 text-cyan-100/70 transition-transform ${open ? "rotate-180" : ""}`}
+            />
+          </button>
+
+          {open ? (
+            <div
+              id={listboxId}
+              role="listbox"
+              aria-label="Estimated budget"
+              className="budget-popover absolute z-20 mt-2 w-full overflow-hidden rounded-2xl p-1.5"
+            >
+              {Object.entries(buildTiers).map(([key, option]) => {
+                const optionKey = key as BuildTierKey;
+                const selected = optionKey === tier;
+
+                return (
+                  <button
+                    key={key}
+                    type="button"
+                    role="option"
+                    aria-selected={selected}
+                    onClick={() => selectTier(optionKey)}
+                    className={`budget-option flex w-full items-center justify-between gap-4 rounded-xl px-3.5 py-3 text-left text-sm ${
+                      selected ? "budget-option-selected" : ""
+                    }`}
+                  >
+                    <span>{option.label}</span>
+                    {selected ? <Check className="h-4 w-4 shrink-0 text-violet-200" /> : null}
+                  </button>
+                );
+              })}
+            </div>
+          ) : null}
+        </div>
+      </div>
 
       <div className="rounded-2xl border border-cyan-200/20 bg-cyan-200/[0.08] p-4">
         <div className="flex items-center justify-between gap-4">
