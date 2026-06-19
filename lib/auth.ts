@@ -4,7 +4,7 @@ import { cookies } from "next/headers";
 
 import { getPrisma } from "@/lib/prisma";
 
-const SESSION_COOKIE = "aura-session";
+const SESSION_COOKIE = "stratum-session";
 
 type SessionPayload = {
   userId: string;

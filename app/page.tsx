@@ -38,7 +38,7 @@ export default function HomePage() {
               Custom business apps that remove friction and protect margins.
             </h1>
             <p className="max-w-2xl text-lg leading-8 text-slate-300">
-              Aura App Studio builds premium portals, dashboards, booking systems, and internal automation for businesses that
+              Stratum Studio builds premium portals, dashboards, booking systems, and internal automation for businesses that
               need their operations to feel as polished as their brand.
             </p>
           </div>

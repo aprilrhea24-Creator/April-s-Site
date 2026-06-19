@@ -18,11 +18,11 @@ export async function generateMetadata({
   const item = getPackage(slug);
 
   if (!item) {
-    return { title: "Package Not Found | Aura App Studio" };
+    return { title: "Package Not Found | Stratum Studio" };
   }
 
   return {
-    title: `${item.title} | Aura App Studio`,
+    title: `${item.title} | Stratum Studio`,
     description: item.summary
   };
 }

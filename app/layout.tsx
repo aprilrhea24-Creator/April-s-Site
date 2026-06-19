@@ -19,7 +19,7 @@ const plusJakartaSans = Plus_Jakarta_Sans({
 });
 
 export const metadata: Metadata = {
-  title: "Aura App Studio | April's Site",
+  title: "Stratum Studio",
   description:
     "A private high-end developer portfolio and B2B SaaS storefront for custom automated operational apps."
 };

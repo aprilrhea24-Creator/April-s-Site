@@ -1,4 +1,4 @@
-# Aura App Studio
+# Stratum Studio
 
 Private developer portfolio and B2B SaaS storefront for April's custom operational app work.
 

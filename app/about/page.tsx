@@ -7,7 +7,7 @@ export default function AboutPage() {
         <p className="text-sm uppercase tracking-[0.28em] text-cyan-200">About April&apos;s Site</p>
         <h1 className="mt-4 font-display text-5xl font-semibold text-white">A private studio for calm, capable business software.</h1>
         <p className="mt-6 text-lg leading-8 text-slate-300">
-          Aura App Studio is the professional portfolio and storefront for April&apos;s custom application work. The studio
+          Stratum Studio is the professional portfolio and storefront for April&apos;s custom application work. The studio
           focuses on elegant operational systems: client portals, intake flows, booking logic, dashboards, automation, and
           internal tools that help small teams work with the polish of much larger companies.
         </p>

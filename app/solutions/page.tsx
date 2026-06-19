@@ -16,6 +16,7 @@ const archetypes = [
     id: "bespoke-hospitality",
     eyebrow: "The Luxury Archetype",
     title: "Bespoke Hospitality",
+    href: "/solutions/hospitality",
     focus: "Premium catering, visual menus, and elite client booking forms.",
     icon: Crown,
     glow:
@@ -29,6 +30,7 @@ const archetypes = [
     id: "kinetix-systems",
     eyebrow: "The Performance Archetype",
     title: "Kinetix Systems",
+    href: "/solutions/performance",
     focus: "High-energy fitness tracking, scheduling pipelines, and subscription management.",
     icon: Dumbbell,
     glow:
@@ -42,6 +44,7 @@ const archetypes = [
     id: "matrix-operations",
     eyebrow: "The Enterprise Archetype",
     title: "Matrix Operations",
+    href: "/solutions/enterprise",
     focus: "Clean data dashboards, automated operations hubs, and file management layers.",
     icon: Workflow,
     glow:
@@ -108,16 +111,15 @@ export default function SolutionsPage() {
                 </div>
               </div>
 
-              <details className="group mt-auto pt-6">
-                <summary className="inline-flex cursor-pointer list-none items-center gap-2 rounded-full border border-white/15 bg-white/[0.08] px-5 py-3 text-sm font-semibold text-white hover:border-white/30 hover:bg-white/[0.13]">
+              <div className="mt-auto pt-6">
+                <Link
+                  href={archetype.href}
+                  className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/[0.08] px-5 py-3 text-sm font-semibold text-white hover:border-white/30 hover:bg-white/[0.13]"
+                >
                   Preview Live Style
-                  <ArrowUpRight className="h-4 w-4 transition-transform group-open:rotate-45" />
-                </summary>
-                <div className="mt-4 rounded-2xl border border-white/10 bg-black/25 p-4 text-sm leading-7 text-slate-300 backdrop-blur-xl">
-                  This direction adapts typography, media emphasis, interface density, and conversion flow while preserving the
-                  secure Stratum Studio application foundation.
-                </div>
-              </details>
+                  <ArrowUpRight className="h-4 w-4" />
+                </Link>
+              </div>
             </article>
           ))}
         </div>

@@ -53,6 +53,10 @@ h3 {
   letter-spacing: 0;
 }
 
+.hospitality-serif {
+  font-family: Georgia, "Times New Roman", serif !important;
+}
+
 p,
 label,
 button,

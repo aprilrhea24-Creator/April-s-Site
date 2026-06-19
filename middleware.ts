@@ -27,7 +27,7 @@ export async function middleware(request: NextRequest) {
     return NextResponse.next();
   }
 
-  const token = request.cookies.get("aura-session")?.value;
+  const token = request.cookies.get("stratum-session")?.value;
 
   if (!token) {
     return NextResponse.redirect(new URL("/login", request.url));

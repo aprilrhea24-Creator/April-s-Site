@@ -34,7 +34,7 @@ const completionPolicies = [
   {
     step: "02",
     title: "Domain configuration policy",
-    text: "Clients are responsible for securing their own domain name registration to guarantee complete brand ownership. Aura App Studio provides full DNS configuration and deployment connection assistance into Vercel at no extra cost during the launch window."
+    text: "Clients are responsible for securing their own domain name registration to guarantee complete brand ownership. Stratum Studio provides full DNS configuration and deployment connection assistance into Vercel at no extra cost during the launch window."
   },
   {
     step: "03",
