@@ -16,6 +16,11 @@ export function SiteFooter() {
           <p className="mt-2">Operational apps for service businesses, teams, and founders who need cleaner systems.</p>
         </div>
       </div>
+      <div className="border-t border-white/[0.06] px-4 py-5 text-center sm:px-6 lg:px-8">
+        <p className="text-xs font-medium text-violet-100/40">
+          Engineered by April Rhea — Built with Stratum Studio
+        </p>
+      </div>
     </footer>
   );
 }

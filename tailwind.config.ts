@@ -19,8 +19,8 @@ const config: Config = {
         mist: "#aab7d4"
       },
       fontFamily: {
-        display: ["Inter", "Poppins", "ui-sans-serif", "system-ui", "sans-serif"],
-        body: ["Inter", "ui-sans-serif", "system-ui", "sans-serif"]
+        display: ["var(--font-plus-jakarta)", "ui-sans-serif", "system-ui", "sans-serif"],
+        body: ["var(--font-inter)", "ui-sans-serif", "system-ui", "sans-serif"]
       },
       boxShadow: {
         soft: "0 24px 80px rgba(2, 8, 23, 0.36)",

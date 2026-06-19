@@ -38,8 +38,38 @@ body {
   margin: 0;
   background: transparent;
   color: var(--text);
-  font-family: Inter, Poppins, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-family: var(--font-inter), ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-weight: 400;
+  letter-spacing: 0;
   -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+h1,
+h2,
+h3 {
+  font-family: var(--font-plus-jakarta), ui-sans-serif, system-ui, sans-serif !important;
+  font-weight: 800 !important;
+  letter-spacing: 0;
+}
+
+p,
+label,
+button,
+input,
+select,
+textarea,
+option {
+  font-family: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  letter-spacing: 0;
+}
+
+label,
+button,
+input,
+select,
+textarea {
+  font-weight: 500;
 }
 
 .glass-panel {
