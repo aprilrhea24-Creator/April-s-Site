@@ -6,6 +6,7 @@ export type PackageDetail = {
   industry: string;
   summary: string;
   features: string[];
+  industryFit: string;
   accent: string;
   popular?: boolean;
   price: {
@@ -29,15 +30,22 @@ export const packages: PackageDetail[] = [
     slug: "premium-restaurant",
     consultationPackage: "hospitality",
     consultationTier: "foundation",
-    title: "Premium Restaurant Package",
+    title: "Stratum Booking Core",
     industry: "Hospitality",
     summary:
-      "A polished reservation, guest intelligence, and operations system for restaurants that want a premium digital front door.",
-    features: ["Reservation logic", "VIP profiles", "Shift dashboards", "Automated deposits"],
+      "A precision booking foundation that turns complex availability, client details, and protected payments into one polished operating flow.",
+    features: [
+      "Smart Allocation / Scheduling",
+      "Client Intelligence Records",
+      "Operational Analytics",
+      "Secure Escrow / Payment Gates"
+    ],
+    industryFit:
+      "Target Industries: Luxury Hospitality, Medical & Wellness Clinics, Premium Salons, Boutique Hotels, Elite Event Spaces.",
     accent: "from-cyan-300/30 to-violet-500/10",
     popular: true,
     price: {
-      startingAt: "$7,500",
+      startingAt: "$3,500",
       reservation: "$1,250",
       note: "Final scope is confirmed after discovery. Third-party platform and payment-processing fees are billed separately."
     },
@@ -100,13 +108,21 @@ export const packages: PackageDetail[] = [
     slug: "enterprise-booking",
     consultationPackage: "professional-services",
     consultationTier: "advanced",
-    title: "Enterprise Booking Matrix",
+    title: "Stratum Enterprise Matrix",
     industry: "Professional Services",
-    summary: "Capacity-aware intake, approvals, scheduling, and forecasting for multi-service teams.",
-    features: ["Capacity routing", "Custom intake rules", "Approval workflows", "Revenue forecasting"],
+    summary:
+      "A coordinated enterprise layer for routing demand, aligning teams, governing approvals, and forecasting operational growth.",
+    features: [
+      "Multi-Location Capacity Routing",
+      "Cross-Team Sync Calendars",
+      "Multi-Tier Approval Chains",
+      "Automated Revenue Forecasting"
+    ],
+    industryFit:
+      "Target Industries: Multi-Location Professional Firms, Logistics Systems, Enterprise Agency Workforces, Commercial Providers.",
     accent: "from-fuchsia-300/30 to-violet-500/10",
     price: {
-      startingAt: "$9,500",
+      startingAt: "$5,500",
       reservation: "$1,250",
       note: "Pricing scales with team roles, approval depth, integrations, and reporting requirements."
     },
@@ -125,13 +141,21 @@ export const packages: PackageDetail[] = [
     slug: "field-team-command",
     consultationPackage: "operations",
     consultationTier: "advanced",
-    title: "Field Team Command Center",
+    title: "Stratum Flow Automation",
     industry: "Operations",
-    summary: "A dispatch and client-update system for teams coordinating work beyond the office.",
-    features: ["Dispatch boards", "Asset status", "Client updates", "Exception alerts"],
+    summary:
+      "An automation command layer that keeps mobile operations, client records, active work, and protected files moving together.",
+    features: [
+      "Automated Work Queues",
+      "Custom CRM Sync Engine",
+      "Live Dispatch Dashboards",
+      "Secure Document Drop-Zones"
+    ],
+    industryFit:
+      "Target Industries: Premium Catering Operations, Field Engineering Teams, Private Fleets, White-Glove Delivery Logistics.",
     accent: "from-teal-300/30 to-emerald-500/10",
     price: {
-      startingAt: "$8,500",
+      startingAt: "$4,500",
       reservation: "$1,250",
       note: "Hardware, mapping, and third-party field-service integrations are scoped separately."
     },
@@ -150,13 +174,21 @@ export const packages: PackageDetail[] = [
     slug: "founder-saas",
     consultationPackage: "b2b-saas",
     consultationTier: "privateSaas",
-    title: "Founder SaaS Starter",
+    title: "Stratum Platform Suite",
     industry: "B2B SaaS",
-    summary: "A launch-ready product foundation for founders validating a focused subscription workflow.",
-    features: ["Auth flows", "Billing paths", "Admin console", "Usage dashboards"],
+    summary:
+      "A scalable digital product foundation for organizations launching private portals, subscription systems, and cloud-backed platforms.",
+    features: [
+      "Multi-Tenant Database Layers",
+      "Custom Analytics Graphs",
+      "Client Portal Interfaces",
+      "Scalable Cloud Server Deployment"
+    ],
+    industryFit:
+      "Target Industries: Tech Startups, Custom Client Portals, Subscription Membership Networks, B2B Management Softwares.",
     accent: "from-indigo-300/30 to-pink-500/10",
     price: {
-      startingAt: "$15,000",
+      startingAt: "$7,500",
       reservation: "$2,500",
       note: "Complex integrations, advanced compliance, and native mobile applications require expanded scope."
     },

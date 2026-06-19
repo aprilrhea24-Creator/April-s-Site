@@ -41,7 +41,8 @@ function PreviewController({
     <span className="preview-ring inline-flex rounded-full p-px" style={{ "--preview-ring": colors } as CSSProperties}>
       <Link
         href={href}
-        className="group inline-flex items-center justify-center gap-2 rounded-full border border-white/10 bg-black/80 px-5 py-3 text-sm font-bold text-white backdrop-blur-xl transition hover:bg-white/10"
+        className="group inline-flex items-center justify-center gap-2 rounded-full border border-white/10 px-5 py-3 text-sm font-bold text-white shadow-[0_0_18px_rgba(255,255,255,0.08)] transition hover:brightness-110 hover:shadow-[0_0_30px_rgba(255,255,255,0.2)]"
+        style={{ background: colors }}
       >
         Preview Live Style
         <ArrowUpRight className="h-4 w-4 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
@@ -56,20 +57,30 @@ export function SolutionShowcase() {
       <article className="relative isolate overflow-hidden rounded-lg border border-[#D4AF37]/30 bg-[#080b10] shadow-[0_36px_120px_rgba(0,0,0,0.68)]">
         <div className="pointer-events-none absolute -left-24 top-0 h-80 w-80 rounded-full bg-[#D4AF37]/15 blur-[90px]" />
         <div className="pointer-events-none absolute right-0 top-0 h-px w-2/3 bg-gradient-to-l from-[#D4AF37] via-[#D4AF37]/35 to-transparent" />
-        <div className="grid gap-10 p-6 lg:grid-cols-[0.72fr_1.28fr] lg:p-10">
-          <div className="relative z-10 flex flex-col">
+        <div className="grid gap-8 p-8 lg:grid-cols-[0.72fr_1.28fr]">
+          <div className="relative z-10 flex flex-col gap-8">
+            <div>
+              <span className="inline-flex border border-[#D4AF37]/25 bg-[#D4AF37]/5 px-3 py-2 font-mono text-[0.65rem] font-bold uppercase tracking-[0.2em] text-[#e5c75f]">
+                Next.js + Tailwind
+              </span>
+            </div>
             <div className="flex items-center gap-3 text-[#e5c75f]">
               <Building2 className="h-5 w-5" />
               <p className="font-mono text-xs font-bold uppercase tracking-[0.22em]">Stratum Capital</p>
             </div>
-            <h2 className="mt-7 font-sans text-4xl font-extrabold leading-tight tracking-tight text-white">
-              Uncompromising Strategy. Absolute Dedication.
-            </h2>
-            <p className="mt-5 text-base leading-8 text-slate-300">
-              A prestige operating environment for advisory firms, private capital teams, and executive groups managing
-              consequential relationships, approvals, and sensitive deal flow.
-            </p>
-            <div className="mt-8 grid grid-cols-3 gap-3 border-y border-[#D4AF37]/15 py-5">
+            <div>
+              <h2 className="font-sans text-4xl font-extrabold leading-tight tracking-tight text-white">
+                Uncompromising Strategy. Absolute Dedication.
+              </h2>
+              <p className="mt-5 text-base leading-8 text-slate-300">
+                Complete elite design handoff, interactive onboarding forms, and high-security client intake routing.
+              </p>
+            </div>
+            <div className="border-l border-[#D4AF37]/40 pl-4">
+              <p className="text-sm text-zinc-400">Investment</p>
+              <p className="mt-1 text-2xl font-extrabold text-white">From $3,500</p>
+            </div>
+            <div className="grid grid-cols-3 gap-3 border-y border-[#D4AF37]/15 py-5">
               {capitalStats.map((stat) => (
                 <div key={stat.label}>
                   <p className="font-sans text-xl font-extrabold leading-tight tracking-tight text-white">{stat.value}</p>
@@ -77,7 +88,7 @@ export function SolutionShowcase() {
                 </div>
               ))}
             </div>
-            <div className="mt-auto pt-8">
+            <div className="mt-auto">
               <PreviewController
                 href="/solutions/hospitality"
                 colors="linear-gradient(90deg,#7c5f13,#D4AF37,#f7e7a3,#D4AF37)"
@@ -142,21 +153,31 @@ export function SolutionShowcase() {
       <article className="relative isolate overflow-hidden rounded-lg border border-orange-500/30 bg-[#080706] shadow-[0_36px_120px_rgba(0,0,0,0.7)]">
         <div className="pointer-events-none absolute -right-20 top-16 h-96 w-96 rounded-full bg-orange-500/25 blur-[100px]" />
         <div className="pointer-events-none absolute -left-20 bottom-0 h-72 w-72 rounded-full bg-red-700/25 blur-[90px]" />
-        <div className="grid gap-8 p-6 lg:grid-cols-[0.85fr_1.15fr] lg:p-10">
-          <div className="relative z-10 flex flex-col">
+        <div className="grid gap-8 p-8 lg:grid-cols-[0.85fr_1.15fr]">
+          <div className="relative z-10 flex flex-col gap-8">
+            <div>
+              <span className="inline-flex border border-orange-400/25 bg-orange-500/5 px-3 py-2 font-mono text-[0.65rem] font-bold uppercase tracking-[0.2em] text-orange-300">
+                React + Node.js
+              </span>
+            </div>
             <div className="flex items-center gap-3 text-orange-400">
               <Dumbbell className="h-5 w-5" />
               <p className="font-mono text-xs font-bold uppercase tracking-[0.22em]">Stratum Kinetix</p>
             </div>
-            <h2 className="mt-7 font-sans text-5xl font-extrabold leading-[0.94] tracking-tight text-white sm:text-6xl">
-              <span className="block">TRAIN HARDER.</span>
-              <span className="block text-orange-500">MOVE FASTER.</span>
-            </h2>
-            <p className="mt-6 max-w-xl text-base leading-8 text-slate-300">
-              A high-velocity membership system for performance brands that need class discovery, athlete progress, and
-              recurring revenue to move with the same intensity as their culture.
-            </p>
-            <div className="mt-auto pt-8">
+            <div>
+              <h2 className="font-sans text-5xl font-extrabold leading-[0.94] tracking-tight text-white sm:text-6xl">
+                <span className="block">TRAIN HARDER.</span>
+                <span className="block text-orange-500">MOVE FASTER.</span>
+              </h2>
+              <p className="mt-6 max-w-xl text-base leading-8 text-slate-300">
+                Performance membership portal, live class scheduling, athlete progress analytics, and recurring subscription flows.
+              </p>
+            </div>
+            <div className="border-l border-orange-500/50 pl-4">
+              <p className="text-sm text-zinc-400">Investment</p>
+              <p className="mt-1 text-2xl font-extrabold text-white">From $4,800</p>
+            </div>
+            <div className="mt-auto">
               <PreviewController
                 href="/solutions/performance"
                 colors="linear-gradient(90deg,#7f1d1d,#ff3d00,#ff8a00,#dc2626)"
@@ -228,20 +249,30 @@ export function SolutionShowcase() {
         <div className="pointer-events-none absolute left-1/3 top-0 h-px w-1/2 bg-gradient-to-r from-transparent via-cyan-300 to-transparent shadow-[0_0_24px_rgba(34,211,238,0.8)]" />
         <div className="pointer-events-none absolute -left-32 top-10 h-96 w-96 rounded-full bg-blue-600/20 blur-[110px]" />
         <div className="pointer-events-none absolute bottom-0 right-0 h-80 w-80 rounded-full bg-purple-600/25 blur-[100px]" />
-        <div className="grid gap-10 p-6 lg:grid-cols-[0.72fr_1.28fr] lg:p-10">
-          <div className="relative z-10 flex flex-col">
+        <div className="grid gap-8 p-8 lg:grid-cols-[0.72fr_1.28fr]">
+          <div className="relative z-10 flex flex-col gap-8">
+            <div>
+              <span className="inline-flex border border-cyan-300/20 bg-cyan-300/5 px-3 py-2 font-mono text-[0.65rem] font-bold uppercase tracking-[0.2em] text-cyan-200">
+                Mobile-First Svelte
+              </span>
+            </div>
             <div className="flex items-center gap-3 text-cyan-300">
               <Fingerprint className="h-5 w-5" />
               <p className="font-mono text-xs font-bold uppercase tracking-[0.22em]">Stratum Protocol</p>
             </div>
-            <h2 className="mt-7 font-sans text-4xl font-extrabold leading-tight tracking-tight text-white">
-              The Future of Blue Chip Exposure
-            </h2>
-            <p className="mt-5 text-base leading-8 text-slate-300">
-              A mobile-first ownership interface for digital asset teams that need trust signals, portfolio intelligence, and
-              decisive actions presented with institutional clarity.
-            </p>
-            <div className="mt-7 flex flex-wrap gap-3">
+            <div>
+              <h2 className="font-sans text-4xl font-extrabold leading-tight tracking-tight text-white">
+                The Future of Blue Chip Exposure
+              </h2>
+              <p className="mt-5 text-base leading-8 text-slate-300">
+                Responsive asset dashboard, secure portfolio actions, mobile account controls, and real-time allocation visibility.
+              </p>
+            </div>
+            <div className="border-l border-cyan-300/40 pl-4">
+              <p className="text-sm text-zinc-400">Investment</p>
+              <p className="mt-1 text-2xl font-extrabold text-white">From $6,500</p>
+            </div>
+            <div className="flex flex-wrap gap-3">
               {["Verified access", "Live allocation", "Secure custody"].map((item) => (
                 <span key={item} className="inline-flex items-center gap-2 border border-cyan-300/15 bg-cyan-300/5 px-3 py-2 text-xs text-cyan-100">
                   <Check className="h-3.5 w-3.5" />
@@ -249,7 +280,7 @@ export function SolutionShowcase() {
                 </span>
               ))}
             </div>
-            <div className="mt-auto pt-8">
+            <div className="mt-auto">
               <PreviewController
                 href="/solutions/enterprise"
                 colors="linear-gradient(90deg,#00F2FE,#168BFF,#A800FF,#00F2FE)"

@@ -1,4 +1,4 @@
-import { ArrowRight, Blocks } from "lucide-react";
+import { ArrowRight, Blocks, Check } from "lucide-react";
 import Link from "next/link";
 
 import { packages } from "@/lib/packages";
@@ -58,15 +58,23 @@ export function PackageGrid() {
                 {item.features.map((feature) => (
                   <div
                     key={feature}
-                    className="rounded-xl border border-white/10 bg-black/25 px-4 py-3 text-sm font-medium text-white/90 backdrop-blur-sm"
+                    className="flex items-start gap-3 rounded-xl border border-white/10 bg-black/25 px-4 py-3 text-sm font-medium text-white/90 backdrop-blur-sm"
                   >
-                    {feature}
+                    <span className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-md border border-cyan-300/30 bg-cyan-300/10 text-cyan-100">
+                      <Check className="h-3.5 w-3.5" aria-hidden="true" />
+                    </span>
+                    <span>{feature}</span>
                   </div>
                 ))}
               </div>
+              <p className="mt-5 text-sm leading-6 text-white/70">{item.industryFit}</p>
+              <div className="mt-6 border-t border-white/10 pt-5">
+                <span className="mb-1 block text-xs uppercase tracking-wider text-zinc-500">Investment //</span>
+                <span className="block text-2xl font-bold text-white">From {item.price.startingAt}</span>
+              </div>
               <Link
                 href={`/packages/${item.slug}`}
-                className={`group mt-6 inline-flex items-center justify-center gap-2 rounded-full px-5 py-3 text-sm font-bold text-white transition-all ${
+                className={`group mt-5 inline-flex items-center justify-center gap-2 rounded-full px-5 py-3 text-sm font-bold text-white transition-all ${
                   item.popular
                     ? "bg-gradient-to-r from-[#00D4E8] via-[#168BFF] to-[#7C3AED] shadow-[0_0_28px_rgba(22,139,255,0.22)] hover:brightness-110 hover:shadow-[0_0_36px_rgba(124,58,237,0.32)]"
                     : "border border-white/15 bg-transparent hover:border-white/30 hover:bg-white/10 hover:shadow-[0_0_24px_rgba(255,255,255,0.08)]"
