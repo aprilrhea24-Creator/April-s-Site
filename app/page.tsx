@@ -99,10 +99,28 @@ export default function HomePage() {
             <h2 className="mt-4 text-3xl font-semibold text-white">From first inquiry to retained system support.</h2>
           </div>
           <div className="grid gap-4 sm:grid-cols-2">
-            {["50% project launch deposit", "Private client workspace", "Analytics and reporting layer", "SaaS-ready maintenance offers"].map((item) => (
-              <div key={item} className="rounded-2xl border border-white/10 bg-white/[0.06] p-4 text-sm text-slate-200">
+            {[
+              {
+                title: "Low Booking Deposit",
+                text: "Secure your spot with a flat reservation fee that applies directly to your build."
+              },
+              {
+                title: "Secure Client Portal",
+                text: "Track real-time progress milestones and test your live staging links securely."
+              },
+              {
+                title: "Transparent Milestones",
+                text: "Review and approve progress dynamically before signing your final handover."
+              },
+              {
+                title: "Ironclad Protection",
+                text: "Clear refund policies and guaranteed ownership transfer upon project completion."
+              }
+            ].map((item) => (
+              <div key={item.title} className="rounded-2xl border border-white/10 bg-white/[0.06] p-4 text-sm text-slate-200">
                 <ShieldCheck className="mb-3 h-5 w-5 text-teal-200" />
-                {item}
+                <p className="font-semibold text-white">{item.title}</p>
+                <p className="mt-2 leading-6 text-slate-300">{item.text}</p>
               </div>
             ))}
           </div>
