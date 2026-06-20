@@ -16,7 +16,7 @@ export function MaintenanceBanner() {
       <div className="flex flex-col gap-3 sm:flex-row sm:items-center">
         <span className="mr-2 font-mono text-sm font-semibold text-zinc-300">$199/mo</span>
         <Link
-          href="/consultation?service=ongoing-support"
+          href="/dashboard/subscribe"
           className="whitespace-nowrap rounded-xl border border-white/10 bg-zinc-900 px-6 py-3.5 font-sans text-xs font-bold uppercase tracking-widest text-zinc-100 transition-all duration-300 hover:border-cyan-400"
         >
           Activate Ongoing Support →
