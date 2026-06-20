@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { ArrowRight, ChartNoAxesCombined, MonitorSmartphone, ShieldCheck, Sparkles } from "lucide-react";
 
+import { MaintenanceBanner } from "@/components/maintenance-banner";
 import { ShowcaseGrid } from "@/components/showcase-grid";
 import { WhyStratum } from "@/components/why-stratum";
 
@@ -178,6 +179,7 @@ export default function HomePage() {
             </p>
           </div>
           <ShowcaseGrid />
+          <MaintenanceBanner />
           <WhyStratum />
         </div>
       </section>

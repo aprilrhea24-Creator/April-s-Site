@@ -54,6 +54,12 @@ h3 {
   font-family: Georgia, "Times New Roman", serif !important;
 }
 
+.maintenance-banner-title {
+  font-family: Georgia, "Times New Roman", serif !important;
+  font-weight: 500 !important;
+  letter-spacing: 0.025em;
+}
+
 p,
 label,
 button,
