@@ -90,7 +90,7 @@ export function SolutionShowcase() {
             </div>
             <div className="mt-auto">
               <PreviewController
-                href="/solutions/hospitality"
+                href="/solutions/booking-core/preview"
                 colors="linear-gradient(90deg,#7c5f13,#D4AF37,#f7e7a3,#D4AF37)"
               />
             </div>
@@ -179,7 +179,7 @@ export function SolutionShowcase() {
             </div>
             <div className="mt-auto">
               <PreviewController
-                href="/solutions/performance"
+                href="/solutions/flow-automation/preview"
                 colors="linear-gradient(90deg,#7f1d1d,#ff3d00,#ff8a00,#dc2626)"
               />
             </div>
@@ -282,7 +282,7 @@ export function SolutionShowcase() {
             </div>
             <div className="mt-auto">
               <PreviewController
-                href="/solutions/enterprise"
+                href="/solutions/enterprise-matrix/preview"
                 colors="linear-gradient(90deg,#00F2FE,#168BFF,#A800FF,#00F2FE)"
               />
             </div>

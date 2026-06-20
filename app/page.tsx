@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { ArrowRight, ChartNoAxesCombined, MonitorSmartphone, ShieldCheck, Sparkles } from "lucide-react";
 
-import { PackageGrid } from "@/components/package-grid";
+import { ShowcaseGrid } from "@/components/showcase-grid";
 
 const outcomes = [
   {
@@ -176,7 +176,7 @@ export default function HomePage() {
               Compare clear package options, see what is included, and choose the best fit for your goals.
             </p>
           </div>
-          <PackageGrid />
+          <ShowcaseGrid />
         </div>
       </section>
 

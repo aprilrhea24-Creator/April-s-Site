@@ -7,7 +7,7 @@ import {
 } from "lucide-react";
 
 import { PackageGrid } from "@/components/package-grid";
-import { SolutionShowcase } from "@/components/solution-showcase";
+import { ShowcaseGrid } from "@/components/showcase-grid";
 
 export default function SolutionsPage() {
   return (
@@ -19,12 +19,12 @@ export default function SolutionsPage() {
           Stratum product frameworks engineered for distinct markets.
         </h1>
         <p className="mt-5 text-lg leading-8 text-slate-300">
-          Capital, Kinetix, and Protocol combine distinct visual cultures with specialized workflows, responsive interfaces,
-          and conversion systems built for the way each market operates.
+          Four command-center frameworks combine distinct operational priorities with specialized workflows, responsive
+          interfaces, and conversion systems built for the way each market operates.
         </p>
       </div>
 
-      <SolutionShowcase />
+      <ShowcaseGrid />
 
       <div className="mt-12">
         <div className="mb-7 max-w-3xl">
