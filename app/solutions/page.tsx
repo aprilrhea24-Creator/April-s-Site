@@ -8,6 +8,7 @@ import {
 
 import { PackageGrid } from "@/components/package-grid";
 import { ShowcaseGrid } from "@/components/showcase-grid";
+import { WhyStratum } from "@/components/why-stratum";
 
 export default function SolutionsPage() {
   return (
@@ -34,6 +35,7 @@ export default function SolutionsPage() {
           </h2>
         </div>
         <PackageGrid />
+        <WhyStratum />
       </div>
 
       <div className="mt-12 glass-panel grid gap-6 rounded-[2rem] p-6 md:grid-cols-3">

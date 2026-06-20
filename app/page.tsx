@@ -2,6 +2,7 @@ import Link from "next/link";
 import { ArrowRight, ChartNoAxesCombined, MonitorSmartphone, ShieldCheck, Sparkles } from "lucide-react";
 
 import { ShowcaseGrid } from "@/components/showcase-grid";
+import { WhyStratum } from "@/components/why-stratum";
 
 const outcomes = [
   {
@@ -177,6 +178,7 @@ export default function HomePage() {
             </p>
           </div>
           <ShowcaseGrid />
+          <WhyStratum />
         </div>
       </section>
 
