@@ -50,9 +50,16 @@ export default function HomePage() {
         {/* Foreground column 1: agency positioning and conversion actions. */}
         <div className="flex flex-col items-center text-center md:items-start md:text-left">
           <div className="w-full">
-            <h1 className="font-sans text-4xl font-black tracking-tight text-white md:text-6xl">
+            <h1 className="font-sans text-4xl font-black leading-[1.05] tracking-tight text-white md:text-6xl">
               <span className="block text-white">Engineered Workflows.</span>
-              <span className="mt-2 block bg-gradient-to-r from-cyan-400 to-violet-500 bg-clip-text text-transparent">
+              <span
+                className="mt-2 block bg-gradient-to-r from-cyan-400 to-purple-500 bg-clip-text text-transparent"
+                style={{
+                  backgroundImage: "linear-gradient(90deg, #22d3ee, #a855f7)",
+                  WebkitBackgroundClip: "text",
+                  WebkitTextFillColor: "transparent"
+                }}
+              >
                 Hyper-Personalized Brands.
               </span>
             </h1>

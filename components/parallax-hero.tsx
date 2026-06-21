@@ -1,120 +1,30 @@
-"use client";
-
-import { useEffect, useRef, type ReactNode } from "react";
+import type { ReactNode } from "react";
 
 type ParallaxHeroProps = {
   children: ReactNode;
 };
 
-const PARALLAX_FACTOR = 0.2;
-const EASING = 0.085;
-
 export function ParallaxHero({ children }: ParallaxHeroProps) {
-  const rootRef = useRef<HTMLElement>(null);
-  const backgroundRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    const root = rootRef.current;
-    const background = backgroundRef.current;
-
-    if (!root || !background) {
-      return;
-    }
-
-    const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
-    let currentOffset = 0;
-    let targetOffset = 0;
-    let animationFrame = 0;
-
-    const measureTarget = () => {
-      if (reducedMotion.matches) {
-        targetOffset = 0;
-        return;
-      }
-
-      const bounds = root.getBoundingClientRect();
-      const sectionProgress = Math.min(Math.max(-bounds.top, 0), bounds.height);
-      targetOffset = sectionProgress * PARALLAX_FACTOR;
-    };
-
-    const render = () => {
-      currentOffset += (targetOffset - currentOffset) * EASING;
-      background.style.transform = `translate3d(0, ${currentOffset.toFixed(2)}px, 0)`;
-
-      if (Math.abs(targetOffset - currentOffset) > 0.1) {
-        animationFrame = window.requestAnimationFrame(render);
-      } else {
-        currentOffset = targetOffset;
-        background.style.transform = `translate3d(0, ${currentOffset.toFixed(2)}px, 0)`;
-        animationFrame = 0;
-      }
-    };
-
-    const requestRender = () => {
-      measureTarget();
-
-      if (!animationFrame) {
-        animationFrame = window.requestAnimationFrame(render);
-      }
-    };
-
-    const resetMotion = () => {
-      currentOffset = 0;
-      targetOffset = 0;
-      background.style.transform = "translate3d(0, 0, 0)";
-      requestRender();
-    };
-
-    window.addEventListener("scroll", requestRender, { passive: true });
-    window.addEventListener("resize", requestRender, { passive: true });
-    reducedMotion.addEventListener("change", resetMotion);
-    requestRender();
-
-    return () => {
-      window.removeEventListener("scroll", requestRender);
-      window.removeEventListener("resize", requestRender);
-      reducedMotion.removeEventListener("change", resetMotion);
-      window.cancelAnimationFrame(animationFrame);
-    };
-  }, []);
-
   return (
     <section
-      ref={rootRef}
-      className="parallax-hero relative min-h-[58rem] overflow-hidden bg-[#07070a] sm:min-h-[56rem] md:min-h-[calc(100vh-5rem)]"
+      className="relative min-h-[58rem] overflow-hidden bg-[#050508] sm:min-h-[56rem] md:min-h-[calc(100vh-5rem)]"
+      style={{
+        backgroundImage:
+          "radial-gradient(circle at 0% 100%, rgba(34, 211, 238, 0.08) 0%, transparent 48%), radial-gradient(circle at 100% 0%, rgba(168, 85, 247, 0.08) 0%, transparent 46%)"
+      }}
     >
-      <div
-        ref={backgroundRef}
-        className="pointer-events-none absolute inset-x-0 -inset-y-[20%] z-0 will-change-transform"
+      <svg
+        className="pointer-events-none absolute inset-0 z-0 h-full w-full opacity-[0.02] mix-blend-soft-light [transform:translateZ(0)]"
         aria-hidden="true"
+        preserveAspectRatio="none"
       >
-        {/* Native delivery avoids framework image recompression on dark gradients. */}
-        {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img
-          src="/backgroundidea1.webp"
-          alt=""
-          aria-hidden="true"
-          loading="eager"
-          fetchPriority="high"
-          decoding="async"
-          className="pointer-events-none absolute inset-0 z-0 h-full w-full object-cover object-[54%_center] md:object-center"
-        />
-        <svg
-          className="pointer-events-none absolute inset-0 z-[1] h-full w-full opacity-[0.03] mix-blend-soft-light"
-          aria-hidden="true"
-          preserveAspectRatio="none"
-        >
-          <filter id="hero-fractal-noise">
-            <feTurbulence type="fractalNoise" baseFrequency="0.82" numOctaves="4" stitchTiles="stitch" />
-          </filter>
-          <rect width="100%" height="100%" filter="url(#hero-fractal-noise)" />
-        </svg>
-        <div className="absolute inset-0 z-[2] bg-[linear-gradient(180deg,rgba(0,0,0,0.68)_0%,rgba(7,7,10,0.46)_52%,rgba(3,7,18,0.58)_100%)] md:bg-[linear-gradient(90deg,rgba(0,0,0,0.78)_0%,rgba(7,7,10,0.52)_46%,rgba(3,7,18,0.32)_100%)]" />
-        <div className="absolute inset-0 z-[2] bg-[radial-gradient(circle_at_72%_28%,rgba(34,211,238,0.04),transparent_32%),linear-gradient(180deg,rgba(7,7,10,0.12),rgba(7,7,10,0.42))]" />
-      </div>
+        <filter id="hero-fractal-noise">
+          <feTurbulence type="fractalNoise" baseFrequency="0.82" numOctaves="4" stitchTiles="stitch" />
+        </filter>
+        <rect width="100%" height="100%" filter="url(#hero-fractal-noise)" />
+      </svg>
 
-      {/* Existing hero copy and framework card columns plug into this full-speed foreground layer. */}
-      <div className="relative z-10 mx-auto grid min-h-[58rem] max-w-7xl grid-cols-1 items-center gap-12 px-4 py-14 sm:min-h-[56rem] sm:px-6 md:min-h-[calc(100vh-5rem)] md:grid-cols-2 md:py-16 lg:grid-cols-[1.08fr_0.92fr] lg:px-8">
+      <div className="relative z-10 mx-auto grid min-h-[58rem] max-w-7xl grid-cols-1 items-center gap-12 px-4 py-14 sm:min-h-[56rem] sm:px-6 md:min-h-[calc(100vh-5rem)] md:grid-cols-2 md:py-16 lg:px-8">
         {children}
       </div>
     </section>
