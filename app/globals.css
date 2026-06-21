@@ -250,9 +250,10 @@ textarea {
   isolation: isolate;
   padding: 1.5px;
   overflow: hidden;
+  background: rgba(255, 255, 255, 0.08);
 }
 
-.package-matrix-shell::before {
+.package-matrix-shell-popular::before {
   content: "";
   position: absolute;
   z-index: -2;
@@ -273,7 +274,7 @@ textarea {
   will-change: transform;
 }
 
-.package-matrix-shell::after {
+.package-matrix-shell-popular::after {
   content: "";
   position: absolute;
   z-index: -1;
@@ -402,7 +403,7 @@ textarea {
   .feature-option,
   .animate-gradient-breath,
   .package-card-popular,
-  .package-matrix-shell::before,
+  .package-matrix-shell-popular::before,
   .preview-ring,
   .stratum-logo-mark,
   .kinetix-data-stream::after {

@@ -128,7 +128,9 @@ export function PackageGrid() {
           return (
             <div
               key={item.slug}
-              className={`package-matrix-shell rounded-2xl ${item.popular ? "package-popular-shell" : ""}`}
+              className={`package-matrix-shell rounded-2xl ${
+                item.popular ? "package-matrix-shell-popular package-popular-shell" : ""
+              }`}
             >
               {item.popular ? <div className="package-popular-glow animate-gradient-breath" aria-hidden="true" /> : null}
               {card}
