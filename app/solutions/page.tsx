@@ -35,18 +35,30 @@ export default function SolutionsPage() {
         <WhyStratum />
       </div>
 
-      <div className="mt-12 glass-panel grid gap-6 rounded-[2rem] p-6 md:grid-cols-3">
-        {[
-          { icon: SlidersHorizontal, label: "Personalized tabs", text: "Industry-specific fields, statuses, and user roles." },
-          { icon: CalendarClock, label: "Workflow timing", text: "Booking, onboarding, delivery, and renewal stages." },
-          { icon: ChartSpline, label: "Analytics layer", text: "Dashboards focused on sales, capacity, and margin risk." }
-        ].map((item) => (
-          <div key={item.label}>
-            <item.icon className="h-6 w-6 text-fuchsia-200" />
-            <h3 className="mt-4 font-sans font-extrabold leading-tight tracking-tight text-white">{item.label}</h3>
-            <p className="mt-2 text-sm leading-6 text-slate-300">{item.text}</p>
+      <div className="relative mt-12 overflow-hidden rounded-3xl p-[1px] md:p-[1.5px]">
+        <div
+          className="feature-dock-border-spinner pointer-events-none absolute inset-[-300%] z-0 animate-[spin_4s_linear_infinite] will-change-transform [transform:translateZ(0)]"
+          style={{
+            background:
+              "conic-gradient(from 30deg, transparent 0deg 205deg, rgba(34,211,238,0.16) 220deg, #22d3ee 242deg, #3b82f6 266deg, #a855f7 296deg, #d946ef 322deg, rgba(217,70,239,0.18) 340deg, transparent 356deg 360deg)"
+          }}
+          aria-hidden="true"
+        />
+        <div className="relative z-10 h-full w-full overflow-hidden rounded-[23px] bg-[#0c0d12] backdrop-blur-xl">
+          <div className="grid grid-cols-1 gap-6 p-6 md:grid-cols-3">
+            {[
+              { icon: SlidersHorizontal, label: "Personalized tabs", text: "Industry-specific fields, statuses, and user roles." },
+              { icon: CalendarClock, label: "Workflow timing", text: "Booking, onboarding, delivery, and renewal stages." },
+              { icon: ChartSpline, label: "Analytics layer", text: "Dashboards focused on sales, capacity, and margin risk." }
+            ].map((item) => (
+              <div key={item.label}>
+                <item.icon className="h-6 w-6 text-fuchsia-200" />
+                <h3 className="mt-4 font-sans font-extrabold leading-tight tracking-tight text-white">{item.label}</h3>
+                <p className="mt-2 text-sm leading-6 text-slate-300">{item.text}</p>
+              </div>
+            ))}
           </div>
-        ))}
+        </div>
       </div>
 
       <Link href="/consultation" className="mt-10 inline-flex items-center gap-2 rounded-full bg-white px-6 py-3 font-bold text-slate-950 hover:bg-cyan-100">
