@@ -22,41 +22,6 @@ export type FrameworkPreview = {
 
 export const frameworkPreviews: FrameworkPreview[] = [
   {
-    slug: "booking-core",
-    tier: "Stratum Booking Core",
-    niche: "Luxury Hospitality",
-    eyebrow: "Guest allocation architecture",
-    headline: "Every reservation becomes an orchestrated service event.",
-    summary:
-      "A precision hospitality command system for protected deposits, intelligent availability, VIP preference records, and service-team preparation.",
-    dashboardTitle: "Hospitality Allocation Console",
-    accent: "cyan",
-    modes: [
-      {
-        id: "allocation",
-        label: "Allocation",
-        title: "Service Window Routing",
-        description: "Capacity rules coordinate party size, table class, service duration, and arrival windows before confirmation.",
-        routes: [
-          { name: "Availability matrix", detail: "Service windows and capacity thresholds", state: "Routing ready" },
-          { name: "Guest intelligence", detail: "Preferences, occasions, and visit context", state: "Protected" },
-          { name: "Deposit gate", detail: "Reservation commitment and policy acknowledgment", state: "Enforced" }
-        ]
-      },
-      {
-        id: "concierge",
-        label: "Concierge",
-        title: "VIP Experience Preparation",
-        description: "Priority profiles surface relevant service notes without exposing sensitive operational records.",
-        routes: [
-          { name: "Arrival briefing", detail: "Guest context prepared for the service team", state: "Prepared" },
-          { name: "Preference routing", detail: "Dining and accessibility requirements", state: "Verified" },
-          { name: "Exception review", detail: "Concierge escalation before confirmation", state: "Guarded" }
-        ]
-      }
-    ]
-  },
-  {
     slug: "flow-automation",
     tier: "Stratum Flow Automation",
     niche: "Biotech Operations",

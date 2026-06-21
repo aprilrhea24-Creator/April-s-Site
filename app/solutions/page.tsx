@@ -7,7 +7,6 @@ import {
 } from "lucide-react";
 
 import { PackageGrid } from "@/components/package-grid";
-import { ShowcaseGrid } from "@/components/showcase-grid";
 import { WhyStratum } from "@/components/why-stratum";
 
 export default function SolutionsPage() {
@@ -24,8 +23,6 @@ export default function SolutionsPage() {
           interfaces, and conversion systems built for the way each market operates.
         </p>
       </div>
-
-      <ShowcaseGrid />
 
       <div className="mt-12">
         <div className="mb-7 max-w-3xl">

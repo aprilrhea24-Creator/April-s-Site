@@ -2,8 +2,8 @@ import Link from "next/link";
 import { ArrowRight, ChartNoAxesCombined, MonitorSmartphone, ShieldCheck } from "lucide-react";
 
 import { MaintenanceBanner } from "@/components/maintenance-banner";
+import { PackageGrid } from "@/components/package-grid";
 import { ParallaxHero } from "@/components/parallax-hero";
-import { ShowcaseGrid } from "@/components/showcase-grid";
 import { WhyStratum } from "@/components/why-stratum";
 
 const outcomes = [
@@ -134,6 +134,23 @@ export default function HomePage() {
         </div>
       </ParallaxHero>
 
+      <section className="relative bg-black py-24">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div className="mb-10 max-w-3xl">
+            <p className="text-sm uppercase tracking-[0.25em] text-cyan-200">Signature packages</p>
+            <h2 className="mt-4 font-sans text-4xl font-bold normal-case leading-snug text-white">
+              Choose a strong starting point, then make it unmistakably yours.
+            </h2>
+            <p className="mt-4 text-base leading-8 text-slate-300">
+              Compare clear package options, see what is included, and choose the best fit for your goals.
+            </p>
+          </div>
+          <PackageGrid />
+          <MaintenanceBanner />
+          <WhyStratum />
+        </div>
+      </section>
+
       <section className="relative mx-auto max-w-7xl px-4 pb-20 sm:px-6 lg:px-8">
         <div className="mb-10 max-w-3xl">
           <p className="text-sm uppercase tracking-[0.25em] text-cyan-200">A clear path forward</p>
@@ -179,23 +196,6 @@ export default function HomePage() {
               </p>
             </div>
           </div>
-        </div>
-      </section>
-
-      <section className="relative bg-black py-24">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="mb-10 max-w-3xl">
-            <p className="text-sm uppercase tracking-[0.25em] text-cyan-200">Signature packages</p>
-            <h2 className="mt-4 font-sans text-4xl font-bold normal-case leading-snug text-white">
-              Choose a strong starting point, then make it unmistakably yours.
-            </h2>
-            <p className="mt-4 text-base leading-8 text-slate-300">
-              Compare clear package options, see what is included, and choose the best fit for your goals.
-            </p>
-          </div>
-          <ShowcaseGrid />
-          <MaintenanceBanner />
-          <WhyStratum />
         </div>
       </section>
 

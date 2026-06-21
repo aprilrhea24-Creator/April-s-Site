@@ -90,7 +90,7 @@ export function SolutionShowcase() {
             </div>
             <div className="mt-auto">
               <PreviewController
-                href="/solutions/booking-core/preview"
+                href="/packages/premium-restaurant"
                 colors="linear-gradient(90deg,#7c5f13,#D4AF37,#f7e7a3,#D4AF37)"
               />
             </div>
