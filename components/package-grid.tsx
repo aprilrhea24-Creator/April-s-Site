@@ -12,7 +12,7 @@ export function PackageGrid() {
             <article
               className={`package-card relative z-10 h-full w-full overflow-hidden bg-[#0c0d12] p-8 backdrop-blur-xl transition-all duration-500 hover:-translate-y-1 ${
                 item.popular
-                  ? "rounded-[15px] shadow-[0_4px_30px_rgba(0,0,0,0.8)]"
+                  ? "package-card-popular rounded-2xl border border-white/15 shadow-[0_4px_30px_rgba(0,0,0,0.8)]"
                   : "rounded-2xl shadow-lg"
               }`}
             >
@@ -90,12 +90,15 @@ export function PackageGrid() {
               key={item.slug}
               className={
                 item.popular
-                  ? "flagship-border relative h-full rounded-2xl p-px shadow-[0_24px_90px_rgba(71,85,255,0.26),0_0_42px_rgba(103,232,249,0.14)]"
+                  ? "package-popular-shell relative isolate h-full rounded-2xl"
                   : "relative h-full w-full overflow-hidden rounded-2xl border border-zinc-900 bg-[#0c0d12] shadow-lg"
               }
             >
               {item.popular ? (
-                card
+                <>
+                  <div className="package-popular-glow animate-gradient-breath" aria-hidden="true" />
+                  {card}
+                </>
               ) : (
                 card
               )}

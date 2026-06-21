@@ -206,23 +206,66 @@ textarea {
   text-shadow: 0 2px 14px rgba(0, 0, 0, 0.92);
 }
 
-.flagship-border {
-  background: linear-gradient(120deg, rgba(167, 139, 250, 0.9), rgba(103, 232, 249, 0.9), rgba(217, 70, 239, 0.72));
-  background-size: 240% 240%;
-  animation: flagship-border-shift 7s ease-in-out infinite;
-  will-change: background-position, filter;
+.package-popular-shell {
+  position: relative;
+  isolation: isolate;
+  box-shadow:
+    0 0 24px rgba(0, 242, 254, 0.42),
+    0 0 54px rgba(0, 79, 172, 0.48),
+    0 0 92px rgba(168, 0, 255, 0.38);
 }
 
-@keyframes flagship-border-shift {
+.package-popular-glow {
+  position: absolute;
+  z-index: 0;
+  inset: -20px;
+  border-radius: 2.25rem;
+  background:
+    radial-gradient(circle at 10% 14%, rgba(0, 242, 254, 1), transparent 32%),
+    radial-gradient(circle at 82% 16%, rgba(0, 79, 172, 1), transparent 38%),
+    radial-gradient(circle at 72% 88%, rgba(168, 0, 255, 1), transparent 40%);
+  background-size: 180% 180%;
+  transform-origin: center;
+  will-change: filter, opacity, transform;
+}
+
+.animate-gradient-breath {
+  animation: gradient-breath 4s ease-in-out infinite;
+}
+
+.package-card-popular {
+  background:
+    radial-gradient(circle at 8% 12%, rgba(0, 242, 254, 0.38), transparent 34%),
+    radial-gradient(circle at 88% 20%, rgba(0, 79, 172, 0.48), transparent 40%),
+    radial-gradient(circle at 72% 88%, rgba(168, 0, 255, 0.46), transparent 42%),
+    linear-gradient(145deg, rgba(3, 7, 18, 0.97), rgba(4, 5, 12, 0.94));
+  background-size: 180% 180%;
+  animation: package-mesh-flow 11s ease-in-out infinite;
+}
+
+@keyframes gradient-breath {
   0%,
   100% {
-    background-position: 0% 50%;
-    filter: saturate(1) brightness(0.96);
+    filter: blur(16px) saturate(1);
+    opacity: 0.75;
+    transform: scale(1);
   }
 
   50% {
-    background-position: 100% 50%;
-    filter: saturate(1.18) brightness(1.08);
+    filter: blur(24px) saturate(1.12);
+    opacity: 1;
+    transform: scale(1.01);
+  }
+}
+
+@keyframes package-mesh-flow {
+  0%,
+  100% {
+    background-position: 0% 15%;
+  }
+
+  50% {
+    background-position: 100% 85%;
   }
 }
 
@@ -281,32 +324,6 @@ textarea {
   }
 }
 
-@keyframes gradient-breath {
-  0%,
-  100% {
-    filter: blur(16px) saturate(1);
-    opacity: 0.75;
-    transform: scale(1);
-  }
-
-  50% {
-    filter: blur(24px) saturate(1.12);
-    opacity: 1;
-    transform: scale(1.01);
-  }
-}
-
-@keyframes package-mesh-flow {
-  0%,
-  100% {
-    background-position: 0% 15%;
-  }
-
-  50% {
-    background-position: 100% 85%;
-  }
-}
-
 .stratum-logo-mark {
   animation: stratum-logo-glow 6s ease-in-out infinite;
   transform-origin: center;
@@ -346,7 +363,6 @@ textarea {
 @media (prefers-reduced-motion: reduce) {
   .glass-field,
   .feature-option,
-  .animate-gradient-breath,
   .preview-ring,
   .stratum-logo-mark,
   .why-stratum-border-spinner,
@@ -355,8 +371,14 @@ textarea {
     animation: none;
   }
 
-  .flagship-border {
-    animation-duration: 12s;
+  .animate-gradient-breath {
+    animation: gradient-breath 8s ease-in-out infinite;
+    animation-duration: 8s;
+  }
+
+  .package-card-popular {
+    animation: package-mesh-flow 18s ease-in-out infinite;
+    animation-duration: 18s;
   }
 }
 
