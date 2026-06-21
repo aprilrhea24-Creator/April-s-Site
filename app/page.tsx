@@ -72,11 +72,21 @@ export default function HomePage() {
                   Hyper-Personalized Brands.
                 </span>
               </h1>
-              <p className="mx-auto mt-6 max-w-2xl text-base leading-relaxed text-zinc-400 md:mx-0 md:text-lg">
-                Stratum Studio builds high-performance web applications, premium portals, and automated booking systems tailored
-                to your unique operations. We eliminate friction from your day-to-day workflow while designing an elite digital
-                presence that makes your brand unforgettable.
-              </p>
+              <div className="relative z-10 mx-auto mt-6 max-w-2xl will-change-transform md:mx-0">
+                <div
+                  className="pointer-events-none absolute -inset-10 z-0 blur-md [transform:translateZ(0)]"
+                  style={{
+                    background:
+                      "radial-gradient(ellipse at 38% 48%, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.78) 34%, rgba(0,0,0,0.5) 62%, rgba(0,0,0,0) 100%)"
+                  }}
+                  aria-hidden="true"
+                />
+                <p className="relative z-10 text-base font-medium leading-relaxed tracking-wide text-slate-200 antialiased drop-shadow-[0_4px_12px_rgba(0,0,0,1)] [text-shadow:0_1px_2px_rgba(0,0,0,1)] md:text-lg">
+                  Stratum Studio builds high-performance web applications, premium portals, and automated booking systems tailored
+                  to your unique operations. We eliminate friction from your day-to-day workflow while designing an elite digital
+                  presence that makes your brand unforgettable.
+                </p>
+              </div>
             </div>
             <div className="mt-8 flex flex-wrap justify-center gap-4 md:justify-start">
               <Link
