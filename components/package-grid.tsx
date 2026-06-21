@@ -10,7 +10,11 @@ export function PackageGrid() {
         {packages.map((item) => {
           const card = (
             <article
-              className="package-card relative z-10 h-full w-full overflow-hidden rounded-[15px] border border-zinc-800/60 bg-[#0c0d12] p-8 shadow-[0_4px_30px_rgba(0,0,0,0.8)] backdrop-blur-xl transition-all duration-500 hover:-translate-y-1 hover:border-zinc-700"
+              className={`package-card relative z-10 h-full w-full overflow-hidden bg-[#0c0d12] p-8 backdrop-blur-xl transition-all duration-500 hover:-translate-y-1 ${
+                item.popular
+                  ? "rounded-[15px] shadow-[0_4px_30px_rgba(0,0,0,0.8)]"
+                  : "rounded-2xl shadow-lg"
+              }`}
             >
               <div
                 className="pointer-events-none absolute inset-0 bg-gradient-to-b from-zinc-900/40 via-zinc-950/80 to-black"
@@ -82,16 +86,16 @@ export function PackageGrid() {
               key={item.slug}
               className={
                 item.popular
-                  ? "relative overflow-hidden rounded-2xl p-[1.5px]"
-                  : "package-matrix-shell rounded-2xl"
+                  ? "relative overflow-hidden rounded-2xl p-[1px] md:p-[1.5px]"
+                  : "relative h-full w-full overflow-hidden rounded-2xl border border-zinc-900 bg-[#0c0d12] shadow-lg"
               }
             >
               {item.popular ? (
                 <div
-                  className="package-border-spinner pointer-events-none absolute inset-[-200%] z-0 animate-[spin_4s_linear_infinite] [transform:translateZ(0)]"
+                  className="package-border-spinner pointer-events-none absolute inset-[-300%] z-0 animate-[spin_3.5s_linear_infinite] will-change-transform [transform:translateZ(0)]"
                   style={{
                     background:
-                      "conic-gradient(from 35deg, transparent 0deg 205deg, rgba(34,211,238,0.18) 224deg, #22d3ee 250deg, #3b82f6 274deg, #a855f7 310deg, rgba(168,85,247,0.2) 334deg, transparent 352deg 360deg)"
+                      "conic-gradient(from 30deg, transparent 0deg 205deg, rgba(34,211,238,0.16) 220deg, #22d3ee 242deg, #3b82f6 266deg, #a855f7 296deg, #d946ef 322deg, rgba(217,70,239,0.18) 340deg, transparent 356deg 360deg)"
                   }}
                   aria-hidden="true"
                 />
