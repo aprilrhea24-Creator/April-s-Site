@@ -96,7 +96,7 @@ export function PackageGrid() {
             >
               {item.popular ? (
                 <>
-                  <div className="package-core-halo pointer-events-none absolute -inset-2 z-0 rounded-[1.4rem]" aria-hidden="true" />
+                  <div className="package-core-halo pointer-events-none absolute z-0 rounded-[1.4rem]" aria-hidden="true" />
                   <div className="relative z-10 h-full overflow-hidden rounded-2xl bg-zinc-950 p-[1px] shadow-[0_0_42px_rgba(0,242,254,0.28),0_0_72px_rgba(157,0,255,0.22),0_0_92px_rgba(255,0,127,0.12)] md:p-[1.5px]">
                     <div
                       className="package-border-spinner pointer-events-none absolute inset-[-350%] z-0 will-change-transform"
