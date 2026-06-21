@@ -1,19 +1,23 @@
 import { z } from "zod";
 
 export const registerSchema = z.object({
-  name: z.string().min(2),
-  email: z.string().email(),
-  password: z.string().min(8),
-  phone: z.string().min(7),
-  address: z.string().min(8),
+  name: z.string().trim().min(2, "Enter your full name."),
+  email: z.string().trim().email("Enter a valid email address."),
+  password: z.string().min(8, "Password must contain at least 8 characters."),
+  phone: z.string().trim().min(7, "Enter a valid phone number."),
+  address: z.string().trim().min(2, "Tell us briefly about your company or project."),
   next: z.string().optional()
 });
 
 export const loginSchema = z.object({
-  email: z.string().email(),
-  password: z.string().min(8),
+  email: z.string().trim().email("Enter a valid email address."),
+  password: z.string().min(8, "Password must contain at least 8 characters."),
   next: z.string().optional()
 });
+
+export function getValidationMessage(error: z.ZodError) {
+  return error.issues[0]?.message ?? "Please check the highlighted information and try again.";
+}
 
 export const buildRequestSchema = z.object({
   industry: z.string().min(2),

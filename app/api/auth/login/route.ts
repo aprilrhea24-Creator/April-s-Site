@@ -1,8 +1,9 @@
 import { NextResponse } from "next/server";
+import { ZodError } from "zod";
 
 import { createSession, verifyPassword } from "@/lib/auth";
 import { getPrisma } from "@/lib/prisma";
-import { loginSchema } from "@/lib/validation";
+import { getValidationMessage, loginSchema } from "@/lib/validation";
 
 export const dynamic = "force-dynamic";
 
@@ -27,6 +28,10 @@ export async function POST(request: Request) {
       redirectTo: getSafeRedirect(body.next) ?? (user.role === "ADMIN" ? "/workspace" : "/client-dashboard")
     });
   } catch (error) {
+    if (error instanceof ZodError) {
+      return NextResponse.json({ error: getValidationMessage(error) }, { status: 400 });
+    }
+
     return NextResponse.json(
       { error: error instanceof Error ? error.message : "Unable to sign in." },
       { status: 400 }
