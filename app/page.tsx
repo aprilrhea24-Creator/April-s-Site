@@ -48,41 +48,51 @@ export default function HomePage() {
     <div className="relative overflow-hidden bg-[linear-gradient(180deg,#000000_0%,#070a10_56%,#000000_100%)]">
       <ParallaxHero>
         {/* Foreground column 1: agency positioning and conversion actions. */}
-        <div className="flex flex-col items-center text-center md:items-start md:text-left">
-          <div className="w-full">
-            <h1 className="font-sans text-4xl font-black leading-[1.05] tracking-tight text-white md:text-6xl">
-              <span className="block text-white">Engineered Workflows.</span>
-              <span
-                className="mt-2 block bg-gradient-to-r from-cyan-400 to-purple-500 bg-clip-text text-transparent"
-                style={{
-                  backgroundImage: "linear-gradient(90deg, #22d3ee, #a855f7)",
-                  WebkitBackgroundClip: "text",
-                  WebkitTextFillColor: "transparent"
-                }}
+        <div className="relative isolate">
+          <div
+            className="pointer-events-none absolute left-0 top-1/2 z-0 h-[120%] w-full max-w-3xl -translate-y-1/2 blur-2xl"
+            style={{
+              background:
+                "radial-gradient(ellipse at center, rgba(5, 5, 8, 0.75) 0%, rgba(5, 5, 8, 0.58) 38%, rgba(5, 5, 8, 0) 76%)"
+            }}
+            aria-hidden="true"
+          />
+          <div className="relative z-10 flex flex-col items-center text-center md:items-start md:text-left">
+            <div className="w-full">
+              <h1 className="font-sans text-4xl font-black leading-[1.05] tracking-tight text-white md:text-6xl">
+                <span className="block text-white">Engineered Workflows.</span>
+                <span
+                  className="mt-2 block bg-gradient-to-r from-cyan-400 to-purple-500 bg-clip-text text-transparent"
+                  style={{
+                    backgroundImage: "linear-gradient(90deg, #22d3ee, #a855f7)",
+                    WebkitBackgroundClip: "text",
+                    WebkitTextFillColor: "transparent"
+                  }}
+                >
+                  Hyper-Personalized Brands.
+                </span>
+              </h1>
+              <p className="mx-auto mt-6 max-w-2xl text-base leading-relaxed text-zinc-400 md:mx-0 md:text-lg">
+                Stratum Studio builds high-performance web applications, premium portals, and automated booking systems tailored
+                to your unique operations. We eliminate friction from your day-to-day workflow while designing an elite digital
+                presence that makes your brand unforgettable.
+              </p>
+            </div>
+            <div className="mt-8 flex flex-wrap justify-center gap-4 md:justify-start">
+              <Link
+                href="/consultation"
+                className="group inline-flex items-center justify-center gap-2 rounded-full bg-gradient-to-r from-[#00D4E8] via-[#168BFF] to-[#7C3AED] px-6 py-3 font-bold text-white shadow-glow transition-all hover:brightness-110"
               >
-                Hyper-Personalized Brands.
-              </span>
-            </h1>
-            <p className="mx-auto mt-6 max-w-2xl text-base leading-relaxed text-zinc-400 md:mx-0 md:text-lg">
-              Stratum Studio builds high-performance web applications, premium portals, and automated booking systems tailored
-              to your unique operations. We eliminate friction from your day-to-day workflow while designing an elite digital
-              presence that makes your brand unforgettable.
-            </p>
-          </div>
-          <div className="mt-8 flex flex-wrap justify-center gap-4 md:justify-start">
-            <Link
-              href="/consultation"
-              className="group inline-flex items-center justify-center gap-2 rounded-full bg-gradient-to-r from-[#00D4E8] via-[#168BFF] to-[#7C3AED] px-6 py-3 font-bold text-white shadow-glow transition-all hover:brightness-110"
-            >
-              Explore Packages
-              <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
-            </Link>
-            <Link
-              href="/solutions"
-              className="rounded-full border border-white/10 bg-white/5 px-6 py-3 font-bold text-white backdrop-blur-md transition-all hover:bg-white/10"
-            >
-              View Solution Systems
-            </Link>
+                Explore Packages
+                <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+              </Link>
+              <Link
+                href="/solutions"
+                className="rounded-full border border-white/10 bg-white/5 px-6 py-3 font-bold text-white backdrop-blur-md transition-all hover:bg-white/10"
+              >
+                View Solution Systems
+              </Link>
+            </div>
           </div>
         </div>
 
