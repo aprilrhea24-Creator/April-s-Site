@@ -47,10 +47,10 @@ export function WhyStratum() {
 
           const card = (
             <article
-              className={`relative overflow-hidden p-8 shadow-[0_30px_90px_rgba(0,0,0,0.45)] backdrop-blur-2xl transition-all duration-500 ${
+              className={`relative overflow-hidden p-8 shadow-[0_30px_90px_rgba(0,0,0,0.45)] transition-all duration-500 ${
                 isStratum
-                  ? "z-10 h-full w-full rounded-[15px] bg-[#090a0f]"
-                  : "rounded-2xl border border-white/[0.07] bg-zinc-950/60 hover:border-white/15"
+                  ? "z-10 h-full w-full rounded-[15px] bg-[#0c0d12] backdrop-blur-xl"
+                  : "rounded-2xl border border-white/[0.07] bg-zinc-950/60 backdrop-blur-2xl hover:border-white/15"
               }`}
             >
               {isStratum ? (
@@ -104,12 +104,12 @@ export function WhyStratum() {
           );
 
           return isStratum ? (
-            <div key={item.label} className="relative overflow-hidden rounded-2xl p-[1px]">
+            <div key={item.label} className="relative overflow-hidden rounded-2xl p-[1px] md:p-[1.5px]">
               <div
-                className="why-stratum-border-spinner pointer-events-none absolute inset-[-200%] z-0 animate-[spin_5s_linear_infinite] [transform:translateZ(0)]"
+                className="why-stratum-border-spinner pointer-events-none absolute inset-[-300%] z-0 animate-[spin_3.5s_linear_infinite] will-change-transform [transform:translateZ(0)]"
                 style={{
                   background:
-                    "conic-gradient(from 35deg, transparent 0deg 288deg, rgba(34,211,238,0.2) 298deg, #22d3ee 316deg, #a855f7 340deg, rgba(168,85,247,0.18) 350deg, transparent 360deg)"
+                    "conic-gradient(from 30deg, transparent 0deg 205deg, rgba(34,211,238,0.16) 220deg, #22d3ee 242deg, #3b82f6 266deg, #a855f7 296deg, #d946ef 322deg, rgba(217,70,239,0.18) 340deg, transparent 356deg 360deg)"
                 }}
                 aria-hidden="true"
               />
