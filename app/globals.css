@@ -253,42 +253,6 @@ textarea {
   background: rgba(255, 255, 255, 0.08);
 }
 
-.package-matrix-shell-popular::before {
-  content: "";
-  position: absolute;
-  z-index: -2;
-  inset: -140%;
-  background: conic-gradient(
-    from 0deg,
-    transparent 0deg,
-    rgba(34, 211, 238, 0.9) 42deg,
-    rgba(59, 130, 246, 0.32) 82deg,
-    transparent 126deg,
-    transparent 210deg,
-    rgba(168, 85, 247, 0.88) 258deg,
-    rgba(217, 70, 239, 0.3) 304deg,
-    transparent 350deg
-  );
-  animation: package-border-spin 8s linear infinite;
-  transform-origin: center;
-  will-change: transform;
-}
-
-.package-matrix-shell-popular::after {
-  content: "";
-  position: absolute;
-  z-index: -1;
-  inset: 1.5px;
-  border-radius: calc(1rem - 1px);
-  background: rgba(5, 5, 8, 0.94);
-}
-
-@keyframes package-border-spin {
-  to {
-    transform: rotate(360deg);
-  }
-}
-
 .preview-ring {
   background: var(--preview-ring);
   background-size: 240% 240%;
@@ -403,7 +367,7 @@ textarea {
   .feature-option,
   .animate-gradient-breath,
   .package-card-popular,
-  .package-matrix-shell-popular::before,
+  .package-border-spinner,
   .preview-ring,
   .stratum-logo-mark,
   .kinetix-data-stream::after {

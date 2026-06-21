@@ -39,10 +39,10 @@ export function PackageGrid() {
         {packages.map((item) => {
           const card = (
             <article
-              className={`package-card relative h-full overflow-hidden rounded-2xl border border-white/10 bg-zinc-950/75 p-8 shadow-[0_4px_30px_rgba(0,0,0,0.8)] backdrop-blur-2xl transition-all duration-500 hover:-translate-y-1 hover:border-cyan-500/40 ${
+              className={`package-card h-full p-8 shadow-[0_4px_30px_rgba(0,0,0,0.8)] transition-all duration-500 hover:-translate-y-1 ${
                 item.popular
-                  ? "package-card-popular ring-1 ring-cyan-400/30 shadow-[0_0_40px_rgba(6,182,212,0.15)]"
-                  : ""
+                  ? "relative z-10 w-full overflow-hidden rounded-[15px] bg-zinc-950/90 backdrop-blur-md"
+                  : "relative overflow-hidden rounded-2xl border border-white/10 bg-zinc-950/75 backdrop-blur-2xl hover:border-cyan-500/40"
               }`}
             >
               {!item.popular ? (
@@ -128,11 +128,22 @@ export function PackageGrid() {
           return (
             <div
               key={item.slug}
-              className={`package-matrix-shell rounded-2xl ${
-                item.popular ? "package-matrix-shell-popular package-popular-shell" : ""
-              }`}
+              className={
+                item.popular
+                  ? "package-popular-shell relative overflow-hidden rounded-2xl p-[1.5px]"
+                  : "package-matrix-shell rounded-2xl"
+              }
             >
-              {item.popular ? <div className="package-popular-glow animate-gradient-breath" aria-hidden="true" /> : null}
+              {item.popular ? (
+                <div
+                  className="package-border-spinner pointer-events-none absolute inset-[-200%] z-0 animate-[spin_4s_linear_infinite] [transform:translateZ(0)]"
+                  style={{
+                    background:
+                      "conic-gradient(from 35deg, transparent 0deg 205deg, rgba(34,211,238,0.18) 224deg, #22d3ee 250deg, #3b82f6 274deg, #a855f7 310deg, rgba(168,85,247,0.2) 334deg, transparent 352deg 360deg)"
+                  }}
+                  aria-hidden="true"
+                />
+              ) : null}
               {card}
             </div>
           );
