@@ -130,6 +130,49 @@ textarea {
   box-shadow: 0 0 18px rgba(22, 139, 255, 0.26);
 }
 
+.consultation-shell {
+  isolation: isolate;
+  box-shadow:
+    0 0 18px rgba(0, 212, 232, 0.24),
+    0 0 48px rgba(22, 139, 255, 0.2),
+    0 0 84px rgba(124, 58, 237, 0.18);
+}
+
+.consultation-glow {
+  position: absolute;
+  z-index: 0;
+  inset: -24px;
+  border-radius: 2.25rem;
+  background:
+    radial-gradient(circle at 12% 18%, rgba(0, 212, 232, 0.82), transparent 34%),
+    radial-gradient(circle at 88% 16%, rgba(22, 139, 255, 0.72), transparent 40%),
+    radial-gradient(circle at 78% 88%, rgba(124, 58, 237, 0.76), transparent 42%),
+    radial-gradient(circle at 18% 84%, rgba(124, 58, 237, 0.34), transparent 38%);
+  background-size: 180% 180%;
+  opacity: 0.72;
+  filter: blur(24px) saturate(1.35);
+  transform-origin: center;
+  animation: consultation-aura-breathe 8s ease-in-out infinite;
+  will-change: filter, opacity, transform, background-position;
+}
+
+@keyframes consultation-aura-breathe {
+  0%,
+  100% {
+    background-position: 0% 20%;
+    filter: blur(22px) saturate(1.28);
+    opacity: 0.64;
+    transform: scale(0.99);
+  }
+
+  50% {
+    background-position: 100% 80%;
+    filter: blur(34px) saturate(1.62);
+    opacity: 0.92;
+    transform: scale(1.015);
+  }
+}
+
 .glass-field {
   width: 100%;
   border: 1px solid rgba(255, 255, 255, 0.12);
@@ -403,6 +446,7 @@ textarea {
 @media (prefers-reduced-motion: reduce) {
   .glass-field,
   .feature-option,
+  .consultation-glow,
   .preview-ring,
   .why-stratum-border-spinner,
   .kinetix-data-stream::after {

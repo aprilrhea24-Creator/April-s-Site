@@ -5,17 +5,17 @@ export const registerSchema = z.object({
   email: z.string().email(),
   password: z.string().min(8),
   phone: z.string().min(7),
-  address: z.string().min(8)
+  address: z.string().min(8),
+  next: z.string().optional()
 });
 
 export const loginSchema = z.object({
   email: z.string().email(),
-  password: z.string().min(8)
+  password: z.string().min(8),
+  next: z.string().optional()
 });
 
 export const buildRequestSchema = z.object({
-  name: z.string().min(2),
-  email: z.string().email(),
   industry: z.string().min(2),
   budget: z.string().min(2),
   features: z.array(z.string()).default([]),

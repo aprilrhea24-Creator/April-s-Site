@@ -2,7 +2,14 @@ import Link from "next/link";
 
 import { AuthForm } from "@/components/forms/auth-form";
 
-export default function LoginPage() {
+export default async function LoginPage({
+  searchParams
+}: {
+  searchParams: Promise<{ next?: string }>;
+}) {
+  const { next } = await searchParams;
+  const registerHref = next ? `/register?next=${encodeURIComponent(next)}` : "/register";
+
   return (
     <section className="command-page px-4 py-20 sm:px-6 lg:px-8">
       <div className="mx-auto grid max-w-5xl gap-10 lg:grid-cols-2">
@@ -17,10 +24,10 @@ export default function LoginPage() {
           </div>
         </div>
         <div>
-          <AuthForm mode="login" />
+          <AuthForm mode="login" redirectTo={next} />
           <p className="mt-4 text-sm text-zinc-400">
             Need an account?{" "}
-            <Link href="/register" className="text-cyan-300 transition-colors hover:text-white">
+            <Link href={registerHref} className="text-cyan-300 transition-colors hover:text-white">
               Register here
             </Link>
           </p>

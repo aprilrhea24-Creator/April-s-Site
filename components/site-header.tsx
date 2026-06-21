@@ -3,7 +3,7 @@ import Link from "next/link";
 
 const navItems = [
   { href: "/solutions", label: "Solutions" },
-  { href: "/consultation", label: "Build Request" },
+  { href: "/start", label: "Build Request" },
   { href: "/about", label: "About" },
   { href: "/policies", label: "Policies" }
 ];
@@ -48,7 +48,7 @@ export function SiteHeader() {
             Login
           </Link>
           <Link
-            href="/consultation"
+            href="/start"
             className="stratum-action-gradient transform rounded-full px-5 py-2.5 font-sans text-xs font-bold uppercase tracking-wider transition-all duration-300 will-change-transform hover:scale-[1.03] active:scale-95"
           >
             Start Build

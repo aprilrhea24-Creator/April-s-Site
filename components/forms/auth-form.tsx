@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 
-export function AuthForm({ mode }: { mode: "login" | "register" }) {
+export function AuthForm({ mode, redirectTo }: { mode: "login" | "register"; redirectTo?: string }) {
   const router = useRouter();
   const [error, setError] = useState<string | null>(null);
   const [loading, setLoading] = useState(false);
@@ -15,6 +15,9 @@ export function AuthForm({ mode }: { mode: "login" | "register" }) {
 
     const formData = new FormData(event.currentTarget);
     const payload = Object.fromEntries(formData.entries());
+    if (redirectTo) {
+      payload.next = redirectTo;
+    }
 
     const response = await fetch(`/api/auth/${mode}`, {
       method: "POST",

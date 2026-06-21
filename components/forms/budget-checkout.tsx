@@ -139,7 +139,7 @@ export function BudgetCheckout({ initialTier = "bookingCore" }: { initialTier?: 
             type="button"
             onClick={startCheckout}
             disabled={loading}
-            className="inline-flex shrink-0 items-center gap-2 rounded-full border border-cyan-200/30 bg-cyan-100 px-4 py-2 text-sm font-semibold text-slate-950 hover:bg-white disabled:cursor-wait disabled:opacity-60"
+            className="stratum-action-gradient inline-flex shrink-0 items-center gap-2 rounded-full px-4 py-2 text-sm font-semibold transition-all hover:brightness-110 disabled:cursor-wait disabled:opacity-60"
           >
             <CreditCard className="h-4 w-4" />
             {loading ? "Opening..." : "Reserve"}

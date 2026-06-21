@@ -6,6 +6,10 @@ import { registerSchema } from "@/lib/validation";
 
 export const dynamic = "force-dynamic";
 
+function getSafeRedirect(next: string | undefined) {
+  return next?.startsWith("/") && !next.startsWith("//") ? next : null;
+}
+
 export async function POST(request: Request) {
   try {
     const body = registerSchema.parse(await request.json());
@@ -32,7 +36,7 @@ export async function POST(request: Request) {
 
     return NextResponse.json({
       ok: true,
-      redirectTo: user.role === "ADMIN" ? "/workspace" : "/client-dashboard"
+      redirectTo: getSafeRedirect(body.next) ?? (user.role === "ADMIN" ? "/workspace" : "/client-dashboard")
     });
   } catch (error) {
     return NextResponse.json(

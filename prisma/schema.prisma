@@ -60,6 +60,7 @@ model User {
   projects        ClientProject[]
   projectMessages ProjectMessage[]
   projectSignOffs ProjectSignOff[]
+  buildRequests    BuildRequest[]
 }
 
 model MealPlan {
@@ -173,10 +174,13 @@ model BuildRequest {
   features    String[]
   notes       String?
   status      String   @default("NEW")
+  userId      String?
   submittedAt DateTime @default(now())
   updatedAt   DateTime @updatedAt
+  user        User?    @relation(fields: [userId], references: [id], onDelete: SetNull)
 
   @@index([email])
+  @@index([userId, submittedAt])
   @@index([status, submittedAt])
 }
 
