@@ -1,4 +1,4 @@
-import { ArrowRight, Blocks, Check } from "lucide-react";
+import { ArrowRight, Check } from "lucide-react";
 import Link from "next/link";
 
 import { packages } from "@/lib/packages";
@@ -45,8 +45,18 @@ export function PackageGrid() {
                 className="pointer-events-none absolute inset-0 bg-gradient-to-b from-zinc-900/40 via-zinc-950/80 to-black"
                 aria-hidden="true"
               />
+              <svg
+                className="pointer-events-none absolute inset-0 z-[1] h-full w-full opacity-[0.03] mix-blend-overlay [transform:translateZ(0)]"
+                aria-hidden="true"
+                preserveAspectRatio="none"
+              >
+                <filter id={`package-card-noise-${item.slug}`}>
+                  <feTurbulence type="fractalNoise" baseFrequency="0.84" numOctaves="4" stitchTiles="stitch" />
+                </filter>
+                <rect width="100%" height="100%" filter={`url(#package-card-noise-${item.slug})`} />
+              </svg>
               <div
-                className="pointer-events-none absolute left-0 top-1/2 h-[120%] w-full -translate-y-1/2 blur-2xl"
+                className="pointer-events-none absolute left-0 top-1/2 z-[2] h-[120%] w-full -translate-y-1/2 blur-2xl"
                 style={{
                   background:
                     "radial-gradient(ellipse at center, rgba(5, 5, 8, 0.78) 0%, rgba(5, 5, 8, 0.54) 46%, rgba(5, 5, 8, 0) 84%)"
@@ -62,18 +72,13 @@ export function PackageGrid() {
                   ) : (
                     <span />
                   )}
-                  <div className="flex items-center gap-3">
-                    {item.popular ? (
-                      <span className="inline-flex items-center gap-2 font-mono text-[0.65rem] font-bold uppercase tracking-[0.16em] text-white/80">
-                        <span
-                          className="h-2 w-2 rounded-full bg-zinc-300 shadow-[0_0_10px_rgba(212,212,216,0.4)]"
-                          aria-hidden="true"
-                        />
-                        Live Framework
-                      </span>
-                    ) : null}
-                    <Blocks className="h-7 w-7 text-white/80" />
-                  </div>
+                  <span className="inline-flex items-center gap-2 font-mono text-[10px] font-bold uppercase tracking-widest text-zinc-400">
+                    <span
+                      className="h-2 w-2 animate-pulse rounded-full bg-[#22d3ee] shadow-[0_0_10px_rgba(34,211,238,0.58)]"
+                      aria-hidden="true"
+                    />
+                    Live Framework
+                  </span>
                 </div>
                 <div
                   className={`mt-5 ${
