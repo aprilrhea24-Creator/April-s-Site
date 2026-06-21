@@ -11,12 +11,12 @@ export function ParallaxHero({ children }: ParallaxHeroProps) {
         {/* Native delivery preserves the source asset without framework recompression. */}
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
-          src="/image_42eafa.jpg"
+          src="/stratum-network-sphere.png"
           alt=""
           loading="eager"
           fetchPriority="high"
           decoding="async"
-          className="absolute inset-0 h-full w-full object-cover object-center"
+          className="absolute inset-0 h-full w-full object-cover object-[center_42%]"
         />
         <svg
           className="pointer-events-none absolute inset-0 h-full w-full opacity-[0.02] mix-blend-overlay [transform:translateZ(0)]"
