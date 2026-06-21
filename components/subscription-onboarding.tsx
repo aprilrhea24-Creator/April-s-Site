@@ -60,7 +60,7 @@ export function SubscriptionOnboarding() {
             return (
               <label
                 key={window.id}
-                className={`relative flex cursor-pointer flex-col rounded-2xl border bg-zinc-950/60 p-7 shadow-[0_24px_70px_rgba(0,0,0,0.38)] backdrop-blur-2xl transition-all duration-300 ${
+                className={`relative flex cursor-pointer flex-col rounded-2xl border bg-[#0c0d12] p-7 shadow-[0_24px_70px_rgba(0,0,0,0.38)] backdrop-blur-2xl transition-all duration-300 ${
                   selected
                     ? "border-cyan-400/35 shadow-[0_0_38px_rgba(34,211,238,0.1)]"
                     : "border-white/[0.07] hover:border-white/15"
@@ -113,7 +113,7 @@ export function SubscriptionOnboarding() {
         billing cycle closing so you retain complete control over your subscription horizon.
       </p>
 
-      <div className="mt-8 rounded-2xl border border-white/[0.07] bg-black/40 p-6 backdrop-blur-xl sm:p-8">
+      <div className="command-panel mt-8 rounded-2xl p-6 sm:p-8">
         <div className="flex items-center gap-3">
           <div className="flex h-10 w-10 items-center justify-center rounded-xl border border-cyan-400/20 bg-cyan-400/10">
             <Link2 className="h-4 w-4 text-cyan-200" />

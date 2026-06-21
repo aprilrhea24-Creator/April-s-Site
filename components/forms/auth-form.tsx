@@ -35,7 +35,7 @@ export function AuthForm({ mode }: { mode: "login" | "register" }) {
   }
 
   return (
-    <form onSubmit={handleSubmit} className="glass-panel space-y-4 rounded-[2rem] p-8">
+    <form onSubmit={handleSubmit} className="command-panel space-y-4 rounded-2xl p-8">
       {mode === "register" ? (
         <input name="name" placeholder="Full name" className="glass-field" required />
       ) : null}

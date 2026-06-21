@@ -84,7 +84,7 @@ export function SignOffModal({
           aria-labelledby="sign-off-title"
           className="fixed inset-0 z-50 flex items-center justify-center bg-slate-950/80 px-4 py-8 backdrop-blur-md"
         >
-          <div className="glass-panel max-h-full w-full max-w-2xl overflow-y-auto rounded-[2rem] p-6 sm:p-8">
+          <div className="command-panel max-h-full w-full max-w-2xl overflow-y-auto rounded-2xl p-6 sm:p-8">
             <div className="flex items-start justify-between gap-6">
               <div>
                 <p className="text-sm uppercase tracking-[0.24em] text-cyan-200">Final release</p>
@@ -120,7 +120,7 @@ export function SignOffModal({
                 </span>
               </label>
 
-              <div className="rounded-2xl border border-violet-200/20 bg-violet-300/[0.08] p-5">
+              <div className="command-surface rounded-xl border-violet-500/20 p-5">
                 <p className="text-xs uppercase tracking-[0.2em] text-violet-100">{projectSignOffAgreementTitle}</p>
                 <p className="mt-3 text-sm leading-7 text-slate-300">
                   By executing this digital signature, the Client explicitly affirms the following binding terms:
@@ -150,7 +150,7 @@ export function SignOffModal({
                 />
               </label>
 
-              <div className="rounded-2xl border border-white/10 bg-black/20 p-5">
+              <div className="command-surface rounded-xl p-5">
                 <p className="text-xs uppercase tracking-[0.2em] text-slate-400">Digital signature preview</p>
                 <p className="mt-4 min-h-10 font-display text-2xl italic text-cyan-100">
                   {legalName.trim() || "Your signature will appear here"}

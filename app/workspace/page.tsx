@@ -46,7 +46,7 @@ function ProgressRing({ accent, label, progress, supportingText, value }: Progre
   const gradientId = `metric-${accent}`;
 
   return (
-    <article className="glass-panel grid min-h-48 grid-cols-[auto_1fr] items-center gap-5 rounded-2xl p-6">
+    <article className="command-panel grid min-h-48 grid-cols-[auto_1fr] items-center gap-5 rounded-2xl p-6">
       <div className="relative h-28 w-28 shrink-0">
         <svg className="-rotate-90" viewBox="0 0 100 100" aria-hidden="true">
           <defs>
@@ -74,9 +74,9 @@ function ProgressRing({ accent, label, progress, supportingText, value }: Progre
         </span>
       </div>
       <div>
-        <p className="text-sm font-medium text-slate-300">{label}</p>
+        <p className="text-sm font-medium text-zinc-300">{label}</p>
         <p className="mt-2 font-display text-3xl font-bold text-white">{value}</p>
-        <p className="mt-2 text-xs leading-5 text-slate-400">{supportingText}</p>
+        <p className="mt-2 text-xs leading-5 text-zinc-500">{supportingText}</p>
       </div>
     </article>
   );
@@ -139,12 +139,13 @@ export default async function WorkspacePage() {
   const monthlyRevenue = Number(monthlyRevenueResult._sum.amount ?? 0);
 
   return (
-    <section className="mx-auto max-w-7xl px-4 py-20 sm:px-6 lg:px-8">
+    <section className="command-page px-4 py-20 sm:px-6 lg:px-8">
+      <div className="mx-auto max-w-7xl">
       <div className="flex flex-wrap items-center justify-between gap-6">
         <div>
           <p className="text-sm uppercase tracking-[0.28em] text-cyan-200">Private workspace</p>
           <h1 className="mt-4 font-display text-5xl font-semibold text-white">Premium analytics dashboard preview.</h1>
-          <p className="mt-4 max-w-2xl text-slate-300">
+          <p className="mt-4 max-w-2xl text-zinc-400">
             This guarded module demonstrates the executive dashboard clients receive when their operational system goes live.
           </p>
         </div>
@@ -179,45 +180,45 @@ export default async function WorkspacePage() {
       </div>
 
       <div className="mt-8 grid gap-6 lg:grid-cols-[1.2fr_0.8fr]">
-        <div className="glass-panel rounded-[2rem] p-6">
+        <div className="command-panel rounded-2xl p-6">
           <h2 className="text-2xl font-semibold text-white">Implementation timeline</h2>
           <div className="mt-6 space-y-4">
             {["Discovery approved", "Prototype review", "Automation QA", "Launch and training"].map((stage, index) => (
-              <div key={stage} className="rounded-2xl border border-white/10 bg-white/[0.06] p-4">
+              <div key={stage} className="command-surface rounded-xl p-4">
                 <div className="flex items-center justify-between">
                   <p className="font-medium text-white">{stage}</p>
                   <p className="text-sm text-cyan-100">{25 * (index + 1)}%</p>
                 </div>
-                <div className="mt-3 h-2 rounded-full bg-white/10">
-                  <div className="h-2 rounded-full bg-gradient-to-r from-cyan-300 to-fuchsia-300" style={{ width: `${25 * (index + 1)}%` }} />
+                <div className="mt-3 h-2 overflow-hidden rounded-full bg-black/80">
+                  <div className="stratum-progress h-2 rounded-full" style={{ width: `${25 * (index + 1)}%` }} />
                 </div>
               </div>
             ))}
           </div>
         </div>
-        <div className="glass-panel rounded-[2rem] p-6">
+        <div className="command-panel rounded-2xl p-6">
           <h2 className="text-2xl font-semibold text-white">Client intelligence</h2>
-          <div className="mt-6 space-y-4 text-sm text-slate-300">
-            <p className="rounded-2xl border border-white/10 bg-white/[0.06] p-4">At-risk scope changes are flagged before they become unpaid labor.</p>
-            <p className="rounded-2xl border border-white/10 bg-white/[0.06] p-4">Deposits, milestones, and approvals remain attached to the project record.</p>
-            <p className="rounded-2xl border border-white/10 bg-white/[0.06] p-4">Executive reporting can be customized for each client&apos;s industry.</p>
+          <div className="mt-6 space-y-4 text-sm text-zinc-300">
+            <p className="command-surface rounded-xl p-4">At-risk scope changes are flagged before they become unpaid labor.</p>
+            <p className="command-surface rounded-xl p-4">Deposits, milestones, and approvals remain attached to the project record.</p>
+            <p className="command-surface rounded-xl p-4">Executive reporting can be customized for each client&apos;s industry.</p>
           </div>
         </div>
       </div>
 
-      <div className="glass-panel mt-8 overflow-hidden rounded-[2rem]">
+      <div className="command-panel mt-8 overflow-hidden rounded-2xl">
         <div className="flex flex-wrap items-end justify-between gap-4 border-b border-white/10 p-6">
           <div>
             <p className="text-sm uppercase tracking-[0.25em] text-cyan-200">Request workflow</p>
             <h2 className="mt-3 font-display text-2xl font-bold text-white">Pending booking approvals</h2>
           </div>
-          <p className="text-sm text-slate-400">{pendingBookings.length} awaiting review</p>
+          <p className="text-sm text-zinc-500">{pendingBookings.length} awaiting review</p>
         </div>
 
         {pendingBookings.length ? (
           <div className="overflow-x-auto">
             <table className="w-full min-w-[760px] text-left">
-              <thead className="border-b border-white/10 bg-white/[0.04] text-xs uppercase tracking-[0.16em] text-slate-400">
+              <thead className="border-b border-zinc-800/70 bg-black/40 text-xs uppercase tracking-[0.16em] text-zinc-500">
                 <tr>
                   <th className="px-6 py-4 font-medium">Client</th>
                   <th className="px-6 py-4 font-medium">Service</th>
@@ -226,15 +227,15 @@ export default async function WorkspacePage() {
                   <th className="px-6 py-4 text-right font-medium">Action</th>
                 </tr>
               </thead>
-              <tbody className="divide-y divide-white/10">
+              <tbody className="divide-y divide-zinc-800/70">
                 {pendingBookings.map((booking) => (
-                  <tr key={booking.id} className="transition-colors hover:bg-white/[0.04]">
+                  <tr key={booking.id} className="transition-colors hover:bg-white/[0.025]">
                     <td className="px-6 py-5">
                       <p className="font-medium text-white">{booking.user.name}</p>
-                      <p className="mt-1 text-sm text-slate-400">{booking.user.email}</p>
+                      <p className="mt-1 text-sm text-zinc-500">{booking.user.email}</p>
                     </td>
-                    <td className="px-6 py-5 text-sm text-slate-300">{booking.type.replaceAll("_", " ")}</td>
-                    <td className="px-6 py-5 text-sm text-slate-300">
+                    <td className="px-6 py-5 text-sm text-zinc-300">{booking.type.replaceAll("_", " ")}</td>
+                    <td className="px-6 py-5 text-sm text-zinc-300">
                       {booking.startAt.toLocaleDateString("en-US", {
                         month: "short",
                         day: "numeric",
@@ -247,7 +248,7 @@ export default async function WorkspacePage() {
                         <input type="hidden" name="bookingId" value={booking.id} />
                         <button
                           type="submit"
-                          className="inline-flex items-center gap-2 rounded-full border border-cyan-200/30 bg-cyan-200/10 px-4 py-2 text-sm font-semibold text-cyan-50 transition hover:bg-cyan-200 hover:text-slate-950"
+                          className="stratum-action-gradient inline-flex items-center gap-2 rounded-full px-4 py-2 text-sm font-semibold transition-all hover:brightness-110"
                         >
                           <CheckCircle2 className="h-4 w-4" />
                           Approve Booking
@@ -263,9 +264,10 @@ export default async function WorkspacePage() {
           <div className="p-8 text-center">
             <CheckCircle2 className="mx-auto h-8 w-8 text-emerald-300" />
             <p className="mt-4 font-medium text-white">All booking requests are up to date.</p>
-            <p className="mt-2 text-sm text-slate-400">New pending requests will appear here automatically.</p>
+            <p className="mt-2 text-sm text-zinc-500">New pending requests will appear here automatically.</p>
           </div>
         )}
+      </div>
       </div>
     </section>
   );

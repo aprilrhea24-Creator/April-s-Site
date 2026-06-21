@@ -99,7 +99,8 @@ export default async function ClientPortalPage({
   const canSignOff = reachedMilestone === 4;
 
   return (
-    <section className="mx-auto max-w-[1440px] px-4 py-10 sm:px-6 lg:px-8">
+    <section className="command-page px-4 py-10 sm:px-6 lg:px-8">
+      <div className="mx-auto max-w-[1440px]">
       {signoff === "complete" ? (
         <div className="mb-6 rounded-2xl border border-emerald-200/30 bg-emerald-300/10 px-5 py-4 text-sm text-emerald-100 backdrop-blur-md">
           Project sign-off is complete. Your timestamped release receipt is securely recorded.
@@ -117,7 +118,7 @@ export default async function ClientPortalPage({
       ) : null}
 
       <div className="grid gap-8 lg:grid-cols-[17rem_minmax(0,1fr)]">
-        <aside className="glass-panel h-fit rounded-[2rem] p-5 lg:sticky lg:top-24">
+        <aside className="command-panel h-fit rounded-2xl p-5 lg:sticky lg:top-24">
           <Link href="/client-dashboard" className="inline-flex items-center gap-2 text-sm text-slate-400 hover:text-white">
             <ArrowLeft className="h-4 w-4" />
             All projects
@@ -155,9 +156,9 @@ export default async function ClientPortalPage({
               <p className="text-3xl font-semibold text-white">{project.progress}%</p>
               <p className="text-xs text-slate-400">Milestone {reachedMilestone} of 4</p>
             </div>
-            <div className="mt-3 h-2 rounded-full bg-white/10">
+            <div className="mt-3 h-2 overflow-hidden rounded-full bg-black/80">
               <div
-                className="h-2 rounded-full bg-gradient-to-r from-cyan-300 to-violet-300"
+                className="stratum-progress h-2 rounded-full"
                 style={{ width: `${Math.min(100, Math.max(0, project.progress))}%` }}
               />
             </div>
@@ -187,7 +188,7 @@ export default async function ClientPortalPage({
             <p className="mt-5 max-w-3xl text-lg leading-8 text-slate-300">{project.summary}</p>
           </header>
 
-          <section id="roadmap" className="glass-panel scroll-mt-28 rounded-[2rem] p-6 sm:p-8">
+          <section id="roadmap" className="command-panel scroll-mt-28 rounded-2xl p-6 sm:p-8">
             <div className="max-w-2xl">
               <p className="text-sm uppercase tracking-[0.24em] text-violet-200">Project lifecycle</p>
               <h2 className="mt-3 text-3xl font-semibold text-white">Your four-step launch roadmap</h2>
@@ -208,10 +209,10 @@ export default async function ClientPortalPage({
                     key={step.title}
                     className={`relative rounded-2xl border p-5 ${
                       active
-                        ? "border-cyan-200/35 bg-cyan-300/10 shadow-[0_18px_50px_rgba(34,211,238,0.1)]"
+                        ? "border-cyan-400/35 bg-cyan-400/[0.08] shadow-[0_18px_50px_rgba(22,139,255,0.12)]"
                         : reached
-                          ? "border-violet-200/20 bg-violet-300/[0.07]"
-                          : "border-white/10 bg-black/15"
+                          ? "border-violet-500/25 bg-violet-500/[0.06]"
+                          : "border-zinc-800/70 bg-black/45"
                     }`}
                   >
                     <div
@@ -233,7 +234,7 @@ export default async function ClientPortalPage({
             </div>
           </section>
 
-          <section id="messages" className="glass-panel scroll-mt-28 rounded-[2rem] p-6">
+          <section id="messages" className="command-panel scroll-mt-28 rounded-2xl p-6">
             <div className="flex items-center gap-3">
               <MessageSquareText className="h-6 w-6 text-cyan-200" />
               <h2 className="text-2xl font-semibold text-white">Project messages</h2>
@@ -250,7 +251,7 @@ export default async function ClientPortalPage({
                       className={`max-w-[88%] rounded-2xl border p-4 ${
                         clientMessage
                           ? "ml-auto border-cyan-200/20 bg-cyan-300/10"
-                          : "border-white/10 bg-white/[0.06]"
+                          : "border-zinc-800/70 bg-black/45"
                       }`}
                     >
                       <div className="flex items-center justify-between gap-4">
@@ -268,7 +269,7 @@ export default async function ClientPortalPage({
                   );
                 })
               ) : (
-                <p className="rounded-2xl border border-white/10 bg-white/[0.04] p-5 text-sm text-slate-400">
+                <p className="command-surface rounded-xl p-5 text-sm text-zinc-500">
                   No project messages yet.
                 </p>
               )}
@@ -286,7 +287,7 @@ export default async function ClientPortalPage({
                   className="glass-field"
                 />
               </label>
-              <button className="inline-flex items-center justify-center gap-2 rounded-full border border-cyan-200/30 bg-cyan-100 px-5 py-3 font-semibold text-slate-950 hover:bg-white sm:justify-self-end">
+              <button className="stratum-action-gradient inline-flex items-center justify-center gap-2 rounded-full px-5 py-3 font-semibold transition-all hover:brightness-110 sm:justify-self-end">
                 <Send className="h-4 w-4" />
                 Send Message
               </button>
@@ -297,8 +298,8 @@ export default async function ClientPortalPage({
             id="sign-off"
             className={`scroll-mt-28 rounded-[2rem] border p-6 sm:p-8 ${
               canSignOff
-                ? "border-cyan-200/30 bg-[linear-gradient(135deg,rgba(34,211,238,0.14),rgba(139,92,246,0.12))] shadow-[0_24px_80px_rgba(34,211,238,0.08)] backdrop-blur-xl"
-                : "border-white/10 bg-white/[0.05] backdrop-blur-xl"
+                ? "border-cyan-400/30 bg-[#0c0d12] shadow-[0_24px_80px_rgba(22,139,255,0.1)] backdrop-blur-xl"
+                : "border-zinc-800/70 bg-[#0c0d12] backdrop-blur-xl"
             }`}
           >
             <div className="grid gap-6 md:grid-cols-[1fr_auto] md:items-center">
@@ -329,6 +330,7 @@ export default async function ClientPortalPage({
             </div>
           </section>
         </main>
+      </div>
       </div>
     </section>
   );
