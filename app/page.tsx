@@ -107,8 +107,12 @@ export default function HomePage() {
         </div>
 
         {/* Foreground column 2: existing Stratum Framework roadmap interface. */}
-        <div className="rounded-2xl border border-white/10 bg-zinc-950/50 p-8 shadow-[0_28px_80px_rgba(8,145,178,0.14),0_18px_56px_rgba(126,34,206,0.12)] backdrop-blur-xl transition-all duration-300 hover:border-cyan-300/20">
-          <div className="rounded-[1.5rem] border border-white/10 bg-black/25 p-5">
+        <div className="relative overflow-hidden rounded-2xl border border-white/20 bg-[#0c0d12]/95 p-8 shadow-[0_32px_100px_rgba(0,0,0,0.78),0_0_34px_rgba(22,139,255,0.14),0_0_54px_rgba(124,58,237,0.1)] backdrop-blur-2xl transition-all duration-300 hover:border-cyan-300/30">
+          <div
+            className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_78%_12%,rgba(22,139,255,0.1),transparent_38%),radial-gradient(circle_at_18%_88%,rgba(124,58,237,0.08),transparent_42%)]"
+            aria-hidden="true"
+          />
+          <div className="relative z-10 rounded-[1.5rem] border border-zinc-700/70 bg-black/70 p-5 shadow-[inset_0_1px_0_rgba(255,255,255,0.04)]">
             <div className="flex items-center justify-between border-b border-white/10 pb-4">
               <div>
                 <span className="mb-1 block font-mono text-[10px] uppercase tracking-[0.2em] text-zinc-500">
@@ -122,9 +126,9 @@ export default function HomePage() {
               {process.map((step, index) => (
                 <div
                   key={step.title}
-                  className="flex items-center gap-4 rounded-2xl border border-white/10 bg-slate-950/40 p-4 backdrop-blur-md"
+                  className="flex items-center gap-4 rounded-xl border border-zinc-800/80 bg-[#07080d]/95 p-4 shadow-[0_12px_30px_rgba(0,0,0,0.32)]"
                 >
-                  <div className="flex h-10 w-10 items-center justify-center rounded-full bg-white/10 font-mono font-bold text-cyan-100">
+                  <div className="flex h-10 w-10 items-center justify-center rounded-full border border-zinc-700/70 bg-zinc-900 font-mono font-bold text-cyan-100">
                     {index + 1}
                   </div>
                   <div>
@@ -134,9 +138,9 @@ export default function HomePage() {
                 </div>
               ))}
             </div>
-            <div className="mt-5 rounded-2xl border border-fuchsia-200/20 bg-fuchsia-300/10 p-4">
-              <p className="text-sm uppercase tracking-[0.2em] text-fuchsia-100">Protected every step</p>
-              <p className="mt-2 text-sm leading-6 text-slate-200">
+            <div className="mt-5 rounded-xl border border-cyan-300/25 bg-[linear-gradient(135deg,rgba(0,212,232,0.08),rgba(22,139,255,0.06),rgba(124,58,237,0.08))] p-4 shadow-[0_14px_34px_rgba(0,0,0,0.35)]">
+              <p className="text-sm uppercase tracking-[0.2em] text-cyan-100">Protected every step</p>
+              <p className="mt-2 text-sm leading-6 text-zinc-200">
                 Payments, approvals, and final ownership stay clear from your first preview through launch day.
               </p>
             </div>
