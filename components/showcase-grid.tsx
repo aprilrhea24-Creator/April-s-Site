@@ -212,50 +212,87 @@ export function ShowcaseGrid() {
         return (
           <article
             key={item.slug}
-            className={`group relative overflow-hidden rounded-2xl border border-white/5 bg-zinc-950/20 transition-all duration-500 hover:border-cyan-500/30 ${
+            className={`group relative overflow-hidden rounded-2xl border border-white/5 ${
+              module.code === "SBK-01" ? "bg-zinc-950/80" : "bg-zinc-950/20"
+            } transition-all duration-500 hover:border-cyan-500/30 ${
               index % 2 === 1 ? "lg:translate-y-12" : ""
             }`}
           >
-            {module.format === "desktop" ? (
-              <DesktopFrame
-                title={item.title}
-                metric={module.metric}
-                metricLabel={module.metricLabel}
-                accent={module.accent}
-              />
-            ) : (
-              <MobileFrame
-                title={item.title}
-                metric={module.metric}
-                metricLabel={module.metricLabel}
-                accent={module.accent}
-              />
-            )}
-
-            <div className="border-t border-white/5 p-6 sm:p-8">
-              <div className="flex items-center justify-between gap-4 font-mono text-xs uppercase tracking-widest text-zinc-500">
-                <span>{module.code}</span>
-                <span>{module.format} system</span>
-              </div>
-              <div className="mt-5 flex items-start justify-between gap-5">
-                <div>
-                  <p className={`font-mono text-xs uppercase tracking-widest ${accentStyles[module.accent].text}`}>
-                    {module.system}
-                  </p>
-                  <h3 className="mt-3 text-2xl font-bold text-white">{item.title}</h3>
-                </div>
-                <Link
-                  href={`/solutions/${module.preview}/preview`}
-                  aria-label={`Preview ${item.title}`}
-                  className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full border border-white/10 bg-white/[0.04] text-white transition-all duration-300 group-hover:border-cyan-400/30 group-hover:bg-cyan-400/10 group-hover:text-cyan-200"
+            {module.code === "SBK-01" ? (
+              <>
+                {/* Native background delivery keeps the card asset outside image optimization pipelines. */}
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
+                  src="/backgroundidea1.webp"
+                  alt=""
+                  loading="lazy"
+                  decoding="async"
+                  className="pointer-events-none absolute inset-0 z-0 h-full w-full object-cover object-center opacity-65"
+                  aria-hidden="true"
+                />
+                <svg
+                  className="pointer-events-none absolute inset-0 z-[1] h-full w-full opacity-[0.03] mix-blend-overlay [transform:translateZ(0)]"
+                  aria-hidden="true"
+                  preserveAspectRatio="none"
                 >
-                  <ArrowUpRight className="h-4 w-4" />
-                </Link>
-              </div>
-              <p className="mt-4 text-sm leading-7 text-zinc-400">{item.summary}</p>
-              <div className="mt-6 flex items-end justify-between gap-4 border-t border-white/5 pt-5">
-                <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-zinc-600">Investment architecture</span>
-                <span className="text-lg font-bold text-white">From {item.price.startingAt}</span>
+                  <filter id="sbk-card-fractal-noise">
+                    <feTurbulence type="fractalNoise" baseFrequency="0.84" numOctaves="4" stitchTiles="stitch" />
+                  </filter>
+                  <rect width="100%" height="100%" filter="url(#sbk-card-fractal-noise)" />
+                </svg>
+                <div
+                  className="pointer-events-none absolute left-0 top-1/2 z-[2] h-[120%] w-full -translate-y-1/2 blur-2xl"
+                  style={{
+                    background:
+                      "radial-gradient(ellipse at center, rgba(5, 5, 8, 0.75) 0%, rgba(5, 5, 8, 0.58) 42%, rgba(5, 5, 8, 0) 82%)"
+                  }}
+                  aria-hidden="true"
+                />
+              </>
+            ) : null}
+
+            <div className="relative z-10">
+              {module.format === "desktop" ? (
+                <DesktopFrame
+                  title={item.title}
+                  metric={module.metric}
+                  metricLabel={module.metricLabel}
+                  accent={module.accent}
+                />
+              ) : (
+                <MobileFrame
+                  title={item.title}
+                  metric={module.metric}
+                  metricLabel={module.metricLabel}
+                  accent={module.accent}
+                />
+              )}
+
+              <div className="border-t border-white/5 p-6 sm:p-8">
+                <div className="flex items-center justify-between gap-4 font-mono text-xs uppercase tracking-widest text-zinc-500">
+                  <span>{module.code}</span>
+                  <span>{module.format} system</span>
+                </div>
+                <div className="mt-5 flex items-start justify-between gap-5">
+                  <div>
+                    <p className={`font-mono text-xs uppercase tracking-widest ${accentStyles[module.accent].text}`}>
+                      {module.system}
+                    </p>
+                    <h3 className="mt-3 text-2xl font-bold text-white">{item.title}</h3>
+                  </div>
+                  <Link
+                    href={`/solutions/${module.preview}/preview`}
+                    aria-label={`Preview ${item.title}`}
+                    className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full border border-white/10 bg-white/[0.04] text-white transition-all duration-300 group-hover:border-cyan-400/30 group-hover:bg-cyan-400/10 group-hover:text-cyan-200"
+                  >
+                    <ArrowUpRight className="h-4 w-4" />
+                  </Link>
+                </div>
+                <p className="mt-4 text-sm leading-7 text-zinc-400">{item.summary}</p>
+                <div className="mt-6 flex items-end justify-between gap-4 border-t border-white/5 pt-5">
+                  <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-zinc-600">Investment architecture</span>
+                  <span className="text-lg font-bold text-white">From {item.price.startingAt}</span>
+                </div>
               </div>
             </div>
           </article>
