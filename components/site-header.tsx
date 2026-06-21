@@ -45,13 +45,16 @@ export function SiteHeader() {
             </Link>
           ))}
         </nav>
-        <div className="flex items-center gap-3">
-          <Link href="/login" className="text-sm text-slate-200/80 transition hover:text-white">
+        <div className="flex items-center">
+          <Link
+            href="/login"
+            className="mr-6 font-sans text-xs font-medium text-zinc-400 transition-colors hover:text-white"
+          >
             Login
           </Link>
           <Link
             href="/consultation"
-            className="rounded-full bg-gradient-to-r from-cyan-400 to-purple-500 px-5 py-2.5 font-sans text-xs font-bold uppercase tracking-wider text-white transition-all duration-300 hover:shadow-[0_0_20px_rgba(34,211,238,0.4)]"
+            className="transform rounded-full bg-gradient-to-r from-[#00f2fe] via-[#0066ff] to-[#9d00ff] px-5 py-2.5 font-sans text-xs font-bold uppercase tracking-wider text-white transition-all duration-300 will-change-transform hover:scale-[1.03] hover:shadow-[0_0_20px_rgba(0,242,254,0.35)] active:scale-95"
           >
             Start Build
           </Link>
