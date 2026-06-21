@@ -50,19 +50,19 @@ export default function HomePage() {
         {/* Foreground column 1: agency positioning and conversion actions. */}
         <div className="relative isolate">
           <div
-            className="pointer-events-none absolute left-0 top-1/2 z-0 h-[120%] w-full max-w-3xl -translate-y-1/2 blur-2xl"
+            className="pointer-events-none absolute -inset-x-8 -inset-y-12 z-0 rounded-[3rem] backdrop-blur-[2px]"
             style={{
               background:
-                "radial-gradient(ellipse at center, rgba(5, 5, 8, 0.75) 0%, rgba(5, 5, 8, 0.58) 38%, rgba(5, 5, 8, 0) 76%)"
+                "radial-gradient(ellipse at 40% 46%, rgba(3, 5, 10, 0.94) 0%, rgba(3, 5, 10, 0.84) 34%, rgba(3, 5, 10, 0.58) 58%, rgba(3, 5, 10, 0) 86%)"
             }}
             aria-hidden="true"
           />
           <div className="relative z-10 flex flex-col items-center text-center md:items-start md:text-left">
             <div className="w-full">
-              <h1 className="font-sans text-4xl font-black leading-[1.05] tracking-tight text-white md:text-6xl">
+              <h1 className="font-sans text-4xl font-black leading-[1.05] tracking-tight text-white drop-shadow-[0_4px_16px_rgba(0,0,0,1)] md:text-6xl">
                 <span className="block text-white">Engineered Workflows.</span>
                 <span
-                  className="mt-2 block bg-gradient-to-r from-cyan-400 to-purple-500 bg-clip-text text-transparent"
+                  className="mt-2 block bg-gradient-to-r from-cyan-400 to-purple-500 bg-clip-text text-transparent drop-shadow-[0_4px_14px_rgba(0,0,0,0.95)]"
                   style={{
                     backgroundImage: "linear-gradient(90deg, #22d3ee, #a855f7)",
                     WebkitBackgroundClip: "text",
@@ -81,7 +81,7 @@ export default function HomePage() {
                   }}
                   aria-hidden="true"
                 />
-                <p className="relative z-10 text-base font-medium leading-relaxed tracking-wide text-slate-200 antialiased drop-shadow-[0_4px_12px_rgba(0,0,0,1)] [text-shadow:0_1px_2px_rgba(0,0,0,1)] md:text-lg">
+                <p className="relative z-10 text-base font-semibold leading-relaxed tracking-wide text-slate-100 antialiased drop-shadow-[0_4px_14px_rgba(0,0,0,1)] [text-shadow:0_1px_3px_rgba(0,0,0,1)] md:text-lg">
                   Stratum Studio builds high-performance web applications, premium portals, and automated booking systems tailored
                   to your unique operations. We eliminate friction from your day-to-day workflow while designing an elite digital
                   presence that makes your brand unforgettable.
