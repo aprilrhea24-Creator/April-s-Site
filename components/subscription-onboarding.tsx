@@ -137,7 +137,7 @@ export function SubscriptionOnboarding() {
           </label>
           <button
             type="submit"
-            className="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-xl bg-[linear-gradient(90deg,#22d3ee,#6366f1,#d946ef)] px-6 py-3.5 font-sans text-xs font-bold uppercase tracking-widest text-white transition-all duration-300 hover:shadow-[0_0_24px_rgba(34,211,238,0.3)]"
+            className="stratum-action-gradient inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-xl px-6 py-3.5 font-sans text-xs font-bold uppercase tracking-widest transition-all duration-300"
           >
             <ShieldCheck className="h-4 w-4" />
             Secure Dedicated Support

@@ -141,7 +141,7 @@ export default async function ConsultationPage({
             ))}
           </div>
         </fieldset>
-        <button className="animate-gradient-breath inline-flex items-center justify-center gap-2 rounded-full bg-[linear-gradient(90deg,#00F2FE,#168BFF,#A800FF)] px-6 py-3 font-bold text-white shadow-[0_0_30px_rgba(22,139,255,0.3)] transition-all hover:brightness-110 hover:shadow-[0_0_42px_rgba(168,0,255,0.42)] lg:col-span-2">
+        <button className="stratum-action-gradient animate-gradient-breath inline-flex items-center justify-center gap-2 rounded-full px-6 py-3 font-bold transition-all hover:brightness-110 lg:col-span-2">
           Submit Specification <SendHorizonal className="h-4 w-4" />
         </button>
       </form>

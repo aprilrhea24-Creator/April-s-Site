@@ -54,7 +54,7 @@ export function SiteHeader() {
           </Link>
           <Link
             href="/consultation"
-            className="transform rounded-full bg-gradient-to-r from-[#00f2fe] via-[#0066ff] to-[#9d00ff] px-5 py-2.5 font-sans text-xs font-bold uppercase tracking-wider text-white transition-all duration-300 will-change-transform hover:scale-[1.03] hover:shadow-[0_0_20px_rgba(0,242,254,0.35)] active:scale-95"
+            className="stratum-action-gradient transform rounded-full px-5 py-2.5 font-sans text-xs font-bold uppercase tracking-wider transition-all duration-300 will-change-transform hover:scale-[1.03] active:scale-95"
           >
             Start Build
           </Link>

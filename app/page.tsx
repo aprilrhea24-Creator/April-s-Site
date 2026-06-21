@@ -91,7 +91,7 @@ export default function HomePage() {
             <div className="mt-8 flex flex-wrap justify-center gap-4 md:justify-start">
               <Link
                 href="/consultation"
-                className="group inline-flex items-center justify-center gap-2 rounded-full bg-gradient-to-r from-[#00D4E8] via-[#168BFF] to-[#7C3AED] px-6 py-3 font-bold text-white shadow-glow transition-all hover:brightness-110"
+                className="stratum-action-gradient group inline-flex items-center justify-center gap-2 rounded-full px-6 py-3 font-bold transition-all hover:brightness-110"
               >
                 Explore Packages
                 <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />

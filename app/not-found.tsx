@@ -21,7 +21,7 @@ export default function NotFound() {
         <div className="mt-8 flex justify-center">
           <Link
             href="/"
-            className="inline-flex items-center gap-2 rounded-full bg-[linear-gradient(90deg,#67e8f9,#a78bfa,#f0abfc)] px-6 py-3 font-semibold text-slate-950 shadow-glow hover:brightness-110"
+            className="stratum-action-gradient inline-flex items-center gap-2 rounded-full px-6 py-3 font-semibold hover:brightness-110"
           >
             Return Home
           </Link>

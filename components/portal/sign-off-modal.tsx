@@ -71,7 +71,7 @@ export function SignOffModal({
       <button
         type="button"
         onClick={() => setOpen(true)}
-        className="inline-flex items-center gap-2 rounded-full bg-[linear-gradient(90deg,#67e8f9,#a78bfa,#f0abfc)] px-6 py-3 font-semibold text-slate-950 shadow-glow hover:brightness-110"
+        className="stratum-action-gradient inline-flex items-center gap-2 rounded-full px-6 py-3 font-semibold hover:brightness-110"
       >
         <FileSignature className="h-5 w-5" />
         Review &amp; Sign Off Project
@@ -163,7 +163,7 @@ export function SignOffModal({
               <button
                 type="submit"
                 disabled={!canSubmit}
-                className="w-full rounded-full bg-[linear-gradient(90deg,#67e8f9,#a78bfa,#f0abfc)] px-6 py-3 font-semibold text-slate-950 shadow-glow hover:brightness-110 disabled:cursor-not-allowed disabled:opacity-40"
+                className="stratum-action-gradient w-full rounded-full px-6 py-3 font-semibold hover:brightness-110 disabled:cursor-not-allowed disabled:opacity-40"
               >
                 Sign &amp; Release Project
               </button>

@@ -68,7 +68,7 @@ export function AuthForm({ mode }: { mode: "login" | "register" }) {
       <button
         type="submit"
         disabled={loading}
-        className="w-full rounded-full bg-[linear-gradient(90deg,#67e8f9,#a78bfa,#f0abfc)] px-5 py-3 font-semibold text-slate-950 transition hover:brightness-110 disabled:opacity-60"
+        className="stratum-action-gradient w-full rounded-full px-5 py-3 font-semibold transition hover:brightness-110 disabled:opacity-60"
       >
         {loading ? "Please wait..." : mode === "login" ? "Sign in" : "Create account"}
       </button>

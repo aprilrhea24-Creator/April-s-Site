@@ -73,7 +73,7 @@ export default async function PackagePage({
             <div className="mt-8 flex flex-wrap gap-4">
               <Link
                 href={consultationHref}
-                className="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-cyan-400 to-purple-500 px-6 py-3 font-semibold text-white transition-all hover:brightness-110"
+                className="stratum-action-gradient inline-flex items-center gap-2 rounded-full px-6 py-3 font-semibold transition-all hover:brightness-110"
               >
                 Book This Package
                 <ArrowRight className="h-4 w-4" />
@@ -134,7 +134,7 @@ export default async function PackagePage({
               <p className="mt-5 text-sm leading-7 text-zinc-400">{item.price.note}</p>
               <Link
                 href={consultationHref}
-                className="mt-7 inline-flex w-full items-center justify-center rounded-full bg-gradient-to-r from-cyan-400 to-purple-500 px-5 py-3 font-semibold text-white transition-all hover:brightness-110"
+                className="stratum-action-gradient mt-7 inline-flex w-full items-center justify-center rounded-full px-5 py-3 font-semibold transition-all hover:brightness-110"
               >
                 Book This Package
               </Link>
