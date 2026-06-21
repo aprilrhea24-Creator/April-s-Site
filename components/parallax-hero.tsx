@@ -1,6 +1,5 @@
 "use client";
 
-import Image from "next/image";
 import { useEffect, useRef, type ReactNode } from "react";
 
 type ParallaxHeroProps = {
@@ -89,20 +88,33 @@ export function ParallaxHero({ children }: ParallaxHeroProps) {
         className="pointer-events-none absolute inset-x-0 -inset-y-[20%] z-0 will-change-transform"
         aria-hidden="true"
       >
-        <Image
-          src="/backgroundidea1.jpg"
+        {/* Native delivery avoids framework image recompression on dark gradients. */}
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img
+          src="/backgroundidea1.webp"
           alt=""
-          fill
-          priority
-          sizes="100vw"
-          className="h-full w-full object-cover object-[54%_center] md:object-center"
+          aria-hidden="true"
+          loading="eager"
+          fetchPriority="high"
+          decoding="async"
+          className="pointer-events-none absolute inset-0 z-0 h-full w-full object-cover object-[54%_center] md:object-center"
         />
-        <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(0,0,0,0.68)_0%,rgba(7,7,10,0.46)_52%,rgba(3,7,18,0.58)_100%)] md:bg-[linear-gradient(90deg,rgba(0,0,0,0.78)_0%,rgba(7,7,10,0.52)_46%,rgba(3,7,18,0.32)_100%)]" />
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_72%_28%,rgba(34,211,238,0.04),transparent_32%),linear-gradient(180deg,rgba(7,7,10,0.12),rgba(7,7,10,0.42))]" />
+        <svg
+          className="pointer-events-none absolute inset-0 z-[1] h-full w-full opacity-[0.03] mix-blend-soft-light"
+          aria-hidden="true"
+          preserveAspectRatio="none"
+        >
+          <filter id="hero-fractal-noise">
+            <feTurbulence type="fractalNoise" baseFrequency="0.82" numOctaves="4" stitchTiles="stitch" />
+          </filter>
+          <rect width="100%" height="100%" filter="url(#hero-fractal-noise)" />
+        </svg>
+        <div className="absolute inset-0 z-[2] bg-[linear-gradient(180deg,rgba(0,0,0,0.68)_0%,rgba(7,7,10,0.46)_52%,rgba(3,7,18,0.58)_100%)] md:bg-[linear-gradient(90deg,rgba(0,0,0,0.78)_0%,rgba(7,7,10,0.52)_46%,rgba(3,7,18,0.32)_100%)]" />
+        <div className="absolute inset-0 z-[2] bg-[radial-gradient(circle_at_72%_28%,rgba(34,211,238,0.04),transparent_32%),linear-gradient(180deg,rgba(7,7,10,0.12),rgba(7,7,10,0.42))]" />
       </div>
 
       {/* Existing hero copy and framework card columns plug into this full-speed foreground layer. */}
-      <div className="relative z-10 mx-auto grid min-h-[58rem] max-w-7xl grid-cols-1 items-center gap-10 px-4 py-14 sm:min-h-[56rem] sm:px-6 md:min-h-[calc(100vh-5rem)] md:grid-cols-2 md:py-16 lg:grid-cols-[1.08fr_0.92fr] lg:px-8">
+      <div className="relative z-10 mx-auto grid min-h-[58rem] max-w-7xl grid-cols-1 items-center gap-12 px-4 py-14 sm:min-h-[56rem] sm:px-6 md:min-h-[calc(100vh-5rem)] md:grid-cols-2 md:py-16 lg:grid-cols-[1.08fr_0.92fr] lg:px-8">
         {children}
       </div>
     </section>

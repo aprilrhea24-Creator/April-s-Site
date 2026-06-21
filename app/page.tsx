@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { ArrowRight, ChartNoAxesCombined, MonitorSmartphone, ShieldCheck, Sparkles } from "lucide-react";
+import { ArrowRight, ChartNoAxesCombined, MonitorSmartphone, ShieldCheck } from "lucide-react";
 
 import { MaintenanceBanner } from "@/components/maintenance-banner";
 import { ParallaxHero } from "@/components/parallax-hero";
@@ -47,26 +47,28 @@ export default function HomePage() {
   return (
     <div className="relative overflow-hidden bg-[linear-gradient(180deg,#000000_0%,#070a10_56%,#000000_100%)]">
       <ParallaxHero>
-        {/* Foreground column 1: existing hero typography and conversion actions. */}
-        <div className="space-y-8 text-center md:text-left">
-          <div className="mx-auto inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/10 px-4 py-2 text-xs uppercase tracking-[0.28em] text-cyan-100 backdrop-blur-md md:mx-0">
-            <Sparkles className="h-4 w-4" />
-            Private operational systems studio
+        {/* Foreground column 1: California Senate recognition and conversion actions. */}
+        <div className="flex flex-col items-center text-center md:items-start md:text-left">
+          <div className="inline-flex items-center rounded-full border border-amber-500/30 bg-zinc-950/80 px-4 py-2 text-xs font-bold uppercase tracking-widest text-amber-400 backdrop-blur-md">
+            {"\u2605"} State of California Senate Recognition
           </div>
-          <div className="space-y-5">
-            <h1 className="font-sans text-[2.5rem] font-bold normal-case leading-snug text-white sm:text-[3.5rem]">
-              <span className="block text-white">Engineered Workflows.</span>
-              <span className="block bg-gradient-to-r from-[#00F2FE] via-[#4FACFE] to-[#8B5CF6] bg-clip-text text-transparent">
-                Hyper-Personalized Brands.
+          <div className="w-full">
+            <h1 className="mb-2 mt-4 font-sans text-4xl font-black tracking-tight text-white md:text-6xl">
+              <span className="block text-white">Honored by the</span>
+              <span className="block bg-gradient-to-r from-cyan-400 to-violet-500 bg-clip-text text-transparent">
+                State of California
               </span>
             </h1>
-            <p className="mx-auto max-w-2xl text-lg leading-8 text-slate-300 md:mx-0">
-              Stratum Studio builds high-performance web applications, premium portals, and automated booking systems tailored
-              to your unique operations. We eliminate friction from your day-to-day workflow while designing an elite digital
-              presence that makes your brand unforgettable.
+            <p className="mb-6 text-xl font-bold uppercase tracking-wide text-zinc-200 md:text-2xl">
+              Celebrating Culinary Excellence: Chef Thai
+            </p>
+            <p className="mx-auto max-w-2xl text-base leading-relaxed text-zinc-400 md:mx-0 md:text-lg">
+              Experience culinary excellence recognized by the State of California Senate. Honored by Senator Eloise Gómez
+              Reyes for community dedication and inspiring through culture, Chef Thai curates the absolute best in premium
+              Cajun &amp; Thai fusion cuisines for exclusive events, corporate functions, and luxury private dining.
             </p>
           </div>
-          <div className="flex flex-wrap justify-center gap-4 md:justify-start">
+          <div className="mt-8 flex flex-wrap justify-center gap-4 md:justify-start">
             <Link
               href="/consultation"
               className="group inline-flex items-center justify-center gap-2 rounded-full bg-gradient-to-r from-[#00D4E8] via-[#168BFF] to-[#7C3AED] px-6 py-3 font-bold text-white shadow-glow transition-all hover:brightness-110"
