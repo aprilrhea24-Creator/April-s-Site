@@ -11,7 +11,7 @@ export function ParallaxHero({ children }: ParallaxHeroProps) {
         {/* Native delivery preserves the source asset without framework recompression. */}
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
-          src="/backgroundidea1.webp"
+          src="/image_42eafa.jpg"
           alt=""
           loading="eager"
           fetchPriority="high"
@@ -19,7 +19,7 @@ export function ParallaxHero({ children }: ParallaxHeroProps) {
           className="absolute inset-0 h-full w-full object-cover object-center"
         />
         <svg
-          className="pointer-events-none absolute inset-0 h-full w-full opacity-[0.03] mix-blend-overlay [transform:translateZ(0)]"
+          className="pointer-events-none absolute inset-0 h-full w-full opacity-[0.02] mix-blend-overlay [transform:translateZ(0)]"
           aria-hidden="true"
           preserveAspectRatio="none"
         >
