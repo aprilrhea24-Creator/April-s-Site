@@ -80,7 +80,10 @@ export function ParallaxHero({ children }: ParallaxHeroProps) {
   }, []);
 
   return (
-    <section ref={rootRef} className="relative min-h-[calc(100vh-5rem)] overflow-hidden bg-[#07070a]">
+    <section
+      ref={rootRef}
+      className="parallax-hero relative min-h-[58rem] overflow-hidden bg-[#07070a] sm:min-h-[56rem] md:min-h-[calc(100vh-5rem)]"
+    >
       <div
         ref={backgroundRef}
         className="pointer-events-none absolute inset-x-0 -inset-y-[20%] z-0 will-change-transform"
@@ -92,14 +95,14 @@ export function ParallaxHero({ children }: ParallaxHeroProps) {
           fill
           priority
           sizes="100vw"
-          className="h-full w-full object-cover object-center"
+          className="h-full w-full object-cover object-[54%_center] md:object-center"
         />
-        <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(0,0,0,0.78)_0%,rgba(7,7,10,0.52)_46%,rgba(3,7,18,0.32)_100%)]" />
+        <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(0,0,0,0.68)_0%,rgba(7,7,10,0.46)_52%,rgba(3,7,18,0.58)_100%)] md:bg-[linear-gradient(90deg,rgba(0,0,0,0.78)_0%,rgba(7,7,10,0.52)_46%,rgba(3,7,18,0.32)_100%)]" />
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_72%_28%,rgba(34,211,238,0.04),transparent_32%),linear-gradient(180deg,rgba(7,7,10,0.12),rgba(7,7,10,0.42))]" />
       </div>
 
       {/* Existing hero copy and framework card columns plug into this full-speed foreground layer. */}
-      <div className="relative z-10 mx-auto grid min-h-[calc(100vh-5rem)] max-w-7xl items-center gap-10 px-4 py-16 sm:px-6 lg:grid-cols-[1.08fr_0.92fr] lg:px-8">
+      <div className="relative z-10 mx-auto grid min-h-[58rem] max-w-7xl grid-cols-1 items-center gap-10 px-4 py-14 sm:min-h-[56rem] sm:px-6 md:min-h-[calc(100vh-5rem)] md:grid-cols-2 md:py-16 lg:grid-cols-[1.08fr_0.92fr] lg:px-8">
         {children}
       </div>
     </section>

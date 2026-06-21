@@ -48,8 +48,8 @@ export default function HomePage() {
     <div className="relative overflow-hidden bg-[linear-gradient(180deg,#000000_0%,#070a10_56%,#000000_100%)]">
       <ParallaxHero>
         {/* Foreground column 1: existing hero typography and conversion actions. */}
-        <div className="space-y-8">
-          <div className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/10 px-4 py-2 text-xs uppercase tracking-[0.28em] text-cyan-100 backdrop-blur-md">
+        <div className="space-y-8 text-center md:text-left">
+          <div className="mx-auto inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/10 px-4 py-2 text-xs uppercase tracking-[0.28em] text-cyan-100 backdrop-blur-md md:mx-0">
             <Sparkles className="h-4 w-4" />
             Private operational systems studio
           </div>
@@ -60,13 +60,13 @@ export default function HomePage() {
                 Hyper-Personalized Brands.
               </span>
             </h1>
-            <p className="max-w-2xl text-lg leading-8 text-slate-300">
+            <p className="mx-auto max-w-2xl text-lg leading-8 text-slate-300 md:mx-0">
               Stratum Studio builds high-performance web applications, premium portals, and automated booking systems tailored
               to your unique operations. We eliminate friction from your day-to-day workflow while designing an elite digital
               presence that makes your brand unforgettable.
             </p>
           </div>
-          <div className="flex flex-wrap gap-4">
+          <div className="flex flex-wrap justify-center gap-4 md:justify-start">
             <Link
               href="/consultation"
               className="group inline-flex items-center justify-center gap-2 rounded-full bg-gradient-to-r from-[#00D4E8] via-[#168BFF] to-[#7C3AED] px-6 py-3 font-bold text-white shadow-glow transition-all hover:brightness-110"
