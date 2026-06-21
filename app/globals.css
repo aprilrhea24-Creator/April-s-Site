@@ -329,6 +329,7 @@ textarea {
   .animate-gradient-breath,
   .preview-ring,
   .stratum-logo-mark,
+  .package-border-spinner,
   .why-stratum-border-spinner,
   .kinetix-data-stream::after {
     transition: none;

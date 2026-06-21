@@ -5,62 +5,15 @@ import { packages } from "@/lib/packages";
 
 export function PackageGrid() {
   return (
-    <div className="relative isolate overflow-hidden rounded-[2rem] border border-white/5 bg-black/80 p-4 sm:p-6">
-      {/* The repository master is image_42eafa.jpg; image_419921.jpg is not present. */}
-      {/* eslint-disable-next-line @next/next/no-img-element */}
-      <img
-        src="/image_42eafa.jpg"
-        alt=""
-        loading="lazy"
-        decoding="async"
-        className="pointer-events-none absolute inset-0 z-0 h-full w-full object-cover object-center"
-        aria-hidden="true"
-      />
-      <div
-        className="pointer-events-none absolute inset-0 z-[1]"
-        style={{
-          background:
-            "radial-gradient(ellipse at center, rgba(5, 5, 8, 0.82) 0%, rgba(5, 5, 8, 0.7) 48%, rgba(5, 5, 8, 0.28) 100%)"
-        }}
-        aria-hidden="true"
-      />
-      <svg
-        className="pointer-events-none absolute inset-0 z-[2] h-full w-full opacity-[0.03] mix-blend-overlay [transform:translateZ(0)]"
-        aria-hidden="true"
-        preserveAspectRatio="none"
-      >
-        <filter id="package-matrix-noise">
-          <feTurbulence type="fractalNoise" baseFrequency="0.84" numOctaves="4" stitchTiles="stitch" />
-        </filter>
-        <rect width="100%" height="100%" filter="url(#package-matrix-noise)" />
-      </svg>
-
-      <div className="relative z-10 grid gap-6 lg:grid-cols-2">
+    <div className="rounded-[2rem] border border-zinc-900 bg-[#050508] p-4 sm:p-6">
+      <div className="grid gap-6 lg:grid-cols-2">
         {packages.map((item) => {
           const card = (
             <article
-              className="package-card relative z-10 h-full w-full overflow-hidden rounded-[15px] border border-zinc-800/60 bg-[#090a0f] p-8 shadow-[0_4px_30px_rgba(0,0,0,0.8)] backdrop-blur-xl transition-all duration-500 hover:-translate-y-1 hover:border-zinc-700"
+              className="package-card relative z-10 h-full w-full overflow-hidden rounded-[15px] border border-zinc-800/60 bg-[#0c0d12] p-8 shadow-[0_4px_30px_rgba(0,0,0,0.8)] backdrop-blur-xl transition-all duration-500 hover:-translate-y-1 hover:border-zinc-700"
             >
               <div
                 className="pointer-events-none absolute inset-0 bg-gradient-to-b from-zinc-900/40 via-zinc-950/80 to-black"
-                aria-hidden="true"
-              />
-              <svg
-                className="pointer-events-none absolute inset-0 z-[1] h-full w-full opacity-[0.03] mix-blend-overlay [transform:translateZ(0)]"
-                aria-hidden="true"
-                preserveAspectRatio="none"
-              >
-                <filter id={`package-card-noise-${item.slug}`}>
-                  <feTurbulence type="fractalNoise" baseFrequency="0.84" numOctaves="4" stitchTiles="stitch" />
-                </filter>
-                <rect width="100%" height="100%" filter={`url(#package-card-noise-${item.slug})`} />
-              </svg>
-              <div
-                className="pointer-events-none absolute left-0 top-1/2 z-[2] h-[120%] w-full -translate-y-1/2 blur-2xl"
-                style={{
-                  background:
-                    "radial-gradient(ellipse at center, rgba(5, 5, 8, 0.78) 0%, rgba(5, 5, 8, 0.54) 46%, rgba(5, 5, 8, 0) 84%)"
-                }}
                 aria-hidden="true"
               />
               <div className={`relative z-10 ${item.popular ? "drop-shadow-[0_2px_8px_rgba(0,0,0,0.72)]" : ""}`}>
@@ -125,7 +78,24 @@ export function PackageGrid() {
           );
 
           return (
-            <div key={item.slug} className="package-matrix-shell rounded-2xl">
+            <div
+              key={item.slug}
+              className={
+                item.popular
+                  ? "relative overflow-hidden rounded-2xl p-[1.5px]"
+                  : "package-matrix-shell rounded-2xl"
+              }
+            >
+              {item.popular ? (
+                <div
+                  className="package-border-spinner pointer-events-none absolute inset-[-200%] z-0 animate-[spin_4s_linear_infinite] [transform:translateZ(0)]"
+                  style={{
+                    background:
+                      "conic-gradient(from 35deg, transparent 0deg 205deg, rgba(34,211,238,0.18) 224deg, #22d3ee 250deg, #3b82f6 274deg, #a855f7 310deg, rgba(168,85,247,0.2) 334deg, transparent 352deg 360deg)"
+                  }}
+                  aria-hidden="true"
+                />
+              ) : null}
               {card}
             </div>
           );
