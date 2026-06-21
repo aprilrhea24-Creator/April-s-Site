@@ -47,25 +47,19 @@ export default function HomePage() {
   return (
     <div className="relative overflow-hidden bg-[linear-gradient(180deg,#000000_0%,#070a10_56%,#000000_100%)]">
       <ParallaxHero>
-        {/* Foreground column 1: California Senate recognition and conversion actions. */}
+        {/* Foreground column 1: agency positioning and conversion actions. */}
         <div className="flex flex-col items-center text-center md:items-start md:text-left">
-          <div className="inline-flex items-center rounded-full border border-amber-500/30 bg-zinc-950/80 px-4 py-2 text-xs font-bold uppercase tracking-widest text-amber-400 backdrop-blur-md">
-            {"\u2605"} State of California Senate Recognition
-          </div>
           <div className="w-full">
-            <h1 className="mb-2 mt-4 font-sans text-4xl font-black tracking-tight text-white md:text-6xl">
-              <span className="block text-white">Honored by the</span>
-              <span className="block bg-gradient-to-r from-cyan-400 to-violet-500 bg-clip-text text-transparent">
-                State of California
+            <h1 className="font-sans text-4xl font-black tracking-tight text-white md:text-6xl">
+              <span className="block text-white">Engineered Workflows.</span>
+              <span className="mt-2 block bg-gradient-to-r from-cyan-400 to-violet-500 bg-clip-text text-transparent">
+                Hyper-Personalized Brands.
               </span>
             </h1>
-            <p className="mb-6 text-xl font-bold uppercase tracking-wide text-zinc-200 md:text-2xl">
-              Celebrating Culinary Excellence: Chef Thai
-            </p>
-            <p className="mx-auto max-w-2xl text-base leading-relaxed text-zinc-400 md:mx-0 md:text-lg">
-              Experience culinary excellence recognized by the State of California Senate. Honored by Senator Eloise Gómez
-              Reyes for community dedication and inspiring through culture, Chef Thai curates the absolute best in premium
-              Cajun &amp; Thai fusion cuisines for exclusive events, corporate functions, and luxury private dining.
+            <p className="mx-auto mt-6 max-w-2xl text-base leading-relaxed text-zinc-400 md:mx-0 md:text-lg">
+              Stratum Studio builds high-performance web applications, premium portals, and automated booking systems tailored
+              to your unique operations. We eliminate friction from your day-to-day workflow while designing an elite digital
+              presence that makes your brand unforgettable.
             </p>
           </div>
           <div className="mt-8 flex flex-wrap justify-center gap-4 md:justify-start">
