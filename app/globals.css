@@ -387,29 +387,6 @@ textarea {
   }
 }
 
-.stratum-logo-mark {
-  animation: stratum-logo-glow 6s ease-in-out infinite;
-  transform-origin: center;
-  will-change: filter, transform;
-}
-
-@keyframes stratum-logo-glow {
-  0%,
-  100% {
-    filter:
-      drop-shadow(0 0 6px rgba(0, 212, 232, 0.68))
-      drop-shadow(0 0 16px rgba(22, 139, 255, 0.32));
-    transform: scale(1);
-  }
-
-  50% {
-    filter:
-      drop-shadow(0 0 7px rgba(124, 58, 237, 0.72))
-      drop-shadow(0 0 18px rgba(168, 85, 247, 0.36));
-    transform: scale(1.035);
-  }
-}
-
 a,
 button,
 input,
@@ -427,7 +404,6 @@ textarea {
   .glass-field,
   .feature-option,
   .preview-ring,
-  .stratum-logo-mark,
   .why-stratum-border-spinner,
   .kinetix-data-stream::after {
     transition: none;
