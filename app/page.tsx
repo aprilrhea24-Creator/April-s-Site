@@ -2,6 +2,7 @@ import Link from "next/link";
 import { ArrowRight, ChartNoAxesCombined, MonitorSmartphone, ShieldCheck, Sparkles } from "lucide-react";
 
 import { MaintenanceBanner } from "@/components/maintenance-banner";
+import { ParallaxHero } from "@/components/parallax-hero";
 import { ShowcaseGrid } from "@/components/showcase-grid";
 import { WhyStratum } from "@/components/why-stratum";
 
@@ -45,8 +46,8 @@ const process = [
 export default function HomePage() {
   return (
     <div className="relative overflow-hidden bg-[linear-gradient(180deg,#000000_0%,#070a10_56%,#000000_100%)]">
-      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_18%_12%,rgba(34,211,238,0.1),transparent_20%),radial-gradient(circle_at_82%_8%,rgba(139,92,246,0.1),transparent_18%)]" />
-      <section className="relative mx-auto grid min-h-[calc(100vh-5rem)] max-w-7xl items-center gap-10 px-4 py-16 sm:px-6 lg:grid-cols-[1.08fr_0.92fr] lg:px-8">
+      <ParallaxHero>
+        {/* Foreground column 1: existing hero typography and conversion actions. */}
         <div className="space-y-8">
           <div className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/10 px-4 py-2 text-xs uppercase tracking-[0.28em] text-cyan-100 backdrop-blur-md">
             <Sparkles className="h-4 w-4" />
@@ -82,7 +83,8 @@ export default function HomePage() {
           </div>
         </div>
 
-        <div className="rounded-2xl border border-white/5 bg-zinc-950/40 p-8 backdrop-blur-xl transition-all duration-300 hover:border-white/10">
+        {/* Foreground column 2: existing Stratum Framework roadmap interface. */}
+        <div className="rounded-2xl border border-white/10 bg-zinc-950/50 p-8 shadow-[0_28px_80px_rgba(8,145,178,0.14),0_18px_56px_rgba(126,34,206,0.12)] backdrop-blur-xl transition-all duration-300 hover:border-cyan-300/20">
           <div className="rounded-[1.5rem] border border-white/10 bg-black/25 p-5">
             <div className="flex items-center justify-between border-b border-white/10 pb-4">
               <div>
@@ -117,7 +119,7 @@ export default function HomePage() {
             </div>
           </div>
         </div>
-      </section>
+      </ParallaxHero>
 
       <section className="relative mx-auto max-w-7xl px-4 pb-20 sm:px-6 lg:px-8">
         <div className="mb-10 max-w-3xl">
