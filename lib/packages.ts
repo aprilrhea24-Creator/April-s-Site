@@ -14,6 +14,7 @@ export type PackageDetail = {
   price: {
     startingAt: string;
     reservation: string;
+    depositDescription: string;
     note: string;
   };
   scope: Array<{
@@ -48,14 +49,19 @@ export const packages: PackageDetail[] = [
     popular: true,
     price: {
       startingAt: "$3,500",
-      reservation: "$1,250",
+      reservation: "$1,050",
+      depositDescription: "30% Initialization Deposit ($1,050 upfront commitment to secure pipeline placement).",
       note: "Final scope is confirmed after discovery. Third-party platform and payment-processing fees are billed separately."
     },
     scope: [
       {
         title: "Guest-facing booking flow",
         description:
-          "A branded reservation experience with party-size rules, service windows, deposits, confirmations, and cancellation guidance."
+          "A branded reservation experience with party-size rules, service windows, confirmations, cancellation guidance, and a clearly disclosed 30% initialization deposit."
+      },
+      {
+        title: "Secure escrow initialization",
+        description: "30% Initialization Deposit ($1,050 upfront commitment to secure pipeline placement)."
       },
       {
         title: "VIP guest profiles",
@@ -125,7 +131,8 @@ export const packages: PackageDetail[] = [
     accent: "from-fuchsia-300/30 to-violet-500/10",
     price: {
       startingAt: "$5,500",
-      reservation: "$1,250",
+      reservation: "$1,650",
+      depositDescription: "30% mandatory down payment to activate development cycle.",
       note: "Pricing scales with team roles, approval depth, integrations, and reporting requirements."
     },
     scope: [
@@ -158,7 +165,8 @@ export const packages: PackageDetail[] = [
     accent: "from-teal-300/30 to-emerald-500/10",
     price: {
       startingAt: "$4,500",
-      reservation: "$1,250",
+      reservation: "$1,350",
+      depositDescription: "30% mandatory down payment to activate development cycle.",
       note: "Hardware, mapping, and third-party field-service integrations are scoped separately."
     },
     scope: [
@@ -191,7 +199,8 @@ export const packages: PackageDetail[] = [
     accent: "from-indigo-300/30 to-pink-500/10",
     price: {
       startingAt: "$7,500",
-      reservation: "$2,500",
+      reservation: "$2,250",
+      depositDescription: "30% mandatory down payment to activate development cycle.",
       note: "Complex integrations, advanced compliance, and native mobile applications require expanded scope."
     },
     scope: [

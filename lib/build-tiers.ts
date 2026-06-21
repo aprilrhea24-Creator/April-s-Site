@@ -1,23 +1,23 @@
 export const buildTiers = {
   bookingCore: {
     label: "Stratum Booking Core (From $3,500)",
-    checkoutName: "Stratum Booking Core production reservation",
-    depositCents: 50000
+    checkoutName: "Stratum Booking Core 30% initialization deposit",
+    depositCents: 105000
   },
   flowAutomation: {
-    label: "Stratum Flow Automation (From $4,500)",
-    checkoutName: "Stratum Flow Automation production reservation",
-    depositCents: 75000
+    label: "Dispatch Autonomous (From $4,500)",
+    checkoutName: "Dispatch Autonomous 30% initialization deposit",
+    depositCents: 135000
   },
   enterpriseMatrix: {
-    label: "Stratum Enterprise Matrix (From $5,500)",
-    checkoutName: "Stratum Enterprise Matrix production reservation",
-    depositCents: 125000
+    label: "Secure Console (From $5,500)",
+    checkoutName: "Secure Console 30% initialization deposit",
+    depositCents: 165000
   },
   platformSuite: {
-    label: "Stratum Platform Suite (From $7,500)",
-    checkoutName: "Stratum Platform Suite production reservation",
-    depositCents: 250000
+    label: "Global Intelligence (From $7,500)",
+    checkoutName: "Global Intelligence 30% initialization deposit",
+    depositCents: 225000
   }
 } as const;
 

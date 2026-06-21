@@ -70,7 +70,7 @@ export default async function ConsultationPage({
       ) : null}
       {checkout === "success" ? (
         <div className="mt-8 rounded-2xl border border-cyan-200/30 bg-cyan-300/10 px-5 py-4 text-sm text-cyan-100 backdrop-blur-md">
-          Your build-tier reservation payment was completed successfully.
+          Your 30% initialization deposit was completed successfully.
         </div>
       ) : null}
       {checkout === "cancelled" ? (

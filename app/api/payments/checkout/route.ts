@@ -33,7 +33,7 @@ export async function POST(request: Request) {
             unit_amount: selectedTier.depositCents,
             product_data: {
               name: selectedTier.checkoutName,
-              description: `Project launch reservation for the ${selectedTier.label} tier.`
+              description: `30% initialization deposit for the ${selectedTier.label} tier.`
             }
           }
         }

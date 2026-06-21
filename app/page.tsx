@@ -210,8 +210,8 @@ export default function HomePage() {
           <div className="grid gap-4 sm:grid-cols-2">
             {[
               {
-                title: "Low Booking Deposit",
-                text: "Secure your spot with a flat reservation fee that applies directly to your build."
+                title: "30% Initialization Deposit",
+                text: "Secure pipeline placement with a transparent upfront commitment applied directly to your build."
               },
               {
                 title: "Secure Client Portal",

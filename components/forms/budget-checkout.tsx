@@ -130,7 +130,7 @@ export function BudgetCheckout({ initialTier = "bookingCore" }: { initialTier?: 
       <div className="rounded-xl border border-white/10 bg-black p-4 transition-all hover:border-cyan-400/40">
         <div className="flex items-center justify-between gap-4">
           <div>
-            <p className="text-xs uppercase tracking-[0.2em] text-cyan-100">Launch reservation</p>
+            <p className="text-xs uppercase tracking-[0.2em] text-cyan-100">30% initialization deposit</p>
             <p className="mt-1 text-sm text-slate-300">
               ${(selectedTier.depositCents / 100).toLocaleString()} credited toward the selected build tier.
             </p>

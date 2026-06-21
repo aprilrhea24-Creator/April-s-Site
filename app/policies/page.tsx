@@ -13,7 +13,7 @@ const sections = [
   },
   {
     title: "Deposits and project launch",
-    text: "Most builds require a 50% booking deposit before implementation begins. Deposits reserve production time, start discovery, and may be non-refundable once work has begun."
+    text: "All package builds require a 30% initialization deposit before implementation begins. The deposit secures pipeline placement, activates discovery, and may be non-refundable once work has begun."
   },
   {
     title: "Uptime and third-party systems",

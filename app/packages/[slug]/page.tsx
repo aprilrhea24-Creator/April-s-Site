@@ -121,8 +121,9 @@ export default async function PackagePage({
               <p className="mt-5 text-sm text-zinc-400">Package starting point</p>
               <p className="mt-2 text-4xl font-semibold text-white">{item.price.startingAt}</p>
               <div className="my-6 h-px bg-zinc-800/70" />
-              <p className="text-sm text-zinc-400">Launch reservation</p>
+              <p className="text-sm font-mono uppercase tracking-[0.16em] text-zinc-400">Initialization Deposit //</p>
               <p className="mt-2 text-2xl font-semibold text-cyan-100">{item.price.reservation}</p>
+              <p className="mt-2 text-xs leading-6 text-zinc-400">{item.price.depositDescription}</p>
               <p className="mt-5 text-sm leading-7 text-zinc-400">{item.price.note}</p>
               <Link
                 href={consultationHref}
