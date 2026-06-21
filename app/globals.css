@@ -206,94 +206,23 @@ textarea {
   text-shadow: 0 2px 14px rgba(0, 0, 0, 0.92);
 }
 
-.package-popular-stage {
-  filter:
-    drop-shadow(0 0 18px rgba(0, 242, 254, 0.28))
-    drop-shadow(0 0 34px rgba(157, 0, 255, 0.22))
-    drop-shadow(0 0 44px rgba(255, 0, 127, 0.14));
+.flagship-border {
+  background: linear-gradient(120deg, rgba(167, 139, 250, 0.9), rgba(103, 232, 249, 0.9), rgba(217, 70, 239, 0.72));
+  background-size: 240% 240%;
+  animation: flagship-border-shift 7s ease-in-out infinite;
+  will-change: background-position, filter;
 }
 
-.package-core-halo {
-  inset: -24px;
-  background:
-    conic-gradient(
-      from 0deg,
-      transparent 0%,
-      rgba(0, 242, 254, 0.08) 12%,
-      #00f2fe 24%,
-      #0066ff 42%,
-      #9d00ff 62%,
-      #ff007f 78%,
-      rgba(255, 0, 127, 0.08) 90%,
-      transparent 100%
-    );
-  filter: blur(28px) saturate(1.8);
-  opacity: 0.78;
-  animation: package-core-halo-flow 6s ease-in-out infinite;
-  transform: translateZ(0) rotate(0deg) scale(0.96);
-  transform-origin: center;
-  will-change: filter, opacity, transform;
-}
-
-.package-border-spinner,
-.package-border-head {
-  animation: package-core-orbit 3s linear infinite;
-  transform-origin: center;
-}
-
-.package-border-spinner {
-  filter: saturate(1.45) brightness(1.16);
-}
-
-.package-border-head {
-  background:
-    conic-gradient(
-      from 0deg,
-      transparent 0%,
-      transparent 72%,
-      rgba(0, 242, 254, 0.12) 74%,
-      #00f2fe 76.5%,
-      #0066ff 78%,
-      #0066ff 79.5%,
-      rgba(157, 0, 255, 0.72) 82%,
-      rgba(255, 0, 127, 0.54) 84%,
-      transparent 86%,
-      transparent 100%
-    );
-  filter:
-    blur(0.35px)
-    drop-shadow(0 0 8px rgba(0, 242, 254, 0.95))
-    drop-shadow(0 0 14px rgba(157, 0, 255, 0.72));
-  mix-blend-mode: screen;
-}
-
-@keyframes package-core-orbit {
-  from {
-    transform: translateZ(0) rotate(0deg);
-  }
-
-  to {
-    transform: translateZ(0) rotate(360deg);
-  }
-}
-
-@keyframes package-core-halo-flow {
-  0% {
-    filter: blur(25px) saturate(1.65);
-    opacity: 0.68;
-    transform: translateZ(0) rotate(0deg) scale(0.96);
+@keyframes flagship-border-shift {
+  0%,
+  100% {
+    background-position: 0% 50%;
+    filter: saturate(1) brightness(0.96);
   }
 
   50% {
-    filter: blur(38px) saturate(2.05);
-    opacity: 1;
-    transform: translateZ(0) rotate(180deg) scale(1.045);
-  }
-
-  100% {
-    filter: blur(25px) saturate(1.65);
-    opacity: 0.68;
-    transform: translateZ(0) rotate(360deg) scale(0.96);
+    background-position: 100% 50%;
+    filter: saturate(1.18) brightness(1.08);
   }
 }
 
@@ -426,13 +355,8 @@ textarea {
     animation: none;
   }
 
-  .package-core-halo {
-    animation: package-core-halo-flow 10s ease-in-out infinite;
-  }
-
-  .package-border-spinner,
-  .package-border-head {
-    animation-duration: 6s;
+  .flagship-border {
+    animation-duration: 12s;
   }
 }
 
