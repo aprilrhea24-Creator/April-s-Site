@@ -17,7 +17,11 @@ export function PackageGrid() {
               }`}
             >
               <div
-                className="pointer-events-none absolute inset-0 bg-gradient-to-b from-zinc-900/40 via-zinc-950/80 to-black"
+                className={`pointer-events-none absolute inset-0 ${
+                  item.popular
+                    ? "bg-[radial-gradient(ellipse_at_32%_24%,rgba(12,13,18,0.18)_0%,rgba(3,3,6,0.78)_56%,rgba(0,0,0,0.96)_100%)]"
+                    : "bg-gradient-to-b from-zinc-900/40 via-zinc-950/80 to-black"
+                }`}
                 aria-hidden="true"
               />
               <div className={`relative z-10 ${item.popular ? "drop-shadow-[0_2px_8px_rgba(0,0,0,0.72)]" : ""}`}>
@@ -93,12 +97,12 @@ export function PackageGrid() {
               {item.popular ? (
                 <>
                   <div className="package-core-halo pointer-events-none absolute -inset-2 z-0 rounded-[1.4rem]" aria-hidden="true" />
-                  <div className="relative z-10 h-full overflow-hidden rounded-2xl p-[2px] shadow-[0_0_38px_rgba(34,211,238,0.2),0_0_64px_rgba(168,85,247,0.16)]">
+                  <div className="relative z-10 h-full overflow-hidden rounded-2xl bg-zinc-950 p-[1px] shadow-[0_0_42px_rgba(0,242,254,0.28),0_0_72px_rgba(157,0,255,0.22),0_0_92px_rgba(255,0,127,0.12)] md:p-[1.5px]">
                     <div
-                      className="package-border-spinner pointer-events-none absolute inset-[-300%] z-0 animate-[spin_3.5s_linear_infinite] will-change-transform [transform:translateZ(0)]"
+                      className="package-border-spinner pointer-events-none absolute inset-[-350%] z-0 animate-[spin_3s_linear_infinite] will-change-transform [transform:translateZ(0)]"
                       style={{
                         background:
-                          "conic-gradient(from 30deg, transparent 0deg 188deg, rgba(34,211,238,0.4) 208deg, #22d3ee 232deg, #3b82f6 260deg, #a855f7 296deg, #d946ef 326deg, rgba(217,70,239,0.42) 346deg, transparent 360deg)"
+                          "conic-gradient(from 0deg, #00f2fe 0%, #0066ff 25%, #9d00ff 50%, #ff007f 75%, transparent 80%, transparent 100%)"
                       }}
                       aria-hidden="true"
                     />
