@@ -99,11 +99,15 @@ export function PackageGrid() {
                   <div className="package-core-halo pointer-events-none absolute -inset-2 z-0 rounded-[1.4rem]" aria-hidden="true" />
                   <div className="relative z-10 h-full overflow-hidden rounded-2xl bg-zinc-950 p-[1px] shadow-[0_0_42px_rgba(0,242,254,0.28),0_0_72px_rgba(157,0,255,0.22),0_0_92px_rgba(255,0,127,0.12)] md:p-[1.5px]">
                     <div
-                      className="package-border-spinner pointer-events-none absolute inset-[-350%] z-0 animate-[spin_3s_linear_infinite] will-change-transform [transform:translateZ(0)]"
+                      className="package-border-spinner pointer-events-none absolute inset-[-350%] z-0 will-change-transform"
                       style={{
                         background:
                           "conic-gradient(from 0deg, #00f2fe 0%, #0066ff 25%, #9d00ff 50%, #ff007f 75%, transparent 80%, transparent 100%)"
                       }}
+                      aria-hidden="true"
+                    />
+                    <div
+                      className="package-border-head pointer-events-none absolute inset-[-350%] z-0 will-change-transform"
                       aria-hidden="true"
                     />
                     {card}
