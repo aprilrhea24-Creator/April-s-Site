@@ -202,45 +202,6 @@ textarea {
     0 4px 30px rgba(0, 0, 0, 0.8);
 }
 
-.package-popular-shell {
-  position: relative;
-  isolation: isolate;
-  box-shadow:
-    0 0 24px rgba(0, 242, 254, 0.42),
-    0 0 54px rgba(0, 79, 172, 0.48),
-    0 0 92px rgba(168, 0, 255, 0.38);
-}
-
-.package-popular-glow {
-  position: absolute;
-  z-index: -1;
-  inset: -20px;
-  border-radius: 2.25rem;
-  background:
-    radial-gradient(circle at 10% 14%, rgba(0, 242, 254, 1), transparent 32%),
-    radial-gradient(circle at 82% 16%, rgba(0, 79, 172, 1), transparent 38%),
-    radial-gradient(circle at 72% 88%, rgba(168, 0, 255, 1), transparent 40%);
-  background-size: 180% 180%;
-  transform-origin: center;
-  will-change: filter, opacity, transform;
-}
-
-.animate-gradient-breath {
-  animation: gradient-breath 4s ease-in-out infinite;
-}
-
-.package-card-popular {
-  background:
-    radial-gradient(circle at 8% 12%, rgba(0, 242, 254, 0.12), transparent 34%),
-    radial-gradient(circle at 88% 20%, rgba(0, 79, 172, 0.16), transparent 40%),
-    radial-gradient(circle at 72% 88%, rgba(168, 0, 255, 0.14), transparent 42%),
-    rgba(9, 9, 11, 0.78);
-  box-shadow:
-    inset 0 1px 0 rgba(255, 255, 255, 0.06),
-    0 0 0 1px rgba(34, 211, 238, 0.3),
-    0 0 40px rgba(6, 182, 212, 0.15);
-}
-
 .package-popular-copy {
   text-shadow: 0 2px 14px rgba(0, 0, 0, 0.92);
 }
@@ -366,8 +327,6 @@ textarea {
   .glass-field,
   .feature-option,
   .animate-gradient-breath,
-  .package-card-popular,
-  .package-border-spinner,
   .preview-ring,
   .stratum-logo-mark,
   .kinetix-data-stream::after {

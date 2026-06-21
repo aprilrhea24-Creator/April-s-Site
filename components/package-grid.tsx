@@ -39,18 +39,12 @@ export function PackageGrid() {
         {packages.map((item) => {
           const card = (
             <article
-              className={`package-card h-full p-8 shadow-[0_4px_30px_rgba(0,0,0,0.8)] transition-all duration-500 hover:-translate-y-1 ${
-                item.popular
-                  ? "relative z-10 w-full overflow-hidden rounded-[15px] bg-zinc-950/90 backdrop-blur-md"
-                  : "relative overflow-hidden rounded-2xl border border-white/10 bg-zinc-950/75 backdrop-blur-2xl hover:border-cyan-500/40"
-              }`}
+              className="package-card relative z-10 h-full w-full overflow-hidden rounded-[15px] border border-zinc-800/60 bg-[#090a0f] p-8 shadow-[0_4px_30px_rgba(0,0,0,0.8)] backdrop-blur-xl transition-all duration-500 hover:-translate-y-1 hover:border-zinc-700"
             >
-              {!item.popular ? (
-                <div
-                  className={`pointer-events-none absolute inset-0 bg-gradient-to-br ${item.accent} opacity-70`}
-                  aria-hidden="true"
-                />
-              ) : null}
+              <div
+                className="pointer-events-none absolute inset-0 bg-gradient-to-b from-zinc-900/40 via-zinc-950/80 to-black"
+                aria-hidden="true"
+              />
               <div
                 className="pointer-events-none absolute left-0 top-1/2 h-[120%] w-full -translate-y-1/2 blur-2xl"
                 style={{
@@ -72,7 +66,7 @@ export function PackageGrid() {
                     {item.popular ? (
                       <span className="inline-flex items-center gap-2 font-mono text-[0.65rem] font-bold uppercase tracking-[0.16em] text-white/80">
                         <span
-                          className="h-2 w-2 rounded-full bg-[#39FF14] shadow-[0_0_12px_rgba(57,255,20,0.95)]"
+                          className="h-2 w-2 rounded-full bg-zinc-300 shadow-[0_0_10px_rgba(212,212,216,0.4)]"
                           aria-hidden="true"
                         />
                         Live Framework
@@ -96,9 +90,9 @@ export function PackageGrid() {
                   {item.features.map((feature) => (
                     <div
                       key={feature}
-                      className="flex items-center gap-3 rounded-xl border border-white/5 bg-black/80 px-4 py-3 text-sm font-medium tracking-wide text-zinc-200 transition-colors hover:bg-zinc-900/50"
+                      className="flex items-center gap-3 rounded-xl border border-zinc-800/60 bg-black/40 px-4 py-3 text-sm font-medium tracking-wide text-zinc-300 backdrop-blur-xl transition-colors hover:bg-zinc-900/70"
                     >
-                      <span className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-md border border-cyan-300/30 bg-cyan-300/10 text-cyan-100">
+                      <span className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-md border border-zinc-700/70 bg-zinc-900/80 text-slate-100">
                         <Check className="h-3.5 w-3.5" aria-hidden="true" />
                       </span>
                       <span>{feature}</span>
@@ -126,24 +120,7 @@ export function PackageGrid() {
           );
 
           return (
-            <div
-              key={item.slug}
-              className={
-                item.popular
-                  ? "package-popular-shell relative overflow-hidden rounded-2xl p-[1.5px]"
-                  : "package-matrix-shell rounded-2xl"
-              }
-            >
-              {item.popular ? (
-                <div
-                  className="package-border-spinner pointer-events-none absolute inset-[-200%] z-0 animate-[spin_4s_linear_infinite] [transform:translateZ(0)]"
-                  style={{
-                    background:
-                      "conic-gradient(from 35deg, transparent 0deg 205deg, rgba(34,211,238,0.18) 224deg, #22d3ee 250deg, #3b82f6 274deg, #a855f7 310deg, rgba(168,85,247,0.2) 334deg, transparent 352deg 360deg)"
-                  }}
-                  aria-hidden="true"
-                />
-              ) : null}
+            <div key={item.slug} className="package-matrix-shell rounded-2xl">
               {card}
             </div>
           );
