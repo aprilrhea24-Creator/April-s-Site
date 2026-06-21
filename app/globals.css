@@ -206,6 +206,38 @@ textarea {
   text-shadow: 0 2px 14px rgba(0, 0, 0, 0.92);
 }
 
+.package-popular-stage {
+  filter: drop-shadow(0 0 16px rgba(34, 211, 238, 0.2)) drop-shadow(0 0 28px rgba(168, 85, 247, 0.18));
+}
+
+.package-core-halo {
+  background:
+    radial-gradient(circle at 12% 24%, rgba(34, 211, 238, 0.82), transparent 38%),
+    radial-gradient(circle at 88% 22%, rgba(59, 130, 246, 0.62), transparent 38%),
+    radial-gradient(circle at 78% 86%, rgba(217, 70, 239, 0.72), transparent 42%),
+    radial-gradient(circle at 22% 84%, rgba(168, 85, 247, 0.7), transparent 42%);
+  filter: blur(18px) saturate(1.35);
+  opacity: 0.72;
+  animation: package-core-breathe 4.8s ease-in-out infinite;
+  transform: translateZ(0) scale(0.985);
+  will-change: filter, opacity, transform;
+}
+
+@keyframes package-core-breathe {
+  0%,
+  100% {
+    filter: blur(16px) saturate(1.2);
+    opacity: 0.58;
+    transform: translateZ(0) scale(0.985);
+  }
+
+  50% {
+    filter: blur(24px) saturate(1.55);
+    opacity: 0.92;
+    transform: translateZ(0) scale(1.012);
+  }
+}
+
 .package-matrix-shell {
   position: relative;
   isolation: isolate;
@@ -330,10 +362,17 @@ textarea {
   .preview-ring,
   .stratum-logo-mark,
   .package-border-spinner,
+  .package-core-halo,
   .why-stratum-border-spinner,
   .kinetix-data-stream::after {
     transition: none;
     animation: none;
+  }
+
+  .package-core-halo {
+    filter: blur(18px) saturate(1.3);
+    opacity: 0.78;
+    transform: translateZ(0);
   }
 }
 

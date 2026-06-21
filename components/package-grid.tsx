@@ -86,21 +86,28 @@ export function PackageGrid() {
               key={item.slug}
               className={
                 item.popular
-                  ? "relative overflow-hidden rounded-2xl p-[1px] md:p-[1.5px]"
+                  ? "package-popular-stage relative isolate h-full rounded-2xl"
                   : "relative h-full w-full overflow-hidden rounded-2xl border border-zinc-900 bg-[#0c0d12] shadow-lg"
               }
             >
               {item.popular ? (
-                <div
-                  className="package-border-spinner pointer-events-none absolute inset-[-300%] z-0 animate-[spin_3.5s_linear_infinite] will-change-transform [transform:translateZ(0)]"
-                  style={{
-                    background:
-                      "conic-gradient(from 30deg, transparent 0deg 205deg, rgba(34,211,238,0.16) 220deg, #22d3ee 242deg, #3b82f6 266deg, #a855f7 296deg, #d946ef 322deg, rgba(217,70,239,0.18) 340deg, transparent 356deg 360deg)"
-                  }}
-                  aria-hidden="true"
-                />
-              ) : null}
-              {card}
+                <>
+                  <div className="package-core-halo pointer-events-none absolute -inset-2 z-0 rounded-[1.4rem]" aria-hidden="true" />
+                  <div className="relative z-10 h-full overflow-hidden rounded-2xl p-[2px] shadow-[0_0_38px_rgba(34,211,238,0.2),0_0_64px_rgba(168,85,247,0.16)]">
+                    <div
+                      className="package-border-spinner pointer-events-none absolute inset-[-300%] z-0 animate-[spin_3.5s_linear_infinite] will-change-transform [transform:translateZ(0)]"
+                      style={{
+                        background:
+                          "conic-gradient(from 30deg, transparent 0deg 188deg, rgba(34,211,238,0.4) 208deg, #22d3ee 232deg, #3b82f6 260deg, #a855f7 296deg, #d946ef 326deg, rgba(217,70,239,0.42) 346deg, transparent 360deg)"
+                      }}
+                      aria-hidden="true"
+                    />
+                    {card}
+                  </div>
+                </>
+              ) : (
+                card
+              )}
             </div>
           );
         })}
