@@ -2,13 +2,15 @@ import Link from "next/link";
 import { ArrowUpRight, CalendarDays, ChartNoAxesCombined, Check, Database, ShieldCheck } from "lucide-react";
 
 import { packages } from "@/lib/packages";
+import { SystemModeSelector } from "@/components/system-mode-selector";
 
 const showcaseModules = [
   {
     slug: "premium-restaurant",
     preview: "booking-core",
     format: "desktop",
-    code: "SBK-01",
+    title: "Stratum Booking Core",
+    modes: ["Allocation Mode", "Concierge Mode"],
     system: "Allocation intelligence",
     accent: "cyan",
     metric: "Routed",
@@ -18,7 +20,8 @@ const showcaseModules = [
     slug: "field-team-command",
     preview: "flow-automation",
     format: "mobile",
-    code: "SFA-02",
+    title: "Dispatch Autonomous",
+    modes: ["Autonomous Dispatch", "Route Logic"],
     system: "Dispatch automation",
     accent: "emerald",
     metric: "Active",
@@ -28,7 +31,8 @@ const showcaseModules = [
     slug: "enterprise-booking",
     preview: "enterprise-matrix",
     format: "mobile",
-    code: "SEM-03",
+    title: "Secure Console",
+    modes: ["Command Override", "Permissions Gate"],
     system: "Enterprise orchestration",
     accent: "violet",
     metric: "Synced",
@@ -38,7 +42,8 @@ const showcaseModules = [
     slug: "founder-saas",
     preview: "platform-suite",
     format: "desktop",
-    code: "SPS-04",
+    title: "Global Intelligence",
+    modes: ["Predictive Analysis", "Yield Optimization"],
     system: "Platform infrastructure",
     accent: "fuchsia",
     metric: "Isolated",
@@ -212,56 +217,50 @@ export function ShowcaseGrid() {
         return (
           <article
             key={item.slug}
-            className={`group relative overflow-hidden rounded-2xl border border-white/5 ${
-              module.code === "SBK-01" ? "bg-zinc-950/80" : "bg-zinc-950/20"
-            } transition-all duration-500 hover:border-cyan-500/30 ${
+            className={`group relative overflow-hidden rounded-2xl border border-white/5 bg-zinc-950/80 transition-all duration-500 hover:border-cyan-500/30 ${
               index % 2 === 1 ? "lg:translate-y-12" : ""
             }`}
           >
-            {module.code === "SBK-01" ? (
-              <>
-                {/* Native background delivery keeps the card asset outside image optimization pipelines. */}
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img
-                  src="/backgroundidea1.webp"
-                  alt=""
-                  loading="lazy"
-                  decoding="async"
-                  className="pointer-events-none absolute inset-0 z-0 h-full w-full object-cover object-center opacity-65"
-                  aria-hidden="true"
-                />
-                <svg
-                  className="pointer-events-none absolute inset-0 z-[1] h-full w-full opacity-[0.03] mix-blend-overlay [transform:translateZ(0)]"
-                  aria-hidden="true"
-                  preserveAspectRatio="none"
-                >
-                  <filter id="sbk-card-fractal-noise">
-                    <feTurbulence type="fractalNoise" baseFrequency="0.84" numOctaves="4" stitchTiles="stitch" />
-                  </filter>
-                  <rect width="100%" height="100%" filter="url(#sbk-card-fractal-noise)" />
-                </svg>
-                <div
-                  className="pointer-events-none absolute left-0 top-1/2 z-[2] h-[120%] w-full -translate-y-1/2 blur-2xl"
-                  style={{
-                    background:
-                      "radial-gradient(ellipse at center, rgba(5, 5, 8, 0.75) 0%, rgba(5, 5, 8, 0.58) 42%, rgba(5, 5, 8, 0) 82%)"
-                  }}
-                  aria-hidden="true"
-                />
-              </>
-            ) : null}
+            {/* The repository master is image_42eafa.jpg; image_419921.jpg is not present. */}
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src="/image_42eafa.jpg"
+              alt=""
+              loading="lazy"
+              decoding="async"
+              className="pointer-events-none absolute inset-0 z-0 h-full w-full object-cover object-center opacity-45"
+              aria-hidden="true"
+            />
+            <svg
+              className="pointer-events-none absolute inset-0 z-[1] h-full w-full opacity-[0.03] mix-blend-overlay [transform:translateZ(0)]"
+              aria-hidden="true"
+              preserveAspectRatio="none"
+            >
+              <filter id={`card-fractal-noise-${module.slug}`}>
+                <feTurbulence type="fractalNoise" baseFrequency="0.84" numOctaves="4" stitchTiles="stitch" />
+              </filter>
+              <rect width="100%" height="100%" filter={`url(#card-fractal-noise-${module.slug})`} />
+            </svg>
+            <div
+              className="pointer-events-none absolute left-0 top-1/2 z-[2] h-[120%] w-full -translate-y-1/2 blur-2xl"
+              style={{
+                background:
+                  "radial-gradient(ellipse at center, rgba(5, 5, 8, 0.75) 0%, rgba(5, 5, 8, 0.58) 42%, rgba(5, 5, 8, 0) 82%)"
+              }}
+              aria-hidden="true"
+            />
 
             <div className="relative z-10">
               {module.format === "desktop" ? (
                 <DesktopFrame
-                  title={item.title}
+                  title={module.title}
                   metric={module.metric}
                   metricLabel={module.metricLabel}
                   accent={module.accent}
                 />
               ) : (
                 <MobileFrame
-                  title={item.title}
+                  title={module.title}
                   metric={module.metric}
                   metricLabel={module.metricLabel}
                   accent={module.accent}
@@ -269,20 +268,22 @@ export function ShowcaseGrid() {
               )}
 
               <div className="border-t border-white/5 p-6 sm:p-8">
-                <div className="flex items-center justify-between gap-4 font-mono text-xs uppercase tracking-widest text-zinc-500">
-                  <span>{module.code}</span>
-                  <span>{module.format} system</span>
+                <div className="flex flex-col items-start justify-between gap-4 sm:flex-row sm:items-center">
+                  <SystemModeSelector label={module.title} options={module.modes} accent={module.accent} />
+                  <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-zinc-500">
+                    {module.format} system
+                  </span>
                 </div>
                 <div className="mt-5 flex items-start justify-between gap-5">
                   <div>
                     <p className={`font-mono text-xs uppercase tracking-widest ${accentStyles[module.accent].text}`}>
                       {module.system}
                     </p>
-                    <h3 className="mt-3 text-2xl font-bold text-white">{item.title}</h3>
+                    <h3 className="mt-3 text-2xl font-bold text-white">{module.title}</h3>
                   </div>
                   <Link
                     href={`/solutions/${module.preview}/preview`}
-                    aria-label={`Preview ${item.title}`}
+                    aria-label={`Preview ${module.title}`}
                     className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full border border-white/10 bg-white/[0.04] text-white transition-all duration-300 group-hover:border-cyan-400/30 group-hover:bg-cyan-400/10 group-hover:text-cyan-200"
                   >
                     <ArrowUpRight className="h-4 w-4" />

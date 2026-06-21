@@ -110,7 +110,7 @@ export const packages: PackageDetail[] = [
     slug: "enterprise-booking",
     consultationPackage: "professional-services",
     consultationTier: "enterpriseMatrix",
-    title: "Stratum Enterprise Matrix",
+    title: "Secure Console",
     industry: "Professional Services",
     summary:
       "A coordinated enterprise layer for routing demand, aligning teams, governing approvals, and forecasting operational growth.",
@@ -143,7 +143,7 @@ export const packages: PackageDetail[] = [
     slug: "field-team-command",
     consultationPackage: "operations",
     consultationTier: "flowAutomation",
-    title: "Stratum Flow Automation",
+    title: "Dispatch Autonomous",
     industry: "Operations",
     summary:
       "An automation command layer that keeps mobile operations, client records, active work, and protected files moving together.",
@@ -176,7 +176,7 @@ export const packages: PackageDetail[] = [
     slug: "founder-saas",
     consultationPackage: "b2b-saas",
     consultationTier: "platformSuite",
-    title: "Stratum Platform Suite",
+    title: "Global Intelligence",
     industry: "B2B SaaS",
     summary:
       "A scalable digital product foundation for organizations launching private portals, subscription systems, and cloud-backed platforms.",
