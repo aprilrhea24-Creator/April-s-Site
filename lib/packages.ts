@@ -2,6 +2,7 @@ import type { BuildTierKey } from "@/lib/build-tiers";
 
 export type PackageDetail = {
   slug: string;
+  previewSlug: string;
   consultationPackage: string;
   consultationTier: BuildTierKey;
   title: string;
@@ -31,6 +32,7 @@ export type PackageDetail = {
 export const packages: PackageDetail[] = [
   {
     slug: "premium-restaurant",
+    previewSlug: "booking-core",
     consultationPackage: "hospitality",
     consultationTier: "bookingCore",
     title: "Stratum Booking Core",
@@ -114,6 +116,7 @@ export const packages: PackageDetail[] = [
   },
   {
     slug: "enterprise-booking",
+    previewSlug: "enterprise-matrix",
     consultationPackage: "professional-services",
     consultationTier: "enterpriseMatrix",
     title: "Secure Console",
@@ -148,6 +151,7 @@ export const packages: PackageDetail[] = [
   },
   {
     slug: "field-team-command",
+    previewSlug: "flow-automation",
     consultationPackage: "operations",
     consultationTier: "flowAutomation",
     title: "Dispatch Autonomous",
@@ -182,6 +186,7 @@ export const packages: PackageDetail[] = [
   },
   {
     slug: "founder-saas",
+    previewSlug: "platform-suite",
     consultationPackage: "b2b-saas",
     consultationTier: "platformSuite",
     title: "Global Intelligence",

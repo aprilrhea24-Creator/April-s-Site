@@ -78,6 +78,13 @@ export default async function PackagePage({
                 Book This Package
                 <ArrowRight className="h-4 w-4" />
               </Link>
+              <Link
+                href={`/solutions/${item.previewSlug}/preview`}
+                className="inline-flex items-center gap-2 rounded-full border border-zinc-700/70 bg-black/60 px-6 py-3 font-semibold text-white backdrop-blur-xl transition-all hover:border-cyan-300/50 hover:bg-zinc-900/80"
+              >
+                Launch Interactive Demo
+                <ArrowRight className="h-4 w-4" />
+              </Link>
               <div className="rounded-full border border-zinc-800/60 bg-black/60 px-5 py-3 text-sm text-zinc-300 backdrop-blur-xl">
                 Starting at {item.price.startingAt}
               </div>

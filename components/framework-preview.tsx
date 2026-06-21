@@ -5,6 +5,7 @@ import Link from "next/link";
 import { useState } from "react";
 
 import type { FrameworkPreview as FrameworkPreviewData } from "@/lib/framework-previews";
+import { getPackage } from "@/lib/packages";
 
 const accentStyles = {
   cyan: {
@@ -41,6 +42,10 @@ export function FrameworkPreview({ framework }: { framework: FrameworkPreviewDat
   const [activeMode, setActiveMode] = useState(framework.modes[0].id);
   const mode = framework.modes.find((entry) => entry.id === activeMode) ?? framework.modes[0];
   const accent = accentStyles[framework.accent];
+  const packageDetail = getPackage(framework.packageSlug);
+  const consultationHref = packageDetail
+    ? `/consultation?package=${packageDetail.consultationPackage}&tier=${packageDetail.consultationTier}`
+    : "/consultation";
 
   return (
     <div className="relative min-h-screen overflow-hidden bg-[#050508] pt-8 text-white" style={{ backgroundColor: "#050508" }}>
@@ -59,13 +64,18 @@ export function FrameworkPreview({ framework }: { framework: FrameworkPreviewDat
       </div>
 
       <main className="relative mx-auto max-w-7xl px-4 pb-24 pt-20 sm:px-6 lg:px-8">
-        <Link
-          href="/solutions"
-          className="inline-flex items-center gap-2 rounded-full border border-zinc-800/60 bg-black/40 px-4 py-2 text-sm text-zinc-300 backdrop-blur-xl transition hover:border-zinc-700 hover:text-white"
-        >
-          <ArrowLeft className="h-4 w-4" />
-          Back to Stratum Solutions
-        </Link>
+        <div className="flex flex-wrap items-center gap-3">
+          <Link
+            href={`/packages/${framework.packageSlug}`}
+            className="inline-flex items-center gap-2 rounded-full border border-zinc-800/60 bg-black/40 px-4 py-2 text-sm text-zinc-300 backdrop-blur-xl transition hover:border-zinc-700 hover:text-white"
+          >
+            <ArrowLeft className="h-4 w-4" />
+            Back to Package Details
+          </Link>
+          <Link href="/solutions" className="text-sm text-zinc-500 transition hover:text-white">
+            All Stratum Solutions
+          </Link>
+        </div>
 
         <section className="mt-10 grid gap-12 lg:grid-cols-2 lg:items-center">
           <div>
@@ -93,9 +103,22 @@ export function FrameworkPreview({ framework }: { framework: FrameworkPreviewDat
             </div>
           </div>
 
-          <div className="relative">
-            <div className={`absolute inset-10 rounded-full ${accent.glow} blur-3xl`} />
-            <div className="relative overflow-hidden rounded-2xl border border-zinc-800/60 bg-[#090a0f] p-8 shadow-2xl backdrop-blur-xl transition-all duration-500 hover:border-zinc-700">
+          <div className={`relative ${framework.slug === "booking-core" ? "overflow-hidden rounded-2xl p-[1px] md:p-[1.5px]" : ""}`}>
+            {framework.slug === "booking-core" ? (
+              <div
+                className="framework-core-border-spinner pointer-events-none absolute inset-[-300%] z-0 animate-[spin_3.5s_linear_infinite] will-change-transform [transform:translateZ(0)]"
+                style={{
+                  background:
+                    "conic-gradient(from 30deg, transparent 0deg 205deg, rgba(34,211,238,0.16) 220deg, #22d3ee 242deg, #3b82f6 266deg, #a855f7 296deg, #d946ef 322deg, rgba(217,70,239,0.18) 340deg, transparent 356deg 360deg)"
+                }}
+                aria-hidden="true"
+              />
+            ) : null}
+            <div
+              className={`relative z-10 overflow-hidden border border-zinc-900 bg-[#0c0d12] p-8 shadow-2xl backdrop-blur-xl transition-all duration-500 hover:border-zinc-700 ${
+                framework.slug === "booking-core" ? "rounded-[15px]" : "rounded-2xl"
+              }`}
+            >
               <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-zinc-900/40 via-zinc-950/80 to-black" />
               <div className="relative z-10">
               <div className="flex flex-wrap items-start justify-between gap-4 border-b border-white/10 pb-5">
@@ -103,9 +126,9 @@ export function FrameworkPreview({ framework }: { framework: FrameworkPreviewDat
                   <p className="font-mono text-[10px] uppercase tracking-[0.22em] text-zinc-600">{framework.niche}</p>
                   <h2 className="mt-2 text-xl font-bold text-white">{framework.dashboardTitle}</h2>
                 </div>
-                <span className={`inline-flex items-center gap-2 rounded-full border ${accent.border} ${accent.background} px-3 py-1.5 font-mono text-[9px] uppercase tracking-[0.18em] ${accent.text}`}>
-                  <span className="h-1.5 w-1.5 rounded-full bg-current shadow-[0_0_10px_currentColor]" />
-                  Command active
+                <span className="inline-flex items-center gap-2 font-mono text-[10px] font-bold uppercase tracking-widest text-zinc-400">
+                  <span className="h-2 w-2 animate-pulse rounded-full bg-[#22d3ee] shadow-[0_0_10px_rgba(34,211,238,0.58)]" />
+                  Live Framework
                 </span>
               </div>
 
@@ -168,7 +191,7 @@ export function FrameworkPreview({ framework }: { framework: FrameworkPreviewDat
                 optimal conversion.
               </p>
               <Link
-                href="/consultation"
+                href={consultationHref}
                 className={`mt-7 inline-flex items-center gap-2 rounded-full bg-gradient-to-r ${accent.gradient} px-6 py-3 text-sm font-bold text-white shadow-[0_10px_30px_rgba(0,0,0,0.4)] transition hover:brightness-110`}
               >
                 Configure this framework

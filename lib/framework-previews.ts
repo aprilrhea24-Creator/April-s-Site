@@ -1,5 +1,6 @@
 export type FrameworkPreview = {
   slug: string;
+  packageSlug: string;
   tier: string;
   niche: string;
   eyebrow: string;
@@ -22,106 +23,145 @@ export type FrameworkPreview = {
 
 export const frameworkPreviews: FrameworkPreview[] = [
   {
-    slug: "flow-automation",
-    tier: "Stratum Flow Automation",
-    niche: "Biotech Operations",
-    eyebrow: "Controlled workflow automation",
-    headline: "Operational handoffs move with laboratory-grade precision.",
+    slug: "booking-core",
+    packageSlug: "premium-restaurant",
+    tier: "Stratum Booking Core",
+    niche: "Hospitality Allocation",
+    eyebrow: "Reservation and service orchestration",
+    headline: "Every reservation becomes an orchestrated service event.",
     summary:
-      "A guarded automation layer for regulated work queues, document states, equipment handoffs, and exception-driven team coordination.",
-    dashboardTitle: "Biotech Workflow Command",
-    accent: "emerald",
+      "A hospitality allocation workspace for service windows, guest intelligence, protected payment gates, and live capacity decisions.",
+    dashboardTitle: "Hospitality Allocation Workspace",
+    accent: "cyan",
     modes: [
       {
-        id: "queues",
-        label: "Work Queues",
-        title: "Controlled Process Sequencing",
-        description: "Each operational stage advances only after its required verification state and assigned ownership are present.",
+        id: "allocation",
+        label: "Allocation Grid",
+        title: "Interactive Gantt Scheduler Grid",
+        description: "Service windows, party demand, table inventory, and team readiness resolve inside one live allocation surface.",
         routes: [
-          { name: "Intake qualification", detail: "Scope, custody, and priority validation", state: "Validated" },
-          { name: "Protocol assignment", detail: "Approved operating sequence and ownership", state: "Assigned" },
-          { name: "Exception routing", detail: "Nonconforming states isolated for review", state: "Monitored" }
+          { name: "Service window routing", detail: "Capacity, duration, and arrival sequencing", state: "Routed" },
+          { name: "VIP experience preparation", detail: "Guest history, preferences, and occasion context", state: "Prepared" },
+          { name: "Protected payment gate", detail: "30% initialization and reservation controls", state: "Protected" }
         ]
       },
       {
-        id: "records",
-        label: "Records",
-        title: "Secure Document State Engine",
-        description: "Version-aware records remain attached to their workflow stage, approval history, and authorized team.",
+        id: "concierge",
+        label: "Concierge Mode",
+        title: "Guest Intelligence Command",
+        description: "High-value guest context remains attached to every booking stage without exposing private notes outside authorized roles.",
         routes: [
-          { name: "Controlled documents", detail: "Current approved records only", state: "Current" },
-          { name: "Review chain", detail: "Role-specific verification sequence", state: "Enforced" },
-          { name: "Audit visibility", detail: "Immutable event and ownership context", state: "Available" }
+          { name: "Preference intelligence", detail: "Dietary, seating, and service history", state: "Available" },
+          { name: "Arrival coordination", detail: "Host, kitchen, and service team handoff", state: "Synchronized" },
+          { name: "Exception response", detail: "Late arrivals and capacity conflicts", state: "Monitored" }
+        ]
+      }
+    ]
+  },
+  {
+    slug: "flow-automation",
+    packageSlug: "field-team-command",
+    tier: "Dispatch Autonomous",
+    niche: "Fleet Operations",
+    eyebrow: "Real-time logistics geometry",
+    headline: "Every moving asset follows the strongest available route.",
+    summary:
+      "A dispatch command layer for route optimization, live fleet telemetry, delivery exceptions, and field-team coordination.",
+    dashboardTitle: "Fleet Geometry Console",
+    accent: "emerald",
+    modes: [
+      {
+        id: "dispatch",
+        label: "Dispatch Map",
+        title: "Real-Time Route Optimization",
+        description: "Active jobs are sequenced against location, capacity, urgency, traffic state, and accountable field ownership.",
+        routes: [
+          { name: "Route geometry", detail: "Travel window, distance, and stop sequence", state: "Optimized" },
+          { name: "Fleet assignment", detail: "Asset capacity and operator availability", state: "Assigned" },
+          { name: "Exception routing", detail: "Delay, access, and delivery conflicts", state: "Monitored" }
+        ]
+      },
+      {
+        id: "telemetry",
+        label: "Fleet Telemetry",
+        title: "Live Asset Tracking",
+        description: "Location, job state, completion evidence, and client-facing updates remain synchronized across the dispatch cycle.",
+        routes: [
+          { name: "Position stream", detail: "Current location and route progress", state: "Live" },
+          { name: "Completion evidence", detail: "Timestamped notes and secure files", state: "Captured" },
+          { name: "Client visibility", detail: "Approved delivery status updates", state: "Published" }
         ]
       }
     ]
   },
   {
     slug: "enterprise-matrix",
-    tier: "Stratum Enterprise Matrix",
-    niche: "Media Networks",
-    eyebrow: "Multi-team capacity orchestration",
-    headline: "Campaign operations align across every market and approval layer.",
+    packageSlug: "enterprise-booking",
+    tier: "Secure Console",
+    niche: "Administrative Security",
+    eyebrow: "Role-based command authority",
+    headline: "Every privileged action is bounded, verified, and auditable.",
     summary:
-      "An enterprise command matrix for distributed production calendars, campaign intake, approval chains, and cross-market capacity decisions.",
-    dashboardTitle: "Media Operations Matrix",
+      "An administrative command center for role-based access control, protected records, approval authority, and cryptographic audit history.",
+    dashboardTitle: "RBAC Permissions Gate",
     accent: "violet",
     modes: [
       {
-        id: "capacity",
-        label: "Capacity",
-        title: "Cross-Market Production Routing",
-        description: "Requests are matched to market availability, specialist teams, delivery windows, and campaign priority.",
+        id: "permissions",
+        label: "Permissions",
+        title: "Role-Based Access Control",
+        description: "Every interface, record, and command resolves against explicit organizational roles and least-privilege authority.",
         routes: [
-          { name: "Market capacity", detail: "Regional availability and delivery windows", state: "Synchronized" },
-          { name: "Production ownership", detail: "Specialist team and accountable lead", state: "Assigned" },
-          { name: "Release calendar", detail: "Campaign dependencies and launch sequence", state: "Aligned" }
+          { name: "Command override", detail: "Executive authority and escalation boundary", state: "Restricted" },
+          { name: "Permissions gate", detail: "Role, team, and record-level access", state: "Enforced" },
+          { name: "Session custody", detail: "Authentication and privileged session state", state: "Verified" }
         ]
       },
       {
-        id: "approvals",
-        label: "Approvals",
-        title: "Multi-Tier Governance Chain",
-        description: "Creative, legal, commercial, and executive review states remain visible without collapsing into email threads.",
+        id: "audit",
+        label: "Audit Vault",
+        title: "Cryptographic Audit Vault",
+        description: "Sensitive administrative actions retain immutable actor, timestamp, approval, and affected-record context.",
         routes: [
-          { name: "Creative validation", detail: "Brand and channel requirements", state: "In review" },
-          { name: "Commercial clearance", detail: "Scope and commitment authority", state: "Guarded" },
-          { name: "Launch authorization", detail: "Final production release control", state: "Restricted" }
+          { name: "Action ledger", detail: "Privileged command and actor history", state: "Sealed" },
+          { name: "Approval chain", detail: "Required authorization sequence", state: "Guarded" },
+          { name: "Vault export", detail: "Controlled compliance evidence package", state: "Available" }
         ]
       }
     ]
   },
   {
     slug: "platform-suite",
-    tier: "Stratum Platform Suite",
-    niche: "B2B Portal",
-    eyebrow: "Multi-tenant platform infrastructure",
-    headline: "Private client environments operate as one sovereign platform.",
+    packageSlug: "founder-saas",
+    tier: "Global Intelligence",
+    niche: "Predictive Operations",
+    eyebrow: "Demand and yield intelligence",
+    headline: "Future demand becomes a visible operational advantage.",
     summary:
-      "A scalable B2B portal foundation with tenant isolation, role-aware interfaces, protected administration, and production deployment controls.",
-    dashboardTitle: "Tenant Infrastructure Console",
+      "A predictive analysis layer for demand curves, capacity scenarios, pricing signals, and dynamic yield adjustment.",
+    dashboardTitle: "Predictive Analysis Deck",
     accent: "fuchsia",
     modes: [
       {
-        id: "tenants",
-        label: "Tenants",
-        title: "Isolated Account Architecture",
-        description: "Every organization receives a bounded data context, permission model, operational workspace, and administrative surface.",
+        id: "forecast",
+        label: "Forecast",
+        title: "Predictive Demand Modeling",
+        description: "Historical velocity, current pipeline, seasonality, and capacity signals converge into an actionable demand curve.",
         routes: [
-          { name: "Tenant boundary", detail: "Organization-scoped records and settings", state: "Isolated" },
-          { name: "Role authority", detail: "Permission-aware interface and actions", state: "Enforced" },
-          { name: "Client workspace", detail: "Dedicated operational command surface", state: "Active" }
+          { name: "Demand curve", detail: "Forward volume and conversion probability", state: "Modeled" },
+          { name: "Capacity pressure", detail: "Resource constraint and saturation risk", state: "Measured" },
+          { name: "Revenue scenario", detail: "Projected yield by operating decision", state: "Available" }
         ]
       },
       {
-        id: "deployment",
-        label: "Deployment",
-        title: "Production Release Governance",
-        description: "Environment promotion, configuration ownership, and client handoff remain explicit from staging through production.",
+        id: "yield",
+        label: "Yield Adjuster",
+        title: "Dynamic Yield Optimization",
+        description: "Decision controls expose how pricing, allocation, timing, and offer structure influence projected return.",
         routes: [
-          { name: "Environment control", detail: "Private staging and production boundaries", state: "Guarded" },
-          { name: "Configuration custody", detail: "Client-owned production credentials", state: "Documented" },
-          { name: "Release authorization", detail: "Verified handoff and deployment approval", state: "Controlled" }
+          { name: "Price sensitivity", detail: "Demand response across rate scenarios", state: "Calculated" },
+          { name: "Allocation mix", detail: "Capacity distribution by opportunity class", state: "Balanced" },
+          { name: "Yield target", detail: "Recommended operating threshold", state: "Optimized" }
         ]
       }
     ]
