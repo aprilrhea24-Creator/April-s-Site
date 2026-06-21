@@ -45,15 +45,13 @@ export function WhyStratum() {
           const Signal = item.signal;
           const isStratum = item.tone === "cyan";
 
-          return (
+          const card = (
             <article
-              key={item.label}
-              className={`relative overflow-hidden rounded-2xl border bg-zinc-950/60 p-8 shadow-[0_30px_90px_rgba(0,0,0,0.45)] backdrop-blur-2xl transition-all duration-500 ${
+              className={`relative overflow-hidden p-8 shadow-[0_30px_90px_rgba(0,0,0,0.45)] backdrop-blur-2xl transition-all duration-500 ${
                 isStratum
-                  ? "border-cyan-400/25 hover:border-cyan-400/45"
-                  : "border-white/[0.07] hover:border-white/15"
+                  ? "z-10 h-full w-full rounded-[15px] bg-[#090a0f]"
+                  : "rounded-2xl border border-white/[0.07] bg-zinc-950/60 hover:border-white/15"
               }`}
-              style={isStratum ? { borderColor: "rgba(34,211,238,0.25)" } : undefined}
             >
               {isStratum ? (
                 <div
@@ -103,6 +101,22 @@ export function WhyStratum() {
                 </div>
               </div>
             </article>
+          );
+
+          return isStratum ? (
+            <div key={item.label} className="relative overflow-hidden rounded-2xl p-[1px]">
+              <div
+                className="why-stratum-border-spinner pointer-events-none absolute inset-[-200%] z-0 animate-[spin_5s_linear_infinite] [transform:translateZ(0)]"
+                style={{
+                  background:
+                    "conic-gradient(from 35deg, transparent 0deg 288deg, rgba(34,211,238,0.2) 298deg, #22d3ee 316deg, #a855f7 340deg, rgba(168,85,247,0.18) 350deg, transparent 360deg)"
+                }}
+                aria-hidden="true"
+              />
+              {card}
+            </div>
+          ) : (
+            <div key={item.label}>{card}</div>
           );
         })}
       </div>
