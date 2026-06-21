@@ -233,7 +233,7 @@ textarea {
 }
 
 .animate-gradient-breath {
-  animation: gradient-breath 4s ease-in-out infinite;
+  animation: gradient-orbit-breathe 8s linear infinite;
 }
 
 .package-card-popular {
@@ -252,18 +252,35 @@ textarea {
     0 0 0 1px rgba(0, 212, 232, 0.22);
 }
 
-@keyframes gradient-breath {
-  0%,
-  100% {
+@keyframes gradient-orbit-breathe {
+  0% {
     filter: blur(18px) saturate(1.22);
     opacity: 0.82;
-    transform: scale(0.985);
+    transform: translateZ(0) rotate(0deg) scale(0.985);
+  }
+
+  25% {
+    filter: blur(34px) saturate(1.72);
+    opacity: 1;
+    transform: translateZ(0) rotate(90deg) scale(1.035);
   }
 
   50% {
+    filter: blur(18px) saturate(1.22);
+    opacity: 0.82;
+    transform: translateZ(0) rotate(180deg) scale(0.985);
+  }
+
+  75% {
     filter: blur(34px) saturate(1.72);
     opacity: 1;
-    transform: scale(1.035);
+    transform: translateZ(0) rotate(270deg) scale(1.035);
+  }
+
+  100% {
+    filter: blur(18px) saturate(1.22);
+    opacity: 0.82;
+    transform: translateZ(0) rotate(360deg) scale(0.985);
   }
 }
 
@@ -381,8 +398,7 @@ textarea {
   }
 
   .animate-gradient-breath {
-    animation: gradient-breath 8s ease-in-out infinite;
-    animation-duration: 8s;
+    animation: gradient-orbit-breathe 14s linear infinite;
   }
 
   .package-card-popular {
