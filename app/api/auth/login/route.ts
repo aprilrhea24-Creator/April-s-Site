@@ -2,7 +2,7 @@ import { NextResponse } from "next/server";
 import { ZodError } from "zod";
 
 import { createSession, verifyPassword } from "@/lib/auth";
-import { getPrisma } from "@/lib/prisma";
+import { supabase } from "@/lib/supabase/client";
 import { getValidationMessage, loginSchema } from "@/lib/validation";
 
 export const dynamic = "force-dynamic";
@@ -14,8 +14,17 @@ function getSafeRedirect(next: string | undefined) {
 export async function POST(request: Request) {
   try {
     const body = loginSchema.parse(await request.json());
-    const prisma = getPrisma();
-    const user = await prisma.user.findUnique({ where: { email: body.email } });
+
+    const { data: user, error: findError } = await supabase
+      .from("User")
+      .select("*")
+      .eq("email", body.email)
+      .maybeSingle();
+
+    if (findError) {
+      console.error(findError);
+      return NextResponse.json({ error: "Unable to verify existing account." }, { status: 500 });
+    }
 
     if (!user || !(await verifyPassword(body.password, user.passwordHash))) {
       return NextResponse.json({ error: "Invalid email or password." }, { status: 401 });
