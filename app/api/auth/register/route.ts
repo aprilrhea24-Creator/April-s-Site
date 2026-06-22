@@ -2,7 +2,7 @@ import { NextResponse } from "next/server";
 import { ZodError } from "zod";
 
 import { createSession, hashPassword } from "@/lib/auth";
-import { getPrisma } from "@/lib/prisma";
+import { supabase } from "@/lib/supabase/client";
 import { getValidationMessage, registerSchema } from "@/lib/validation";
 
 export const dynamic = "force-dynamic";
@@ -14,24 +14,46 @@ function getSafeRedirect(next: string | undefined) {
 export async function POST(request: Request) {
   try {
     const body = registerSchema.parse(await request.json());
-    const prisma = getPrisma();
-    const existingUser = await prisma.user.findUnique({ where: { email: body.email } });
+
+    const { data: existingUser, error: findError } = await supabase
+      .from("User")
+      .select("id")
+      .eq("email", body.email)
+      .maybeSingle();
+
+    if (findError) {
+      console.error(findError);
+      return NextResponse.json({ error: "Unable to verify existing account." }, { status: 500 });
+    }
 
     if (existingUser) {
       return NextResponse.json({ error: "An account already exists with that email." }, { status: 409 });
     }
 
     const role = body.email === process.env.ADMIN_EMAIL ? "ADMIN" : "CUSTOMER";
-    const user = await prisma.user.create({
-      data: {
+    const passwordHash = await hashPassword(body.password);
+
+    const randomId = "c" + crypto.randomUUID().replace(/-/g, "").substring(0, 24);
+
+    const { data: user, error: createError } = await supabase
+      .from("User")
+      .insert({
+        id: randomId,
         name: body.name,
         email: body.email,
         phone: body.phone,
         address: body.address,
         role,
-        passwordHash: await hashPassword(body.password)
-      }
-    });
+        passwordHash,
+        updatedAt: new Date().toISOString()
+      })
+      .select()
+      .single();
+
+    if (createError || !user) {
+      console.error(createError);
+      return NextResponse.json({ error: "Unable to create account." }, { status: 500 });
+    }
 
     await createSession({ userId: user.id, email: user.email, role: user.role });
 
