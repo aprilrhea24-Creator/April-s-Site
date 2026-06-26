@@ -131,7 +131,9 @@ function Surface({
           <div className="flex items-start justify-between gap-4">
             <div>
               <p className="font-mono text-[10px] font-black uppercase tracking-[0.26em] text-cyan-200">{label}</p>
-              <h2 className="mt-4 font-display text-3xl font-black leading-none text-white">{headline}</h2>
+              <div className="mt-4 max-w-xs font-sans text-2xl font-black uppercase leading-[0.95] tracking-tight text-white sm:text-3xl">
+                {headline}
+              </div>
             </div>
             <span className="flex h-12 w-12 items-center justify-center rounded-2xl border border-white/10 bg-zinc-950/80">
               <Icon className="h-5 w-5 text-cyan-200" />
@@ -518,7 +520,9 @@ export function HighFidelityPreview({ kind }: { kind: PreviewKind }) {
             <div className="grid gap-6 lg:grid-cols-[0.72fr_1.28fr] lg:items-end">
               <div>
                 <p className="font-mono text-[11px] font-black uppercase tracking-[0.32em] text-cyan-200">STUDIO CONTROL</p>
-                <h1 className="mt-4 font-display text-5xl font-black leading-none text-white sm:text-7xl">{config.wrapper}</h1>
+                <div className="mt-4 max-w-2xl font-sans text-4xl font-black uppercase leading-[0.92] tracking-tight text-white sm:text-6xl">
+                  {config.wrapper}
+                </div>
                 <p className="mt-5 font-mono text-xs font-black uppercase tracking-[0.24em] text-zinc-500">{config.terminal}</p>
                 <p className="mt-3 font-mono text-xs font-black uppercase tracking-[0.24em] text-cyan-200">{config.alert}</p>
               </div>

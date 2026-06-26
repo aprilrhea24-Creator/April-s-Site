@@ -1,5 +1,5 @@
-import { HighFidelityPreview } from '@/components/preview/high-fidelity-preview';
+import { LuminaWellnessPreview } from "@/components/preview/lumina-wellness-preview";
 
 export default function BookingCorePreviewPage() {
-  return <HighFidelityPreview kind='booking' />;
+  return <LuminaWellnessPreview />;
 }
