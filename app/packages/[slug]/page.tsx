@@ -5,6 +5,13 @@ import { notFound } from "next/navigation";
 
 import { getPackage, packages } from "@/lib/packages";
 
+const previewPaths: Record<string, string> = {
+  "booking-core": "/preview/booking-core",
+  "enterprise-matrix": "/preview/secure-console",
+  "flow-automation": "/preview/dispatch-autonomous",
+  "platform-suite": "/preview/global-intelligence"
+};
+
 export function generateStaticParams() {
   return packages.map((item) => ({ slug: item.slug }));
 }
@@ -40,6 +47,7 @@ export default async function PackagePage({
   }
 
   const consultationHref = `/consultation?package=${item.consultationPackage}&tier=${item.consultationTier}`;
+  const previewHref = previewPaths[item.previewSlug] ?? `/preview/${item.previewSlug}`;
 
   return (
     <div className="relative min-h-screen overflow-hidden bg-[#050508]">
@@ -79,7 +87,7 @@ export default async function PackagePage({
                 <ArrowRight className="h-4 w-4" />
               </Link>
               <Link
-                href={`/solutions/${item.previewSlug}/preview`}
+                href={previewHref}
                 className="inline-flex items-center gap-2 rounded-full border border-zinc-700/70 bg-black/60 px-6 py-3 font-semibold text-white backdrop-blur-xl transition-all hover:border-cyan-300/50 hover:bg-zinc-900/80"
               >
                 Launch Interactive Demo

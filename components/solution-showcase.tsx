@@ -179,7 +179,7 @@ export function SolutionShowcase() {
             </div>
             <div className="mt-auto">
               <PreviewController
-                href="/solutions/flow-automation/preview"
+                href="/preview/dispatch-autonomous"
                 colors="linear-gradient(90deg,#7f1d1d,#ff3d00,#ff8a00,#dc2626)"
               />
             </div>
@@ -282,7 +282,7 @@ export function SolutionShowcase() {
             </div>
             <div className="mt-auto">
               <PreviewController
-                href="/solutions/enterprise-matrix/preview"
+                href="/preview/global-intelligence"
                 colors="linear-gradient(90deg,#00F2FE,#168BFF,#A800FF,#00F2FE)"
               />
             </div>

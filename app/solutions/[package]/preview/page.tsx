@@ -1,8 +1,14 @@
 import type { Metadata } from "next";
-import { notFound } from "next/navigation";
+import { notFound, redirect } from "next/navigation";
 
-import { FrameworkPreview } from "@/components/framework-preview";
 import { frameworkPreviews, getFrameworkPreview } from "@/lib/framework-previews";
+
+const previewRedirects: Record<string, string> = {
+  "booking-core": "/preview/booking-core",
+  "enterprise-matrix": "/preview/secure-console",
+  "flow-automation": "/preview/dispatch-autonomous",
+  "platform-suite": "/preview/global-intelligence"
+};
 
 export function generateStaticParams() {
   return frameworkPreviews.map((framework) => ({ package: framework.slug }));
@@ -34,5 +40,5 @@ export default async function FrameworkPreviewPage({
     notFound();
   }
 
-  return <FrameworkPreview framework={framework} />;
+  redirect(previewRedirects[packageSlug] ?? "/solutions");
 }
