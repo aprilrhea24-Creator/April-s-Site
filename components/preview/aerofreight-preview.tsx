@@ -235,17 +235,129 @@ function DetailBox({ label, value, color = "white" }: { label: string; value: st
   );
 }
 
-function CargoFlowMap() {
+function CargoFlowMap({ route }: { route: RouteProfile }) {
+  const routeVisuals: Record<
+    string,
+    {
+      nodes: { label: string; x: number; y: number; active?: boolean; hollow?: boolean }[];
+      primaryPath: string;
+      secondaryPath: string;
+      focus: { x: number; y: number };
+    }
+  > = {
+    "AF-901": {
+      nodes: [
+        { label: "LHR", x: 78, y: 118, hollow: true },
+        { label: "AMS", x: 78, y: 200, hollow: true },
+        { label: "DXB", x: 338, y: 118, hollow: true },
+        { label: "JFK", x: 338, y: 200, active: true }
+      ],
+      primaryPath: "M 78 118 C 170 95 260 104 338 200",
+      secondaryPath: "M 78 200 C 178 228 268 218 338 200",
+      focus: { x: 338, y: 200 }
+    },
+    "GF-204": {
+      nodes: [
+        { label: "LAX", x: 62, y: 172, hollow: true },
+        { label: "PHX", x: 170, y: 116 },
+        { label: "DEN", x: 292, y: 90, hollow: true },
+        { label: "CLN", x: 346, y: 184, active: true }
+      ],
+      primaryPath: "M 62 172 C 126 92 238 78 346 184",
+      secondaryPath: "M 62 172 C 160 210 268 220 346 184",
+      focus: { x: 346, y: 184 }
+    },
+    "MX-778": {
+      nodes: [
+        { label: "HUB", x: 64, y: 132, hollow: true },
+        { label: "STG", x: 180, y: 92 },
+        { label: "EST", x: 304, y: 126, hollow: true },
+        { label: "GTE", x: 332, y: 210, active: true }
+      ],
+      primaryPath: "M 64 132 C 142 70 250 78 332 210",
+      secondaryPath: "M 64 132 C 134 198 250 238 332 210",
+      focus: { x: 332, y: 210 }
+    }
+  };
+
+  const visual = routeVisuals[route.id] ?? routeVisuals["AF-901"];
+
   return (
-    <div className="absolute inset-0 h-full w-full overflow-hidden p-4">
-      <svg className="h-full w-full overflow-visible" viewBox="0 0 400 225">
-        <path d="M 50,50 Q 200,20 350,150" fill="none" stroke="#3b82f6" strokeWidth="1.5" strokeDasharray="4 4" opacity="0.4" />
-        <circle r="2.5" fill="#3b82f6">
-          <animateMotion path="M 50,50 Q 200,20 350,150" dur="4s" repeatCount="indefinite" rotate="auto" />
-        </circle>
-        <circle cx="50" cy="50" r="5" fill="#1e293b" stroke="#3b82f6" strokeWidth="1.5" />
-        <circle cx="350" cy="150" r="5" fill="#3b82f6" stroke="#3b82f6" strokeWidth="1.5" />
-      </svg>
+    <div className="relative min-h-[500px] overflow-hidden bg-[#080b12] p-8">
+      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(#1e293b_1px,transparent_1px)] [background-size:32px_32px] opacity-45" />
+      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_74%_58%,rgba(59,130,246,0.12),transparent_18%),radial-gradient(circle_at_18%_18%,rgba(99,102,241,0.08),transparent_26%)]" />
+
+      <div className="relative z-10 flex items-start justify-between gap-6">
+        <h3 className="max-w-md font-mono text-3xl font-black uppercase leading-snug tracking-[0.35em] text-slate-400">
+          Live Route Intelligence: {route.id}
+        </h3>
+        <div className="border border-indigo-500/20 bg-indigo-500/5 px-8 py-5 text-center font-mono text-xl font-black uppercase leading-tight tracking-[0.25em] text-indigo-300 shadow-[0_0_40px_rgba(99,102,241,0.08)]">
+          Uplink
+          <br />
+          Live
+        </div>
+      </div>
+
+      <div className="relative z-10 my-10 h-px bg-white/5" />
+
+      <div className="relative z-10 min-h-[260px] overflow-hidden rounded-lg border border-white/10 bg-[#111520]/70 shadow-2xl shadow-black/40">
+        <svg className="absolute inset-0 h-full w-full" viewBox="0 0 420 260" preserveAspectRatio="none">
+          <defs>
+            <filter id={`routeGlow-${route.id}`}>
+              <feGaussianBlur stdDeviation="4" result="coloredBlur" />
+              <feMerge>
+                <feMergeNode in="coloredBlur" />
+                <feMergeNode in="SourceGraphic" />
+              </feMerge>
+            </filter>
+          </defs>
+          <path d={visual.primaryPath} fill="none" stroke="#3b82f6" strokeWidth="1.5" strokeDasharray="7 9" opacity="0.42" />
+          <path d={visual.secondaryPath} fill="none" stroke="#3b82f6" strokeWidth="1.5" strokeDasharray="7 9" opacity="0.38" />
+          <circle r="3.5" fill="#3b82f6" filter={`url(#routeGlow-${route.id})`}>
+            <animateMotion path={visual.primaryPath} dur="3.2s" repeatCount="indefinite" rotate="auto" />
+          </circle>
+          <circle r="3" fill="#3b82f6" opacity="0.8">
+            <animateMotion path={visual.secondaryPath} dur="4.4s" repeatCount="indefinite" rotate="auto" />
+          </circle>
+          <circle cx={visual.focus.x} cy={visual.focus.y} r="18" fill="none" stroke="#3b82f6" strokeOpacity="0.15" strokeWidth="2">
+            <animate attributeName="r" values="14;24;14" dur="2.6s" repeatCount="indefinite" />
+            <animate attributeName="stroke-opacity" values="0.45;0.05;0.45" dur="2.6s" repeatCount="indefinite" />
+          </circle>
+          {visual.nodes.map((node) => (
+            <g key={node.label}>
+              <text x={node.x - 8} y={node.y - 16} fill="white" fontSize="10" fontWeight="900" letterSpacing="2">
+                {node.label}
+              </text>
+              <circle
+                cx={node.x}
+                cy={node.y}
+                r={node.active ? 9 : 6}
+                fill={node.active ? "#3b82f6" : node.hollow ? "#111520" : "#3b82f6"}
+                stroke="#60a5fa"
+                strokeWidth="2"
+                filter={node.active ? `url(#routeGlow-${route.id})` : undefined}
+              />
+              {node.active ? (
+                <circle cx={node.x} cy={node.y} r="3" fill="#93c5fd">
+                  <animate attributeName="opacity" values="1;0.25;1" dur="1.4s" repeatCount="indefinite" />
+                </circle>
+              ) : null}
+            </g>
+          ))}
+        </svg>
+
+        <div className="absolute bottom-8 right-8 flex flex-col items-end">
+          <span className="font-mono text-[10px] font-black uppercase tracking-[0.25em] text-blue-500">Link Quality</span>
+          <span className="font-mono text-xl font-black uppercase text-white">{route.linkQuality}</span>
+        </div>
+      </div>
+
+      <div className="relative z-10 mt-8 grid grid-cols-2 gap-5">
+        <DetailBox label="Transfer Mode" value={route.transferMode} />
+        <DetailBox label="Scan Integrity" value={route.scanIntegrity} />
+        <DetailBox label="ETA Lock" value={route.etaLock} color="indigo" />
+        <DetailBox label="Exceptions" value={route.exceptions} color="indigo" />
+      </div>
     </div>
   );
 }
@@ -367,19 +479,8 @@ export function AeroFreightPreview() {
           <div className="flex flex-col gap-8 lg:col-span-5">
             <Panel title={`Live Route Intelligence: ${selectedRoute.id}`} badge="Uplink Live">
               <div className="mt-4 flex flex-col gap-6">
-                <div className="group relative aspect-video w-full overflow-hidden rounded-sm border border-white/5 bg-[#0d0f14]">
-                  <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(59,130,246,0.05),transparent)]" />
-                  <CargoFlowMap />
-                  <div className="absolute bottom-4 right-4 flex flex-col items-end">
-                    <span className="text-[7px] font-black uppercase tracking-widest text-blue-500">Link Quality</span>
-                    <span className="text-[10px] font-black text-white">{selectedRoute.linkQuality}</span>
-                  </div>
-                </div>
-                <div className="grid grid-cols-2 gap-3">
-                  <DetailBox label="Transfer Mode" value={selectedRoute.transferMode} />
-                  <DetailBox label="Scan Integrity" value={selectedRoute.scanIntegrity} />
-                  <DetailBox label="ETA Lock" value={selectedRoute.etaLock} color="indigo" />
-                  <DetailBox label="Exceptions" value={selectedRoute.exceptions} color="indigo" />
+                <div className="group relative w-full overflow-hidden rounded-sm border border-white/5 bg-[#0d0f14]">
+                  <CargoFlowMap route={selectedRoute} />
                 </div>
               </div>
             </Panel>
