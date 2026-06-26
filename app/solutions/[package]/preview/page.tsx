@@ -4,10 +4,10 @@ import { notFound, redirect } from "next/navigation";
 import { frameworkPreviews, getFrameworkPreview } from "@/lib/framework-previews";
 
 const previewRedirects: Record<string, string> = {
-  "booking-core": "/preview/booking-core",
-  "enterprise-matrix": "/preview/secure-console",
-  "flow-automation": "/preview/dispatch-autonomous",
-  "platform-suite": "/preview/global-intelligence"
+  "booking-core": "/solutions/booking-core",
+  "enterprise-matrix": "/solutions/secure-console",
+  "flow-automation": "/solutions/dispatch-autonomous",
+  "platform-suite": "/solutions/global-intelligence"
 };
 
 export function generateStaticParams() {

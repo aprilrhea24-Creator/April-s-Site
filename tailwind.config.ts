@@ -20,8 +20,8 @@ const config: Config = {
       },
       fontFamily: {
         sans: ["var(--font-space-grotesk)", "Space Grotesk", "ui-sans-serif", "system-ui", "sans-serif"],
-        display: ["var(--font-syne)", "Syne", "sans-serif"],
-        serif: ["var(--font-syne)", "Syne", "ui-sans-serif", "system-ui", "sans-serif"],
+        display: ["var(--font-space-grotesk)", "Space Grotesk", "ui-sans-serif", "system-ui", "sans-serif"],
+        serif: ["var(--font-space-grotesk)", "Space Grotesk", "ui-sans-serif", "system-ui", "sans-serif"],
         mono: ["var(--font-space-grotesk)", "Space Grotesk", "monospace"],
         body: ["var(--font-space-grotesk)", "Space Grotesk", "ui-sans-serif", "system-ui", "sans-serif"]
       },
