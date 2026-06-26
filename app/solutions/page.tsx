@@ -28,6 +28,12 @@ const previewPortals = [
     label: "AeroFreight Private Logistics",
     system: "Dispatch Autonomous",
     meta: "Private fleet routing, telemetry sync, custody scans, and velocity analytics."
+  },
+  {
+    href: "/preview/global-intelligence",
+    label: "Nexus Corp Analytics",
+    system: "Global Intelligence",
+    meta: "Multi-tenant SaaS infrastructure, cloud logs, and predictive revenue intelligence."
   }
 ];
 
@@ -74,7 +80,7 @@ export default function SolutionsPage() {
               Local Preview Runtime
             </span>
           </div>
-          <div className="mt-8 grid gap-4 lg:grid-cols-3">
+          <div className="mt-8 grid gap-4 md:grid-cols-2 xl:grid-cols-4">
             {previewPortals.map((portal) => (
               <Link
                 key={portal.href}
