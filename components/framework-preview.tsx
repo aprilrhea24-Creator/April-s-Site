@@ -81,7 +81,7 @@ export function FrameworkPreview({ framework }: { framework: FrameworkPreviewDat
           <div>
             <p className={`font-mono text-xs uppercase tracking-[0.28em] ${accent.text}`}>{framework.eyebrow}</p>
             <p className="mt-5 font-mono text-[10px] uppercase tracking-[0.24em] text-zinc-600">{framework.tier}</p>
-            <h1 className="mt-5 max-w-2xl font-serif text-5xl font-semibold leading-[1.03] text-white sm:text-6xl">
+            <h1 className="mt-5 max-w-2xl font-display text-5xl font-extrabold leading-[1.03] text-white sm:text-6xl">
               {framework.headline}
             </h1>
             <p className="mt-6 max-w-xl text-lg leading-8 text-zinc-300">{framework.summary}</p>
@@ -181,7 +181,7 @@ export function FrameworkPreview({ framework }: { framework: FrameworkPreviewDat
           <div className="grid gap-8 lg:grid-cols-[0.72fr_1.28fr] lg:items-center">
             <div>
               <p className={`font-mono text-xs uppercase tracking-[0.26em] ${accent.text}`}>Bespoke Logic Routing</p>
-              <h2 className="mt-4 font-serif text-4xl font-semibold leading-tight text-white">
+              <h2 className="mt-4 font-display text-4xl font-bold leading-tight text-white">
                 The baseline bends around the operation.
               </h2>
             </div>

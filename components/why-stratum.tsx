@@ -30,7 +30,7 @@ export function WhyStratum() {
         <p className="font-mono text-xs uppercase tracking-[0.28em] text-cyan-300">Why Stratum</p>
         <h2
           id="architecture-vs-templates"
-          className="mt-4 font-sans text-4xl font-bold leading-tight text-white sm:text-5xl"
+          className="mt-4 font-display text-4xl font-bold leading-tight text-white sm:text-5xl"
         >
           Architecture vs. Templates
         </h2>

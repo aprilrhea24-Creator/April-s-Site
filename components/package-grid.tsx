@@ -47,7 +47,7 @@ export function PackageGrid() {
                   }`}
                 >
                   <p className="font-mono text-xs uppercase tracking-[0.2em] text-white/60">{item.industry}</p>
-                  <h3 className="mt-3 font-sans text-2xl font-bold normal-case leading-snug text-white">
+                  <h3 className="mt-3 font-display text-2xl font-bold normal-case leading-snug text-white">
                     {item.title}
                   </h3>
                   <p className="mt-3 text-sm leading-7 text-white/80">{item.summary}</p>
@@ -56,7 +56,7 @@ export function PackageGrid() {
                   {item.features.map((feature) => (
                     <div
                       key={feature}
-                      className="flex items-center gap-3 rounded-xl border border-zinc-800/60 bg-black/40 px-4 py-3 text-sm font-medium tracking-wide text-zinc-300 backdrop-blur-xl transition-colors hover:bg-zinc-900/70"
+                      className="flex items-center gap-3 rounded-xl border border-zinc-800/60 bg-black/40 px-4 py-3 text-sm font-medium text-zinc-300 backdrop-blur-xl transition-colors hover:bg-zinc-900/70"
                     >
                       <span className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-md border border-zinc-700/70 bg-zinc-900/80 text-slate-100">
                         <Check className="h-3.5 w-3.5" aria-hidden="true" />

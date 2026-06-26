@@ -59,7 +59,7 @@ export default function HomePage() {
           />
           <div className="relative z-10 flex flex-col items-center text-center md:items-start md:text-left">
             <div className="w-full">
-              <h1 className="font-sans text-4xl font-black leading-[1.05] tracking-tight text-white drop-shadow-[0_4px_16px_rgba(0,0,0,1)] md:text-6xl">
+              <h1 className="font-display text-4xl font-extrabold leading-[1.05] tracking-tight text-white drop-shadow-[0_4px_16px_rgba(0,0,0,1)] md:text-6xl">
                 <span className="block text-white">Engineered Workflows.</span>
                 <span
                   className="mt-2 block bg-gradient-to-r from-cyan-400 to-purple-500 bg-clip-text text-transparent drop-shadow-[0_4px_14px_rgba(0,0,0,0.95)]"
@@ -81,7 +81,7 @@ export default function HomePage() {
                   }}
                   aria-hidden="true"
                 />
-                <p className="relative z-10 text-base font-semibold leading-relaxed tracking-wide text-slate-100 antialiased drop-shadow-[0_4px_14px_rgba(0,0,0,1)] [text-shadow:0_1px_3px_rgba(0,0,0,1)] md:text-lg">
+                <p className="relative z-10 text-base font-semibold leading-relaxed text-slate-100 antialiased drop-shadow-[0_4px_14px_rgba(0,0,0,1)] [text-shadow:0_1px_3px_rgba(0,0,0,1)] md:text-lg">
                   Stratum Studio builds high-performance web applications, premium portals, and automated booking systems tailored
                   to your unique operations. We eliminate friction from your day-to-day workflow while designing an elite digital
                   presence that makes your brand unforgettable.
@@ -152,7 +152,7 @@ export default function HomePage() {
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="mb-10 max-w-3xl">
             <p className="text-sm uppercase tracking-[0.25em] text-cyan-200">Signature packages</p>
-            <h2 className="mt-4 font-sans text-4xl font-bold normal-case leading-snug text-white">
+            <h2 className="mt-4 font-display text-4xl font-bold normal-case leading-snug text-white">
               Choose a strong starting point, then make it unmistakably yours.
             </h2>
             <p className="mt-4 text-base leading-8 text-slate-300">
@@ -168,7 +168,7 @@ export default function HomePage() {
       <section className="relative mx-auto max-w-7xl px-4 pb-20 sm:px-6 lg:px-8">
         <div className="mb-10 max-w-3xl">
           <p className="text-sm uppercase tracking-[0.25em] text-cyan-200">A clear path forward</p>
-          <h2 className="mt-4 font-sans text-4xl font-bold normal-case leading-snug text-white">From Blueprint to Launch.</h2>
+          <h2 className="mt-4 font-display text-4xl font-bold normal-case leading-snug text-white">From Blueprint to Launch.</h2>
           <p className="mt-4 text-base leading-8 text-slate-300">
             We turn your idea into a polished customer experience that is easy to use, easy to manage, and ready to grow.
           </p>
@@ -180,7 +180,7 @@ export default function HomePage() {
               className="rounded-2xl border border-white/5 bg-zinc-950/40 p-8 backdrop-blur-xl transition-all duration-300 hover:border-white/10"
             >
               <item.icon className="h-7 w-7 text-cyan-200" />
-              <h3 className="mt-5 font-sans text-xl font-bold normal-case leading-snug text-white">{item.title}</h3>
+              <h3 className="mt-5 font-display text-xl font-bold normal-case leading-snug text-white">{item.title}</h3>
               <p className="mt-3 text-sm leading-7 text-slate-300">{item.text}</p>
             </article>
           ))}
@@ -192,7 +192,7 @@ export default function HomePage() {
           <div className="grid gap-10 md:grid-cols-[0.9fr_1.1fr]">
             <div>
               <p className="text-sm uppercase tracking-[0.25em] text-fuchsia-200">Our philosophy</p>
-              <h2 className="mt-4 max-w-xl font-sans text-4xl font-bold normal-case leading-snug text-white">
+              <h2 className="mt-4 max-w-xl font-display text-4xl font-bold normal-case leading-snug text-white">
                 High-Performance Infrastructure. Tailored to Your Vision.
               </h2>
             </div>
@@ -217,7 +217,7 @@ export default function HomePage() {
         <div className="grid gap-8 rounded-2xl border border-white/5 bg-zinc-950/40 p-8 backdrop-blur-xl transition-all duration-300 hover:border-white/10 md:grid-cols-[0.8fr_1.2fr]">
           <div>
             <p className="text-sm uppercase tracking-[0.25em] text-cyan-200">Built to monetize</p>
-            <h2 className="mt-4 font-sans text-3xl font-bold normal-case leading-snug text-white">
+            <h2 className="mt-4 font-display text-3xl font-bold normal-case leading-snug text-white">
               A clear path from first inquiry to ongoing support.
             </h2>
           </div>

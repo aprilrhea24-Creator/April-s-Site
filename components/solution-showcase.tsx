@@ -69,7 +69,7 @@ export function SolutionShowcase() {
               <p className="font-mono text-xs font-bold uppercase tracking-[0.22em]">Stratum Capital</p>
             </div>
             <div>
-              <h2 className="font-sans text-4xl font-extrabold leading-tight tracking-tight text-white">
+              <h2 className="font-display text-4xl font-extrabold leading-tight tracking-tight text-white">
                 Uncompromising Strategy. Absolute Dedication.
               </h2>
               <p className="mt-5 text-base leading-8 text-slate-300">
@@ -83,7 +83,7 @@ export function SolutionShowcase() {
             <div className="grid grid-cols-3 gap-3 border-y border-[#D4AF37]/15 py-5">
               {capitalStats.map((stat) => (
                 <div key={stat.label}>
-                  <p className="font-sans text-xl font-extrabold leading-tight tracking-tight text-white">{stat.value}</p>
+                  <p className="font-display text-xl font-extrabold leading-tight tracking-tight text-white">{stat.value}</p>
                   <p className="mt-1 text-[0.68rem] leading-4 text-slate-500">{stat.label}</p>
                 </div>
               ))}
@@ -165,7 +165,7 @@ export function SolutionShowcase() {
               <p className="font-mono text-xs font-bold uppercase tracking-[0.22em]">Stratum Kinetix</p>
             </div>
             <div>
-              <h2 className="font-sans text-5xl font-extrabold leading-[0.94] tracking-tight text-white sm:text-6xl">
+              <h2 className="font-display text-5xl font-extrabold leading-[0.94] tracking-tight text-white sm:text-6xl">
                 <span className="block">TRAIN HARDER.</span>
                 <span className="block text-orange-500">MOVE FASTER.</span>
               </h2>
@@ -192,7 +192,7 @@ export function SolutionShowcase() {
                 <Zap className="absolute left-1/2 top-1/2 h-16 w-16 -translate-x-1/2 -translate-y-1/2 text-orange-400" />
               </div>
               <p className="text-xs uppercase tracking-[0.18em] text-orange-300">Carbon series / 07</p>
-              <p className="mt-3 max-w-40 font-sans text-2xl font-extrabold leading-tight tracking-tight text-white">
+              <p className="mt-3 max-w-40 font-display text-2xl font-extrabold leading-tight tracking-tight text-white">
                 Built for measurable momentum.
               </p>
               <div className="absolute bottom-5 left-5 right-5 flex items-center justify-between border-t border-white/10 pt-4">
@@ -261,7 +261,7 @@ export function SolutionShowcase() {
               <p className="font-mono text-xs font-bold uppercase tracking-[0.22em]">Stratum Protocol</p>
             </div>
             <div>
-              <h2 className="font-sans text-4xl font-extrabold leading-tight tracking-tight text-white">
+              <h2 className="font-display text-4xl font-extrabold leading-tight tracking-tight text-white">
                 The Future of Blue Chip Exposure
               </h2>
               <p className="mt-5 text-base leading-8 text-slate-300">

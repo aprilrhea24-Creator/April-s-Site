@@ -7,7 +7,7 @@ export function Hero() {
       <div className="mx-auto grid min-h-[78vh] max-w-7xl items-center gap-12 px-4 py-20 sm:px-6 lg:grid-cols-[1.2fr_0.8fr] lg:px-8">
         <div className="relative">
           <p className="text-sm uppercase tracking-[0.3em] text-cyan-200">Stratum Studio</p>
-          <h1 className="mt-6 max-w-3xl font-sans text-4xl font-bold normal-case leading-snug text-white sm:text-6xl lg:text-7xl">
+          <h1 className="mt-6 max-w-3xl font-display text-4xl font-bold normal-case leading-snug text-white sm:text-6xl lg:text-7xl">
             Private operational apps with a polished, modern touch.
           </h1>
           <p className="mt-6 max-w-2xl text-lg leading-8 text-slate-300">

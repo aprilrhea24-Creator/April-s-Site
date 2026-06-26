@@ -8,7 +8,7 @@ export default function SubscriptionOnboardingPage() {
           <p className="mb-2 font-mono text-[10px] uppercase tracking-[0.25em] text-cyan-400">
             The Stratum Lifecycle Standard
           </p>
-          <h1 className="font-sans text-4xl font-bold leading-tight text-white sm:text-5xl">
+          <h1 className="font-display text-4xl font-bold leading-tight text-white sm:text-5xl">
             Dedicated Structural Optimization &amp; Direct Health Surveillance
           </h1>
 
