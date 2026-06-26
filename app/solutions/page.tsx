@@ -3,11 +3,33 @@ import {
   CalendarClock,
   ChartSpline,
   SlidersHorizontal,
-  ChevronRight
+  ChevronRight,
+  ArrowUpRight
 } from "lucide-react";
 
 import { PackageGrid } from "@/components/package-grid";
 import { WhyStratum } from "@/components/why-stratum";
+
+const previewPortals = [
+  {
+    href: "/preview/booking-core",
+    label: "Lumina Wellness Portal",
+    system: "Stratum Booking Core",
+    meta: "Aesthetics intake, secure client scheduling, and practitioner roster routing."
+  },
+  {
+    href: "/preview/secure-console",
+    label: "Vanguard Ops Center",
+    system: "Secure Console",
+    meta: "Enterprise database isolation, payment pipeline governance, and approval queues."
+  },
+  {
+    href: "/preview/dispatch-autonomous",
+    label: "AeroFreight Private Logistics",
+    system: "Dispatch Autonomous",
+    meta: "Private fleet routing, telemetry sync, custody scans, and velocity analytics."
+  }
+];
 
 export default function SolutionsPage() {
   return (
@@ -15,7 +37,7 @@ export default function SolutionsPage() {
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
       <div className="max-w-3xl">
         <p className="text-sm uppercase tracking-[0.28em] text-cyan-200">Solution showcase</p>
-        <h1 className="mt-4 font-sans text-4xl font-extrabold leading-tight tracking-tight text-white sm:text-5xl">
+        <h1 className="mt-4 font-display text-4xl font-extrabold leading-tight tracking-tight text-white sm:text-5xl">
           Stratum product frameworks engineered for distinct markets.
         </h1>
         <p className="mt-5 text-lg leading-8 text-slate-300">
@@ -27,12 +49,51 @@ export default function SolutionsPage() {
       <div className="mt-12">
         <div className="mb-7 max-w-3xl">
           <p className="text-sm uppercase tracking-[0.25em] text-cyan-200">Build packages</p>
-          <h2 className="mt-3 font-sans text-3xl font-bold normal-case leading-snug text-white">
+          <h2 className="mt-3 font-display text-3xl font-bold normal-case leading-snug text-white">
             Choose the operational foundation behind your style.
           </h2>
         </div>
         <PackageGrid />
         <WhyStratum />
+      </div>
+
+      <div className="mt-12 rounded-[2rem] border border-zinc-900 bg-[#050508] p-4 sm:p-6">
+        <div className="rounded-3xl border border-white/10 bg-[#0c0d12] p-6 backdrop-blur-xl">
+          <div className="flex flex-wrap items-end justify-between gap-6">
+            <div className="max-w-2xl">
+              <p className="font-mono text-xs font-bold uppercase tracking-[0.28em] text-cyan-200">Live Preview Portal</p>
+              <h2 className="mt-3 font-display text-3xl font-bold normal-case leading-snug text-white">
+                Standalone command-center simulations for premium buyers.
+              </h2>
+              <p className="mt-4 text-sm leading-7 text-slate-400">
+                Each route opens a separate high-fidelity application preview using local client-side state only.
+              </p>
+            </div>
+            <span className="inline-flex items-center gap-2 rounded-full border border-cyan-300/15 bg-cyan-300/5 px-3 py-1.5 font-mono text-[10px] font-bold uppercase tracking-[0.24em] text-zinc-300">
+              <span className="h-2 w-2 animate-pulse rounded-full bg-[#22d3ee] shadow-[0_0_14px_rgba(34,211,238,0.9)]" />
+              Local Preview Runtime
+            </span>
+          </div>
+          <div className="mt-8 grid gap-4 lg:grid-cols-3">
+            {previewPortals.map((portal) => (
+              <Link
+                key={portal.href}
+                href={portal.href}
+                className="group rounded-2xl border border-white/10 bg-black/50 p-5 transition-all duration-300 hover:-translate-y-1 hover:border-cyan-300/35 hover:shadow-[0_0_34px_rgba(34,211,238,0.12)]"
+              >
+                <p className="font-mono text-[10px] font-bold uppercase tracking-[0.22em] text-zinc-500">{portal.system}</p>
+                <div className="mt-4 flex items-start justify-between gap-4">
+                  <h3 className="font-display text-xl font-bold leading-tight text-white">{portal.label}</h3>
+                  <ArrowUpRight className="h-5 w-5 shrink-0 text-cyan-200 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
+                </div>
+                <p className="mt-4 text-sm leading-6 text-zinc-400">{portal.meta}</p>
+                <span className="mt-6 inline-flex rounded-full bg-gradient-to-r from-[#00f2fe] via-[#0066ff] to-[#9d00ff] px-4 py-2 text-xs font-bold text-white shadow-[0_0_20px_rgba(0,242,254,0.14)]">
+                  Live Preview
+                </span>
+              </Link>
+            ))}
+          </div>
+        </div>
       </div>
 
       <div className="relative mt-12 overflow-hidden rounded-3xl p-[1px] md:p-[1.5px]">
@@ -53,7 +114,7 @@ export default function SolutionsPage() {
             ].map((item) => (
               <div key={item.label}>
                 <item.icon className="h-6 w-6 text-fuchsia-200" />
-                <h3 className="mt-4 font-sans font-extrabold leading-tight tracking-tight text-white">{item.label}</h3>
+                <h3 className="mt-4 font-display font-extrabold leading-tight tracking-tight text-white">{item.label}</h3>
                 <p className="mt-2 text-sm leading-6 text-slate-300">{item.text}</p>
               </div>
             ))}
