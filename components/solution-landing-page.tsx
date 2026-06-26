@@ -237,6 +237,22 @@ export function SolutionLandingPage({ landingKey }: { landingKey: LandingKey }) 
     return null;
   }
 
+  if (config.mode === "clinical") {
+    return <ClinicalLanding config={config} packageDetail={packageDetail} />;
+  }
+
+  if (config.mode === "logistics") {
+    return <LogisticsLanding config={config} packageDetail={packageDetail} />;
+  }
+
+  if (config.mode === "tactical") {
+    return <TacticalLanding config={config} packageDetail={packageDetail} />;
+  }
+
+  if (config.mode === "intelligence") {
+    return <IntelligenceLanding config={config} packageDetail={packageDetail} />;
+  }
+
   return (
     <main className={`min-h-screen bg-[#050508] text-white ${config.mode === "tactical" ? "font-mono" : ""}`}>
       <section className="relative overflow-hidden border-b border-white/5">
@@ -477,6 +493,180 @@ export function SolutionLandingPage({ landingKey }: { landingKey: LandingKey }) 
   );
 }
 
+type PackageForLanding = NonNullable<ReturnType<typeof getPackage>>;
+
+function ClinicalLanding({ config, packageDetail }: { config: LandingConfig; packageDetail: PackageForLanding }) {
+  return (
+    <main className="relative min-h-screen overflow-hidden bg-[#08090a] text-white">
+      <ReferenceBackground config={config} />
+      <section className="relative z-10">
+        <div className="mx-auto flex min-h-[calc(100vh-96px)] max-w-[1500px] flex-col px-6 py-10">
+          <div className="flex flex-wrap items-center justify-between gap-6 border-b border-white/10 bg-[#08090a]/55 px-6 py-5 backdrop-blur-xl">
+            <div className="flex items-center gap-4">
+              <div className="flex h-14 w-14 items-center justify-center rounded-lg bg-white text-2xl font-black text-black">L</div>
+              <div>
+                <p className="text-2xl font-bold tracking-tight text-white">Lumina</p>
+                <p className="text-2xl font-light italic tracking-tight text-slate-500">Wellness</p>
+              </div>
+            </div>
+            <div className="hidden items-center gap-10 font-mono text-[11px] font-black uppercase tracking-[0.38em] text-slate-500 lg:flex">
+              <span className="text-white">Treatments</span>
+              <span>Science</span>
+              <span>Philosophy</span>
+              <span>Portal</span>
+            </div>
+            <Link
+              href={`/consultation?package=${packageDetail.consultationPackage}&tier=${packageDetail.consultationTier}`}
+              className="bg-white px-8 py-4 font-mono text-xs font-black uppercase tracking-[0.45em] text-black transition hover:bg-slate-200"
+            >
+              Book consult
+            </Link>
+          </div>
+
+          <div className="grid flex-1 items-end gap-12 border-x border-white/10 px-5 py-14 lg:grid-cols-[1.15fr_0.85fr] lg:px-10">
+            <div>
+              <p className="mb-8 flex items-center gap-4 font-mono text-[11px] font-black uppercase tracking-[0.45em] text-blue-400">
+                <span className="h-px w-14 bg-blue-500" />
+                {config.terminal}
+              </p>
+              <h1 className="max-w-5xl text-[clamp(4.8rem,12vw,13rem)] font-black uppercase leading-[0.82] tracking-[-0.065em] text-white">
+                Refining the human
+                <span className="block font-light italic normal-case tracking-[-0.05em] text-slate-400">canvas</span>
+              </h1>
+              <div className="mt-12 grid gap-6 border-t border-white/10 pt-8 lg:grid-cols-[0.85fr_1fr]">
+                <p className="font-mono text-xs font-bold uppercase leading-loose tracking-[0.26em] text-slate-500">{config.subtitle}</p>
+                <div className="grid grid-cols-2 gap-4 md:grid-cols-4">
+                  {config.metrics.map((metric) => (
+                    <MetricTile key={metric.label} metric={metric} />
+                  ))}
+                </div>
+              </div>
+            </div>
+
+            <div className="space-y-5">
+              <LandingPanel title="Patient Grid" badge="Terminal" signal={config.signal} icon={<LayoutDashboard className="h-5 w-5" />}>
+                <div className="grid gap-3">
+                  {config.panels[0].lines.map((line, index) => (
+                    <StatusLine key={line} line={line} signal={config.signal} active={index === 0} />
+                  ))}
+                </div>
+              </LandingPanel>
+              <div className="rounded-3xl border border-white/10 bg-[#0c0d0e]/80 p-7 backdrop-blur-xl">
+                <div className="flex items-center justify-between">
+                  <p className="font-mono text-xs font-black uppercase tracking-[0.28em] text-slate-400">Scheduling Matrix</p>
+                  <span className="rounded bg-white/5 px-3 py-1 font-mono text-[9px] font-bold uppercase tracking-widest text-slate-500">Today</span>
+                </div>
+                <div className="mt-7 space-y-3">
+                  {config.schedule.map((item, index) => <ScheduleLine key={item.id} item={item} signal={config.signal} active={index === 0} />)}
+                </div>
+              </div>
+              <LandingActions config={config} packageDetail={packageDetail} />
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+  );
+}
+
+function LogisticsLanding({ config, packageDetail }: { config: LandingConfig; packageDetail: PackageForLanding }) {
+  return (
+    <main className="relative min-h-screen overflow-hidden bg-[#050608] text-white">
+      <ReferenceBackground config={config} />
+      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_1px_1px,rgba(99,102,241,0.12)_1px,transparent_0)] bg-[size:48px_48px]" />
+      <section className="relative z-10 mx-auto max-w-[1450px] px-6 py-20">
+        <div className="grid gap-10 lg:grid-cols-[0.85fr_1.15fr]">
+          <div className="rounded-[2rem] border border-indigo-500/10 bg-black/45 p-8 backdrop-blur-xl">
+            <p className="font-mono text-[10px] font-black uppercase tracking-[0.7em] text-indigo-400">Command Terminal</p>
+            <h1 className="mt-8 text-[clamp(4rem,9vw,10rem)] font-black uppercase italic leading-[0.75] tracking-[-0.07em] text-white">
+              AeroFlight
+              <span className="block bg-gradient-to-r from-white via-slate-400 to-slate-800 bg-clip-text font-light text-transparent">Private</span>
+            </h1>
+            <p className="mt-8 max-w-xl font-mono text-xs font-bold uppercase leading-loose tracking-[0.22em] text-slate-500">{config.subtitle}</p>
+            <div className="mt-10 grid grid-cols-2 gap-4">
+              {config.metrics.map((metric) => <MetricTile key={metric.label} metric={metric} />)}
+            </div>
+          </div>
+          <div className="grid gap-6">
+            <div className="rounded-[2rem] border border-white/5 bg-[#0c0d12]/90 p-7 shadow-2xl backdrop-blur-xl">
+              <div className="flex items-center justify-between">
+                <p className="font-mono text-xs font-black uppercase tracking-[0.35em] text-indigo-300">Route Geometry Console</p>
+                <Plane className="h-6 w-6 text-indigo-400" />
+              </div>
+              <LandingVisualization landingKey="dispatch-autonomous" signal={config.signal} />
+            </div>
+            <div className="grid gap-6 md:grid-cols-2">
+              {config.panels.map((panel) => (
+                <LandingPanel key={panel.title} title={panel.title} badge={panel.badge} signal={config.signal} icon={<Map className="h-5 w-5" />}>
+                  <div className="space-y-3">{panel.lines.map((line, index) => <StatusLine key={line} line={line} signal={config.signal} active={index === 0} />)}</div>
+                </LandingPanel>
+              ))}
+            </div>
+            <LandingActions config={config} packageDetail={packageDetail} />
+          </div>
+        </div>
+      </section>
+    </main>
+  );
+}
+
+function TacticalLanding({ config, packageDetail }: { config: LandingConfig; packageDetail: PackageForLanding }) {
+  return (
+    <main className="relative min-h-screen overflow-hidden bg-[#020202] font-mono text-white">
+      <ReferenceBackground config={config} />
+      <div className="pointer-events-none fixed inset-0 z-10 opacity-[0.06] bg-[linear-gradient(rgba(18,16,16,0)_50%,rgba(0,0,0,0.25)_50%),linear-gradient(90deg,rgba(255,0,0,0.06),rgba(0,255,0,0.02),rgba(0,0,255,0.06))] bg-[size:100%_4px,4px_100%]" />
+      <section className="relative z-20 mx-auto max-w-[1450px] px-6 py-20">
+        <div className="flex items-center justify-between border-b border-orange-500/10 pb-10">
+          <p className="text-[10px] font-black uppercase tracking-[0.6em] text-orange-500">Security Console</p>
+          <span className="rounded-full border border-orange-500/20 bg-orange-500/5 px-4 py-2 text-[9px] font-black uppercase tracking-[0.32em] text-orange-400">Protocol Live</span>
+        </div>
+        <div className="mt-12 grid gap-10 lg:grid-cols-[1.05fr_0.95fr]">
+          <div>
+            <h1 className="text-[clamp(4rem,10vw,11rem)] font-black uppercase leading-[0.78] tracking-[-0.08em] text-white">
+              Vanguard
+              <span className="block text-orange-500">Ops Center</span>
+            </h1>
+            <p className="mt-8 max-w-2xl text-xs font-black uppercase leading-loose tracking-[0.28em] text-orange-900">{config.subtitle}</p>
+            <div className="mt-10 grid grid-cols-2 gap-4 md:grid-cols-4">{config.metrics.map((metric) => <MetricTile key={metric.label} metric={metric} />)}</div>
+          </div>
+          <div className="rounded-[2rem] border border-orange-500/20 bg-[#080604]/80 p-7 shadow-[0_0_80px_rgba(249,115,22,0.08)] backdrop-blur-xl">
+            <LandingVisualization landingKey="secure-console" signal={config.signal} />
+            <div className="mt-7 grid gap-4">
+              {config.schedule.map((item, index) => <ScheduleLine key={item.id} item={item} signal={config.signal} active={index === 1} />)}
+            </div>
+          </div>
+        </div>
+        <div className="mt-10"><LandingActions config={config} packageDetail={packageDetail} /></div>
+      </section>
+    </main>
+  );
+}
+
+function IntelligenceLanding({ config, packageDetail }: { config: LandingConfig; packageDetail: PackageForLanding }) {
+  return (
+    <main className="relative min-h-screen overflow-hidden bg-[#020203] text-white">
+      <ReferenceBackground config={config} />
+      <section className="relative z-10 mx-auto max-w-[1450px] px-6 py-20">
+        <div className="grid min-h-[78vh] gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
+          <div>
+            <p className="font-mono text-[10px] font-black uppercase tracking-[0.6em] text-cyan-400">Elite B2B Enterprise Platform</p>
+            <h1 className="mt-8 text-[clamp(4.2rem,9vw,10rem)] font-black uppercase leading-[0.8] tracking-[-0.06em] text-white">
+              Nexus Corp
+              <span className="block bg-gradient-to-r from-white via-cyan-200 to-slate-700 bg-clip-text text-transparent">Analytics</span>
+            </h1>
+            <p className="mt-8 max-w-xl font-mono text-xs font-bold uppercase leading-loose tracking-[0.24em] text-slate-500">{config.subtitle}</p>
+            <div className="mt-10"><LandingActions config={config} packageDetail={packageDetail} /></div>
+          </div>
+          <div className="rounded-[2rem] border border-cyan-500/10 bg-[#071014]/75 p-7 shadow-[0_0_90px_rgba(0,242,254,0.08)] backdrop-blur-xl">
+            <div className="grid grid-cols-2 gap-4 md:grid-cols-4">{config.metrics.map((metric) => <MetricTile key={metric.label} metric={metric} />)}</div>
+            <div className="mt-7"><LandingVisualization landingKey="global-intelligence" signal={config.signal} /></div>
+          </div>
+        </div>
+      </section>
+    </main>
+  );
+}
+
 function LandingPanel({
   title,
   badge,
@@ -505,6 +695,95 @@ function LandingPanel({
       </div>
       {children}
     </section>
+  );
+}
+
+function ReferenceBackground({ config }: { config: LandingConfig }) {
+  return (
+    <div className="pointer-events-none absolute inset-0 z-0 overflow-hidden">
+      {config.backgroundImage ? (
+        <img
+          src={config.backgroundImage}
+          alt=""
+          className={`h-full w-full object-cover ${
+            config.mode === "clinical"
+              ? "scale-105 opacity-30 mix-blend-lighten"
+              : config.mode === "tactical"
+                ? "scale-110 opacity-35 blur-[2px] mix-blend-lighten"
+                : "opacity-45 mix-blend-lighten"
+          }`}
+        />
+      ) : null}
+      <div className="absolute inset-0" style={{ background: `${config.glow}, linear-gradient(180deg,#050508 0%,rgba(5,5,8,0.82) 42%,#050508 100%)` }} />
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,transparent_0%,#050508_82%)] opacity-80" />
+    </div>
+  );
+}
+
+function MetricTile({ metric }: { metric: { label: string; value: string } }) {
+  return (
+    <div className="rounded-2xl border border-white/5 bg-[#0c0d0e]/80 p-5 backdrop-blur-xl transition-all hover:border-white/10">
+      <p className="font-mono text-[10px] font-black uppercase tracking-[0.24em] text-slate-500">{metric.label}</p>
+      <p className="mt-5 text-3xl font-bold tracking-tight text-white">{metric.value}</p>
+    </div>
+  );
+}
+
+function StatusLine({ line, signal, active }: { line: string; signal: string; active?: boolean }) {
+  return (
+    <div className={`rounded-xl border p-4 ${active ? "border-white/10 bg-white/[0.035]" : "border-white/5 bg-black/30"}`}>
+      <div className="flex items-center gap-3">
+        <span className="h-1.5 w-1.5 rounded-full" style={{ backgroundColor: active ? signal : "rgba(71,85,105,0.75)" }} />
+        <p className="font-mono text-[11px] font-bold uppercase tracking-[0.18em] text-slate-300">{line}</p>
+      </div>
+    </div>
+  );
+}
+
+function ScheduleLine({
+  item,
+  signal,
+  active
+}: {
+  item: { time: string; id: string; status: string };
+  signal: string;
+  active?: boolean;
+}) {
+  return (
+    <div className={`rounded-2xl border p-5 ${active ? "border-white/10 bg-white/[0.035]" : "border-white/5 bg-black/30"}`}>
+      <div className="flex items-center justify-between gap-4">
+        <div className="flex items-center gap-4">
+          <span className="font-mono text-sm font-bold text-white">{item.time}</span>
+          <span className="h-4 w-px bg-white/10" />
+          <span className="font-mono text-sm font-bold" style={{ color: active ? signal : "#ffffff" }}>{item.id}</span>
+        </div>
+        <span className="rounded bg-white/10 px-2 py-1 font-mono text-[9px] font-bold uppercase tracking-widest text-slate-300">
+          {item.status}
+        </span>
+      </div>
+    </div>
+  );
+}
+
+function LandingActions({ config, packageDetail }: { config: LandingConfig; packageDetail: PackageForLanding }) {
+  return (
+    <div className="flex flex-col gap-3 sm:flex-row">
+      <Link
+        href={config.dashboardHref}
+        className="group inline-flex items-center justify-center gap-3 rounded-2xl px-6 py-4 text-sm font-bold text-white shadow-[0_0_28px_rgba(0,242,254,0.18)] transition-all hover:scale-[1.02]"
+        style={{ background: config.accent }}
+      >
+        {config.dashboardLabel}
+        <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+      </Link>
+      <Link
+        href={`/consultation?package=${packageDetail.consultationPackage}&tier=${packageDetail.consultationTier}`}
+        className="inline-flex items-center justify-center gap-3 rounded-2xl border border-white/10 bg-white/5 px-6 py-4 text-sm font-bold text-white backdrop-blur-xl transition-all hover:border-cyan-300/40 hover:bg-white/10"
+      >
+        Customize this build
+        <SlidersHorizontal className="h-4 w-4" />
+      </Link>
+    </div>
   );
 }
 
