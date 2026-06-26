@@ -8,6 +8,122 @@ import {
   Truck,
 } from "lucide-react";
 
+type RouteProfile = {
+  id: string;
+  type: "Air" | "Ground";
+  dest: string;
+  status: string;
+  etaAccuracy: string;
+  security: string;
+  velocity: string;
+  transferMode: string;
+  scanIntegrity: string;
+  etaLock: string;
+  exceptions: string;
+  linkQuality: string;
+  risk: number;
+  cyberScore: number;
+  routeScore: number;
+  routeStatus: string;
+  bars: number[];
+  weather: {
+    origin: { label: string; temp: string; cond: string; wind: string };
+    destination: { label: string; temp: string; cond: string; wind: string };
+    visibility: string;
+    pressure: string;
+    dewPoint: string;
+    windAngle: number;
+    windStrength: number;
+  };
+};
+
+const routeProfiles: RouteProfile[] = [
+  {
+    id: "AF-901",
+    type: "Air",
+    dest: "Private Hangar - Dock 4",
+    status: "Rerouting",
+    etaAccuracy: "96%",
+    security: "100%",
+    velocity: "1.2k",
+    transferMode: "Air_Priority",
+    scanIntegrity: "14 / 14 Verified",
+    etaLock: "10:14 Zulu",
+    exceptions: "Manual_Override",
+    linkQuality: "99.2% STABLE",
+    risk: 96.8,
+    cyberScore: 100,
+    routeScore: 88,
+    routeStatus: "Correcting",
+    bars: [65, 88, 55, 95, 75, 90, 82, 60],
+    weather: {
+      origin: { label: "LHR_LONDON", temp: "12°C", cond: "Overcast", wind: "14kt NE" },
+      destination: { label: "JFK_NEWYORK", temp: "24°C", cond: "Clear", wind: "08kt S" },
+      visibility: "9.2 KM",
+      pressure: "1013.2 hPa",
+      dewPoint: "+4.2°C",
+      windAngle: 145,
+      windStrength: 65
+    }
+  },
+  {
+    id: "GF-204",
+    type: "Ground",
+    dest: "Cold Vault - Clinic Wing",
+    status: "Loading",
+    etaAccuracy: "92%",
+    security: "98%",
+    velocity: "860",
+    transferMode: "Ground_Cold_Chain",
+    scanIntegrity: "11 / 12 Verified",
+    etaLock: "11:08 Zulu",
+    exceptions: "0",
+    linkQuality: "97.8% STABLE",
+    risk: 93.4,
+    cyberScore: 98,
+    routeScore: 91,
+    routeStatus: "Stable",
+    bars: [45, 58, 68, 74, 70, 82, 78, 88],
+    weather: {
+      origin: { label: "LAX_SECURE", temp: "19°C", cond: "Clear", wind: "06kt W" },
+      destination: { label: "CLINIC_WING", temp: "07°C", cond: "Overcast", wind: "04kt N" },
+      visibility: "7.8 KM",
+      pressure: "1016.4 hPa",
+      dewPoint: "+2.8°C",
+      windAngle: 90,
+      windStrength: 42
+    }
+  },
+  {
+    id: "MX-778",
+    type: "Ground",
+    dest: "Metro Hub - Secure Estate",
+    status: "Departed",
+    etaAccuracy: "89%",
+    security: "99%",
+    velocity: "1.0k",
+    transferMode: "Ground_Escort",
+    scanIntegrity: "18 / 18 Verified",
+    etaLock: "13:42 Zulu",
+    exceptions: "Weather_Hold",
+    linkQuality: "94.1% STABLE",
+    risk: 90.6,
+    cyberScore: 99,
+    routeScore: 84,
+    routeStatus: "Correcting",
+    bars: [70, 62, 88, 72, 94, 68, 81, 76],
+    weather: {
+      origin: { label: "METRO_HUB", temp: "17°C", cond: "Overcast", wind: "18kt E" },
+      destination: { label: "ESTATE_GATE", temp: "20°C", cond: "Clear", wind: "10kt S" },
+      visibility: "6.4 KM",
+      pressure: "1009.8 hPa",
+      dewPoint: "+5.1°C",
+      windAngle: 210,
+      windStrength: 58
+    }
+  }
+];
+
 function QuickTile({ label, value, sub, color = "indigo" }: { label: string; value: string; sub: string; color?: string }) {
   return (
     <div className="group relative flex flex-col overflow-hidden border border-white/[0.04] bg-white/[0.02] p-6 shadow-2xl backdrop-blur-md transition-all duration-500 hover:border-indigo-500">
@@ -38,9 +154,27 @@ function Panel({ title, badge, children }: { title: string; badge?: string; chil
   );
 }
 
-function AssetCard({ id, type, dest, status, active = false }: { id: string; type: string; dest: string; status: string; active?: boolean }) {
+function AssetCard({
+  id,
+  type,
+  dest,
+  status,
+  active = false,
+  onClick
+}: {
+  id: string;
+  type: string;
+  dest: string;
+  status: string;
+  active?: boolean;
+  onClick: () => void;
+}) {
   return (
-    <div className={`group flex cursor-pointer items-center justify-between border p-6 transition-all hover:bg-white/[0.03] ${active ? "border-indigo-500/20 bg-indigo-500/[0.03]" : "border-white/[0.02] bg-white/[0.01]"}`}>
+    <button
+      type="button"
+      onClick={onClick}
+      className={`group flex cursor-pointer items-center justify-between border p-6 text-left transition-all hover:bg-white/[0.03] ${active ? "border-indigo-500/20 bg-indigo-500/[0.03]" : "border-white/[0.02] bg-white/[0.01]"}`}
+    >
       <div className="flex items-center gap-6">
         <div className={`flex h-14 w-14 items-center justify-center border bg-black/40 ${active ? "border-indigo-500" : "border-white/5"}`}>
           {type === "Air" ? <Plane size={20} className={active ? "text-indigo-400" : "text-slate-600"} /> : <Truck size={20} className={active ? "text-indigo-400" : "text-slate-600"} />}
@@ -51,7 +185,7 @@ function AssetCard({ id, type, dest, status, active = false }: { id: string; typ
         </div>
       </div>
       <span className={`text-[10px] font-black uppercase tracking-[0.2em] ${active ? "text-indigo-400" : "text-slate-600"}`}>{status}</span>
-    </div>
+    </button>
   );
 }
 
@@ -141,6 +275,8 @@ function RiskItem({ label, score, status }: { label: string; score: number; stat
 
 export function AeroFreightPreview() {
   const [time, setTime] = useState("");
+  const [selectedRouteId, setSelectedRouteId] = useState(routeProfiles[0].id);
+  const selectedRoute = routeProfiles.find((route) => route.id === selectedRouteId) ?? routeProfiles[0];
 
   useEffect(() => {
     const timer = window.setInterval(() => {
@@ -177,9 +313,9 @@ export function AeroFreightPreview() {
 
           <div className="relative z-10 grid min-w-[380px] grid-cols-2 gap-4">
             <QuickTile label="Fleet Active" value="03" sub="Global Routes" />
-            <QuickTile label="ETA Accuracy" value="96%" sub="ML Optimized" />
-            <QuickTile label="Security" value="100%" sub="Verified" color="emerald" />
-            <QuickTile label="Velocity" value="1.2k" sub="KG/H Load" />
+            <QuickTile label="ETA Accuracy" value={selectedRoute.etaAccuracy} sub="ML Optimized" />
+            <QuickTile label="Security" value={selectedRoute.security} sub="Verified" color="emerald" />
+            <QuickTile label="Velocity" value={selectedRoute.velocity} sub="KG/H Load" />
           </div>
         </section>
 
@@ -187,9 +323,17 @@ export function AeroFreightPreview() {
           <div className="flex flex-col gap-8 lg:col-span-4">
             <Panel title="Route Operations Command" badge="Autonomous">
               <div className="mt-4 space-y-3">
-                <AssetCard id="AF-901" type="Air" dest="Private Hangar - Dock 4" status="Rerouting" active />
-                <AssetCard id="GF-204" type="Ground" dest="Cold Vault - Clinic Wing" status="Loading" />
-                <AssetCard id="MX-778" type="Ground" dest="Metro Hub - Secure Estate" status="Departed" />
+                {routeProfiles.map((route) => (
+                  <AssetCard
+                    key={route.id}
+                    id={route.id}
+                    type={route.type}
+                    dest={route.dest}
+                    status={route.status}
+                    active={selectedRoute.id === route.id}
+                    onClick={() => setSelectedRouteId(route.id)}
+                  />
+                ))}
               </div>
               <button className="mt-10 h-14 w-full bg-white text-[11px] font-black uppercase tracking-[0.5em] text-black transition-all hover:bg-blue-600 hover:text-white">
                 Execute Local Check
@@ -199,43 +343,43 @@ export function AeroFreightPreview() {
             <Panel title="Atmospheric Telemetry" badge="ZULU_OBS_04">
               <div className="mt-4 flex flex-col gap-6">
                 <div className="grid grid-cols-2 gap-4">
-                  <WeatherNode label="LHR_LONDON" temp="12°C" cond="Overcast" wind="14kt NE" />
-                  <WeatherNode label="JFK_NEWYORK" temp="24°C" cond="Clear" wind="08kt S" active />
+                  <WeatherNode {...selectedRoute.weather.origin} />
+                  <WeatherNode {...selectedRoute.weather.destination} active />
                 </div>
                 <div className="group flex items-center justify-between rounded-sm border border-white/[0.03] bg-black/40 p-5">
                   <div className="flex flex-col gap-2">
                     <span className="text-[7px] font-black uppercase tracking-widest text-indigo-400">Visibility Index</span>
-                    <span className="text-xl font-black uppercase tracking-tighter text-white">9.2 KM</span>
+                    <span className="text-xl font-black uppercase tracking-tighter text-white">{selectedRoute.weather.visibility}</span>
                     <span className="text-[8px] font-bold uppercase tracking-widest text-slate-500">Optimal Flight Ceiling</span>
                   </div>
                   <div className="relative flex h-20 w-20 items-center justify-center">
-                    <WindVector angle={145} strength={65} />
+                    <WindVector angle={selectedRoute.weather.windAngle} strength={selectedRoute.weather.windStrength} />
                   </div>
                 </div>
                 <div className="space-y-3">
-                  <TelemetryRow label="Barometric Pressure" value="1013.2 hPa" />
-                  <TelemetryRow label="Dew Point Delta" value="+4.2°C" />
+                  <TelemetryRow label="Barometric Pressure" value={selectedRoute.weather.pressure} />
+                  <TelemetryRow label="Dew Point Delta" value={selectedRoute.weather.dewPoint} />
                 </div>
               </div>
             </Panel>
           </div>
 
           <div className="flex flex-col gap-8 lg:col-span-5">
-            <Panel title="Live Route Intelligence: AF-901" badge="Uplink Live">
+            <Panel title={`Live Route Intelligence: ${selectedRoute.id}`} badge="Uplink Live">
               <div className="mt-4 flex flex-col gap-6">
                 <div className="group relative aspect-video w-full overflow-hidden rounded-sm border border-white/5 bg-[#0d0f14]">
                   <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(59,130,246,0.05),transparent)]" />
                   <CargoFlowMap />
                   <div className="absolute bottom-4 right-4 flex flex-col items-end">
                     <span className="text-[7px] font-black uppercase tracking-widest text-blue-500">Link Quality</span>
-                    <span className="text-[10px] font-black text-white">99.2% STABLE</span>
+                    <span className="text-[10px] font-black text-white">{selectedRoute.linkQuality}</span>
                   </div>
                 </div>
                 <div className="grid grid-cols-2 gap-3">
-                  <DetailBox label="Transfer Mode" value="Air_Priority" />
-                  <DetailBox label="Scan Integrity" value="14 / 14 Verified" />
-                  <DetailBox label="ETA Lock" value="10:14 Zulu" color="indigo" />
-                  <DetailBox label="Exceptions" value="Manual_Override" color="indigo" />
+                  <DetailBox label="Transfer Mode" value={selectedRoute.transferMode} />
+                  <DetailBox label="Scan Integrity" value={selectedRoute.scanIntegrity} />
+                  <DetailBox label="ETA Lock" value={selectedRoute.etaLock} color="indigo" />
+                  <DetailBox label="Exceptions" value={selectedRoute.exceptions} color="indigo" />
                 </div>
               </div>
             </Panel>
@@ -246,7 +390,7 @@ export function AeroFreightPreview() {
                   <div className="pointer-events-none absolute inset-0 flex flex-col justify-between opacity-20">
                     {[1, 2, 3, 4].map((i) => <div key={i} className="h-px w-full bg-white/10" />)}
                   </div>
-                  {[65, 88, 55, 95, 75, 90, 82, 60].map((h, i) => (
+                  {selectedRoute.bars.map((h, i) => (
                     <div key={i} className="z-10 flex flex-1 flex-col items-center gap-4">
                       <div className="flex h-full w-full items-end overflow-hidden">
                         <div className="w-full bg-gradient-to-t from-blue-900 via-blue-500 to-white/30 transition-all duration-1000 ease-out" style={{ height: `${h}%` }} />
@@ -279,11 +423,11 @@ export function AeroFreightPreview() {
               <div className="mt-4 flex flex-col gap-6">
                 <div className="relative flex justify-center overflow-hidden rounded-sm border border-white/5 bg-white/[0.02] py-4">
                   <div className="absolute left-0 top-0 h-full w-1 bg-indigo-500 shadow-[0_0_10px_rgba(99,102,241,0.4)]" />
-                  <RiskGauge value={96.8} />
+                  <RiskGauge value={selectedRoute.risk} />
                 </div>
                 <div className="space-y-2">
-                  <RiskItem label="Cyber Handshake" score={100} status="Stable" />
-                  <RiskItem label="Route Deviations" score={88} status="Correcting" />
+                  <RiskItem label="Cyber Handshake" score={selectedRoute.cyberScore} status="Stable" />
+                  <RiskItem label="Route Deviations" score={selectedRoute.routeScore} status={selectedRoute.routeStatus} />
                 </div>
               </div>
             </Panel>

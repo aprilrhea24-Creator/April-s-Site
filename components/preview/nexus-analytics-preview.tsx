@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import {
   Cpu,
   Database,
@@ -33,11 +33,42 @@ const tenantChartData: Record<TenantName, { actual: number[]; target: number[] }
 };
 
 const tenants = [
-  { name: "Atlas Health" as TenantName, users: "18.2K", status: "SCALED", ltv: "$420K" },
-  { name: "Meridian Capital" as TenantName, users: "9.7K", status: "PROTECTED", ltv: "$890K" },
-  { name: "Northline Ops" as TenantName, users: "31.4K", status: "SYNCED", ltv: "$1.2M" },
-  { name: "Sable Media" as TenantName, users: "6.8K", status: "EXPANDING", ltv: "$210K" }
+  { name: "Atlas Health" as TenantName, users: "18.2K", status: "SCALED", ltv: "$420K", load: "42%", loadValue: 42, health: "99.98%", forecast: "$8.4M", nodes: 20 },
+  { name: "Meridian Capital" as TenantName, users: "9.7K", status: "PROTECTED", ltv: "$890K", load: "57%", loadValue: 57, health: "100%", forecast: "$12.1M", nodes: 22 },
+  { name: "Northline Ops" as TenantName, users: "31.4K", status: "SYNCED", ltv: "$1.2M", load: "68%", loadValue: 68, health: "99.91%", forecast: "$15.7M", nodes: 18 },
+  { name: "Sable Media" as TenantName, users: "6.8K", status: "EXPANDING", ltv: "$210K", load: "36%", loadValue: 36, health: "99.96%", forecast: "$4.2M", nodes: 16 }
 ];
+
+const tenantInsights: Record<TenantName, { title: string; desc: string; icon: "zap" | "trend" | "shield" }[]> = {
+  "Atlas Health": [
+    { icon: "zap", title: "Profile Expansion", desc: "Member conversion increased after patient retention workflows activated." },
+    { icon: "trend", title: "Growth Catalyst", desc: "LTV velocity is 12% above quarterly projection. Upgrade path active." },
+    { icon: "shield", title: "Compliance Locked", desc: "SOC2 Type II data audit completed with 100% integrity." }
+  ],
+  "Meridian Capital": [
+    { icon: "shield", title: "Treasury Gate Sealed", desc: "Cross-role approval layers are enforcing clean investment handoffs." },
+    { icon: "trend", title: "Yield Acceleration", desc: "Forecast model identifies a premium client segment outperforming target." },
+    { icon: "zap", title: "Latency Compression", desc: "Dashboard query cache reduced executive reporting delay." }
+  ],
+  "Northline Ops": [
+    { icon: "trend", title: "Route Demand Spike", desc: "Commercial provider load is trending above baseline across two regions." },
+    { icon: "zap", title: "Dispatch Expansion", desc: "Tenant queue depth supports additional field-team routing capacity." },
+    { icon: "shield", title: "Access Stable", desc: "Role isolation layers verified across operations and finance users." }
+  ],
+  "Sable Media": [
+    { icon: "zap", title: "Creator Cohort Active", desc: "Subscription group behavior is ready for higher-touch retention testing." },
+    { icon: "trend", title: "Content Yield Signal", desc: "Campaign revenue curve projects a strong membership expansion window." },
+    { icon: "shield", title: "Asset Vault Clean", desc: "All media delivery permissions are synchronized across client roles." }
+  ]
+};
+
+function scaleChartData(data: { actual: number[]; target: number[] }, timeRange: string) {
+  const factor = timeRange === "DAILY" ? 0.62 : timeRange === "WEEKLY" ? 0.82 : 1;
+  return {
+    actual: data.actual.map((value, index) => Math.round(value * factor + index * (timeRange === "DAILY" ? 2 : 1))),
+    target: data.target.map((value) => Math.round(value * factor))
+  };
+}
 
 function GlobalKPI({ label, value, icon }: { label: string; value: string; icon: React.ReactNode }) {
   return (
@@ -178,6 +209,9 @@ export function NexusAnalyticsPreview() {
   const [selectedTenant, setSelectedTenant] = useState<TenantName>("Atlas Health");
   const [time, setTime] = useState("");
   const [timeRange, setTimeRange] = useState("QUARTERLY");
+  const selectedTenantData = tenants.find((tenant) => tenant.name === selectedTenant) ?? tenants[0];
+  const activeInsights = tenantInsights[selectedTenant];
+  const activeChartData = useMemo(() => scaleChartData(tenantChartData[selectedTenant], timeRange), [selectedTenant, timeRange]);
 
   useEffect(() => {
     const timer = window.setInterval(() => {
@@ -207,8 +241,8 @@ export function NexusAnalyticsPreview() {
             </div>
           </div>
           <div className="flex gap-4">
-            <GlobalKPI label="Active Multi-Tenants" value="52" icon={<Layers size={14} />} />
-            <GlobalKPI label="Net Server Load" value="42%" icon={<Cpu size={14} />} />
+            <GlobalKPI label="Active Users" value={selectedTenantData.users} icon={<Layers size={14} />} />
+            <GlobalKPI label="Net Server Load" value={selectedTenantData.load} icon={<Cpu size={14} />} />
           </div>
         </section>
 
@@ -225,6 +259,11 @@ export function NexusAnalyticsPreview() {
                   <span className="text-[10px] font-black uppercase tracking-[0.5em] text-cyan-500">Command_Focus_Active</span>
                 </div>
                 <div className="text-6xl font-black uppercase leading-none tracking-tighter text-white">{selectedTenant}</div>
+                <div className="flex flex-wrap gap-3 text-[9px] font-black uppercase tracking-[0.25em] text-slate-600">
+                  <span>Forecast {selectedTenantData.forecast}</span>
+                  <span className="text-cyan-500">Health {selectedTenantData.health}</span>
+                  <span>{timeRange}</span>
+                </div>
               </div>
 
               <div className="flex gap-4">
@@ -237,7 +276,7 @@ export function NexusAnalyticsPreview() {
             <div className="grid grid-cols-1 gap-10 lg:grid-cols-4">
               <div className="lg:col-span-3">
                 <div className="relative h-[450px] w-full">
-                  <PredictiveChart data={tenantChartData[selectedTenant]} />
+                  <PredictiveChart data={activeChartData} />
                 </div>
               </div>
 
@@ -245,18 +284,31 @@ export function NexusAnalyticsPreview() {
                 <div>
                   <span className="mb-6 block text-[9px] font-black uppercase tracking-[0.3em] text-slate-500">Operational_Intelligence</span>
                   <div className="space-y-6">
-                    <InsightItem icon={<Zap size={14} className="text-amber-500" />} title="Anomaly Detected" desc="Node-11 latency spike detected. Automated failover initiated." />
-                    <InsightItem icon={<TrendingUp size={14} className="text-emerald-500" />} title="Growth Catalyst" desc="LTV velocity is 12% above quarterly projection. Upgrade path active." />
-                    <InsightItem icon={<ShieldCheck size={14} className="text-cyan-500" />} title="Compliance Locked" desc="SOC2 Type II data audit completed with 100% integrity." />
+                    {activeInsights.map((insight) => (
+                      <InsightItem
+                        key={insight.title}
+                        icon={
+                          insight.icon === "zap" ? (
+                            <Zap size={14} className="text-amber-500" />
+                          ) : insight.icon === "trend" ? (
+                            <TrendingUp size={14} className="text-emerald-500" />
+                          ) : (
+                            <ShieldCheck size={14} className="text-cyan-500" />
+                          )
+                        }
+                        title={insight.title}
+                        desc={insight.desc}
+                      />
+                    ))}
                   </div>
                 </div>
                 <div className="mt-auto border-t border-white/5 pt-8">
                   <div className="mb-4 flex items-end justify-between">
                     <span className="text-[10px] font-black uppercase text-white">System Load</span>
-                    <span className="text-[10px] font-bold text-cyan-500">42%</span>
+                    <span className="text-[10px] font-bold text-cyan-500">{selectedTenantData.load}</span>
                   </div>
                   <div className="h-1 w-full overflow-hidden rounded-full bg-white/5">
-                    <div className="h-full w-[42%] bg-cyan-500" />
+                    <div className="h-full bg-cyan-500 transition-all duration-500" style={{ width: selectedTenantData.load }} />
                   </div>
                 </div>
               </div>
@@ -295,8 +347,8 @@ export function NexusAnalyticsPreview() {
                 <div className="mt-4 grid h-full content-start gap-3 lg:grid-cols-6">
                   {Array.from({ length: 24 }).map((_, i) => (
                     <div key={i} className="group relative flex aspect-square items-center justify-center border border-white/5 bg-white/[0.02]">
-                      <div className={`h-1.5 w-1.5 rounded-full ${i < 20 ? "bg-cyan-500" : "bg-slate-800"}`} />
-                      {i === 20 ? <div className="absolute inset-0 animate-pulse bg-cyan-500/10" /> : null}
+                      <div className={`h-1.5 w-1.5 rounded-full ${i < selectedTenantData.nodes ? "bg-cyan-500" : "bg-slate-800"}`} />
+                      {i === selectedTenantData.nodes ? <div className="absolute inset-0 animate-pulse bg-cyan-500/10" /> : null}
                     </div>
                   ))}
                 </div>
@@ -305,10 +357,10 @@ export function NexusAnalyticsPreview() {
                 <div className="relative mt-4 h-[280px] overflow-hidden border border-white/5 bg-black/40 p-6 font-mono">
                   <div className="space-y-3 text-[10px]">
                     <LogEntry time="12:04:22" tag="SEC" msg="Handshake verified node_01" color="text-slate-500" />
-                    <LogEntry time="12:04:24" tag="DB" msg="Tenant cache purge OK" color="text-cyan-500" />
-                    <LogEntry time="12:04:28" tag="SYS" msg="Forecast engine iteration #882" color="text-slate-500" />
+                    <LogEntry time="12:04:24" tag="DB" msg={`${selectedTenant} cache purge OK`} color="text-cyan-500" />
+                    <LogEntry time="12:04:28" tag="SYS" msg={`${timeRange} forecast iteration #882`} color="text-slate-500" />
                     <LogEntry time="12:04:31" tag="SEC" msg="Compliance lock verified" color="text-emerald-500" />
-                    <LogEntry time="12:04:35" tag="INFRA" msg="Node_11 expansion: 12%" color="text-amber-500" />
+                    <LogEntry time="12:04:35" tag="INFRA" msg={`Node expansion: ${selectedTenantData.nodes}/24 active`} color="text-amber-500" />
                     <LogEntry time="12:04:42" tag="AUTH" msg="Admin session renewal" color="text-slate-500" />
                     <LogEntry time="12:05:01" tag="DB" msg="Async query optimize completed" color="text-cyan-500" />
                   </div>

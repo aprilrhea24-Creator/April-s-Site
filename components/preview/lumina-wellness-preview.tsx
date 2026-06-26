@@ -1,5 +1,6 @@
 "use client";
 
+import { useState } from "react";
 import {
   Activity,
   ArrowRight,
@@ -14,6 +15,117 @@ import {
   User,
   Users
 } from "lucide-react";
+
+type PatientProfile = {
+  id: string;
+  name: string;
+  time: string;
+  suite: string;
+  status?: string;
+  treatment: string;
+  risk: string;
+  riskTone: "safe" | "review" | "vip";
+  value: string;
+  utilization: string;
+  pending: string;
+  progress: string;
+  vault: {
+    consent: string;
+    media: string;
+    deposit: string;
+  };
+  trend: number[];
+  segments: { label: string; value: number; color: string }[];
+};
+
+const patientProfiles: PatientProfile[] = [
+  {
+    id: "LUM-084",
+    name: "Ari M.",
+    time: "09:00",
+    suite: "Suite B",
+    status: "Current",
+    treatment: "Laser Resurfacing",
+    risk: "Low Risk",
+    riskTone: "safe",
+    value: "$1,840.00",
+    utilization: "96%",
+    pending: "0",
+    progress: "68%",
+    vault: { consent: "PENDING", media: "VERIFIED", deposit: "SECURE" },
+    trend: [40, 35, 55, 45, 70, 65, 80, 75, 90, 85, 95, 100],
+    segments: [
+      { label: "Laser", value: 45, color: "#3b82f6" },
+      { label: "Injectables", value: 30, color: "#6366f1" },
+      { label: "Facial", value: 15, color: "#94a3b8" },
+      { label: "Other", value: 10, color: "#1e293b" }
+    ]
+  },
+  {
+    id: "LUM-136",
+    name: "Noor S.",
+    time: "10:30",
+    suite: "Suite A",
+    status: "Up Next",
+    treatment: "Hydrafacial Elite",
+    risk: "Clear",
+    riskTone: "safe",
+    value: "$480.00",
+    utilization: "88%",
+    pending: "1",
+    progress: "42%",
+    vault: { consent: "VERIFIED", media: "QUEUED", deposit: "SECURE" },
+    trend: [35, 42, 50, 48, 58, 62, 66, 64, 72, 76, 82, 88],
+    segments: [
+      { label: "Facial", value: 52, color: "#3b82f6" },
+      { label: "Laser", value: 18, color: "#6366f1" },
+      { label: "Wellness", value: 20, color: "#94a3b8" },
+      { label: "Other", value: 10, color: "#1e293b" }
+    ]
+  },
+  {
+    id: "LUM-112",
+    name: "Kira V.",
+    time: "12:00",
+    suite: "Suite C",
+    treatment: "Injectables",
+    risk: "Review",
+    riskTone: "review",
+    value: "$920.00",
+    utilization: "91%",
+    pending: "2",
+    progress: "51%",
+    vault: { consent: "REVIEW", media: "VERIFIED", deposit: "HOLD" },
+    trend: [60, 52, 45, 58, 62, 56, 70, 64, 80, 74, 88, 84],
+    segments: [
+      { label: "Injectables", value: 55, color: "#3b82f6" },
+      { label: "Facial", value: 20, color: "#6366f1" },
+      { label: "Laser", value: 15, color: "#94a3b8" },
+      { label: "Other", value: 10, color: "#1e293b" }
+    ]
+  },
+  {
+    id: "LUM-201",
+    name: "Mila R.",
+    time: "14:30",
+    suite: "Suite D",
+    treatment: "Membership Consult",
+    risk: "VIP",
+    riskTone: "vip",
+    value: "$2,250.00",
+    utilization: "98%",
+    pending: "0",
+    progress: "82%",
+    vault: { consent: "SIGNED", media: "VERIFIED", deposit: "SECURE" },
+    trend: [70, 74, 78, 76, 82, 86, 90, 88, 94, 96, 98, 100],
+    segments: [
+      { label: "VIP", value: 40, color: "#3b82f6" },
+      { label: "Laser", value: 25, color: "#6366f1" },
+      { label: "Injectables", value: 25, color: "#94a3b8" },
+      { label: "Other", value: 10, color: "#1e293b" }
+    ]
+  }
+];
 
 function MetricCard({ label, value, icon }: { label: string; value: string; icon: React.ReactNode }) {
   return (
@@ -75,31 +187,37 @@ function ScheduleCard({
   time,
   id,
   suite,
-  status = ""
+  status = "",
+  active = false,
+  onClick
 }: {
   time: string;
   id: string;
   suite: string;
   status?: string;
+  active?: boolean;
+  onClick: () => void;
 }) {
   return (
-    <div
+    <button
+      type="button"
+      onClick={onClick}
       className={`group cursor-pointer rounded-lg border p-5 transition-all ${
-        status === "Current"
+        active
           ? "border-blue-500/20 bg-blue-500/5 shadow-lg shadow-blue-500/5"
           : "border-white/5 bg-white/[0.01] hover:border-white/10 hover:bg-white/[0.03]"
       }`}
     >
       <div className="mb-3 flex items-center justify-between">
         <div className="flex items-center gap-3">
-          <span className={`text-xs font-bold ${status === "Current" ? "text-white" : "text-slate-500"}`}>{time}</span>
+          <span className={`text-xs font-bold ${active ? "text-white" : "text-slate-500"}`}>{time}</span>
           <div className="h-3 w-px bg-white/10" />
-          <span className={`text-xs font-semibold ${status === "Current" ? "text-blue-400" : "text-white"}`}>{id}</span>
+          <span className={`text-xs font-semibold ${active ? "text-blue-400" : "text-white"}`}>{id}</span>
         </div>
         {status ? (
           <span
             className={`rounded-sm px-2 py-0.5 text-[9px] font-bold uppercase tracking-widest ${
-              status === "Current" ? "bg-blue-600 text-white" : "bg-white/10 text-slate-400"
+              active ? "bg-blue-600 text-white" : "bg-white/10 text-slate-400"
             }`}
           >
             {status}
@@ -110,7 +228,7 @@ function ScheduleCard({
         <span className="text-[10px] font-semibold uppercase tracking-widest text-slate-500">{suite}</span>
         <ChevronRight size={12} className="text-slate-700 transition-colors group-hover:text-white" />
       </div>
-    </div>
+    </button>
   );
 }
 
@@ -126,15 +244,18 @@ function DataField({
   return (
     <div className="group flex items-center justify-between">
       <span className="text-[9px] font-bold uppercase tracking-widest text-slate-600">{label}</span>
-      <span className={`text-[11px] font-semibold uppercase tracking-widest ${status === "safe" ? "text-blue-500" : "text-white"}`}>
+      <span
+        className={`text-[11px] font-semibold uppercase tracking-widest ${
+          status === "safe" ? "text-blue-500" : status === "review" ? "text-amber-400" : status === "vip" ? "text-indigo-300" : "text-white"
+        }`}
+      >
         {value}
       </span>
     </div>
   );
 }
 
-function LineChart() {
-  const data = [40, 35, 55, 45, 70, 65, 80, 75, 90, 85, 95, 100];
+function LineChart({ data }: { data: number[] }) {
   const max = Math.max(...data);
   const width = 800;
   const height = 200;
@@ -170,13 +291,7 @@ function LineChart() {
   );
 }
 
-function DonutChart() {
-  const segments = [
-    { label: "Laser", value: 45, color: "#3b82f6" },
-    { label: "Injectables", value: 30, color: "#6366f1" },
-    { label: "Facial", value: 15, color: "#94a3b8" },
-    { label: "Other", value: 10, color: "#1e293b" }
-  ];
+function DonutChart({ segments, total }: { segments: PatientProfile["segments"]; total: string }) {
   const size = 160;
   const strokeWidth = 20;
   const radius = (size - strokeWidth) / 2;
@@ -208,7 +323,7 @@ function DonutChart() {
           })}
         </svg>
         <div className="absolute inset-0 flex flex-col items-center justify-center">
-          <span className="text-xl font-bold tracking-tight text-white">84</span>
+          <span className="text-xl font-bold tracking-tight text-white">{total}</span>
           <span className="text-[8px] font-bold uppercase tracking-widest text-slate-500">Total</span>
         </div>
       </div>
@@ -226,6 +341,9 @@ function DonutChart() {
 }
 
 export function LuminaWellnessPreview() {
+  const [selectedPatientId, setSelectedPatientId] = useState(patientProfiles[0].id);
+  const selectedPatient = patientProfiles.find((profile) => profile.id === selectedPatientId) ?? patientProfiles[0];
+
   return (
     <div className="min-h-screen w-full bg-[#08090a] font-sans text-slate-300 selection:bg-blue-500/30">
       <main className="mx-auto max-w-[1400px] px-6 pb-24 pt-24">
@@ -249,8 +367,8 @@ export function LuminaWellnessPreview() {
             <div className="grid grid-cols-2 gap-4 md:grid-cols-4">
               <MetricCard label="Active Profiles" value="84" icon={<Users size={14} />} />
               <MetricCard label="Providers" value="12" icon={<Activity size={14} />} />
-              <MetricCard label="Pending Review" value="0" icon={<ClipboardCheck size={14} />} />
-              <MetricCard label="Utilization" value="96%" icon={<TrendingUp size={14} />} />
+              <MetricCard label="Pending Review" value={selectedPatient.pending} icon={<ClipboardCheck size={14} />} />
+              <MetricCard label="Utilization" value={selectedPatient.utilization} icon={<TrendingUp size={14} />} />
             </div>
           </div>
         </div>
@@ -259,14 +377,14 @@ export function LuminaWellnessPreview() {
           <div className="lg:col-span-8">
             <Panel title="Patient Influx & Trends" icon={<Activity size={18} />} badge="Live Data">
               <div className="relative mt-4 h-[240px] w-full">
-                <LineChart />
+                <LineChart data={selectedPatient.trend} />
               </div>
             </Panel>
           </div>
           <div className="lg:col-span-4">
             <Panel title="Treatment Distribution" icon={<PieChartIcon size={18} />} badge="Analytics">
               <div className="mt-4 flex h-[240px] w-full items-center justify-center">
-                <DonutChart />
+                <DonutChart segments={selectedPatient.segments} total={selectedPatient.pending === "0" ? "84" : `8${selectedPatient.pending}`} />
               </div>
             </Panel>
           </div>
@@ -276,9 +394,9 @@ export function LuminaWellnessPreview() {
           <div className="flex flex-col gap-8 lg:col-span-4">
             <Panel title="Patient Grid" icon={<LayoutGrid size={18} />} badge="Terminal">
               <div className="flex flex-col gap-3">
-                <StatusItem label="84 Active Health Profiles" active />
-                <StatusItem label="Local State Synchronization" />
-                <StatusItem label="Direct Data Access" />
+                <StatusItem label={`${selectedPatient.id} Profile Active`} active />
+                <StatusItem label={`${selectedPatient.suite} Local State Synchronization`} />
+                <StatusItem label={`${selectedPatient.treatment} Direct Data Access`} />
               </div>
               <div className="mt-8">
                 <button className="group flex w-full items-center justify-center gap-2 rounded bg-slate-100 py-3.5 text-xs font-bold uppercase tracking-widest text-black transition-all hover:bg-white">
@@ -292,15 +410,15 @@ export function LuminaWellnessPreview() {
               <div className="space-y-4">
                 <div className="flex items-center justify-between border-b border-white/5 py-3">
                   <span className="text-xs font-semibold uppercase tracking-widest text-slate-500">Consent Form</span>
-                  <span className="rounded bg-white/5 px-2 py-1 text-[9px] font-bold text-slate-400">PENDING</span>
+                  <span className="rounded bg-white/5 px-2 py-1 text-[9px] font-bold text-slate-400">{selectedPatient.vault.consent}</span>
                 </div>
                 <div className="flex items-center justify-between border-b border-white/5 py-3">
                   <span className="text-xs font-semibold uppercase tracking-widest text-slate-500">Clinical Media</span>
-                  <span className="rounded bg-blue-500/10 px-2 py-1 text-[9px] font-bold text-blue-500">VERIFIED</span>
+                  <span className="rounded bg-blue-500/10 px-2 py-1 text-[9px] font-bold text-blue-500">{selectedPatient.vault.media}</span>
                 </div>
                 <div className="flex items-center justify-between py-3">
                   <span className="text-xs font-semibold uppercase tracking-widest text-slate-500">Deposit Gateway</span>
-                  <span className="rounded bg-blue-500/10 px-2 py-1 text-[9px] font-bold text-blue-500">SECURE</span>
+                  <span className="rounded bg-blue-500/10 px-2 py-1 text-[9px] font-bold text-blue-500">{selectedPatient.vault.deposit}</span>
                 </div>
               </div>
             </Panel>
@@ -309,10 +427,17 @@ export function LuminaWellnessPreview() {
           <div className="lg:col-span-5">
             <Panel title="Scheduling Matrix" icon={<Calendar size={18} />} badge="Today">
               <div className="grid grid-cols-1 gap-4">
-                <ScheduleCard time="09:00" id="LUM-084" suite="Suite B" status="Current" />
-                <ScheduleCard time="10:30" id="LUM-136" suite="Suite A" status="Up Next" />
-                <ScheduleCard time="12:00" id="LUM-112" suite="Suite C" />
-                <ScheduleCard time="14:30" id="LUM-201" suite="Suite D" />
+                {patientProfiles.map((profile) => (
+                  <ScheduleCard
+                    key={profile.id}
+                    time={profile.time}
+                    id={profile.id}
+                    suite={profile.suite}
+                    status={profile.status}
+                    active={selectedPatient.id === profile.id}
+                    onClick={() => setSelectedPatientId(profile.id)}
+                  />
+                ))}
               </div>
             </Panel>
           </div>
@@ -328,21 +453,21 @@ export function LuminaWellnessPreview() {
                     <ShieldCheck size={12} className="text-white" />
                   </div>
                 </div>
-                <div className="text-xl font-semibold tracking-tight text-white">Ari M.</div>
-                <p className="mt-1 text-[10px] font-medium uppercase tracking-[0.2em] text-slate-500">Ref ID: LUM-084</p>
+                <div className="text-xl font-semibold tracking-tight text-white">{selectedPatient.name}</div>
+                <p className="mt-1 text-[10px] font-medium uppercase tracking-[0.2em] text-slate-500">Ref ID: {selectedPatient.id}</p>
               </div>
 
               <div className="space-y-5">
-                <DataField label="Primary Care" value="Laser Resurfacing" />
-                <DataField label="Risk Factor" value="Low Risk" status="safe" />
-                <DataField label="Facility" value="Suite B" />
+                <DataField label="Primary Care" value={selectedPatient.treatment} />
+                <DataField label="Risk Factor" value={selectedPatient.risk} status={selectedPatient.riskTone} />
+                <DataField label="Facility" value={selectedPatient.suite} />
                 <div className="border-t border-white/5 pt-6">
                   <div className="mb-2 flex items-center justify-between">
                     <span className="text-[10px] font-bold uppercase tracking-widest text-slate-500">Account Value</span>
-                    <span className="text-xs font-bold text-white">$1,840.00</span>
+                    <span className="text-xs font-bold text-white">{selectedPatient.value}</span>
                   </div>
                   <div className="h-1 w-full overflow-hidden rounded-full bg-white/5">
-                    <div className="h-full w-2/3 bg-blue-600" />
+                    <div className="h-full bg-blue-600 transition-all duration-500" style={{ width: selectedPatient.progress }} />
                   </div>
                 </div>
               </div>

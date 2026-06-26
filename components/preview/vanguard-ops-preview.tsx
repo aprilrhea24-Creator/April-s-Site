@@ -8,6 +8,12 @@ import {
   ShieldAlert
 } from "lucide-react";
 
+const approvalQueue = [
+  { title: "Root Seal Request", id: "SEC-420X", status: "Ready", alert: false },
+  { title: "Escrow Liquidity", id: "ESC-092Z", status: "Wait", alert: true },
+  { title: "Node Synchronization", id: "SYN-112B", status: "Ready", alert: false }
+];
+
 function QuickStat({ label, value, sub, alert = false, active = false }: { label: string; value: string; sub: string; alert?: boolean; active?: boolean }) {
   return (
     <div className={`border bg-[#0c0c0c] p-4 transition-all hover:bg-orange-500/5 ${alert ? "border-orange-500/50 shadow-[0_0_10px_rgba(249,115,22,0.2)]" : "border-white/5"}`}>
@@ -72,8 +78,21 @@ function DataRow({ label, value, color = "white" }: { label: string; value: stri
   );
 }
 
-function QueueCard({ title, id, status, alert = false }: { title: string; id: string; status: string; alert?: boolean }) {
-  const [synced, setSynced] = useState(false);
+function QueueCard({
+  title,
+  id,
+  status,
+  alert = false,
+  synced,
+  onSync
+}: {
+  title: string;
+  id: string;
+  status: string;
+  alert?: boolean;
+  synced: boolean;
+  onSync: () => void;
+}) {
   return (
     <div className="group flex items-center justify-between border border-white/5 bg-white/[0.01] p-4 transition-all hover:bg-orange-500/5">
       <div>
@@ -86,10 +105,10 @@ function QueueCard({ title, id, status, alert = false }: { title: string; id: st
         </span>
         <button
           type="button"
-          onClick={() => setSynced(true)}
+          onClick={onSync}
           className="h-7 bg-white px-4 text-[8px] font-black uppercase tracking-widest text-black transition-all hover:bg-orange-500 hover:text-white"
         >
-          Sync
+          {synced ? "Live" : "Sync"}
         </button>
       </div>
     </div>
@@ -128,6 +147,14 @@ function TacticalWaveChart() {
 
 export function VanguardOpsPreview() {
   const [time, setTime] = useState("");
+  const [syncedIds, setSyncedIds] = useState<string[]>([]);
+  const syncedCount = syncedIds.length;
+  const pendingCount = approvalQueue.length - syncedCount;
+  const auditScore = 88 + syncedCount * 4;
+  const activeNodeCount = 2 + syncedCount * 3;
+  const productionBranch = Math.min(93, 78 + syncedCount * 5);
+  const escrowVault = Math.min(78, 42 + syncedCount * 12);
+  const authProtocol = Math.min(66, 12 + syncedCount * 18);
 
   useEffect(() => {
     const timer = window.setInterval(() => {
@@ -156,8 +183,8 @@ export function VanguardOpsPreview() {
           </div>
           <div className="mt-4 grid max-w-4xl grid-cols-2 gap-2 md:grid-cols-4">
             <QuickStat label="Clusters" value="04" sub="Isolated" />
-            <QuickStat label="Approvals" value="02" sub="Pending" alert />
-            <QuickStat label="Latency" value="41ms" sub="Response" />
+            <QuickStat label="Approvals" value={pendingCount.toString().padStart(2, "0")} sub="Pending" alert={pendingCount > 0} active={pendingCount === 0} />
+            <QuickStat label="Latency" value={`${41 - syncedCount * 4}ms`} sub="Response" />
             <QuickStat label="Leaks" value="00" sub="Security" active />
           </div>
           <div className="text-[9px] font-black uppercase tracking-[0.3em] text-orange-900">Time_Stamp: <span className="text-white">{time}</span></div>
@@ -190,15 +217,15 @@ export function VanguardOpsPreview() {
               <Panel title="02. Core Infrastructure" badge="16_NODES">
                 <div className="mt-4 grid grid-cols-4 gap-2">
                   {Array.from({ length: 16 }).map((_, i) => (
-                    <NodeBox key={i} index={i + 1} active={i === 3 || i === 7} />
+                    <NodeBox key={i} index={i + 1} active={i === 3 || i === 7 || i < activeNodeCount} />
                   ))}
                 </div>
               </Panel>
               <Panel title="03. Partition Analytics" badge="SECURE">
                 <div className="mt-6 space-y-6">
-                  <TacticalBar label="Production Branch" value={78} />
-                  <TacticalBar label="Escrow Vault" value={42} />
-                  <TacticalBar label="Auth Protocol" value={12} />
+                  <TacticalBar label="Production Branch" value={productionBranch} />
+                  <TacticalBar label="Escrow Vault" value={escrowVault} />
+                  <TacticalBar label="Auth Protocol" value={authProtocol} />
                   <div className="flex items-center justify-between border-t border-orange-500/10 pt-4">
                     <span className="text-[8px] font-black italic uppercase leading-none tracking-widest text-orange-900">&gt; INIT_AUDIT_LOG</span>
                     <Fingerprint size={18} className="text-orange-500/50" />
@@ -222,17 +249,26 @@ export function VanguardOpsPreview() {
               <div className="mt-8 space-y-4">
                 <DataRow label="Region" value="EUROPE_WEST" />
                 <DataRow label="Protocol" value="SIGMA_HANDSHAKE" color="orange" />
-                <DataRow label="Stability" value="OPTIMIZED" color="emerald" />
+                <DataRow label="Stability" value={pendingCount === 0 ? "FULLY_ACTIVE" : "OPTIMIZED"} color="emerald" />
               </div>
             </Panel>
 
-            <Panel title="Approval Matrix" badge="02_PENDING">
+            <Panel title="Approval Matrix" badge={`${pendingCount.toString().padStart(2, "0")}_PENDING`}>
               <div className="mt-4 space-y-2">
-                <QueueCard title="Root Seal Request" id="SEC-420X" status="Ready" />
-                <QueueCard title="Escrow Liquidity" id="ESC-092Z" status="Wait" alert />
-                <QueueCard title="Node Synchronization" id="SYN-112B" status="Ready" />
+                {approvalQueue.map((item) => (
+                  <QueueCard
+                    key={item.id}
+                    {...item}
+                    synced={syncedIds.includes(item.id)}
+                    onSync={() => setSyncedIds((current) => (current.includes(item.id) ? current : [...current, item.id]))}
+                  />
+                ))}
               </div>
-              <button className="mt-6 h-12 w-full bg-white text-[10px] font-black uppercase tracking-[0.5em] text-black shadow-[0_0_20px_rgba(255,255,255,0.1)] transition-all hover:bg-orange-500 hover:text-white">
+              <button
+                type="button"
+                onClick={() => setSyncedIds(approvalQueue.map((item) => item.id))}
+                className="mt-6 h-12 w-full bg-white text-[10px] font-black uppercase tracking-[0.5em] text-black shadow-[0_0_20px_rgba(255,255,255,0.1)] transition-all hover:bg-orange-500 hover:text-white"
+              >
                 Execute_Global_Override
               </button>
             </Panel>
@@ -247,7 +283,7 @@ export function VanguardOpsPreview() {
               </div>
               <div className="flex flex-col">
                 <span className="mb-2 text-[7px] font-black uppercase text-orange-900">Audit Score</span>
-                <span className="text-2xl font-black uppercase tracking-tighter text-orange-500">100.00%</span>
+                <span className="text-2xl font-black uppercase tracking-tighter text-orange-500">{auditScore.toFixed(2)}%</span>
               </div>
             </div>
           </div>
