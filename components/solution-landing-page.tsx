@@ -27,6 +27,8 @@ type LandingConfig = {
   title: string;
   subtitle: string;
   terminal: string;
+  mode: "clinical" | "logistics" | "tactical" | "intelligence";
+  backgroundImage?: string;
   dashboardHref: string;
   dashboardLabel: string;
   scenario: string;
@@ -54,6 +56,8 @@ const landingPages: Record<LandingKey, LandingConfig> = {
     subtitle:
       "Aesthetics clinic enterprise terminal — operational monitoring, client intake, provider scheduling, and secure profile management.",
     terminal: "Management Console",
+    mode: "clinical",
+    backgroundImage: "https://storage.googleapis.com/producer-app-public/assets/7e8180ee-e9ae-4da5-828a-8903bf769de2.jpg",
     dashboardHref: "/preview/booking-core",
     dashboardLabel: "View workflow example on dashboard",
     scenario: "Example dashboard: Lumina Wellness Portal",
@@ -97,6 +101,7 @@ const landingPages: Record<LandingKey, LandingConfig> = {
     subtitle:
       "White-glove fleet transport command console — route orchestration, active custody events, private movement logs, and velocity control.",
     terminal: "Fleet Command",
+    mode: "logistics",
     dashboardHref: "/preview/dispatch-autonomous",
     dashboardLabel: "View workflow example on dashboard",
     scenario: "Example dashboard: AeroFreight Private Logistics",
@@ -140,6 +145,8 @@ const landingPages: Record<LandingKey, LandingConfig> = {
     subtitle:
       "Global enterprise infrastructure and database terminal — approval gates, isolated clusters, escrow controls, and active security routing.",
     terminal: "Security Console",
+    mode: "tactical",
+    backgroundImage: "https://storage.googleapis.com/producer-app-public/assets/1066cfe7-6bc7-45d1-b7d5-3f08449139e7.jpg",
     dashboardHref: "/preview/secure-console",
     dashboardLabel: "View workflow example on dashboard",
     scenario: "Example dashboard: Vanguard Ops Center",
@@ -183,6 +190,8 @@ const landingPages: Record<LandingKey, LandingConfig> = {
     subtitle:
       "Elite B2B SaaS enterprise platform and predictive data portal — tenant intelligence, revenue forecasting, server telemetry, and executive command views.",
     terminal: "Intelligence Matrix",
+    mode: "intelligence",
+    backgroundImage: "https://storage.googleapis.com/producer-app-public/assets/c97f3ebb-38c0-44dd-abde-e8ee583e5d9e.jpg",
     dashboardHref: "/preview/global-intelligence",
     dashboardLabel: "View workflow example on dashboard",
     scenario: "Example dashboard: Nexus Corp Analytics",
@@ -229,15 +238,40 @@ export function SolutionLandingPage({ landingKey }: { landingKey: LandingKey }) 
   }
 
   return (
-    <main className="min-h-screen bg-[#050508] text-white">
+    <main className={`min-h-screen bg-[#050508] text-white ${config.mode === "tactical" ? "font-mono" : ""}`}>
       <section className="relative overflow-hidden border-b border-white/5">
+        {config.backgroundImage ? (
+          <div className="pointer-events-none absolute inset-0 z-0 overflow-hidden">
+            <img
+              src={config.backgroundImage}
+              alt=""
+              className={`h-full w-full object-cover ${
+                config.mode === "clinical"
+                  ? "scale-105 opacity-20 mix-blend-lighten"
+                  : config.mode === "tactical"
+                    ? "scale-110 opacity-30 blur-[2px] mix-blend-lighten"
+                    : "opacity-40 mix-blend-lighten"
+              }`}
+            />
+            <div className="absolute inset-0 bg-gradient-to-b from-[#050508] via-[#050508]/50 to-[#050508]" />
+            <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,transparent_0%,#050508_100%)] opacity-80" />
+          </div>
+        ) : null}
         <div
-          className="pointer-events-none absolute inset-0"
+          className="pointer-events-none absolute inset-0 z-0"
           style={{
             background: `${config.glow}, linear-gradient(180deg,#050508 0%,#080a10 100%)`
           }}
         />
-        <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.025)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.025)_1px,transparent_1px)] bg-[size:72px_72px] opacity-35" />
+        <div
+          className={`pointer-events-none absolute inset-0 z-0 ${
+            config.mode === "logistics"
+              ? "bg-[radial-gradient(circle_at_1px_1px,rgba(245,158,11,0.08)_1px,transparent_0)] bg-[size:50px_50px] opacity-80"
+              : config.mode === "tactical"
+                ? "bg-[linear-gradient(rgba(18,16,16,0)_50%,rgba(0,0,0,0.28)_50%),linear-gradient(90deg,rgba(255,115,22,0.08),rgba(0,0,0,0.02),rgba(255,115,22,0.05))] bg-[size:100%_4px,4px_100%] opacity-25"
+                : "bg-[linear-gradient(rgba(255,255,255,0.025)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.025)_1px,transparent_1px)] bg-[size:72px_72px] opacity-35"
+          }`}
+        />
         <div className="relative mx-auto max-w-[1400px] px-4 py-20 sm:px-6 lg:px-8">
           <Link href="/solutions" className="inline-flex items-center gap-2 text-sm font-semibold text-zinc-400 transition-colors hover:text-white">
             <ArrowLeft className="h-4 w-4" />
@@ -253,9 +287,25 @@ export function SolutionLandingPage({ landingKey }: { landingKey: LandingKey }) 
             </div>
             <div className="mt-6 grid gap-10 border-b border-white/5 pb-10 lg:grid-cols-[0.95fr_1.05fr] lg:items-end">
               <div>
-                <h1 className="max-w-4xl font-sans text-6xl font-bold leading-[0.98] tracking-[-0.04em] text-white sm:text-7xl lg:text-8xl">
+                <h1
+                  className={`max-w-4xl text-6xl leading-[0.98] text-white sm:text-7xl lg:text-8xl ${
+                    config.mode === "tactical"
+                      ? "font-mono font-black uppercase tracking-[-0.06em]"
+                      : config.mode === "logistics"
+                        ? "font-sans font-black uppercase italic tracking-[-0.055em]"
+                        : "font-sans font-bold tracking-[-0.04em]"
+                  }`}
+                >
                   {config.title.split(" ").slice(0, -1).join(" ")}
-                  <span className="block font-light italic tracking-[-0.02em] text-slate-500">
+                  <span
+                    className={`block ${
+                      config.mode === "tactical"
+                        ? "text-orange-500"
+                        : config.mode === "intelligence"
+                          ? "bg-gradient-to-r from-white via-cyan-200 to-slate-600 bg-clip-text text-transparent"
+                          : "font-light italic tracking-[-0.02em] text-slate-500"
+                    }`}
+                  >
                     {config.title.split(" ").slice(-1)}
                   </span>
                 </h1>
