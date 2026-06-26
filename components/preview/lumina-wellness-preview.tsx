@@ -340,6 +340,49 @@ function DonutChart({ segments, total }: { segments: PatientProfile["segments"];
   );
 }
 
+function WorkflowCommand({ patient }: { patient: PatientProfile }) {
+  const steps = [
+    { label: "Intake", value: patient.vault.consent, active: true },
+    { label: "Clinical Media", value: patient.vault.media, active: patient.vault.media === "VERIFIED" },
+    { label: "Deposit Gate", value: patient.vault.deposit, active: patient.vault.deposit === "SECURE" },
+    { label: "Treatment Suite", value: patient.suite, active: true }
+  ];
+
+  return (
+    <section className="mb-8 overflow-hidden rounded-xl border border-blue-500/10 bg-[#0c0d0e] shadow-2xl shadow-black/30">
+      <div className="grid gap-0 lg:grid-cols-[1.1fr_1.8fr]">
+        <div className="border-b border-white/5 p-7 lg:border-b-0 lg:border-r">
+          <div className="mb-4 flex items-center gap-3">
+            <div className="h-2 w-2 animate-pulse rounded-full bg-blue-500 shadow-[0_0_14px_rgba(59,130,246,0.8)]" />
+            <span className="text-[10px] font-bold uppercase tracking-[0.35em] text-blue-400">Selected Workflow</span>
+          </div>
+          <h2 className="text-3xl font-semibold tracking-tight text-white">{patient.name}</h2>
+          <p className="mt-3 max-w-sm text-sm font-medium leading-relaxed text-slate-500">
+            Every schedule click reshapes this clinical workflow view, showing intake status, protected files, deposit readiness, and treatment-room routing in one operating layer.
+          </p>
+        </div>
+        <div className="grid gap-3 p-7 md:grid-cols-4">
+          {steps.map((step, index) => (
+            <div
+              key={step.label}
+              className={`relative overflow-hidden rounded-lg border p-5 transition-all ${
+                step.active ? "border-blue-500/20 bg-blue-500/[0.04]" : "border-white/5 bg-black/30"
+              }`}
+            >
+              <span className="mb-8 block text-[10px] font-bold uppercase tracking-[0.25em] text-slate-600">0{index + 1}</span>
+              <div className="text-xs font-bold uppercase tracking-widest text-slate-400">{step.label}</div>
+              <div className={`mt-2 text-sm font-black uppercase tracking-widest ${step.active ? "text-blue-300" : "text-slate-500"}`}>
+                {step.value}
+              </div>
+              {step.active ? <div className="absolute inset-x-0 bottom-0 h-px bg-blue-500 shadow-[0_0_18px_rgba(59,130,246,0.9)]" /> : null}
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
 export function LuminaWellnessPreview() {
   const [selectedPatientId, setSelectedPatientId] = useState(patientProfiles[0].id);
   const selectedPatient = patientProfiles.find((profile) => profile.id === selectedPatientId) ?? patientProfiles[0];
@@ -389,6 +432,8 @@ export function LuminaWellnessPreview() {
             </Panel>
           </div>
         </div>
+
+        <WorkflowCommand patient={selectedPatient} />
 
         <div className="grid grid-cols-1 gap-8 lg:grid-cols-12">
           <div className="flex flex-col gap-8 lg:col-span-4">

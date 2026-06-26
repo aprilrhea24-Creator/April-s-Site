@@ -205,6 +205,45 @@ function PredictiveChart({ data }: { data: { actual: number[]; target: number[] 
   );
 }
 
+function TenantCommandDeck({
+  tenant,
+  timeRange
+}: {
+  tenant: (typeof tenants)[number];
+  timeRange: string;
+}) {
+  const commandMetrics = [
+    { label: "Forecast Ceiling", value: tenant.forecast, sub: `${timeRange} model` },
+    { label: "Tenant Health", value: tenant.health, sub: "Uptime guard" },
+    { label: "Expansion Nodes", value: `${tenant.nodes}/24`, sub: "Cloud layer" }
+  ];
+
+  return (
+    <section className="grid gap-6 lg:grid-cols-[1fr_1.4fr]">
+      <div className="border border-cyan-500/10 bg-[#0c0d0f] p-8 shadow-2xl shadow-black/30">
+        <div className="mb-4 flex items-center gap-3">
+          <div className="h-2 w-2 animate-pulse rounded-full bg-cyan-500 shadow-[0_0_16px_rgba(6,182,212,0.8)]" />
+          <span className="text-[10px] font-black uppercase tracking-[0.45em] text-cyan-500">Tenant Command Focus</span>
+        </div>
+        <h2 className="text-4xl font-black uppercase leading-none tracking-tight text-white">{tenant.name}</h2>
+        <p className="mt-4 max-w-lg text-[11px] font-bold uppercase leading-loose tracking-[0.18em] text-slate-600">
+          Switching tenants recalculates forecast curves, infrastructure load, active nodes, and operational insight layers so each client sees a tailored SaaS command center.
+        </p>
+      </div>
+      <div className="grid gap-4 md:grid-cols-3">
+        {commandMetrics.map((metric) => (
+          <div key={metric.label} className="relative overflow-hidden border border-white/5 bg-[#0c0d0f] p-6">
+            <div className="absolute -right-8 -top-8 h-24 w-24 rounded-full bg-cyan-500/5 blur-2xl" />
+            <span className="relative z-10 text-[9px] font-black uppercase tracking-[0.35em] text-slate-600">{metric.label}</span>
+            <div className="relative z-10 mt-5 text-3xl font-black tracking-tight text-white">{metric.value}</div>
+            <div className="relative z-10 mt-2 text-[9px] font-bold uppercase tracking-[0.25em] text-cyan-500">{metric.sub}</div>
+          </div>
+        ))}
+      </div>
+    </section>
+  );
+}
+
 export function NexusAnalyticsPreview() {
   const [selectedTenant, setSelectedTenant] = useState<TenantName>("Atlas Health");
   const [time, setTime] = useState("");
@@ -315,6 +354,8 @@ export function NexusAnalyticsPreview() {
             </div>
           </div>
         </section>
+
+        <TenantCommandDeck tenant={selectedTenantData} timeRange={timeRange} />
 
         <section className="grid grid-cols-1 gap-8 lg:grid-cols-12">
           <div className="flex flex-col gap-8 lg:col-span-4">

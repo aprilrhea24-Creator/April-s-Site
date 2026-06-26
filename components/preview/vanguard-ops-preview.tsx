@@ -145,6 +145,45 @@ function TacticalWaveChart() {
   );
 }
 
+function ApprovalImpactDeck({
+  pendingCount,
+  auditScore,
+  activeNodeCount
+}: {
+  pendingCount: number;
+  auditScore: number;
+  activeNodeCount: number;
+}) {
+  const impact = [
+    { label: "Pending Review", value: pendingCount.toString().padStart(2, "0"), tone: pendingCount === 0 ? "text-emerald-500" : "text-orange-500" },
+    { label: "Audit Confidence", value: `${auditScore.toFixed(0)}%`, tone: "text-white" },
+    { label: "Live Clusters", value: `${activeNodeCount}/16`, tone: "text-orange-500" }
+  ];
+
+  return (
+    <div className="relative overflow-hidden border border-orange-500/20 bg-orange-500/[0.03] p-6">
+      <div className="absolute inset-y-0 right-0 w-1/2 bg-[radial-gradient(circle_at_center,rgba(249,115,22,0.12),transparent_65%)]" />
+      <div className="relative z-10 mb-6 flex items-center justify-between">
+        <div>
+          <div className="text-[9px] font-black uppercase tracking-[0.4em] text-orange-500">Approval Consequence</div>
+          <p className="mt-2 max-w-md text-[10px] font-black uppercase leading-relaxed tracking-[0.2em] text-orange-900">
+            Syncing a build turns isolated approvals into active infrastructure, tightening audit score and lighting additional production nodes.
+          </p>
+        </div>
+        <div className={`h-3 w-3 rounded-full ${pendingCount === 0 ? "bg-emerald-500" : "animate-pulse bg-orange-500"}`} />
+      </div>
+      <div className="relative z-10 grid gap-3 md:grid-cols-3">
+        {impact.map((item) => (
+          <div key={item.label} className="border border-white/5 bg-black/40 p-4">
+            <div className="mb-2 text-[8px] font-black uppercase tracking-[0.3em] text-orange-900">{item.label}</div>
+            <div className={`text-2xl font-black uppercase tracking-tight ${item.tone}`}>{item.value}</div>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
+
 export function VanguardOpsPreview() {
   const [time, setTime] = useState("");
   const [syncedIds, setSyncedIds] = useState<string[]>([]);
@@ -272,6 +311,8 @@ export function VanguardOpsPreview() {
                 Execute_Global_Override
               </button>
             </Panel>
+
+            <ApprovalImpactDeck pendingCount={pendingCount} auditScore={auditScore} activeNodeCount={activeNodeCount} />
 
             <div className="group relative overflow-hidden border border-orange-500/20 bg-orange-500/5 p-8">
               <div className="absolute right-0 top-0 p-2 opacity-10 transition-opacity group-hover:opacity-100">

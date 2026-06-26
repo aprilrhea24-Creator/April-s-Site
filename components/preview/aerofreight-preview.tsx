@@ -385,6 +385,42 @@ function RiskItem({ label, score, status }: { label: string; score: number; stat
   );
 }
 
+function RouteDecisionDeck({ route }: { route: RouteProfile }) {
+  const mode = route.type === "Air" ? "Priority air corridor" : "Protected ground chain";
+  const action = route.status === "Rerouting" ? "Operator override recommended" : route.status === "Loading" ? "Load seal verification" : "Destination handoff prep";
+  const windows = [
+    { label: "Mission Mode", value: mode },
+    { label: "Next Admin Action", value: action },
+    { label: "Exception Logic", value: route.exceptions }
+  ];
+
+  return (
+    <div className="relative overflow-hidden border border-indigo-500/10 bg-[#0c0e14]/60 p-6 shadow-2xl shadow-black/30">
+      <div className="absolute inset-y-0 left-0 w-1 bg-indigo-500 shadow-[0_0_24px_rgba(99,102,241,0.6)]" />
+      <div className="mb-5 flex items-center justify-between gap-4">
+        <div>
+          <div className="text-[9px] font-black uppercase tracking-[0.45em] text-indigo-400">Workflow Decision Layer</div>
+          <p className="mt-2 max-w-xl text-[10px] font-bold uppercase leading-relaxed tracking-[0.22em] text-slate-600">
+            Route selection updates command priorities, security posture, weather lock, and exception handling for the active delivery sequence.
+          </p>
+        </div>
+        <div className="hidden rounded-sm border border-white/5 bg-black/40 px-5 py-3 text-right md:block">
+          <span className="block text-[8px] font-black uppercase tracking-widest text-slate-600">Selected Route</span>
+          <span className="font-mono text-lg font-black text-white">{route.id}</span>
+        </div>
+      </div>
+      <div className="grid gap-3 md:grid-cols-3">
+        {windows.map((window) => (
+          <div key={window.label} className="border border-white/[0.04] bg-black/40 p-4">
+            <span className="text-[8px] font-black uppercase tracking-[0.3em] text-slate-600">{window.label}</span>
+            <div className="mt-3 text-[11px] font-black uppercase leading-relaxed tracking-widest text-white">{window.value}</div>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
+
 export function AeroFreightPreview() {
   const [time, setTime] = useState("");
   const [selectedRouteId, setSelectedRouteId] = useState(routeProfiles[0].id);
@@ -482,6 +518,7 @@ export function AeroFreightPreview() {
                 <div className="group relative w-full overflow-hidden rounded-sm border border-white/5 bg-[#0d0f14]">
                   <CargoFlowMap route={selectedRoute} />
                 </div>
+                <RouteDecisionDeck route={selectedRoute} />
               </div>
             </Panel>
 
