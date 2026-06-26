@@ -44,7 +44,7 @@ function PreviewController({
         className="group inline-flex items-center justify-center gap-2 rounded-full border border-white/10 px-5 py-3 text-sm font-bold text-white shadow-[0_0_18px_rgba(255,255,255,0.08)] transition hover:brightness-110 hover:shadow-[0_0_30px_rgba(255,255,255,0.2)]"
         style={{ background: colors }}
       >
-        Preview Live Style
+        View Live Solution Page
         <ArrowUpRight className="h-4 w-4 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
       </Link>
     </span>
@@ -90,7 +90,7 @@ export function SolutionShowcase() {
             </div>
             <div className="mt-auto">
               <PreviewController
-                href="/packages/premium-restaurant"
+                href="/solutions/booking-core"
                 colors="linear-gradient(90deg,#7c5f13,#D4AF37,#f7e7a3,#D4AF37)"
               />
             </div>
@@ -179,7 +179,7 @@ export function SolutionShowcase() {
             </div>
             <div className="mt-auto">
               <PreviewController
-                href="/preview/dispatch-autonomous"
+                href="/solutions/dispatch-autonomous"
                 colors="linear-gradient(90deg,#7f1d1d,#ff3d00,#ff8a00,#dc2626)"
               />
             </div>
@@ -282,7 +282,7 @@ export function SolutionShowcase() {
             </div>
             <div className="mt-auto">
               <PreviewController
-                href="/preview/global-intelligence"
+                href="/solutions/global-intelligence"
                 colors="linear-gradient(90deg,#00F2FE,#168BFF,#A800FF,#00F2FE)"
               />
             </div>

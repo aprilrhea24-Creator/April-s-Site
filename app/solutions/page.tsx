@@ -12,25 +12,25 @@ import { WhyStratum } from "@/components/why-stratum";
 
 const previewPortals = [
   {
-    href: "/preview/booking-core",
+    href: "/solutions/booking-core",
     label: "Lumina Wellness Portal",
     system: "Stratum Booking Core",
     meta: "Aesthetics intake, secure client scheduling, and practitioner roster routing."
   },
   {
-    href: "/preview/secure-console",
+    href: "/solutions/secure-console",
     label: "Vanguard Ops Center",
     system: "Secure Console",
     meta: "Enterprise database isolation, payment pipeline governance, and approval queues."
   },
   {
-    href: "/preview/dispatch-autonomous",
+    href: "/solutions/dispatch-autonomous",
     label: "AeroFreight Private Logistics",
     system: "Dispatch Autonomous",
     meta: "Private fleet routing, telemetry sync, custody scans, and velocity analytics."
   },
   {
-    href: "/preview/global-intelligence",
+    href: "/solutions/global-intelligence",
     label: "Nexus Corp Analytics",
     system: "Global Intelligence",
     meta: "Multi-tenant SaaS infrastructure, cloud logs, and predictive revenue intelligence."
@@ -67,12 +67,12 @@ export default function SolutionsPage() {
         <div className="rounded-3xl border border-white/10 bg-[#0c0d12] p-6 backdrop-blur-xl">
           <div className="flex flex-wrap items-end justify-between gap-6">
             <div className="max-w-2xl">
-              <p className="font-mono text-xs font-bold uppercase tracking-[0.28em] text-cyan-200">Live Preview Portal</p>
+              <p className="font-mono text-xs font-bold uppercase tracking-[0.28em] text-cyan-200">Live Solution Pages</p>
               <h2 className="mt-3 font-display text-3xl font-bold normal-case leading-snug text-white">
-                Standalone command-center simulations for premium buyers.
+                Landing pages that explain the workflow before the dashboard example.
               </h2>
               <p className="mt-4 text-sm leading-7 text-slate-400">
-                Each route opens a separate high-fidelity application preview using local client-side state only.
+                Each page shows how the framework can be customized around the client&apos;s brand, workflow, and dashboard needs.
               </p>
             </div>
             <span className="inline-flex items-center gap-2 rounded-full border border-cyan-300/15 bg-cyan-300/5 px-3 py-1.5 font-mono text-[10px] font-bold uppercase tracking-[0.24em] text-zinc-300">
@@ -94,7 +94,7 @@ export default function SolutionsPage() {
                 </div>
                 <p className="mt-4 text-sm leading-6 text-zinc-400">{portal.meta}</p>
                 <span className="mt-6 inline-flex rounded-full bg-gradient-to-r from-[#00f2fe] via-[#0066ff] to-[#9d00ff] px-4 py-2 text-xs font-bold text-white shadow-[0_0_20px_rgba(0,242,254,0.14)]">
-                  Live Preview
+                  View Live Solution Page
                 </span>
               </Link>
             ))}

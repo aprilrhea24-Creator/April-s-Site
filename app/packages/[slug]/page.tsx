@@ -5,11 +5,11 @@ import { notFound } from "next/navigation";
 
 import { getPackage, packages } from "@/lib/packages";
 
-const previewPaths: Record<string, string> = {
-  "booking-core": "/preview/booking-core",
-  "enterprise-matrix": "/preview/secure-console",
-  "flow-automation": "/preview/dispatch-autonomous",
-  "platform-suite": "/preview/global-intelligence"
+const solutionLandingPaths: Record<string, string> = {
+  "booking-core": "/solutions/booking-core",
+  "enterprise-matrix": "/solutions/secure-console",
+  "flow-automation": "/solutions/dispatch-autonomous",
+  "platform-suite": "/solutions/global-intelligence"
 };
 
 export function generateStaticParams() {
@@ -47,7 +47,7 @@ export default async function PackagePage({
   }
 
   const consultationHref = `/consultation?package=${item.consultationPackage}&tier=${item.consultationTier}`;
-  const previewHref = previewPaths[item.previewSlug] ?? `/preview/${item.previewSlug}`;
+  const solutionLandingHref = solutionLandingPaths[item.previewSlug] ?? "/solutions";
 
   return (
     <div className="relative min-h-screen overflow-hidden bg-[#050508]">
@@ -87,10 +87,10 @@ export default async function PackagePage({
                 <ArrowRight className="h-4 w-4" />
               </Link>
               <Link
-                href={previewHref}
+                href={solutionLandingHref}
                 className="inline-flex items-center gap-2 rounded-full border border-zinc-700/70 bg-black/60 px-6 py-3 font-semibold text-white backdrop-blur-xl transition-all hover:border-cyan-300/50 hover:bg-zinc-900/80"
               >
-                Launch Interactive Demo
+                View Live Solution Page
                 <ArrowRight className="h-4 w-4" />
               </Link>
               <div className="rounded-full border border-zinc-800/60 bg-black/60 px-5 py-3 text-sm text-zinc-300 backdrop-blur-xl">
