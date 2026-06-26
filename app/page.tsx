@@ -59,10 +59,10 @@ export default function HomePage() {
           />
           <div className="relative z-10 flex flex-col items-center text-center md:items-start md:text-left">
             <div className="w-full">
-              <h1 className="font-display text-4xl font-extrabold leading-[1.05] tracking-tight text-white drop-shadow-[0_4px_16px_rgba(0,0,0,1)] md:text-6xl">
-                <span className="block text-white">Engineered Workflows.</span>
+              <h1 className="!font-sans text-[clamp(3rem,4.2vw,4.35rem)] !font-bold leading-[1.02] tracking-[-0.03em] text-white drop-shadow-[0_4px_16px_rgba(0,0,0,1)]">
+                <span className="block text-white md:whitespace-nowrap">Engineered Workflows.</span>
                 <span
-                  className="mt-2 block bg-gradient-to-r from-cyan-400 to-purple-500 bg-clip-text text-transparent drop-shadow-[0_4px_14px_rgba(0,0,0,0.95)]"
+                  className="mt-3 block bg-gradient-to-r from-cyan-400 to-purple-500 bg-clip-text text-transparent drop-shadow-[0_4px_14px_rgba(0,0,0,0.95)] md:whitespace-nowrap"
                   style={{
                     backgroundImage: "linear-gradient(90deg, #22d3ee, #a855f7)",
                     WebkitBackgroundClip: "text",
