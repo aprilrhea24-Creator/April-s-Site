@@ -24,7 +24,7 @@ export function SiteHeader() {
             />
           </span>
           <span
-            className="bg-gradient-to-r from-white via-zinc-100 to-cyan-300 bg-clip-text font-display text-lg font-extrabold tracking-tight text-transparent transition-all duration-300 hover:from-cyan-300 hover:to-fuchsia-300 sm:text-xl"
+            className="bg-gradient-to-r from-white via-zinc-100 to-cyan-300 bg-clip-text font-sans text-lg font-bold tracking-tight text-transparent transition-all duration-300 hover:from-cyan-300 hover:to-fuchsia-300 sm:text-xl"
             style={{
               backgroundImage: "linear-gradient(90deg,#ffffff,#f4f4f5,#67e8f9)",
               WebkitBackgroundClip: "text"
