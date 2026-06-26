@@ -1,5 +1,5 @@
-import { HighFidelityPreview } from '@/components/preview/high-fidelity-preview';
+import { AeroFreightPreview } from "@/components/preview/aerofreight-preview";
 
 export default function DispatchAutonomousPreviewPage() {
-  return <HighFidelityPreview kind='dispatch' />;
+  return <AeroFreightPreview />;
 }

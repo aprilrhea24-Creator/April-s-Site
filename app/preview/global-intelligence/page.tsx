@@ -1,5 +1,5 @@
-import { HighFidelityPreview } from '@/components/preview/high-fidelity-preview';
+import { NexusAnalyticsPreview } from "@/components/preview/nexus-analytics-preview";
 
 export default function GlobalIntelligencePreviewPage() {
-  return <HighFidelityPreview kind='global' />;
+  return <NexusAnalyticsPreview />;
 }

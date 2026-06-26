@@ -1,5 +1,5 @@
-import { HighFidelityPreview } from '@/components/preview/high-fidelity-preview';
+import { VanguardOpsPreview } from "@/components/preview/vanguard-ops-preview";
 
 export default function SecureConsolePreviewPage() {
-  return <HighFidelityPreview kind='secure' />;
+  return <VanguardOpsPreview />;
 }
