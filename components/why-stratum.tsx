@@ -30,7 +30,7 @@ export function WhyStratum() {
         <p className="font-mono text-xs uppercase tracking-[0.28em] text-cyan-300">Why Stratum</p>
         <h2
           id="architecture-vs-templates"
-          className="mt-4 font-display text-4xl font-bold leading-tight text-white sm:text-5xl"
+          className="mt-4 font-sans text-4xl font-bold leading-tight text-white sm:text-5xl"
         >
           Architecture vs. Templates
         </h2>
@@ -47,7 +47,7 @@ export function WhyStratum() {
 
           const card = (
             <article
-              className={`relative overflow-hidden p-8 shadow-[0_30px_90px_rgba(0,0,0,0.45)] transition-all duration-500 ${
+              className={`relative overflow-hidden p-8 shadow-[0_30px_90px_rgba(0,0,0,0.45)] transition-all duration-500 hover:-translate-y-1 ${
                 isStratum
                   ? "z-10 h-full w-full rounded-[15px] bg-[#0c0d12] backdrop-blur-xl"
                   : "h-full rounded-[15px] bg-[#0a0b10]/95 backdrop-blur-2xl"
@@ -71,7 +71,7 @@ export function WhyStratum() {
                     >
                       {item.label}
                     </p>
-                    <h3 className="mt-4 text-2xl font-bold text-white">{item.focus}</h3>
+                    <h3 className="mt-4 font-sans text-2xl font-bold text-white">{item.focus}</h3>
                   </div>
                   <div
                     className={`flex h-12 w-12 shrink-0 items-center justify-center rounded-xl border ${

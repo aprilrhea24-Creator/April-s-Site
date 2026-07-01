@@ -5,15 +5,15 @@ import { packages } from "@/lib/packages";
 
 export function PackageGrid() {
   return (
-    <div className="rounded-[2rem] border border-zinc-900 bg-[#050508] p-4 sm:p-6">
-      <div className="grid gap-6 lg:grid-cols-2">
+    <div className="rounded-[2rem] border border-zinc-900 bg-[#050508] p-4 shadow-[0_30px_100px_rgba(0,0,0,0.45)] sm:p-6">
+      <div className="grid gap-7 lg:grid-cols-2">
         {packages.map((item) => {
           const card = (
             <article
-              className={`package-card relative z-10 h-full w-full overflow-hidden bg-[#0c0d12] p-8 backdrop-blur-xl transition-all duration-500 hover:-translate-y-1 ${
+              className={`package-card group relative z-10 h-full w-full overflow-hidden bg-[#0c0d12] p-8 backdrop-blur-xl transition-all duration-500 hover:-translate-y-1 ${
                 item.popular
                   ? "package-card-popular rounded-2xl border border-white/15 shadow-[0_4px_30px_rgba(0,0,0,0.8)]"
-                  : "rounded-2xl shadow-lg"
+                  : "rounded-2xl shadow-lg hover:border-cyan-300/20"
               }`}
             >
               <div
@@ -27,7 +27,7 @@ export function PackageGrid() {
               <div className={`relative z-10 ${item.popular ? "drop-shadow-[0_2px_8px_rgba(0,0,0,0.72)]" : ""}`}>
                 <div className="flex min-h-7 items-center justify-between gap-4">
                   {item.popular ? (
-                    <span className="rounded-full border border-white/20 bg-slate-950/20 px-3 py-1 font-mono text-xs font-bold uppercase tracking-[0.16em] text-white backdrop-blur-lg">
+                    <span className="rounded-full border border-white/20 bg-slate-950/20 px-3 py-1 font-mono text-xs font-bold uppercase tracking-[0.2em] text-white backdrop-blur-lg">
                       Most Popular
                     </span>
                   ) : (
@@ -43,20 +43,20 @@ export function PackageGrid() {
                 </div>
                 <div
                   className={`mt-5 ${
-                    item.popular ? "package-popular-copy rounded-2xl bg-black/20 p-4 backdrop-blur-sm" : ""
+                    item.popular ? "package-popular-copy rounded-2xl bg-black/25 p-5 backdrop-blur-sm" : ""
                   }`}
                 >
-                  <p className="font-mono text-xs uppercase tracking-[0.2em] text-white/60">{item.industry}</p>
-                  <h3 className="mt-3 font-display text-2xl font-bold normal-case leading-snug text-white">
+                  <p className="font-mono text-xs uppercase tracking-[0.24em] text-white/60">{item.industry}</p>
+                  <h3 className="mt-3 font-sans text-3xl font-bold normal-case leading-tight text-white">
                     {item.title}
                   </h3>
-                  <p className="mt-3 text-sm leading-7 text-white/80">{item.summary}</p>
+                  <p className="mt-4 text-sm leading-7 text-white/80">{item.summary}</p>
                 </div>
                 <div className="mt-6 grid gap-3 sm:grid-cols-2">
                   {item.features.map((feature) => (
                     <div
                       key={feature}
-                      className="flex items-center gap-3 rounded-xl border border-zinc-800/60 bg-black/40 px-4 py-3 text-sm font-medium text-zinc-300 backdrop-blur-xl transition-colors hover:bg-zinc-900/70"
+                      className="flex items-center gap-3 rounded-xl border border-zinc-800/60 bg-black/45 px-4 py-3 text-sm font-semibold text-zinc-300 backdrop-blur-xl transition-colors hover:border-cyan-300/20 hover:bg-zinc-900/70"
                     >
                       <span className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-md border border-zinc-700/70 bg-zinc-900/80 text-slate-100">
                         <Check className="h-3.5 w-3.5" aria-hidden="true" />
@@ -65,10 +65,15 @@ export function PackageGrid() {
                     </div>
                   ))}
                 </div>
-                <p className="mt-5 text-sm leading-6 text-white/70">{item.industryFit}</p>
+                <div className="mt-6 rounded-2xl border border-white/[0.06] bg-black/25 p-4">
+                  <span className="mb-2 block font-mono text-[10px] uppercase tracking-[0.24em] text-zinc-500">
+                    Target Industries //
+                  </span>
+                  <p className="text-sm leading-6 text-white/70">{item.industryFit}</p>
+                </div>
                 <div className="mt-6 border-t border-white/10 pt-5">
-                  <span className="mb-1 block text-xs uppercase tracking-wider text-zinc-500">Investment //</span>
-                  <span className="block text-2xl font-bold text-white">From {item.price.startingAt}</span>
+                  <span className="mb-1 block font-mono text-xs uppercase tracking-[0.2em] text-zinc-500">Investment //</span>
+                  <span className="block font-sans text-3xl font-bold tracking-tight text-white">From {item.price.startingAt}</span>
                 </div>
                 <Link
                   href={`/packages/${item.slug}`}

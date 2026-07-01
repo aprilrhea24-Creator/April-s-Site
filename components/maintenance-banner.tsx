@@ -2,9 +2,9 @@ import Link from "next/link";
 
 export function MaintenanceBanner() {
   return (
-    <aside className="mx-auto mt-10 flex max-w-7xl flex-col gap-6 rounded-2xl border border-white/[0.07] bg-zinc-950/60 p-6 shadow-[0_24px_70px_rgba(0,0,0,0.38)] backdrop-blur-xl sm:p-8 lg:flex-row lg:items-center lg:justify-between">
+    <aside className="mx-auto mt-10 flex max-w-7xl flex-col gap-6 rounded-[1.75rem] border border-white/[0.07] bg-zinc-950/60 p-6 shadow-[0_24px_70px_rgba(0,0,0,0.38)] backdrop-blur-xl transition-all duration-300 hover:border-cyan-300/20 sm:p-8 lg:flex-row lg:items-center lg:justify-between">
       <div>
-        <h3 className="maintenance-banner-title font-display text-xl font-bold text-white">
+        <h3 className="maintenance-banner-title font-sans text-xl font-bold tracking-wide text-white">
           Already have a Stratum Studio build completed?
         </h3>
         <p className="mt-1.5 max-w-xl font-sans text-xs leading-relaxed text-zinc-400">
@@ -17,9 +17,9 @@ export function MaintenanceBanner() {
         <span className="mr-2 font-mono text-sm font-semibold text-zinc-300">$199/mo</span>
         <Link
           href="/dashboard/subscribe"
-          className="whitespace-nowrap rounded-xl border border-white/10 bg-zinc-900 px-6 py-3.5 font-sans text-xs font-bold uppercase tracking-widest text-zinc-100 transition-all duration-300 hover:border-cyan-400"
+          className="whitespace-nowrap rounded-xl border border-white/10 bg-zinc-900 px-6 py-3.5 font-sans text-xs font-bold uppercase tracking-widest text-zinc-100 transition-all duration-300 hover:border-cyan-400 hover:shadow-[0_0_20px_rgba(34,211,238,0.16)]"
         >
-          Activate Ongoing Support →
+          Activate Ongoing Support -&gt;
         </Link>
       </div>
     </aside>

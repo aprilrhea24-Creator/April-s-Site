@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { ArrowRight, ChartNoAxesCombined, MonitorSmartphone, ShieldCheck } from "lucide-react";
+import { ArrowRight, ChartNoAxesCombined, MonitorSmartphone, ShieldCheck, Terminal } from "lucide-react";
 
 import { MaintenanceBanner } from "@/components/maintenance-banner";
 import { PackageGrid } from "@/components/package-grid";
@@ -58,8 +58,12 @@ export default function HomePage() {
             aria-hidden="true"
           />
           <div className="relative z-10 flex flex-col items-center text-center md:items-start md:text-left">
+            <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-3 py-1 font-mono text-[10px] font-bold uppercase tracking-[0.28em] text-cyan-200 backdrop-blur-md">
+              <Terminal className="h-3 w-3" />
+              Stratum Engine v2.4
+            </div>
             <div className="w-full">
-              <h1 className="!font-sans text-[clamp(3rem,4.2vw,4.35rem)] !font-bold leading-[1.02] tracking-[-0.03em] text-white drop-shadow-[0_4px_16px_rgba(0,0,0,1)]">
+              <h1 className="font-sans text-[clamp(3.15rem,5vw,5.75rem)] font-extrabold leading-[1.04] tracking-tight text-white drop-shadow-[0_4px_16px_rgba(0,0,0,1)]">
                 <span className="block text-white md:whitespace-nowrap">Engineered Workflows.</span>
                 <span
                   className="mt-3 block bg-gradient-to-r from-cyan-400 to-purple-500 bg-clip-text text-transparent drop-shadow-[0_4px_14px_rgba(0,0,0,0.95)] md:whitespace-nowrap"
@@ -91,14 +95,14 @@ export default function HomePage() {
             <div className="mt-8 flex flex-wrap justify-center gap-4 md:justify-start">
               <Link
                 href="/consultation"
-                className="stratum-action-gradient group inline-flex items-center justify-center gap-2 rounded-full px-6 py-3 font-bold transition-all hover:brightness-110"
+                className="stratum-action-gradient group inline-flex items-center justify-center gap-2 rounded-full px-7 py-3.5 text-sm font-bold transition-all hover:scale-[1.02] hover:brightness-110 active:scale-95"
               >
                 Explore Packages
                 <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
               </Link>
               <Link
                 href="/solutions"
-                className="rounded-full border border-white/10 bg-white/5 px-6 py-3 font-bold text-white backdrop-blur-md transition-all hover:bg-white/10"
+                className="rounded-full border border-white/10 bg-white/5 px-7 py-3.5 text-sm font-bold text-white backdrop-blur-md transition-all hover:bg-white/10"
               >
                 View Solution Systems
               </Link>
@@ -107,7 +111,7 @@ export default function HomePage() {
         </div>
 
         {/* Foreground column 2: existing Stratum Framework roadmap interface. */}
-        <div className="relative overflow-hidden rounded-2xl border border-white/20 bg-[#0c0d12]/95 p-8 shadow-[0_32px_100px_rgba(0,0,0,0.78),0_0_34px_rgba(22,139,255,0.14),0_0_54px_rgba(124,58,237,0.1)] backdrop-blur-2xl transition-all duration-300 hover:border-cyan-300/30">
+        <div className="relative overflow-hidden rounded-[2rem] border border-white/15 bg-[#0c0d12]/95 p-8 shadow-[0_32px_100px_rgba(0,0,0,0.78),0_0_34px_rgba(22,139,255,0.14),0_0_54px_rgba(124,58,237,0.1)] backdrop-blur-2xl transition-all duration-300 hover:border-cyan-300/30">
           <div
             className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_78%_12%,rgba(22,139,255,0.1),transparent_38%),radial-gradient(circle_at_18%_88%,rgba(124,58,237,0.08),transparent_42%)]"
             aria-hidden="true"
@@ -115,25 +119,27 @@ export default function HomePage() {
           <div className="relative z-10 rounded-[1.5rem] border border-zinc-700/70 bg-black/70 p-5 shadow-[inset_0_1px_0_rgba(255,255,255,0.04)]">
             <div className="flex items-center justify-between border-b border-white/10 pb-4">
               <div>
-                <span className="mb-1 block font-mono text-[10px] uppercase tracking-[0.2em] text-zinc-500">
+                <span className="mb-1 block font-mono text-[10px] uppercase tracking-[0.28em] text-zinc-500">
                   Our Live Execution Roadmap
                 </span>
-                <p className="text-xl font-bold tracking-tight text-white">The Stratum Framework</p>
+                <p className="font-sans text-2xl font-bold tracking-tight text-white">The Stratum Framework</p>
               </div>
-              <div className="rounded-full border border-cyan-200/30 bg-cyan-200/10 px-3 py-1 text-sm text-cyan-100">Live preview</div>
+              <div className="rounded-full border border-cyan-200/30 bg-cyan-200/10 px-3 py-1 font-sans text-sm font-semibold text-cyan-100 shadow-[0_0_20px_rgba(34,211,238,0.12)]">
+                Live preview
+              </div>
             </div>
             <div className="mt-5 grid gap-3">
               {process.map((step, index) => (
                 <div
                   key={step.title}
-                  className="flex items-center gap-4 rounded-xl border border-zinc-800/80 bg-[#07080d]/95 p-4 shadow-[0_12px_30px_rgba(0,0,0,0.32)]"
+                  className="group flex items-center gap-4 rounded-2xl border border-zinc-800/80 bg-[#07080d]/95 p-4 shadow-[0_12px_30px_rgba(0,0,0,0.32)] transition-all hover:border-cyan-300/20 hover:bg-white/[0.04]"
                 >
-                  <div className="flex h-10 w-10 items-center justify-center rounded-full border border-zinc-700/70 bg-zinc-900 font-mono font-bold text-cyan-100">
+                  <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl border border-zinc-700/70 bg-zinc-900 font-mono font-bold text-cyan-100 transition-all group-hover:border-cyan-300/40 group-hover:text-cyan-200">
                     {index + 1}
                   </div>
                   <div>
-                    <p className="font-medium text-white">{step.title}</p>
-                    <p className="text-sm text-slate-400">{step.description}</p>
+                    <p className="font-sans text-sm font-bold text-white">{step.title}</p>
+                    <p className="text-sm leading-6 text-slate-400">{step.description}</p>
                   </div>
                 </div>
               ))}
@@ -151,8 +157,8 @@ export default function HomePage() {
       <section className="relative bg-black py-24">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="mb-10 max-w-3xl">
-            <p className="text-sm uppercase tracking-[0.25em] text-cyan-200">Signature packages</p>
-            <h2 className="mt-4 font-display text-4xl font-bold normal-case leading-snug text-white">
+            <p className="font-mono text-xs uppercase tracking-[0.3em] text-cyan-200">Signature packages</p>
+            <h2 className="mt-4 font-sans text-4xl font-bold normal-case leading-tight text-white">
               Choose a strong starting point, then make it unmistakably yours.
             </h2>
             <p className="mt-4 text-base leading-8 text-slate-300">
@@ -167,8 +173,8 @@ export default function HomePage() {
 
       <section className="relative mx-auto max-w-7xl px-4 pb-20 sm:px-6 lg:px-8">
         <div className="mb-10 max-w-3xl">
-          <p className="text-sm uppercase tracking-[0.25em] text-cyan-200">A clear path forward</p>
-          <h2 className="mt-4 font-display text-4xl font-bold normal-case leading-snug text-white">From Blueprint to Launch.</h2>
+          <p className="font-mono text-xs uppercase tracking-[0.3em] text-cyan-200">A clear path forward</p>
+          <h2 className="mt-4 font-sans text-4xl font-bold normal-case leading-tight text-white">From Blueprint to Launch.</h2>
           <p className="mt-4 text-base leading-8 text-slate-300">
             We turn your idea into a polished customer experience that is easy to use, easy to manage, and ready to grow.
           </p>
@@ -177,10 +183,12 @@ export default function HomePage() {
           {outcomes.map((item) => (
             <article
               key={item.title}
-              className="rounded-2xl border border-white/5 bg-zinc-950/40 p-8 backdrop-blur-xl transition-all duration-300 hover:border-white/10"
+              className="group rounded-2xl border border-white/5 bg-zinc-950/40 p-8 backdrop-blur-xl transition-all duration-300 hover:-translate-y-1 hover:border-cyan-300/20 hover:bg-white/[0.04]"
             >
-              <item.icon className="h-7 w-7 text-cyan-200" />
-              <h3 className="mt-5 font-display text-xl font-bold normal-case leading-snug text-white">{item.title}</h3>
+              <div className="flex h-12 w-12 items-center justify-center rounded-2xl border border-white/10 bg-white/5 text-cyan-200 transition-all group-hover:border-cyan-300/30 group-hover:text-white">
+                <item.icon className="h-6 w-6" />
+              </div>
+              <h3 className="mt-5 font-sans text-xl font-bold normal-case leading-snug text-white">{item.title}</h3>
               <p className="mt-3 text-sm leading-7 text-slate-300">{item.text}</p>
             </article>
           ))}
@@ -191,8 +199,8 @@ export default function HomePage() {
         <div className="overflow-hidden rounded-2xl border border-white/5 bg-zinc-950/40 p-8 backdrop-blur-xl transition-all duration-300 hover:border-white/10">
           <div className="grid gap-10 md:grid-cols-[0.9fr_1.1fr]">
             <div>
-              <p className="text-sm uppercase tracking-[0.25em] text-fuchsia-200">Our philosophy</p>
-              <h2 className="mt-4 max-w-xl font-display text-4xl font-bold normal-case leading-snug text-white">
+              <p className="font-mono text-xs uppercase tracking-[0.3em] text-fuchsia-200">Our philosophy</p>
+              <h2 className="mt-4 max-w-xl font-sans text-4xl font-bold normal-case leading-tight text-white">
                 High-Performance Infrastructure. Tailored to Your Vision.
               </h2>
             </div>
@@ -216,8 +224,8 @@ export default function HomePage() {
       <section className="relative mx-auto max-w-7xl px-4 pb-24 sm:px-6 lg:px-8">
         <div className="grid gap-8 rounded-2xl border border-white/5 bg-zinc-950/40 p-8 backdrop-blur-xl transition-all duration-300 hover:border-white/10 md:grid-cols-[0.8fr_1.2fr]">
           <div>
-            <p className="text-sm uppercase tracking-[0.25em] text-cyan-200">Built to monetize</p>
-            <h2 className="mt-4 font-display text-3xl font-bold normal-case leading-snug text-white">
+            <p className="font-mono text-xs uppercase tracking-[0.3em] text-cyan-200">Built to monetize</p>
+            <h2 className="mt-4 font-sans text-3xl font-bold normal-case leading-tight text-white">
               A clear path from first inquiry to ongoing support.
             </h2>
           </div>
