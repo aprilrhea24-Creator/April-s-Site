@@ -4,7 +4,11 @@ import {
   ChartSpline,
   SlidersHorizontal,
   ChevronRight,
-  ArrowUpRight
+  BarChart3,
+  Cpu,
+  ShieldCheck,
+  Truck,
+  type LucideIcon
 } from "lucide-react";
 
 import { PackageGrid } from "@/components/package-grid";
@@ -15,27 +19,96 @@ const previewPortals = [
     href: "/solutions/booking-core",
     label: "Lumina Wellness Portal",
     system: "Stratum Booking Core",
-    meta: "Aesthetics intake, secure client scheduling, and practitioner roster routing."
+    meta: "Aesthetics intake, secure client scheduling, and practitioner roster routing.",
+    icon: Cpu,
+    tone: "cyan"
   },
   {
     href: "/solutions/secure-console",
     label: "Vanguard Ops Center",
     system: "Secure Console",
-    meta: "Enterprise database isolation, payment pipeline governance, and approval queues."
+    meta: "Enterprise database isolation, payment pipeline governance, and approval queues.",
+    icon: ShieldCheck,
+    tone: "violet"
   },
   {
     href: "/solutions/dispatch-autonomous",
     label: "AeroFreight Private Logistics",
     system: "Dispatch Autonomous",
-    meta: "Private fleet routing, telemetry sync, custody scans, and velocity analytics."
+    meta: "Private fleet routing, telemetry sync, custody scans, and velocity analytics.",
+    icon: Truck,
+    tone: "cyan"
   },
   {
     href: "/solutions/global-intelligence",
     label: "Nexus Corp Analytics",
     system: "Global Intelligence",
-    meta: "Multi-tenant SaaS infrastructure, cloud logs, and predictive revenue intelligence."
+    meta: "Multi-tenant SaaS infrastructure, cloud logs, and predictive revenue intelligence.",
+    icon: BarChart3,
+    tone: "violet"
   }
-];
+] satisfies Array<{
+  href: string;
+  label: string;
+  system: string;
+  meta: string;
+  icon: LucideIcon;
+  tone: "cyan" | "violet";
+}>;
+
+function SolutionCard({ portal }: { portal: (typeof previewPortals)[number] }) {
+  const Icon = portal.icon;
+  const isCyan = portal.tone === "cyan";
+  const accent = isCyan
+    ? {
+        icon: "border-cyan-300/25 bg-cyan-300/[0.04] text-cyan-300 shadow-[0_0_34px_rgba(34,211,238,0.08)]",
+        label: "text-cyan-300/70",
+        glow: "bg-cyan-400/10",
+        button: "hover:border-cyan-300/35 hover:shadow-[0_0_26px_rgba(34,211,238,0.14)]"
+      }
+    : {
+        icon: "border-violet-300/25 bg-violet-300/[0.04] text-violet-300 shadow-[0_0_34px_rgba(168,85,247,0.08)]",
+        label: "text-violet-300/70",
+        glow: "bg-violet-500/10",
+        button: "hover:border-violet-300/35 hover:shadow-[0_0_26px_rgba(168,85,247,0.14)]"
+      };
+
+  return (
+    <Link
+      href={portal.href}
+      className="group relative flex min-h-[23rem] overflow-hidden rounded-[2rem] border border-white/[0.08] bg-[#121212]/95 p-8 shadow-[0_28px_80px_rgba(0,0,0,0.42)] transition-all duration-500 hover:-translate-y-1 hover:border-white/15"
+    >
+      <div className={`pointer-events-none absolute -left-20 -top-20 h-56 w-56 rounded-full blur-3xl ${accent.glow}`} aria-hidden="true" />
+      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_80%_18%,rgba(255,255,255,0.035),transparent_28%),linear-gradient(180deg,rgba(255,255,255,0.02),transparent_55%)]" aria-hidden="true" />
+
+      <div className="relative z-10 flex w-full flex-col">
+        <div className="flex items-start justify-between gap-5">
+          <span className={`flex h-[4.55rem] w-[4.55rem] items-center justify-center rounded-3xl border ${accent.icon}`}>
+            <Icon className="h-7 w-7" aria-hidden="true" />
+          </span>
+          <span className="flex h-10 w-10 items-center justify-center rounded-full text-white/25 transition-all duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-white/70">
+            <ChevronRight className="h-5 w-5 -rotate-45" aria-hidden="true" />
+          </span>
+        </div>
+
+        <div className="mt-20">
+          <p className={`font-mono text-[10px] font-bold uppercase tracking-[0.42em] ${accent.label}`}>{portal.system}</p>
+          <h3 className="mt-6 max-w-[18rem] font-sans text-3xl font-extrabold leading-[1.05] tracking-tight text-white">
+            {portal.label}
+          </h3>
+          <p className="mt-6 max-w-[24rem] text-base font-semibold leading-8 text-zinc-500">{portal.meta}</p>
+        </div>
+
+        <span
+          className={`mt-auto inline-flex w-full items-center justify-between rounded-[1.25rem] border border-white/[0.08] bg-white/[0.055] px-7 py-4 font-mono text-[11px] font-black uppercase tracking-[0.28em] text-white transition-all duration-300 ${accent.button}`}
+        >
+          View Live Solution
+          <ChevronRight className="h-5 w-5" aria-hidden="true" />
+        </span>
+      </div>
+    </Link>
+  );
+}
 
 export default function SolutionsPage() {
   return (
@@ -80,23 +153,9 @@ export default function SolutionsPage() {
               Local Preview Runtime
             </span>
           </div>
-          <div className="mt-8 grid gap-4 md:grid-cols-2 xl:grid-cols-4">
+          <div className="mt-8 grid gap-6 md:grid-cols-2">
             {previewPortals.map((portal) => (
-              <Link
-                key={portal.href}
-                href={portal.href}
-                className="group rounded-2xl border border-white/10 bg-black/50 p-5 transition-all duration-300 hover:-translate-y-1 hover:border-cyan-300/35 hover:shadow-[0_0_34px_rgba(34,211,238,0.12)]"
-              >
-                <p className="font-mono text-[10px] font-bold uppercase tracking-[0.22em] text-zinc-500">{portal.system}</p>
-                <div className="mt-4 flex items-start justify-between gap-4">
-                  <h3 className="font-display text-xl font-bold leading-tight text-white">{portal.label}</h3>
-                  <ArrowUpRight className="h-5 w-5 shrink-0 text-cyan-200 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
-                </div>
-                <p className="mt-4 text-sm leading-6 text-zinc-400">{portal.meta}</p>
-                <span className="mt-6 inline-flex rounded-full bg-gradient-to-r from-[#00f2fe] via-[#0066ff] to-[#9d00ff] px-4 py-2 text-xs font-bold text-white shadow-[0_0_20px_rgba(0,242,254,0.14)]">
-                  View Live Solution Page
-                </span>
-              </Link>
+              <SolutionCard key={portal.href} portal={portal} />
             ))}
           </div>
         </div>

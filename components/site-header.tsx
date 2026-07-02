@@ -1,4 +1,3 @@
-import Image from "next/image";
 import Link from "next/link";
 
 const navItems = [
@@ -12,25 +11,19 @@ export function SiteHeader() {
   return (
     <header className="sticky top-0 z-30 border-b border-white/10 bg-black/25 backdrop-blur-xl">
       <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-3 sm:px-6 lg:px-8">
-        <Link href="/" className="relative isolate flex items-center gap-3">
-          <span className="relative flex h-11 w-9 shrink-0 items-center justify-center sm:h-12 sm:w-10" aria-hidden="true">
-            <Image
-              src="/stratum-logo-mark.png"
-              alt=""
-              width={760}
-              height={1024}
-              priority
-              className="h-11 w-auto object-contain sm:h-12"
-            />
-          </span>
-          <span
-            className="bg-gradient-to-r from-white via-zinc-100 to-cyan-300 bg-clip-text font-sans text-lg font-bold tracking-tight text-transparent transition-all duration-300 hover:from-cyan-300 hover:to-fuchsia-300 sm:text-xl"
-            style={{
-              backgroundImage: "linear-gradient(90deg,#ffffff,#f4f4f5,#67e8f9)",
-              WebkitBackgroundClip: "text"
-            }}
-          >
-            Stratum Studio
+        <Link href="/" className="relative isolate flex items-center" aria-label="Stratum Studio home">
+          <span className="relative flex h-[52px] w-[52px] shrink-0 items-center justify-center overflow-hidden rounded-xl" aria-hidden="true">
+            <video
+              autoPlay
+              loop
+              muted
+              playsInline
+              controls={false}
+              preload="auto"
+              className="absolute left-1/2 top-[42%] h-[92px] w-[92px] -translate-x-1/2 -translate-y-1/2 object-cover"
+            >
+              <source src="/stratum-logo-loop.mp4" type="video/mp4" />
+            </video>
           </span>
         </Link>
         <nav className="hidden items-center gap-6 md:flex">
