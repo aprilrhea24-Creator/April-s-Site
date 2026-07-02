@@ -12,7 +12,7 @@ export function SiteHeader() {
     <header className="sticky top-0 z-30 border-b border-white/10 bg-black/25 backdrop-blur-xl">
       <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-3 sm:px-6 lg:px-8">
         <Link href="/" className="relative isolate flex items-center" aria-label="Stratum Studio home">
-          <span className="relative flex h-[52px] w-[52px] shrink-0 items-center justify-center overflow-hidden rounded-xl" aria-hidden="true">
+          <span className="relative flex h-16 w-16 shrink-0 items-center justify-center overflow-hidden rounded-2xl" aria-hidden="true">
             <video
               autoPlay
               loop
@@ -20,7 +20,7 @@ export function SiteHeader() {
               playsInline
               controls={false}
               preload="auto"
-              className="absolute left-1/2 top-[42%] h-[92px] w-[92px] -translate-x-1/2 -translate-y-1/2 object-cover"
+              className="absolute left-1/2 top-[31%] h-[132px] w-[132px] -translate-x-1/2 -translate-y-1/2 object-cover"
             >
               <source src="/stratum-logo-loop.mp4" type="video/mp4" />
             </video>

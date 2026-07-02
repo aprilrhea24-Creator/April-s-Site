@@ -57,13 +57,13 @@ const landingPages: Record<LandingKey, LandingConfig> = {
       "Aesthetics clinic enterprise terminal — operational monitoring, client intake, provider scheduling, and secure profile management.",
     terminal: "Management Console",
     mode: "clinical",
-    backgroundImage: "https://storage.googleapis.com/producer-app-public/assets/7e8180ee-e9ae-4da5-828a-8903bf769de2.jpg",
+    backgroundImage: "/lumina-wellness-bg.png",
     dashboardHref: "/preview/booking-core",
     dashboardLabel: "View workflow example on dashboard",
     scenario: "Example dashboard: Lumina Wellness Portal",
-    accent: "linear-gradient(90deg,#3b82f6,#6366f1)",
-    glow: "radial-gradient(circle at 18% 16%,rgba(59,130,246,0.18),transparent 30%),radial-gradient(circle at 88% 14%,rgba(99,102,241,0.15),transparent 28%)",
-    signal: "#3b82f6",
+    accent: "linear-gradient(90deg,#22d3ee,#38bdf8,#60a5fa)",
+    glow: "radial-gradient(circle at 18% 16%,rgba(34,211,238,0.2),transparent 30%),radial-gradient(circle at 88% 14%,rgba(255,255,255,0.12),transparent 28%)",
+    signal: "#22d3ee",
     metrics: [
       { label: "Active Profiles", value: "84" },
       { label: "Providers", value: "12" },
@@ -102,12 +102,13 @@ const landingPages: Record<LandingKey, LandingConfig> = {
       "White-glove fleet transport command console — route orchestration, active custody events, private movement logs, and velocity control.",
     terminal: "Fleet Command",
     mode: "logistics",
+    backgroundImage: "/aeroflight-bg.png",
     dashboardHref: "/preview/dispatch-autonomous",
     dashboardLabel: "View workflow example on dashboard",
     scenario: "Example dashboard: AeroFreight Private Logistics",
-    accent: "linear-gradient(90deg,#6366f1,#3b82f6)",
-    glow: "radial-gradient(circle at 20% 16%,rgba(99,102,241,0.18),transparent 30%),radial-gradient(circle at 86% 20%,rgba(59,130,246,0.14),transparent 30%)",
-    signal: "#6366f1",
+    accent: "linear-gradient(90deg,#f59e0b,#38bdf8,#6366f1)",
+    glow: "radial-gradient(circle at 18% 20%,rgba(245,158,11,0.2),transparent 32%),radial-gradient(circle at 86% 18%,rgba(56,189,248,0.16),transparent 30%)",
+    signal: "#38bdf8",
     metrics: [
       { label: "Active Routes", value: "3" },
       { label: "Fleet Units", value: "18" },
@@ -146,13 +147,13 @@ const landingPages: Record<LandingKey, LandingConfig> = {
       "Global enterprise infrastructure and database terminal — approval gates, isolated clusters, escrow controls, and active security routing.",
     terminal: "Security Console",
     mode: "tactical",
-    backgroundImage: "https://storage.googleapis.com/producer-app-public/assets/1066cfe7-6bc7-45d1-b7d5-3f08449139e7.jpg",
+    backgroundImage: "/vanguard-ops-bg.png",
     dashboardHref: "/preview/secure-console",
     dashboardLabel: "View workflow example on dashboard",
     scenario: "Example dashboard: Vanguard Ops Center",
-    accent: "linear-gradient(90deg,#f97316,#fb923c)",
-    glow: "radial-gradient(circle at 20% 16%,rgba(249,115,22,0.18),transparent 30%),radial-gradient(circle at 86% 20%,rgba(251,146,60,0.14),transparent 28%)",
-    signal: "#f97316",
+    accent: "linear-gradient(90deg,#7c3aed,#a855f7,#d946ef)",
+    glow: "radial-gradient(circle at 20% 16%,rgba(124,58,237,0.22),transparent 30%),radial-gradient(circle at 86% 20%,rgba(217,70,239,0.16),transparent 28%)",
+    signal: "#a855f7",
     metrics: [
       { label: "Clusters", value: "4" },
       { label: "Approvals", value: "2" },
@@ -191,13 +192,13 @@ const landingPages: Record<LandingKey, LandingConfig> = {
       "Elite B2B SaaS enterprise platform and predictive data portal — tenant intelligence, revenue forecasting, server telemetry, and executive command views.",
     terminal: "Intelligence Matrix",
     mode: "intelligence",
-    backgroundImage: "https://storage.googleapis.com/producer-app-public/assets/c97f3ebb-38c0-44dd-abde-e8ee583e5d9e.jpg",
+    backgroundImage: "/nexus-corp-bg.png",
     dashboardHref: "/preview/global-intelligence",
     dashboardLabel: "View workflow example on dashboard",
     scenario: "Example dashboard: Nexus Corp Analytics",
     accent: "linear-gradient(90deg,#00f2fe,#0066ff,#9d00ff)",
-    glow: "radial-gradient(circle at 18% 16%,rgba(0,242,254,0.14),transparent 30%),radial-gradient(circle at 88% 12%,rgba(157,0,255,0.16),transparent 28%)",
-    signal: "#00f2fe",
+    glow: "radial-gradient(circle at 18% 16%,rgba(0,242,254,0.16),transparent 30%),radial-gradient(circle at 88% 12%,rgba(255,0,127,0.18),transparent 28%)",
+    signal: "#ff4fd8",
     metrics: [
       { label: "Tenants", value: "24" },
       { label: "MRR Signal", value: "$86K" },
@@ -699,23 +700,36 @@ function LandingPanel({
 }
 
 function ReferenceBackground({ config }: { config: LandingConfig }) {
+  const imageTreatment =
+    config.mode === "clinical"
+      ? "scale-105 object-center opacity-55"
+      : config.mode === "logistics"
+        ? "scale-105 object-center opacity-60"
+        : config.mode === "tactical"
+          ? "scale-105 object-center opacity-58"
+          : "scale-105 object-center opacity-62";
+
+  const shadeTreatment =
+    config.mode === "clinical"
+      ? "bg-[linear-gradient(90deg,rgba(2,6,23,0.9)_0%,rgba(2,6,23,0.58)_42%,rgba(2,6,23,0.24)_100%)]"
+      : config.mode === "logistics"
+        ? "bg-[linear-gradient(90deg,rgba(3,7,18,0.86)_0%,rgba(3,7,18,0.5)_48%,rgba(3,7,18,0.2)_100%)]"
+        : config.mode === "tactical"
+          ? "bg-[linear-gradient(90deg,rgba(5,5,8,0.92)_0%,rgba(5,5,8,0.62)_46%,rgba(5,5,8,0.34)_100%)]"
+          : "bg-[linear-gradient(90deg,rgba(2,6,23,0.9)_0%,rgba(2,6,23,0.48)_45%,rgba(2,6,23,0.18)_100%)]";
+
   return (
     <div className="pointer-events-none absolute inset-0 z-0 overflow-hidden">
       {config.backgroundImage ? (
         <img
           src={config.backgroundImage}
           alt=""
-          className={`h-full w-full object-cover ${
-            config.mode === "clinical"
-              ? "scale-105 opacity-30 mix-blend-lighten"
-              : config.mode === "tactical"
-                ? "scale-110 opacity-35 blur-[2px] mix-blend-lighten"
-                : "opacity-45 mix-blend-lighten"
-          }`}
+          className={`h-full w-full object-cover ${imageTreatment}`}
         />
       ) : null}
-      <div className="absolute inset-0" style={{ background: `${config.glow}, linear-gradient(180deg,#050508 0%,rgba(5,5,8,0.82) 42%,#050508 100%)` }} />
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,transparent_0%,#050508_82%)] opacity-80" />
+      <div className={`absolute inset-0 ${shadeTreatment}`} />
+      <div className="absolute inset-0" style={{ background: `${config.glow}, linear-gradient(180deg,#050508 0%,rgba(5,5,8,0.58) 40%,#050508 100%)` }} />
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_58%_42%,transparent_0%,rgba(5,5,8,0.52)_58%,#050508_100%)]" />
     </div>
   );
 }
