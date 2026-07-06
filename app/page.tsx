@@ -63,10 +63,10 @@ export default function HomePage() {
               Stratum Engine v2.4
             </div>
             <div className="w-full">
-              <h1 className="font-sans text-[clamp(3.15rem,5vw,5.75rem)] font-extrabold leading-[1.04] tracking-tight text-white drop-shadow-[0_4px_16px_rgba(0,0,0,1)]">
-                <span className="block text-white md:whitespace-nowrap">Engineered Workflows.</span>
+              <h1 className="font-sans text-[clamp(3rem,4.45vw,5.05rem)] font-extrabold leading-[1.06] tracking-tight text-white drop-shadow-[0_4px_16px_rgba(0,0,0,1)]">
+                <span className="block text-white">Engineered Workflows.</span>
                 <span
-                  className="mt-3 block bg-gradient-to-r from-cyan-400 to-purple-500 bg-clip-text text-transparent drop-shadow-[0_4px_14px_rgba(0,0,0,0.95)] md:whitespace-nowrap"
+                  className="mt-3 block bg-gradient-to-r from-cyan-400 to-purple-500 bg-clip-text text-transparent drop-shadow-[0_4px_14px_rgba(0,0,0,0.95)]"
                   style={{
                     backgroundImage: "linear-gradient(90deg, #22d3ee, #a855f7)",
                     WebkitBackgroundClip: "text",
@@ -154,7 +154,7 @@ export default function HomePage() {
         </div>
       </ParallaxHero>
 
-      <section className="relative bg-black py-24">
+      <section className="relative bg-black/80 py-24 backdrop-blur-[1px]">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="mb-10 max-w-3xl">
             <p className="font-stratum-tag">Signature packages</p>
@@ -183,7 +183,7 @@ export default function HomePage() {
           {outcomes.map((item) => (
             <article
               key={item.title}
-              className="group rounded-2xl border border-white/5 bg-zinc-950/40 p-8 backdrop-blur-xl transition-all duration-300 hover:-translate-y-1 hover:border-cyan-300/20 hover:bg-white/[0.04]"
+              className="group rounded-2xl border border-white/5 bg-zinc-950/55 p-8 backdrop-blur-xl transition-all duration-300 hover:-translate-y-1 hover:border-cyan-300/20 hover:bg-white/[0.04]"
             >
               <div className="flex h-12 w-12 items-center justify-center rounded-2xl border border-white/10 bg-white/5 text-cyan-200 transition-all group-hover:border-cyan-300/30 group-hover:text-white">
                 <item.icon className="h-6 w-6" />
@@ -196,7 +196,7 @@ export default function HomePage() {
       </section>
 
       <section className="relative mx-auto max-w-7xl px-4 pb-24 sm:px-6 lg:px-8">
-        <div className="overflow-hidden rounded-2xl border border-white/5 bg-zinc-950/40 p-8 backdrop-blur-xl transition-all duration-300 hover:border-white/10">
+        <div className="overflow-hidden rounded-2xl border border-white/5 bg-zinc-950/55 p-8 backdrop-blur-xl transition-all duration-300 hover:border-white/10">
           <div className="grid gap-10 md:grid-cols-[0.9fr_1.1fr]">
             <div>
               <p className="font-stratum-tag">Our philosophy</p>
@@ -222,7 +222,7 @@ export default function HomePage() {
       </section>
 
       <section className="relative mx-auto max-w-7xl px-4 pb-24 sm:px-6 lg:px-8">
-        <div className="grid gap-8 rounded-2xl border border-white/5 bg-zinc-950/40 p-8 backdrop-blur-xl transition-all duration-300 hover:border-white/10 md:grid-cols-[0.8fr_1.2fr]">
+        <div className="grid gap-8 rounded-2xl border border-white/5 bg-zinc-950/55 p-8 backdrop-blur-xl transition-all duration-300 hover:border-white/10 md:grid-cols-[0.8fr_1.2fr]">
           <div>
             <p className="font-stratum-tag">Built to monetize</p>
             <h2 className="mt-4 font-sans text-3xl font-bold normal-case leading-tight text-white">

@@ -11,7 +11,6 @@ import {
   type LucideIcon
 } from "lucide-react";
 
-import { BreathingBackground } from "@/components/breathing-background";
 import { PackageGrid } from "@/components/package-grid";
 import { WhyStratum } from "@/components/why-stratum";
 
@@ -113,8 +112,7 @@ function SolutionCard({ portal }: { portal: (typeof previewPortals)[number] }) {
 
 export default function SolutionsPage() {
   return (
-    <section className="relative isolate overflow-hidden bg-[#050505] py-20">
-      <BreathingBackground />
+    <section className="relative isolate overflow-hidden bg-black/60 py-20">
       <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
       <div className="max-w-3xl">
         <p className="font-stratum-tag">Solution showcase</p>

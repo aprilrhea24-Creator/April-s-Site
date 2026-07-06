@@ -54,7 +54,7 @@ export function BreathingBackground() {
     const drawParticle = (particle: Particle) => {
       ctx.beginPath();
       ctx.arc(particle.x, particle.y, particle.size, 0, Math.PI * 2);
-      ctx.fillStyle = "rgba(34, 211, 238, 0.25)";
+      ctx.fillStyle = "rgba(34, 211, 238, 0.2)";
       ctx.fill();
     };
 
@@ -68,7 +68,7 @@ export function BreathingBackground() {
       canvas.style.width = `${width}px`;
       canvas.style.height = `${height}px`;
       ctx.setTransform(pixelRatio, 0, 0, pixelRatio, 0, 0);
-      particles = Array.from({ length: 120 }, () => new Particle(width, height));
+      particles = Array.from({ length: 100 }, () => new Particle(width, height));
     };
 
     const animate = () => {
@@ -89,7 +89,7 @@ export function BreathingBackground() {
 
           if (dist < 180) {
             ctx.beginPath();
-            ctx.strokeStyle = `rgba(34, 211, 238, ${0.12 * (1 - dist / 180)})`;
+            ctx.strokeStyle = `rgba(34, 211, 238, ${0.09 * (1 - dist / 180)})`;
             ctx.lineWidth = 0.6;
             ctx.moveTo(particle.x, particle.y);
             ctx.lineTo(linkedParticle.x, linkedParticle.y);
@@ -138,9 +138,9 @@ export function BreathingBackground() {
           backgroundSize: "4px 4px"
         }}
       />
-      <div className="absolute left-[-10%] top-[-20%] h-[80%] w-[80%] animate-pulse rounded-full bg-cyan-500/10 blur-[140px]" />
+      <div className="absolute left-[-10%] top-[-20%] h-[80%] w-[80%] animate-pulse rounded-full bg-cyan-500/[0.08] blur-[140px]" />
       <div
-        className="absolute bottom-[-10%] right-[-10%] h-[60%] w-[60%] animate-pulse rounded-full bg-purple-500/5 blur-[120px]"
+        className="absolute bottom-[-10%] right-[-10%] h-[60%] w-[60%] animate-pulse rounded-full bg-purple-500/[0.06] blur-[120px]"
         style={{ animationDelay: "-4s" }}
       />
     </div>

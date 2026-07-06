@@ -4,18 +4,12 @@ import { usePathname } from "next/navigation";
 
 import { BreathingBackground } from "@/components/breathing-background";
 
-const excludedPrefixes = [
-  "/preview",
-  "/solutions/booking-core",
-  "/solutions/dispatch-autonomous",
-  "/solutions/secure-console",
-  "/solutions/global-intelligence"
-];
+const excludedPrefixes = ["/preview"];
 
 export function SiteAtmosphere() {
   const pathname = usePathname();
 
-  if (pathname === "/solutions" || excludedPrefixes.some((prefix) => pathname.startsWith(prefix))) {
+  if (excludedPrefixes.some((prefix) => pathname.startsWith(prefix))) {
     return null;
   }
 
