@@ -33,7 +33,7 @@ export function PackageGrid() {
                   ) : (
                     <span />
                   )}
-                  <span className="inline-flex items-center gap-2 font-mono text-[10px] font-bold uppercase tracking-widest text-zinc-400">
+                  <span className="font-stratum-tag inline-flex items-center gap-2">
                     <span
                       className="h-2 w-2 animate-pulse rounded-full bg-[#22d3ee] shadow-[0_0_10px_rgba(34,211,238,0.58)]"
                       aria-hidden="true"
@@ -46,7 +46,7 @@ export function PackageGrid() {
                     item.popular ? "package-popular-copy rounded-2xl bg-black/25 p-5 backdrop-blur-sm" : ""
                   }`}
                 >
-                  <p className="font-mono text-xs uppercase tracking-[0.24em] text-white/60">{item.industry}</p>
+                  <p className="font-stratum-tag">{item.industry}</p>
                   <h3 className="mt-3 font-sans text-3xl font-bold normal-case leading-tight text-white">
                     {item.title}
                   </h3>
@@ -66,13 +66,13 @@ export function PackageGrid() {
                   ))}
                 </div>
                 <div className="mt-6 rounded-2xl border border-white/[0.06] bg-black/25 p-4">
-                  <span className="mb-2 block font-mono text-[10px] uppercase tracking-[0.24em] text-zinc-500">
+                  <span className="font-stratum-tag mb-2 block">
                     Target Industries //
                   </span>
                   <p className="text-sm leading-6 text-white/70">{item.industryFit}</p>
                 </div>
                 <div className="mt-6 border-t border-white/10 pt-5">
-                  <span className="mb-1 block font-mono text-xs uppercase tracking-[0.2em] text-zinc-500">Investment //</span>
+                  <span className="font-stratum-tag mb-1 block">Investment //</span>
                   <span className="block font-sans text-3xl font-bold tracking-tight text-white">From {item.price.startingAt}</span>
                 </div>
                 <Link

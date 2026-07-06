@@ -3,6 +3,7 @@ import { Space_Grotesk } from "next/font/google";
 
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
+import { SiteAtmosphere } from "@/components/site-atmosphere";
 
 import "./globals.css";
 
@@ -22,9 +23,12 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
   return (
     <html lang="en" className={spaceGrotesk.variable}>
       <body className="min-h-screen bg-black font-body text-pearl">
-        <SiteHeader />
-        <main>{children}</main>
-        <SiteFooter />
+        <SiteAtmosphere />
+        <div className="relative z-10">
+          <SiteHeader />
+          <main>{children}</main>
+          <SiteFooter />
+        </div>
       </body>
     </html>
   );

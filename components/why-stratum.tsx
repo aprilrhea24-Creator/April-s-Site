@@ -27,7 +27,7 @@ export function WhyStratum() {
   return (
     <section className="mx-auto mt-24 max-w-7xl" aria-labelledby="architecture-vs-templates">
       <div className="max-w-3xl">
-        <p className="font-mono text-xs uppercase tracking-[0.28em] text-cyan-300">Why Stratum</p>
+        <p className="font-stratum-tag">Why Stratum</p>
         <h2
           id="architecture-vs-templates"
           className="mt-4 font-sans text-4xl font-bold leading-tight text-white sm:text-5xl"
@@ -64,11 +64,7 @@ export function WhyStratum() {
               <div className="relative">
                 <div className="flex items-start justify-between gap-5">
                   <div>
-                    <p
-                      className={`font-mono text-[10px] uppercase tracking-[0.24em] ${
-                        isStratum ? "text-cyan-300" : "text-zinc-600"
-                      }`}
-                    >
+                    <p className="font-stratum-tag">
                       {item.label}
                     </p>
                     <h3 className="mt-4 font-sans text-2xl font-bold text-white">{item.focus}</h3>
@@ -93,7 +89,7 @@ export function WhyStratum() {
                 >
                   <Signal className={`mt-0.5 h-5 w-5 shrink-0 ${isStratum ? "text-cyan-300" : "text-zinc-600"}`} />
                   <div>
-                    <p className="font-mono text-[10px] uppercase tracking-[0.22em] text-zinc-600">Operational reality</p>
+                    <p className="font-stratum-tag">Operational reality</p>
                     <p className={`mt-2 text-sm font-medium leading-6 ${isStratum ? "text-cyan-50" : "text-zinc-400"}`}>
                       {item.reality}
                     </p>

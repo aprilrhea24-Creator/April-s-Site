@@ -93,7 +93,7 @@ function SolutionCard({ portal }: { portal: (typeof previewPortals)[number] }) {
         </div>
 
         <div className="mt-20">
-          <p className={`font-mono text-[10px] font-bold uppercase tracking-[0.42em] ${accent.label}`}>{portal.system}</p>
+          <p className="font-stratum-tag">{portal.system}</p>
           <h3 className="mt-6 max-w-[18rem] font-sans text-3xl font-extrabold leading-[1.05] tracking-tight text-white">
             {portal.label}
           </h3>
@@ -101,7 +101,7 @@ function SolutionCard({ portal }: { portal: (typeof previewPortals)[number] }) {
         </div>
 
         <span
-          className={`mt-auto inline-flex w-full items-center justify-between rounded-[1.25rem] border border-white/[0.08] bg-white/[0.055] px-7 py-4 font-mono text-[11px] font-black uppercase tracking-[0.28em] text-white transition-all duration-300 ${accent.button}`}
+          className={`font-stratum-tag mt-auto inline-flex w-full items-center justify-between rounded-[1.25rem] border border-white/[0.08] bg-white/[0.055] px-7 py-4 transition-all duration-300 hover:text-white ${accent.button}`}
         >
           View Live Solution
           <ChevronRight className="h-5 w-5" aria-hidden="true" />
@@ -117,7 +117,7 @@ export default function SolutionsPage() {
       <BreathingBackground />
       <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
       <div className="max-w-3xl">
-        <p className="text-sm uppercase tracking-[0.28em] text-cyan-200">Solution showcase</p>
+        <p className="font-stratum-tag">Solution showcase</p>
         <h1 className="mt-4 font-display text-4xl font-extrabold leading-tight tracking-tight text-white sm:text-5xl">
           Stratum product frameworks engineered for distinct markets.
         </h1>
@@ -129,7 +129,7 @@ export default function SolutionsPage() {
 
       <div className="mt-12">
         <div className="mb-7 max-w-3xl">
-          <p className="text-sm uppercase tracking-[0.25em] text-cyan-200">Build packages</p>
+          <p className="font-stratum-tag">Build packages</p>
           <h2 className="mt-3 font-display text-3xl font-bold normal-case leading-snug text-white">
             Choose the operational foundation behind your style.
           </h2>
@@ -142,7 +142,7 @@ export default function SolutionsPage() {
         <div className="rounded-3xl border border-white/10 bg-[#0c0d12] p-6 backdrop-blur-xl">
           <div className="flex flex-wrap items-end justify-between gap-6">
             <div className="max-w-2xl">
-              <p className="font-mono text-xs font-bold uppercase tracking-[0.28em] text-cyan-200">Live Solution Pages</p>
+              <p className="font-stratum-tag">Live Solution Pages</p>
               <h2 className="mt-3 font-display text-3xl font-bold normal-case leading-snug text-white">
                 Landing pages that explain the workflow before the dashboard example.
               </h2>
@@ -150,7 +150,7 @@ export default function SolutionsPage() {
                 Each page shows how the framework can be customized around the client&apos;s brand, workflow, and dashboard needs.
               </p>
             </div>
-            <span className="inline-flex items-center gap-2 rounded-full border border-cyan-300/15 bg-cyan-300/5 px-3 py-1.5 font-mono text-[10px] font-bold uppercase tracking-[0.24em] text-zinc-300">
+            <span className="font-stratum-tag inline-flex items-center gap-2 rounded-full border border-cyan-300/15 bg-cyan-300/5 px-3 py-1.5">
               <span className="h-2 w-2 animate-pulse rounded-full bg-[#22d3ee] shadow-[0_0_14px_rgba(34,211,238,0.9)]" />
               Local Preview Runtime
             </span>

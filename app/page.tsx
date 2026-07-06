@@ -58,7 +58,7 @@ export default function HomePage() {
             aria-hidden="true"
           />
           <div className="relative z-10 flex flex-col items-center text-center md:items-start md:text-left">
-            <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-3 py-1 font-mono text-[10px] font-bold uppercase tracking-[0.28em] text-cyan-200 backdrop-blur-md">
+            <div className="font-stratum-tag mb-5 inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-3 py-1 backdrop-blur-md">
               <Terminal className="h-3 w-3" />
               Stratum Engine v2.4
             </div>
@@ -119,7 +119,7 @@ export default function HomePage() {
           <div className="relative z-10 rounded-[1.5rem] border border-zinc-700/70 bg-black/70 p-5 shadow-[inset_0_1px_0_rgba(255,255,255,0.04)]">
             <div className="flex items-center justify-between border-b border-white/10 pb-4">
               <div>
-                <span className="mb-1 block font-mono text-[10px] uppercase tracking-[0.28em] text-zinc-500">
+                <span className="font-stratum-tag mb-1 block">
                   Our Live Execution Roadmap
                 </span>
                 <p className="font-sans text-2xl font-bold tracking-tight text-white">The Stratum Framework</p>
@@ -145,7 +145,7 @@ export default function HomePage() {
               ))}
             </div>
             <div className="mt-5 rounded-xl border border-cyan-300/25 bg-[linear-gradient(135deg,rgba(0,212,232,0.08),rgba(22,139,255,0.06),rgba(124,58,237,0.08))] p-4 shadow-[0_14px_34px_rgba(0,0,0,0.35)]">
-              <p className="text-sm uppercase tracking-[0.2em] text-cyan-100">Protected every step</p>
+              <p className="font-stratum-tag">Protected every step</p>
               <p className="mt-2 text-sm leading-6 text-zinc-200">
                 Payments, approvals, and final ownership stay clear from your first preview through launch day.
               </p>
@@ -157,7 +157,7 @@ export default function HomePage() {
       <section className="relative bg-black py-24">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="mb-10 max-w-3xl">
-            <p className="font-mono text-xs uppercase tracking-[0.3em] text-cyan-200">Signature packages</p>
+            <p className="font-stratum-tag">Signature packages</p>
             <h2 className="mt-4 font-sans text-4xl font-bold normal-case leading-tight text-white">
               Choose a strong starting point, then make it unmistakably yours.
             </h2>
@@ -173,7 +173,7 @@ export default function HomePage() {
 
       <section className="relative mx-auto max-w-7xl px-4 pb-20 sm:px-6 lg:px-8">
         <div className="mb-10 max-w-3xl">
-          <p className="font-mono text-xs uppercase tracking-[0.3em] text-cyan-200">A clear path forward</p>
+          <p className="font-stratum-tag">A clear path forward</p>
           <h2 className="mt-4 font-sans text-4xl font-bold normal-case leading-tight text-white">From Blueprint to Launch.</h2>
           <p className="mt-4 text-base leading-8 text-slate-300">
             We turn your idea into a polished customer experience that is easy to use, easy to manage, and ready to grow.
@@ -199,7 +199,7 @@ export default function HomePage() {
         <div className="overflow-hidden rounded-2xl border border-white/5 bg-zinc-950/40 p-8 backdrop-blur-xl transition-all duration-300 hover:border-white/10">
           <div className="grid gap-10 md:grid-cols-[0.9fr_1.1fr]">
             <div>
-              <p className="font-mono text-xs uppercase tracking-[0.3em] text-fuchsia-200">Our philosophy</p>
+              <p className="font-stratum-tag">Our philosophy</p>
               <h2 className="mt-4 max-w-xl font-sans text-4xl font-bold normal-case leading-tight text-white">
                 High-Performance Infrastructure. Tailored to Your Vision.
               </h2>
@@ -224,7 +224,7 @@ export default function HomePage() {
       <section className="relative mx-auto max-w-7xl px-4 pb-24 sm:px-6 lg:px-8">
         <div className="grid gap-8 rounded-2xl border border-white/5 bg-zinc-950/40 p-8 backdrop-blur-xl transition-all duration-300 hover:border-white/10 md:grid-cols-[0.8fr_1.2fr]">
           <div>
-            <p className="font-mono text-xs uppercase tracking-[0.3em] text-cyan-200">Built to monetize</p>
+            <p className="font-stratum-tag">Built to monetize</p>
             <h2 className="mt-4 font-sans text-3xl font-bold normal-case leading-tight text-white">
               A clear path from first inquiry to ongoing support.
             </h2>
