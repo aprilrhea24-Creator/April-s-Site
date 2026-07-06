@@ -534,6 +534,13 @@ function ClinicalLanding({ config, packageDetail }: { config: LandingConfig; pac
                 Refining the human
                 <span className="block font-light italic normal-case tracking-[-0.05em] text-slate-400">canvas</span>
               </h1>
+              <div className="mt-8 flex flex-wrap gap-3">
+                {["Treatment intake", "Provider roster", "Consent vault"].map((item) => (
+                  <span key={item} className="rounded-full border border-cyan-100/25 bg-cyan-50/10 px-4 py-2 font-mono text-[10px] font-black uppercase tracking-[0.28em] text-cyan-50 shadow-[0_0_24px_rgba(34,211,238,0.12)] backdrop-blur-xl">
+                    {item}
+                  </span>
+                ))}
+              </div>
               <div className="mt-12 grid gap-6 border-t border-white/10 pt-8 lg:grid-cols-[0.85fr_1fr]">
                 <p className="font-mono text-xs font-bold uppercase leading-loose tracking-[0.26em] text-slate-500">{config.subtitle}</p>
                 <div className="grid grid-cols-2 gap-4 md:grid-cols-4">
@@ -584,6 +591,18 @@ function LogisticsLanding({ config, packageDetail }: { config: LandingConfig; pa
               <span className="block bg-gradient-to-r from-amber-200 via-cyan-200 to-slate-700 bg-clip-text font-light text-transparent">Private</span>
             </h1>
             <p className="mt-8 max-w-xl font-mono text-xs font-bold uppercase leading-loose tracking-[0.22em] text-slate-500">{config.subtitle}</p>
+            <div className="mt-8 grid gap-3 sm:grid-cols-3">
+              {[
+                ["LHR", "Outbound gate"],
+                ["JFK", "Priority landing"],
+                ["DXB", "Secure handoff"]
+              ].map(([code, label]) => (
+                <div key={code} className="rounded-2xl border border-amber-300/15 bg-black/35 p-4 shadow-[0_0_32px_rgba(245,158,11,0.08)]">
+                  <p className="font-mono text-2xl font-black text-white">{code}</p>
+                  <p className="mt-2 font-mono text-[9px] font-black uppercase tracking-[0.22em] text-amber-200/70">{label}</p>
+                </div>
+              ))}
+            </div>
             <div className="mt-10 grid grid-cols-2 gap-4">
               {config.metrics.map((metric) => <MetricTile key={metric.label} metric={metric} />)}
             </div>
@@ -628,6 +647,18 @@ function TacticalLanding({ config, packageDetail }: { config: LandingConfig; pac
               <span className="block bg-gradient-to-r from-purple-200 via-fuchsia-400 to-violet-700 bg-clip-text text-transparent">Ops Center</span>
             </h1>
             <p className="mt-8 max-w-2xl text-xs font-black uppercase leading-loose tracking-[0.28em] text-purple-200/55">{config.subtitle}</p>
+            <div className="mt-8 grid gap-4 sm:grid-cols-3">
+              {[
+                ["04", "Isolated clusters"],
+                ["RBAC", "Permission gates"],
+                ["LOCK", "Escrow vault"]
+              ].map(([value, label]) => (
+                <div key={value} className="border border-purple-400/20 bg-purple-950/10 p-5 shadow-[inset_0_0_24px_rgba(168,85,247,0.05)]">
+                  <p className="text-3xl font-black text-white">{value}</p>
+                  <p className="mt-3 text-[9px] font-black uppercase tracking-[0.28em] text-purple-200/60">{label}</p>
+                </div>
+              ))}
+            </div>
             <div className="mt-10 grid grid-cols-2 gap-4 md:grid-cols-4">{config.metrics.map((metric) => <MetricTile key={metric.label} metric={metric} />)}</div>
           </div>
           <div className="rounded-[2rem] border border-purple-400/25 bg-[#08040c]/76 p-7 shadow-[0_0_90px_rgba(168,85,247,0.16)] backdrop-blur-xl">
@@ -656,6 +687,13 @@ function IntelligenceLanding({ config, packageDetail }: { config: LandingConfig;
               <span className="block bg-gradient-to-r from-cyan-200 via-fuchsia-300 to-pink-500 bg-clip-text text-transparent">Analytics</span>
             </h1>
             <p className="mt-8 max-w-xl font-mono text-xs font-bold uppercase leading-loose tracking-[0.24em] text-slate-500">{config.subtitle}</p>
+            <div className="mt-8 flex max-w-2xl flex-wrap gap-3">
+              {["+18% forecast lift", "$86K MRR signal", "24 tenant layers"].map((item) => (
+                <span key={item} className="rounded-2xl border border-fuchsia-300/20 bg-fuchsia-500/10 px-4 py-3 font-mono text-[10px] font-black uppercase tracking-[0.24em] text-fuchsia-100 shadow-[0_0_34px_rgba(255,0,127,0.1)] backdrop-blur-xl">
+                  {item}
+                </span>
+              ))}
+            </div>
             <div className="mt-10"><LandingActions config={config} packageDetail={packageDetail} /></div>
           </div>
           <div className="rounded-[2rem] border border-fuchsia-300/18 bg-[#080510]/72 p-7 shadow-[0_0_110px_rgba(255,0,127,0.16)] backdrop-blur-xl">

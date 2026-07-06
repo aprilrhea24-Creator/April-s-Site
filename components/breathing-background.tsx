@@ -37,7 +37,12 @@ class Particle {
   }
 }
 
-export function BreathingBackground() {
+type BreathingBackgroundProps = {
+  fixed?: boolean;
+  overlay?: boolean;
+};
+
+export function BreathingBackground({ fixed = true, overlay = false }: BreathingBackgroundProps) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
 
   useEffect(() => {
@@ -127,20 +132,20 @@ export function BreathingBackground() {
   }, []);
 
   return (
-    <div className="pointer-events-none fixed inset-0 z-0 overflow-hidden">
-      <div className="absolute inset-0 bg-[#050505]" />
+    <div className={`pointer-events-none ${fixed ? "fixed" : "absolute"} inset-0 ${overlay ? "z-20 opacity-45 mix-blend-screen" : "z-0"} overflow-hidden`}>
+      {overlay ? null : <div className="absolute inset-0 bg-[#050505]" />}
       <canvas ref={canvasRef} className="absolute inset-0" />
       <div
-        className="absolute inset-0 opacity-[0.12] mix-blend-overlay"
+        className={`absolute inset-0 ${overlay ? "opacity-[0.05]" : "opacity-[0.12]"} mix-blend-overlay`}
         style={{
           backgroundImage:
             "radial-gradient(circle at 1px 1px, rgba(255,255,255,0.18) 1px, transparent 0)",
           backgroundSize: "4px 4px"
         }}
       />
-      <div className="absolute left-[-10%] top-[-20%] h-[80%] w-[80%] animate-pulse rounded-full bg-cyan-500/[0.08] blur-[140px]" />
+      <div className={`absolute left-[-10%] top-[-20%] h-[80%] w-[80%] animate-pulse rounded-full ${overlay ? "bg-cyan-400/[0.035]" : "bg-cyan-500/[0.08]"} blur-[140px]`} />
       <div
-        className="absolute bottom-[-10%] right-[-10%] h-[60%] w-[60%] animate-pulse rounded-full bg-purple-500/[0.06] blur-[120px]"
+        className={`absolute bottom-[-10%] right-[-10%] h-[60%] w-[60%] animate-pulse rounded-full ${overlay ? "bg-purple-500/[0.035]" : "bg-purple-500/[0.06]"} blur-[120px]`}
         style={{ animationDelay: "-4s" }}
       />
     </div>

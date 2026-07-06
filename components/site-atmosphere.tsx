@@ -9,9 +9,9 @@ const excludedPrefixes = ["/preview"];
 export function SiteAtmosphere() {
   const pathname = usePathname();
 
-  if (excludedPrefixes.some((prefix) => pathname.startsWith(prefix))) {
+  if (pathname === "/" || excludedPrefixes.some((prefix) => pathname.startsWith(prefix))) {
     return null;
   }
 
-  return <BreathingBackground />;
+  return <BreathingBackground overlay />;
 }

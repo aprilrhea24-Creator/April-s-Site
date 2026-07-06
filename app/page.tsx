@@ -5,6 +5,7 @@ import { MaintenanceBanner } from "@/components/maintenance-banner";
 import { PackageGrid } from "@/components/package-grid";
 import { ParallaxHero } from "@/components/parallax-hero";
 import { WhyStratum } from "@/components/why-stratum";
+import { BreathingBackground } from "@/components/breathing-background";
 
 const outcomes = [
   {
@@ -154,8 +155,10 @@ export default function HomePage() {
         </div>
       </ParallaxHero>
 
-      <section className="relative bg-black/80 py-24 backdrop-blur-[1px]">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div className="relative isolate overflow-hidden">
+        <BreathingBackground fixed={false} />
+      <section className="relative z-10 bg-black/70 py-24 backdrop-blur-[1px]">
+        <div className="mx-auto max-w-[82rem] px-4 sm:px-6 lg:px-8">
           <div className="mb-10 max-w-3xl">
             <p className="font-stratum-tag">Signature packages</p>
             <h2 className="mt-4 font-sans text-4xl font-bold normal-case leading-tight text-white">
@@ -171,7 +174,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className="relative mx-auto max-w-7xl px-4 pb-20 sm:px-6 lg:px-8">
+      <section className="relative z-10 mx-auto max-w-[82rem] px-4 pb-20 sm:px-6 lg:px-8">
         <div className="mb-10 max-w-3xl">
           <p className="font-stratum-tag">A clear path forward</p>
           <h2 className="mt-4 font-sans text-4xl font-bold normal-case leading-tight text-white">From Blueprint to Launch.</h2>
@@ -195,7 +198,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className="relative mx-auto max-w-7xl px-4 pb-24 sm:px-6 lg:px-8">
+      <section className="relative z-10 mx-auto max-w-[82rem] px-4 pb-24 sm:px-6 lg:px-8">
         <div className="overflow-hidden rounded-2xl border border-white/5 bg-zinc-950/55 p-8 backdrop-blur-xl transition-all duration-300 hover:border-white/10">
           <div className="grid gap-10 md:grid-cols-[0.9fr_1.1fr]">
             <div>
@@ -221,7 +224,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className="relative mx-auto max-w-7xl px-4 pb-24 sm:px-6 lg:px-8">
+      <section className="relative z-10 mx-auto max-w-[82rem] px-4 pb-24 sm:px-6 lg:px-8">
         <div className="grid gap-8 rounded-2xl border border-white/5 bg-zinc-950/55 p-8 backdrop-blur-xl transition-all duration-300 hover:border-white/10 md:grid-cols-[0.8fr_1.2fr]">
           <div>
             <p className="font-stratum-tag">Built to monetize</p>
@@ -257,6 +260,7 @@ export default function HomePage() {
           </div>
         </div>
       </section>
+      </div>
     </div>
   );
 }
