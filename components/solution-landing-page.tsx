@@ -500,6 +500,9 @@ function ClinicalLanding({ config, packageDetail }: { config: LandingConfig; pac
   return (
     <main className="relative min-h-screen overflow-hidden bg-[#08090a] text-white">
       <ReferenceBackground config={config} />
+      <div className="pointer-events-none absolute bottom-8 left-4 z-[1] text-[clamp(6rem,15vw,17rem)] font-black uppercase leading-none tracking-[-0.08em] text-white/[0.05]">
+        Wellness
+      </div>
       <section className="relative z-10">
         <div className="mx-auto flex min-h-[calc(100vh-96px)] max-w-[1500px] flex-col px-6 py-10">
           <div className="flex flex-wrap items-center justify-between gap-6 border-b border-cyan-100/20 bg-white/[0.08] px-6 py-5 shadow-[0_22px_80px_rgba(8,47,73,0.22)] backdrop-blur-xl">
@@ -582,6 +585,9 @@ function LogisticsLanding({ config, packageDetail }: { config: LandingConfig; pa
     <main className="relative min-h-screen overflow-hidden bg-[#050608] text-white">
       <ReferenceBackground config={config} />
       <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_1px_1px,rgba(245,158,11,0.18)_1px,transparent_0)] bg-[size:48px_48px]" />
+      <div className="pointer-events-none absolute bottom-12 right-6 z-[1] text-[clamp(5rem,13vw,15rem)] font-black uppercase italic leading-none tracking-[-0.08em] text-amber-100/[0.06]">
+        Air Route
+      </div>
       <section className="relative z-10 mx-auto max-w-[1450px] px-6 py-20">
         <div className="grid gap-10 lg:grid-cols-[0.85fr_1.15fr]">
           <div className="rounded-[2rem] border border-amber-300/25 bg-[#050608]/62 p-8 shadow-[0_0_80px_rgba(245,158,11,0.13)] backdrop-blur-xl">
@@ -635,6 +641,9 @@ function TacticalLanding({ config, packageDetail }: { config: LandingConfig; pac
     <main className="relative min-h-screen overflow-hidden bg-[#020202] font-mono text-white">
       <ReferenceBackground config={config} />
       <div className="pointer-events-none fixed inset-0 z-10 opacity-[0.07] bg-[linear-gradient(rgba(18,16,16,0)_50%,rgba(0,0,0,0.25)_50%),linear-gradient(90deg,rgba(168,85,247,0.18),rgba(0,0,0,0.02),rgba(217,70,239,0.14))] bg-[size:100%_4px,4px_100%]" />
+      <div className="pointer-events-none absolute bottom-10 left-6 z-[1] text-[clamp(6rem,15vw,17rem)] font-black uppercase leading-none tracking-[-0.08em] text-purple-200/[0.055]">
+        Vault
+      </div>
       <section className="relative z-20 mx-auto max-w-[1450px] px-6 py-20">
         <div className="flex items-center justify-between border-b border-purple-400/20 pb-10">
           <p className="text-[10px] font-black uppercase tracking-[0.6em] text-purple-300">Security Console</p>
@@ -678,6 +687,9 @@ function IntelligenceLanding({ config, packageDetail }: { config: LandingConfig;
   return (
     <main className="relative min-h-screen overflow-hidden bg-[#020203] text-white">
       <ReferenceBackground config={config} />
+      <div className="pointer-events-none absolute bottom-10 right-6 z-[1] text-[clamp(6rem,15vw,17rem)] font-black uppercase leading-none tracking-[-0.08em] text-fuchsia-200/[0.06]">
+        Yield
+      </div>
       <section className="relative z-10 mx-auto max-w-[1450px] px-6 py-20">
         <div className="grid min-h-[78vh] gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
           <div>
@@ -740,21 +752,21 @@ function LandingPanel({
 function ReferenceBackground({ config }: { config: LandingConfig }) {
   const imageTreatment =
     config.mode === "clinical"
-      ? "scale-105 object-center opacity-90"
+      ? "scale-105 object-center opacity-100"
       : config.mode === "logistics"
-        ? "scale-105 object-center opacity-92"
+        ? "scale-105 object-center opacity-100"
         : config.mode === "tactical"
-          ? "scale-105 object-center opacity-88"
-          : "scale-105 object-center opacity-92";
+          ? "scale-105 object-center opacity-95"
+          : "scale-105 object-center opacity-100";
 
   const shadeTreatment =
     config.mode === "clinical"
-      ? "bg-[linear-gradient(90deg,rgba(2,6,23,0.68)_0%,rgba(2,6,23,0.32)_42%,rgba(2,6,23,0.08)_100%)]"
+      ? "bg-[linear-gradient(90deg,rgba(2,6,23,0.44)_0%,rgba(2,6,23,0.16)_42%,rgba(2,6,23,0.02)_100%)]"
       : config.mode === "logistics"
-        ? "bg-[linear-gradient(90deg,rgba(3,7,18,0.64)_0%,rgba(3,7,18,0.28)_48%,rgba(3,7,18,0.08)_100%)]"
+        ? "bg-[linear-gradient(90deg,rgba(3,7,18,0.46)_0%,rgba(3,7,18,0.16)_48%,rgba(3,7,18,0.02)_100%)]"
         : config.mode === "tactical"
-          ? "bg-[linear-gradient(90deg,rgba(5,5,8,0.7)_0%,rgba(5,5,8,0.35)_46%,rgba(5,5,8,0.12)_100%)]"
-          : "bg-[linear-gradient(90deg,rgba(2,6,23,0.66)_0%,rgba(2,6,23,0.26)_45%,rgba(2,6,23,0.06)_100%)]";
+          ? "bg-[linear-gradient(90deg,rgba(5,5,8,0.5)_0%,rgba(5,5,8,0.22)_46%,rgba(5,5,8,0.04)_100%)]"
+          : "bg-[linear-gradient(90deg,rgba(2,6,23,0.48)_0%,rgba(2,6,23,0.16)_45%,rgba(2,6,23,0.02)_100%)]";
 
   return (
     <div className="pointer-events-none absolute inset-0 z-0 overflow-hidden">
@@ -766,8 +778,8 @@ function ReferenceBackground({ config }: { config: LandingConfig }) {
         />
       ) : null}
       <div className={`absolute inset-0 ${shadeTreatment}`} />
-      <div className="absolute inset-0" style={{ background: `${config.glow}, linear-gradient(180deg,rgba(5,5,8,0.62) 0%,rgba(5,5,8,0.24) 42%,rgba(5,5,8,0.72) 100%)` }} />
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_58%_42%,transparent_0%,rgba(5,5,8,0.18)_58%,rgba(5,5,8,0.74)_100%)]" />
+      <div className="absolute inset-0" style={{ background: `${config.glow}, linear-gradient(180deg,rgba(5,5,8,0.34) 0%,rgba(5,5,8,0.08) 42%,rgba(5,5,8,0.5) 100%)` }} />
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_58%_42%,transparent_0%,rgba(5,5,8,0.08)_58%,rgba(5,5,8,0.48)_100%)]" />
     </div>
   );
 }

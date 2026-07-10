@@ -12,7 +12,7 @@ export function SiteHeader() {
     <header className="sticky top-0 z-30 border-b border-white/10 bg-black/25 backdrop-blur-xl">
       <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-3 sm:px-6 lg:px-8">
         <Link href="/" className="relative isolate flex items-center" aria-label="Stratum Studio home">
-          <span className="relative flex h-[96px] w-[96px] shrink-0 items-center justify-center overflow-hidden rounded-[1.65rem] bg-black shadow-[0_0_34px_rgba(34,211,238,0.2)]" aria-hidden="true">
+          <span className="relative flex h-[112px] w-[112px] shrink-0 items-center justify-center overflow-hidden rounded-[1.9rem] bg-black shadow-[0_0_38px_rgba(34,211,238,0.18)]" aria-hidden="true">
             <video
               autoPlay
               loop
@@ -20,11 +20,11 @@ export function SiteHeader() {
               playsInline
               controls={false}
               preload="auto"
-              className="absolute left-1/2 top-[38%] h-[172px] w-[172px] -translate-x-1/2 -translate-y-1/2 object-cover"
+              className="absolute left-1/2 top-[37%] h-[204px] w-[204px] -translate-x-1/2 -translate-y-1/2 object-cover"
             >
               <source src="/stratum-logo-loop.mp4" type="video/mp4" />
             </video>
-            <span className="pointer-events-none absolute inset-x-0 bottom-0 h-9 bg-gradient-to-t from-black via-black/95 to-transparent" />
+            <span className="pointer-events-none absolute inset-x-0 bottom-0 h-14 bg-gradient-to-t from-black via-black/95 to-transparent" />
           </span>
         </Link>
         <nav className="hidden items-center gap-6 md:flex">

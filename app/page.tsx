@@ -155,9 +155,17 @@ export default function HomePage() {
         </div>
       </ParallaxHero>
 
-      <div className="relative isolate overflow-hidden">
+      <div className="relative isolate overflow-hidden bg-black">
         <BreathingBackground fixed={false} />
-      <section className="relative z-10 bg-black/70 py-24 backdrop-blur-[1px]">
+        <div
+          className="pointer-events-none absolute inset-0 z-[1]"
+          style={{
+            background:
+              "radial-gradient(circle at 26% 8%, rgba(34,211,238,0.18), transparent 32%), radial-gradient(circle at 78% 18%, rgba(168,85,247,0.14), transparent 34%), linear-gradient(180deg, rgba(0,0,0,0.12), rgba(0,0,0,0.34) 76%, rgba(0,0,0,0.56))"
+          }}
+          aria-hidden="true"
+        />
+      <section className="relative z-10 bg-transparent py-24">
         <div className="mx-auto max-w-[82rem] px-4 sm:px-6 lg:px-8">
           <div className="mb-10 max-w-3xl">
             <p className="font-stratum-tag">Signature packages</p>
