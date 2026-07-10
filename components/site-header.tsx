@@ -20,11 +20,11 @@ export function SiteHeader() {
               playsInline
               controls={false}
               preload="auto"
-              className="absolute left-1/2 top-[37%] h-[204px] w-[204px] -translate-x-1/2 -translate-y-1/2 object-cover"
+              className="absolute left-1/2 top-[43%] h-[204px] w-[204px] -translate-x-1/2 -translate-y-1/2 object-cover"
             >
               <source src="/stratum-logo-loop.mp4" type="video/mp4" />
             </video>
-            <span className="pointer-events-none absolute inset-x-0 bottom-0 h-14 bg-gradient-to-t from-black via-black/95 to-transparent" />
+            <span className="pointer-events-none absolute inset-x-0 bottom-0 h-9 bg-gradient-to-t from-black via-black to-transparent" />
           </span>
         </Link>
         <nav className="hidden items-center gap-6 md:flex">

@@ -40,9 +40,10 @@ class Particle {
 type BreathingBackgroundProps = {
   fixed?: boolean;
   overlay?: boolean;
+  transparentBase?: boolean;
 };
 
-export function BreathingBackground({ fixed = true, overlay = false }: BreathingBackgroundProps) {
+export function BreathingBackground({ fixed = true, overlay = false, transparentBase = false }: BreathingBackgroundProps) {
   const containerRef = useRef<HTMLDivElement>(null);
   const canvasRef = useRef<HTMLCanvasElement>(null);
 
@@ -150,7 +151,7 @@ export function BreathingBackground({ fixed = true, overlay = false }: Breathing
       ref={containerRef}
       className={`pointer-events-none ${fixed ? "fixed" : "absolute"} inset-0 ${overlay ? "z-20 opacity-65 mix-blend-screen" : "z-0"} overflow-hidden`}
     >
-      {overlay ? null : <div className="absolute inset-0 bg-[#050505]" />}
+      {overlay || transparentBase ? null : <div className="absolute inset-0 bg-[#050505]" />}
       <canvas ref={canvasRef} className="absolute inset-0" />
       <div
         className={`absolute inset-0 ${overlay ? "opacity-[0.08]" : "opacity-20"} mix-blend-overlay bg-[url('https://grainy-gradients.vercel.app/noise.svg')]`}

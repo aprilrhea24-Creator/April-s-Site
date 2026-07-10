@@ -155,8 +155,8 @@ export default function HomePage() {
         </div>
       </ParallaxHero>
 
-      <div className="relative isolate overflow-hidden bg-black">
-        <BreathingBackground fixed={false} />
+      <div className="relative isolate -mt-20 overflow-hidden bg-[linear-gradient(180deg,rgba(5,5,8,0)_0%,rgba(5,5,8,0.74)_10rem,#000000_22rem)] pt-20">
+        <BreathingBackground fixed={false} transparentBase />
         <section className="relative z-10 bg-transparent py-24">
         <div className="mx-auto max-w-[82rem] px-4 sm:px-6 lg:px-8">
           <div className="mb-10 max-w-3xl">
