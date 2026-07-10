@@ -124,8 +124,11 @@ export function BreathingBackground({ fixed = true, overlay = false }: Breathing
     init();
     animate();
 
-    const resizeObserver = fixed || !containerRef.current ? null : new ResizeObserver(init);
-    resizeObserver?.observe(containerRef.current);
+    const observedContainer = containerRef.current;
+    const resizeObserver = fixed || !observedContainer ? null : new ResizeObserver(init);
+    if (resizeObserver && observedContainer) {
+      resizeObserver.observe(observedContainer);
+    }
     window.addEventListener("resize", init);
     window.addEventListener("mousemove", handleMouseMove);
     window.addEventListener("mouseout", handleMouseLeave);
