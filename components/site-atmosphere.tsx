@@ -4,7 +4,7 @@ import { usePathname } from "next/navigation";
 
 import { BreathingBackground } from "@/components/breathing-background";
 
-const excludedPrefixes = ["/preview"];
+const excludedPrefixes = ["/preview", "/solutions"];
 
 export function SiteAtmosphere() {
   const pathname = usePathname();

@@ -61,7 +61,7 @@ export function BreathingBackground({ fixed = true, overlay = false }: Breathing
     const drawParticle = (particle: Particle) => {
       ctx.beginPath();
       ctx.arc(particle.x, particle.y, particle.size, 0, Math.PI * 2);
-      ctx.fillStyle = "rgba(34, 211, 238, 0.82)";
+      ctx.fillStyle = "rgba(34, 211, 238, 0.25)";
       ctx.fill();
     };
 
@@ -78,7 +78,12 @@ export function BreathingBackground({ fixed = true, overlay = false }: Breathing
       canvas.style.width = `${width}px`;
       canvas.style.height = `${height}px`;
       ctx.setTransform(pixelRatio, 0, 0, pixelRatio, 0, 0);
-      particles = Array.from({ length: 145 }, () => new Particle(width, height));
+      const viewportArea = window.innerWidth * window.innerHeight;
+      const surfaceArea = width * height;
+      const particleCount = fixed
+        ? 120
+        : Math.min(260, Math.max(120, Math.round(120 * (surfaceArea / viewportArea))));
+      particles = Array.from({ length: particleCount }, () => new Particle(width, height));
     };
 
     const animate = () => {
@@ -86,26 +91,24 @@ export function BreathingBackground({ fixed = true, overlay = false }: Breathing
 
       ctx.clearRect(0, 0, width, height);
 
-      particles.forEach((particle, index) => {
+      particles.forEach((particle) => {
         particle.update(width, height, mouse);
         drawParticle(particle);
 
-        for (let i = index + 1; i < particles.length; i += 1) {
-          const linkedParticle = particles[i];
+        particles.forEach((linkedParticle) => {
           const dx = particle.x - linkedParticle.x;
           const dy = particle.y - linkedParticle.y;
           const dist = Math.sqrt(dx * dx + dy * dy);
 
-          if (dist < 230) {
+          if (dist < 180) {
             ctx.beginPath();
-            const hue = (index + i) % 4 === 0 ? "168, 85, 247" : "34, 211, 238";
-            ctx.strokeStyle = `rgba(${hue}, ${0.34 * (1 - dist / 230)})`;
-            ctx.lineWidth = 1.05;
+            ctx.strokeStyle = `rgba(34, 211, 238, ${0.12 * (1 - dist / 180)})`;
+            ctx.lineWidth = 0.6;
             ctx.moveTo(particle.x, particle.y);
             ctx.lineTo(linkedParticle.x, linkedParticle.y);
             ctx.stroke();
           }
-        }
+        });
       });
 
       animationFrameId = requestAnimationFrame(animate);
@@ -145,26 +148,22 @@ export function BreathingBackground({ fixed = true, overlay = false }: Breathing
   return (
     <div
       ref={containerRef}
-      className={`pointer-events-none ${fixed ? "fixed" : "absolute"} inset-0 ${overlay ? "z-20 opacity-100 mix-blend-screen" : "z-0"} overflow-hidden`}
+      className={`pointer-events-none ${fixed ? "fixed" : "absolute"} inset-0 ${overlay ? "z-20 opacity-45 mix-blend-screen" : "z-0"} overflow-hidden`}
     >
       {overlay ? null : <div className="absolute inset-0 bg-[#050505]" />}
       <canvas ref={canvasRef} className="absolute inset-0" />
       <div
-        className={`absolute inset-0 ${overlay ? "opacity-[0.08]" : "opacity-[0.16]"} mix-blend-overlay`}
+        className={`absolute inset-0 ${overlay ? "opacity-[0.05]" : "opacity-[0.12]"} mix-blend-overlay`}
         style={{
           backgroundImage:
             "radial-gradient(circle at 1px 1px, rgba(255,255,255,0.18) 1px, transparent 0)",
           backgroundSize: "4px 4px"
         }}
       />
-      <div className={`absolute left-[-10%] top-[-20%] h-[80%] w-[80%] animate-pulse rounded-full ${overlay ? "bg-cyan-400/[0.15]" : "bg-cyan-500/[0.26]"} blur-[140px]`} />
+      <div className={`absolute left-[-10%] top-[-20%] h-[80%] w-[80%] animate-pulse rounded-full ${overlay ? "bg-cyan-400/[0.035]" : "bg-cyan-500/10"} blur-[140px]`} />
       <div
-        className={`absolute bottom-[-10%] right-[-10%] h-[60%] w-[60%] animate-pulse rounded-full ${overlay ? "bg-purple-500/[0.14]" : "bg-purple-500/[0.22]"} blur-[120px]`}
+        className={`absolute bottom-[-10%] right-[-10%] h-[60%] w-[60%] animate-pulse rounded-full ${overlay ? "bg-purple-500/[0.035]" : "bg-purple-500/5"} blur-[120px]`}
         style={{ animationDelay: "-4s" }}
-      />
-      <div
-        className={`absolute left-[18%] bottom-[-18%] h-[44%] w-[54%] animate-pulse rounded-full ${overlay ? "bg-fuchsia-500/[0.1]" : "bg-fuchsia-500/[0.16]"} blur-[130px]`}
-        style={{ animationDelay: "-7s" }}
       />
     </div>
   );
