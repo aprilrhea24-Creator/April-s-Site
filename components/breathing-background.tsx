@@ -148,7 +148,7 @@ export function BreathingBackground({ fixed = true, overlay = false }: Breathing
   return (
     <div
       ref={containerRef}
-      className={`pointer-events-none ${fixed ? "fixed" : "absolute"} inset-0 ${overlay ? "z-20 opacity-45 mix-blend-screen" : "z-0"} overflow-hidden`}
+      className={`pointer-events-none ${fixed ? "fixed" : "absolute"} inset-0 ${overlay ? "z-20 opacity-65 mix-blend-screen" : "z-0"} overflow-hidden`}
     >
       {overlay ? null : <div className="absolute inset-0 bg-[#050505]" />}
       <canvas ref={canvasRef} className="absolute inset-0" />
