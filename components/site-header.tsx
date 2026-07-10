@@ -9,7 +9,7 @@ const navItems = [
 
 export function SiteHeader() {
   return (
-    <header className="sticky top-0 z-30 border-b border-white/10 bg-black/25 backdrop-blur-xl">
+    <header className="sticky top-0 z-30 border-b border-white/10 bg-black/85 backdrop-blur-xl">
       <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-3 sm:px-6 lg:px-8">
         <Link href="/" className="relative isolate flex items-center" aria-label="Stratum Studio home">
           <span className="relative flex h-[112px] w-[112px] shrink-0 items-center justify-center overflow-hidden rounded-[1.9rem] bg-black shadow-[0_0_38px_rgba(34,211,238,0.18)]" aria-hidden="true">

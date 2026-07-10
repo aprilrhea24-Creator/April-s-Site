@@ -28,6 +28,7 @@ export function ParallaxHero({ children }: ParallaxHeroProps) {
           </filter>
           <rect width="100%" height="100%" filter="url(#hero-fractal-noise)" />
         </svg>
+        <div className="absolute inset-x-0 bottom-0 h-44 bg-gradient-to-b from-transparent via-[#050508]/45 to-black" />
       </div>
 
       <div className="relative z-10 mx-auto grid min-h-[58rem] max-w-7xl grid-cols-1 items-center gap-12 px-4 py-14 sm:min-h-[56rem] sm:px-6 md:min-h-[calc(100vh-5rem)] md:grid-cols-2 md:py-16 lg:px-8">
