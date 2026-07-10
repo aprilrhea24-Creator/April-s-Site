@@ -143,7 +143,7 @@ export function BreathingBackground({ fixed = true, overlay = false }: Breathing
       window.removeEventListener("mousemove", handleMouseMove);
       window.removeEventListener("mouseout", handleMouseLeave);
     };
-  }, []);
+  }, [fixed]);
 
   return (
     <div
@@ -153,12 +153,7 @@ export function BreathingBackground({ fixed = true, overlay = false }: Breathing
       {overlay ? null : <div className="absolute inset-0 bg-[#050505]" />}
       <canvas ref={canvasRef} className="absolute inset-0" />
       <div
-        className={`absolute inset-0 ${overlay ? "opacity-[0.05]" : "opacity-[0.12]"} mix-blend-overlay`}
-        style={{
-          backgroundImage:
-            "radial-gradient(circle at 1px 1px, rgba(255,255,255,0.18) 1px, transparent 0)",
-          backgroundSize: "4px 4px"
-        }}
+        className={`absolute inset-0 ${overlay ? "opacity-[0.08]" : "opacity-20"} mix-blend-overlay bg-[url('https://grainy-gradients.vercel.app/noise.svg')]`}
       />
       <div className={`absolute left-[-10%] top-[-20%] h-[80%] w-[80%] animate-pulse rounded-full ${overlay ? "bg-cyan-400/[0.035]" : "bg-cyan-500/10"} blur-[140px]`} />
       <div
