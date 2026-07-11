@@ -68,7 +68,7 @@ function LuminaLanding({ packageDetail }: { packageDetail: PackageDetail }) {
     <main className="relative min-h-screen overflow-hidden bg-[#10100f] text-white">
       <div className="absolute inset-0 overflow-hidden bg-[#151412]">
         <video autoPlay loop muted playsInline preload="metadata" className="h-full w-full object-cover opacity-80 [animation:lumina-video-pan_34s_ease-in-out_infinite_alternate]">
-          <source src="/lumina-wellness.mp4" type="video/mp4" />
+          <source src="/lumina-wellness-reel.mp4" type="video/mp4" />
         </video>
         <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(16,16,15,0.9)_0%,rgba(16,16,15,0.5)_44%,rgba(16,16,15,0.18)_100%)]" />
         <div className="absolute inset-0 bg-gradient-to-t from-[#10100f] via-transparent to-black/30" />
